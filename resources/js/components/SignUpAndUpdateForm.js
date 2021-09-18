@@ -1,13 +1,26 @@
 import React, { useState } from "react";
+import Api from "./Api";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import "../../../css/bttn/bttn.min.css";
+import "../../css/bttn/bttn.min.css";
 
-const RegisterForm = () => {
+const SignUpAndUpdateForm = (props) => {
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
+
+    const [email, setEmail] = useState(props.email);
+    const [gamerTag, setGamerTag] = useState(props.gamerTag);
+    const [platform, setPlatform] = useState(props.platform);
+    const [activisionID, setActivisionID] = useState(props.activisionID);
+    const [password, setPassword] = useState(props.password);
+
+    const [emailEmpty, setEmailEmpty] = useState(false);
+    const [gamerTagEmpty, setGamerTagEmpty] = useState(false);
+    const [passwordEmpty, setPasswordEmpty] = useState(false);
 
     const eyeTextToggleHandler = () => {
         setEyeTextToggle(!eyeTextToggle);
     };
+
+    const submitHandler = () => {};
 
     const appUrl = process.env.MIX_APP_URL;
     return (
@@ -15,15 +28,32 @@ const RegisterForm = () => {
             <Row className="d-flex justify-content-center">
                 <Col className="col-8">
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
-                        <Form>
+                        <Form onSubmit={submitHandler}>
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicEmail"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                onBlur={() =>
+                                    email === ""
+                                        ? setEmailEmpty(true)
+                                        : setEmailEmpty(false)
+                                }
                             >
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label
+                                    className={emailEmpty ? "text-danger" : ""}
+                                >
+                                    Email address
+                                </Form.Label>
                                 <Form.Control
                                     type="email"
                                     placeholder="Enter email"
+                                    minLength="6"
+                                    maxLength="75"
+                                    required
+                                    className={
+                                        emailEmpty ? "border border-danger" : ""
+                                    }
                                 />
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone
@@ -33,11 +63,30 @@ const RegisterForm = () => {
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicGamertag"
+                                value={gamerTag}
+                                onChange={(e) => setGamerTag(e.target.value)}
+                                onBlur={() =>
+                                    gamerTag === ""
+                                        ? setGamerTagEmpty(true)
+                                        : setGamerTagEmpty(false)
+                                }
                             >
-                                <Form.Label>Gamertag</Form.Label>
+                                <Form.Label
+                                    className={
+                                        gamerTagEmpty ? "text-danger" : ""
+                                    }
+                                >
+                                    Gamertag
+                                </Form.Label>
                                 <Form.Control
                                     type="text"
                                     placeholder="Enter gamertag"
+                                    required
+                                    className={
+                                        gamerTagEmpty
+                                            ? "border border-danger"
+                                            : ""
+                                    }
                                 />
                             </Form.Group>
                             <Form.Group
@@ -72,14 +121,32 @@ const RegisterForm = () => {
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicPassword"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                onBlur={() =>
+                                    password === ""
+                                        ? setPasswordEmpty(true)
+                                        : setPasswordEmpty(false)
+                                }
                             >
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label
+                                    className={
+                                        passwordEmpty ? "text-danger" : ""
+                                    }
+                                >
+                                    Password
+                                </Form.Label>
                                 <div className="eye-text">
                                     <Form.Control
                                         type={
                                             !eyeTextToggle ? "password" : "text"
                                         }
                                         placeholder="Password"
+                                        className={
+                                            passwordEmpty
+                                                ? "border border-danger"
+                                                : ""
+                                        }
                                     />
                                     <img
                                         src={`${appUrl}/images/eye-text.png`}
@@ -88,8 +155,11 @@ const RegisterForm = () => {
                                     />
                                 </div>
                             </Form.Group>
-                            <button className="bttn-unite bttn-sm bttn-primary">
-                                Create account
+                            <button
+                                className="bttn-unite bttn-sm bttn-primary"
+                                type="submit"
+                            >
+                                {props.buttonText}
                             </button>
                         </Form>
                     </div>
@@ -99,4 +169,14 @@ const RegisterForm = () => {
     );
 };
 
-export default RegisterForm;
+SignUpAndUpdateForm.defaultProps = {
+    email: "",
+    gamerTag: "",
+    platform: "psn",
+    activisionID: "",
+    password: "",
+    buttonText: "Create account",
+    update: false,
+};
+
+export default SignUpAndUpdateForm;
