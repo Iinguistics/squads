@@ -28,6 +28,7 @@
         "browser-sync": "^2.27.5",
         "browser-sync-webpack-plugin": "^2.3.0",
         "cross-env": "^7.0.3",
+        "hamburger-react": "^2.4.1",
         "moment": "^2.29.1",
         "react-bootstrap": "^1.6.3",
         "react-icons": "^4.2.0",

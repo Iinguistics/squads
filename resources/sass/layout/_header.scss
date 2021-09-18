@@ -1,0 +1,28 @@
+nav {
+    //background: #14121f;
+
+    .logo {
+        height: 40px;
+        width: 40px;
+    }
+
+    .dropdown-item:hover {
+        color: #757575 !important;
+        background: none !important;
+    }
+
+    .dropdown-item:focus {
+        color: #757575 !important;
+        text-decoration: underline #757575 !important;
+    }
+}
+
+.dropdown-item {
+    background: none !important;
+}
+
+.sign-in-btn {
+    border: 2px solid #000;
+    border-radius: 30px;
+    padding: 11px;
+}

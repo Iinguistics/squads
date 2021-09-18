@@ -1,0 +1,12 @@
+.eye-text {
+    position: relative;
+
+    img {
+        position: absolute;
+        right: 25px;
+        top: 2px;
+    }
+    img:hover {
+        cursor: pointer;
+    }
+}

@@ -3,19 +3,47 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Header = () => {
+    const appUrl = process.env.MIX_APP_URL;
     return (
         <>
-            <Navbar bg="dark" variant="dark" className="shadow">
+            <Navbar
+                expand="lg"
+                collapseOnSelect
+                fixed="top"
+                className="shadow-sm"
+            >
                 <Container>
-                    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                        <LinkContainer to="/profile">
-                            <Nav.Link>Profile</Nav.Link>
-                        </LinkContainer>
-                    </Nav>
+                    <LinkContainer
+                        to="/"
+                        className="d-flex flex-row justify-content-center align-items-center"
+                    >
+                        <Navbar.Brand>
+                            <img
+                                className="logo"
+                                src={`${appUrl}/images/squads-logo.png`}
+                                alt="Squads"
+                            />
+                            Squads
+                        </Navbar.Brand>
+                    </LinkContainer>
+                    <Navbar.Toggle
+                        aria-controls="basic-navbar-nav"
+                        id="hamburger"
+                    />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ml-auto">
+                            <LinkContainer to="/profile">
+                                <NavDropdown.Item className="dropdown-item">
+                                    Sign In
+                                </NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/register">
+                                <NavDropdown.Item className="dropdown-item">
+                                    Create Account
+                                </NavDropdown.Item>
+                            </LinkContainer>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </>

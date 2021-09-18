@@ -10002,6 +10002,38 @@ h3 {
     border-color: #dee2e6;
   }
 }
-.test {
-  color: deepskyblue;
+nav .logo {
+  height: 40px;
+  width: 40px;
+}
+nav .dropdown-item:hover {
+  color: #757575 !important;
+  background: none !important;
+}
+nav .dropdown-item:focus {
+  color: #757575 !important;
+  -webkit-text-decoration: underline #757575 !important;
+          text-decoration: underline #757575 !important;
+}
+
+.dropdown-item {
+  background: none !important;
+}
+
+.sign-in-btn {
+  border: 2px solid #000;
+  border-radius: 30px;
+  padding: 11px;
+}
+
+.eye-text {
+  position: relative;
+}
+.eye-text img {
+  position: absolute;
+  right: 25px;
+  top: 2px;
+}
+.eye-text img:hover {
+  cursor: pointer;
 }
