@@ -11,18 +11,18 @@ nav {
         background: none !important;
     }
 
-    .dropdown-item:focus {
+    .dropdown-item.active,
+    .dropdown-item:active {
         color: #757575 !important;
+        background-color: none !important;
         text-decoration: underline #757575 !important;
     }
-}
 
-.dropdown-item {
-    background: none !important;
-}
+    .dropdown-item:focus {
+        color: #757575 !important;
+    }
 
-.sign-in-btn {
-    border: 2px solid #000;
-    border-radius: 30px;
-    padding: 11px;
+    .dropdown-item {
+        background: none !important;
+    }
 }

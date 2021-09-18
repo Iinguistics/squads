@@ -10010,20 +10010,18 @@ nav .dropdown-item:hover {
   color: #757575 !important;
   background: none !important;
 }
-nav .dropdown-item:focus {
+nav .dropdown-item.active,
+nav .dropdown-item:active {
   color: #757575 !important;
+  background-color: none !important;
   -webkit-text-decoration: underline #757575 !important;
           text-decoration: underline #757575 !important;
 }
-
-.dropdown-item {
-  background: none !important;
+nav .dropdown-item:focus {
+  color: #757575 !important;
 }
-
-.sign-in-btn {
-  border: 2px solid #000;
-  border-radius: 30px;
-  padding: 11px;
+nav .dropdown-item {
+  background: none !important;
 }
 
 .eye-text {
@@ -10031,9 +10029,17 @@ nav .dropdown-item:focus {
 }
 .eye-text img {
   position: absolute;
-  right: 25px;
+  right: 15px;
   top: 2px;
 }
 .eye-text img:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .eye-text img {
+    height: 24px;
+    width: 24px;
+    top: 8px;
+  }
 }

@@ -3,10 +3,18 @@
 
     img {
         position: absolute;
-        right: 25px;
+        right: 15px;
         top: 2px;
     }
     img:hover {
         cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .eye-text img {
+        height: 24px;
+        width: 24px;
+        top: 8px;
     }
 }

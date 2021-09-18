@@ -42,6 +42,35 @@ const RegisterForm = () => {
                             </Form.Group>
                             <Form.Group
                                 className="mb-3"
+                                controlId="formBasicPlatform"
+                            >
+                                <Form.Label>Platform</Form.Label>
+                                <Form.Control
+                                    as="select"
+                                    aria-label="Default select example"
+                                >
+                                    <option value="psn">
+                                        PlayStation Network
+                                    </option>
+                                    <option value="battle">Battle.net</option>
+                                    <option value="xbl">Xbox Live</option>
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="formBasicActivisionId"
+                            >
+                                <Form.Label>Activision ID</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter Activision ID Username"
+                                />
+                                <Form.Text className="text-muted">
+                                    Optional
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
                                 controlId="formBasicPassword"
                             >
                                 <Form.Label>Password</Form.Label>
@@ -59,7 +88,7 @@ const RegisterForm = () => {
                                     />
                                 </div>
                             </Form.Group>
-                            <button class="bttn-unite bttn-sm bttn-primary">
+                            <button className="bttn-unite bttn-sm bttn-primary">
                                 Create account
                             </button>
                         </Form>
