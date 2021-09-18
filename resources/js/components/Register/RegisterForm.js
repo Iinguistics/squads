@@ -4,7 +4,6 @@ import "../../../css/bttn/bttn.min.css";
 
 const RegisterForm = () => {
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
-    const [eyeText, setEyeText] = useState("");
 
     const eyeTextToggleHandler = () => {
         setEyeTextToggle(!eyeTextToggle);
