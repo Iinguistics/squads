@@ -10036,6 +10036,12 @@ nav .dropdown-item {
   cursor: pointer;
 }
 
+form input {
+  outline: none !important;
+  border: none !important;
+  border-bottom: 1px solid #1d89ff !important;
+}
+
 @media only screen and (max-width: 600px) {
   .eye-text img {
     height: 24px;

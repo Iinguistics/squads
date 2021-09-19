@@ -39,6 +39,7 @@ const SignUpAndUpdateForm = (props) => {
                                         ? setEmailEmpty(true)
                                         : setEmailEmpty(false)
                                 }
+                                onFocus={() => setEmailEmpty(false)}
                             >
                                 <Form.Label
                                     className={emailEmpty ? "text-danger" : ""}
@@ -52,7 +53,9 @@ const SignUpAndUpdateForm = (props) => {
                                     maxLength="75"
                                     required
                                     className={
-                                        emailEmpty ? "border border-danger" : ""
+                                        emailEmpty
+                                            ? "border-bottom border-danger shadow-none"
+                                            : "shadow-none"
                                     }
                                 />
                                 <Form.Text className="text-muted">
@@ -70,6 +73,7 @@ const SignUpAndUpdateForm = (props) => {
                                         ? setGamerTagEmpty(true)
                                         : setGamerTagEmpty(false)
                                 }
+                                onFocus={() => setGamerTagEmpty(false)}
                             >
                                 <Form.Label
                                     className={
@@ -84,8 +88,8 @@ const SignUpAndUpdateForm = (props) => {
                                     required
                                     className={
                                         gamerTagEmpty
-                                            ? "border border-danger"
-                                            : ""
+                                            ? "border-bottom border-danger shadow-none"
+                                            : "shadow-none"
                                     }
                                 />
                             </Form.Group>
@@ -134,6 +138,7 @@ const SignUpAndUpdateForm = (props) => {
                                         ? setPasswordEmpty(true)
                                         : setPasswordEmpty(false)
                                 }
+                                onFocus={() => setPasswordEmpty(false)}
                             >
                                 <Form.Label
                                     className={
@@ -150,8 +155,8 @@ const SignUpAndUpdateForm = (props) => {
                                         placeholder="Password"
                                         className={
                                             passwordEmpty
-                                                ? "border border-danger"
-                                                : ""
+                                                ? "border-bottom border-danger shadow-none"
+                                                : "shadow-none"
                                         }
                                     />
                                     <img

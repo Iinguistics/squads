@@ -5772,6 +5772,9 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onBlur: function onBlur() {
                 return email === "" ? setEmailEmpty(true) : setEmailEmpty(false);
               },
+              onFocus: function onFocus() {
+                return setEmailEmpty(false);
+              },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
                 className: emailEmpty ? "text-danger" : "",
                 children: "Email address"
@@ -5781,7 +5784,7 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
                 minLength: "6",
                 maxLength: "75",
                 required: true,
-                className: emailEmpty ? "border border-danger" : ""
+                className: emailEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, {
                 className: "text-muted",
                 children: "We'll never share your email with anyone else."
@@ -5796,6 +5799,9 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onBlur: function onBlur() {
                 return gamerTag === "" ? setGamerTagEmpty(true) : setGamerTagEmpty(false);
               },
+              onFocus: function onFocus() {
+                return setGamerTagEmpty(false);
+              },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
                 className: gamerTagEmpty ? "text-danger" : "",
                 children: "Gamertag"
@@ -5803,7 +5809,7 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
                 type: "text",
                 placeholder: "Enter gamertag",
                 required: true,
-                className: gamerTagEmpty ? "border border-danger" : ""
+                className: gamerTagEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Group, {
               className: "mb-3",
@@ -5854,6 +5860,9 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onBlur: function onBlur() {
                 return password === "" ? setPasswordEmpty(true) : setPasswordEmpty(false);
               },
+              onFocus: function onFocus() {
+                return setPasswordEmpty(false);
+              },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
                 className: passwordEmpty ? "text-danger" : "",
                 children: "Password"
@@ -5862,7 +5871,7 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
                   type: !eyeTextToggle ? "password" : "text",
                   placeholder: "Password",
-                  className: passwordEmpty ? "border border-danger" : ""
+                  className: passwordEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
                   src: "".concat(appUrl, "/images/eye-text.png"),
                   alt: "eye",
