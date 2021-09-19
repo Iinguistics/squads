@@ -92,6 +92,8 @@ const SignUpAndUpdateForm = (props) => {
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicPlatform"
+                                value={platform}
+                                onChange={(e) => setPlatform(e.target.value)}
                             >
                                 <Form.Label>Platform</Form.Label>
                                 <Form.Control
@@ -108,6 +110,10 @@ const SignUpAndUpdateForm = (props) => {
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicActivisionId"
+                                value={activisionID}
+                                onChange={(e) =>
+                                    setActivisionID(e.target.value)
+                                }
                             >
                                 <Form.Label>Activision ID</Form.Label>
                                 <Form.Control
