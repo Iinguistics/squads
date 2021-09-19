@@ -29,6 +29,10 @@ form {
         border: none !important;
         border-bottom: 1px solid #1d89ff !important;
     }
+
+    select {
+        border: 1px solid #1d89ff !important;
+    }
 }
 
 @media only screen and (max-width: 600px) {

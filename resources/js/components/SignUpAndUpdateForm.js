@@ -20,6 +20,8 @@ const SignUpAndUpdateForm = (props) => {
     const [showGamerTagRequired, setShowGamerTagRequired] = useState(false);
     const [showPasswordRequired, setShowPasswordRequired] = useState(false);
 
+    const [showPasswordLength, setShowPasswordLength] = useState(false);
+
     const eyeTextToggleHandler = () => {
         setEyeTextToggle(!eyeTextToggle);
     };
@@ -35,6 +37,7 @@ const SignUpAndUpdateForm = (props) => {
     const onPasswordFocus = () => {
         setShowPasswordRequired(false);
         setPasswordEmpty(false);
+        setShowPasswordLength(false);
     };
 
     const submitHandler = (e) => {
@@ -56,6 +59,12 @@ const SignUpAndUpdateForm = (props) => {
             setShowPasswordRequired(true);
         } else {
             setShowPasswordRequired(false);
+        }
+
+        if (password.length < 6) {
+            setShowPasswordLength(true);
+        } else {
+            setShowPasswordLength(false);
         }
     };
 
@@ -205,9 +214,15 @@ const SignUpAndUpdateForm = (props) => {
                                         Required
                                     </span>
                                 )}
+                                {showPasswordLength && (
+                                    <span className="text-danger">
+                                        {" "}
+                                        Must be at least 6 characters
+                                    </span>
+                                )}
                                 <div className="eye-text">
                                     <Form.Control
-                                        minLength="6"
+                                        //minLength="6"
                                         maxLength="60"
                                         type={
                                             !eyeTextToggle ? "password" : "text"

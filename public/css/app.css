@@ -10052,6 +10052,9 @@ form input {
   border: none !important;
   border-bottom: 1px solid #1d89ff !important;
 }
+form select {
+  border: 1px solid #1d89ff !important;
+}
 
 @media only screen and (max-width: 600px) {
   .eye-text img {

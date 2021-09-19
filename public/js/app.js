@@ -5760,6 +5760,11 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
       showPasswordRequired = _useState24[0],
       setShowPasswordRequired = _useState24[1];
 
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState26 = _slicedToArray(_useState25, 2),
+      showPasswordLength = _useState26[0],
+      setShowPasswordLength = _useState26[1];
+
   var eyeTextToggleHandler = function eyeTextToggleHandler() {
     setEyeTextToggle(!eyeTextToggle);
   };
@@ -5777,6 +5782,7 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
   var onPasswordFocus = function onPasswordFocus() {
     setShowPasswordRequired(false);
     setPasswordEmpty(false);
+    setShowPasswordLength(false);
   };
 
   var submitHandler = function submitHandler(e) {
@@ -5798,6 +5804,12 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
       setShowPasswordRequired(true);
     } else {
       setShowPasswordRequired(false);
+    }
+
+    if (password.length < 6) {
+      setShowPasswordLength(true);
+    } else {
+      setShowPasswordLength(false);
     }
   };
 
@@ -5923,10 +5935,13 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               }), " ", showPasswordRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                 className: "text-danger",
                 children: "Required"
+              }), showPasswordLength && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+                className: "text-danger",
+                children: [" ", "Must be at least 6 characters"]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                 className: "eye-text",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
-                  minLength: "6",
+                  //minLength="6"
                   maxLength: "60",
                   type: !eyeTextToggle ? "password" : "text",
                   placeholder: "Password",
