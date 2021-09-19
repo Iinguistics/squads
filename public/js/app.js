@@ -5745,11 +5745,61 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
       passwordEmpty = _useState18[0],
       setPasswordEmpty = _useState18[1];
 
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState20 = _slicedToArray(_useState19, 2),
+      showEmailRequired = _useState20[0],
+      setShowEmailRequired = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState22 = _slicedToArray(_useState21, 2),
+      showGamerTagRequired = _useState22[0],
+      setShowGamerTagRequired = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState24 = _slicedToArray(_useState23, 2),
+      showPasswordRequired = _useState24[0],
+      setShowPasswordRequired = _useState24[1];
+
   var eyeTextToggleHandler = function eyeTextToggleHandler() {
     setEyeTextToggle(!eyeTextToggle);
   };
 
-  var submitHandler = function submitHandler() {};
+  var onEmailFocus = function onEmailFocus() {
+    setShowEmailRequired(false);
+    setEmailEmpty(false);
+  };
+
+  var onGamerTagFocus = function onGamerTagFocus() {
+    setShowGamerTagRequired(false);
+    setGamerTagEmpty(false);
+  };
+
+  var onPasswordFocus = function onPasswordFocus() {
+    setShowPasswordRequired(false);
+    setPasswordEmpty(false);
+  };
+
+  var submitHandler = function submitHandler(e) {
+    e.preventDefault();
+
+    if (email === "") {
+      setShowEmailRequired(true);
+    } else {
+      setShowEmailRequired(false);
+    }
+
+    if (gamerTag === "") {
+      setShowGamerTagRequired(true);
+    } else {
+      setShowGamerTagRequired(false);
+    }
+
+    if (password === "") {
+      setShowPasswordRequired(true);
+    } else {
+      setShowPasswordRequired(false);
+    }
+  };
 
   var appUrl = "http://127.0.0.1:8000";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -5757,7 +5807,7 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
       className: "d-flex justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        className: "col-8",
+        className: "col-md-8",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "shadow-sm p-3 mb-5 bg-white rounded",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -5772,19 +5822,25 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onBlur: function onBlur() {
                 return email === "" ? setEmailEmpty(true) : setEmailEmpty(false);
               },
-              onFocus: function onFocus() {
-                return setEmailEmpty(false);
-              },
+              onFocus: onEmailFocus,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
                 className: emailEmpty ? "text-danger" : "",
                 children: "Email address"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
-                type: "email",
-                placeholder: "Enter email",
-                minLength: "6",
-                maxLength: "75",
-                required: true,
-                className: emailEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
+              }), " ", showEmailRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                className: "text-danger",
+                children: "Required"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "tooltip-arrow",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
+                  type: "email",
+                  placeholder: "Enter email",
+                  minLength: "6",
+                  maxLength: "60",
+                  className: emailEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
+                }), showEmailRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                  src: "".concat(appUrl, "/images/curved-arrow-tooltip.png"),
+                  alt: "arrow"
+                })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Text, {
                 className: "text-muted",
                 children: "We'll never share your email with anyone else."
@@ -5799,16 +5855,16 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onBlur: function onBlur() {
                 return gamerTag === "" ? setGamerTagEmpty(true) : setGamerTagEmpty(false);
               },
-              onFocus: function onFocus() {
-                return setGamerTagEmpty(false);
-              },
+              onFocus: onGamerTagFocus,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
                 className: gamerTagEmpty ? "text-danger" : "",
                 children: "Gamertag"
+              }), " ", showGamerTagRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                className: "text-danger",
+                children: "Required"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
                 type: "text",
                 placeholder: "Enter gamertag",
-                required: true,
                 className: gamerTagEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Group, {
@@ -5860,15 +5916,18 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onBlur: function onBlur() {
                 return password === "" ? setPasswordEmpty(true) : setPasswordEmpty(false);
               },
-              onFocus: function onFocus() {
-                return setPasswordEmpty(false);
-              },
+              onFocus: onPasswordFocus,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
                 className: passwordEmpty ? "text-danger" : "",
                 children: "Password"
+              }), " ", showPasswordRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                className: "text-danger",
+                children: "Required"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                 className: "eye-text",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
+                  minLength: "6",
+                  maxLength: "60",
                   type: !eyeTextToggle ? "password" : "text",
                   placeholder: "Password",
                   className: passwordEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"

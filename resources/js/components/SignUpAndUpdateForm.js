@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Api from "./Api";
-import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import { Container, Form, Row, Col } from "react-bootstrap";
 import "../../css/bttn/bttn.min.css";
 
 const SignUpAndUpdateForm = (props) => {
@@ -16,17 +16,54 @@ const SignUpAndUpdateForm = (props) => {
     const [gamerTagEmpty, setGamerTagEmpty] = useState(false);
     const [passwordEmpty, setPasswordEmpty] = useState(false);
 
+    const [showEmailRequired, setShowEmailRequired] = useState(false);
+    const [showGamerTagRequired, setShowGamerTagRequired] = useState(false);
+    const [showPasswordRequired, setShowPasswordRequired] = useState(false);
+
     const eyeTextToggleHandler = () => {
         setEyeTextToggle(!eyeTextToggle);
     };
 
-    const submitHandler = () => {};
+    const onEmailFocus = () => {
+        setShowEmailRequired(false);
+        setEmailEmpty(false);
+    };
+    const onGamerTagFocus = () => {
+        setShowGamerTagRequired(false);
+        setGamerTagEmpty(false);
+    };
+    const onPasswordFocus = () => {
+        setShowPasswordRequired(false);
+        setPasswordEmpty(false);
+    };
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        if (email === "") {
+            setShowEmailRequired(true);
+        } else {
+            setShowEmailRequired(false);
+        }
+
+        if (gamerTag === "") {
+            setShowGamerTagRequired(true);
+        } else {
+            setShowGamerTagRequired(false);
+        }
+
+        if (password === "") {
+            setShowPasswordRequired(true);
+        } else {
+            setShowPasswordRequired(false);
+        }
+    };
 
     const appUrl = process.env.MIX_APP_URL;
     return (
         <Container className="my-5">
             <Row className="d-flex justify-content-center">
-                <Col className="col-8">
+                <Col className="col-md-8">
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
                         <Form onSubmit={submitHandler}>
                             <Form.Group
@@ -39,25 +76,37 @@ const SignUpAndUpdateForm = (props) => {
                                         ? setEmailEmpty(true)
                                         : setEmailEmpty(false)
                                 }
-                                onFocus={() => setEmailEmpty(false)}
+                                onFocus={onEmailFocus}
                             >
                                 <Form.Label
                                     className={emailEmpty ? "text-danger" : ""}
                                 >
                                     Email address
-                                </Form.Label>
-                                <Form.Control
-                                    type="email"
-                                    placeholder="Enter email"
-                                    minLength="6"
-                                    maxLength="75"
-                                    required
-                                    className={
-                                        emailEmpty
-                                            ? "border-bottom border-danger shadow-none"
-                                            : "shadow-none"
-                                    }
-                                />
+                                </Form.Label>{" "}
+                                {showEmailRequired && (
+                                    <span className="text-danger">
+                                        Required
+                                    </span>
+                                )}
+                                <div className="tooltip-arrow">
+                                    <Form.Control
+                                        type="email"
+                                        placeholder="Enter email"
+                                        minLength="6"
+                                        maxLength="60"
+                                        className={
+                                            emailEmpty
+                                                ? "border-bottom border-danger shadow-none"
+                                                : "shadow-none"
+                                        }
+                                    />
+                                    {showEmailRequired && (
+                                        <img
+                                            src={`${appUrl}/images/curved-arrow-tooltip.png`}
+                                            alt="arrow"
+                                        />
+                                    )}
+                                </div>
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone
                                     else.
@@ -73,7 +122,7 @@ const SignUpAndUpdateForm = (props) => {
                                         ? setGamerTagEmpty(true)
                                         : setGamerTagEmpty(false)
                                 }
-                                onFocus={() => setGamerTagEmpty(false)}
+                                onFocus={onGamerTagFocus}
                             >
                                 <Form.Label
                                     className={
@@ -81,11 +130,15 @@ const SignUpAndUpdateForm = (props) => {
                                     }
                                 >
                                     Gamertag
-                                </Form.Label>
+                                </Form.Label>{" "}
+                                {showGamerTagRequired && (
+                                    <span className="text-danger">
+                                        Required
+                                    </span>
+                                )}
                                 <Form.Control
                                     type="text"
                                     placeholder="Enter gamertag"
-                                    required
                                     className={
                                         gamerTagEmpty
                                             ? "border-bottom border-danger shadow-none"
@@ -138,7 +191,7 @@ const SignUpAndUpdateForm = (props) => {
                                         ? setPasswordEmpty(true)
                                         : setPasswordEmpty(false)
                                 }
-                                onFocus={() => setPasswordEmpty(false)}
+                                onFocus={onPasswordFocus}
                             >
                                 <Form.Label
                                     className={
@@ -146,9 +199,16 @@ const SignUpAndUpdateForm = (props) => {
                                     }
                                 >
                                     Password
-                                </Form.Label>
+                                </Form.Label>{" "}
+                                {showPasswordRequired && (
+                                    <span className="text-danger">
+                                        Required
+                                    </span>
+                                )}
                                 <div className="eye-text">
                                     <Form.Control
+                                        minLength="6"
+                                        maxLength="60"
                                         type={
                                             !eyeTextToggle ? "password" : "text"
                                         }

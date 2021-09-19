@@ -10036,6 +10036,17 @@ nav .dropdown-item {
   cursor: pointer;
 }
 
+.tooltip-arrow {
+  position: relative;
+}
+.tooltip-arrow img {
+  position: absolute;
+  left: 90px;
+  top: -5px;
+  height: 32px;
+  width: 32px;
+}
+
 form input {
   outline: none !important;
   border: none !important;
