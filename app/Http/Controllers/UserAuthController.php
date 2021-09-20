@@ -47,11 +47,13 @@ class UserAuthController extends Controller
         // if ($user) {
         //     Mail::to($user->email)->send(new UserRegistered($user));
         // }
+        Auth::attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1]);
+        $user = Auth::user();
 
         $response = array(
             'success' => $user ? true : false,
             'data' => $user ? $user : null,
-            'error' => $user ? null : 'failed to register user'
+            'error' => $user ? null : 'failed to register user',
         );
         return response()->json($response, 200);
     }

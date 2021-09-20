@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import Api from "./Api";
+import { withRouter } from "react-router-dom";
+import Api from "../Api";
 import { Container, Form, Row, Col } from "react-bootstrap";
-import "../../css/bttn/bttn.min.css";
+import "../../../css/bttn/bttn.min.css";
 
-const SignUpAndUpdateForm = (props) => {
-    const [data, setData] = useState([]);
-    const [emailDup, setEmailDup] = useState("");
+const SignUpAndUpdateForm = withRouter((props) => {
+    const [userInfo, setUserInfo] = useState([]);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
 
@@ -48,8 +51,9 @@ const SignUpAndUpdateForm = (props) => {
         }
     };
 
-    const submitHandler = async (e) => {
+    const registerSubmitHandler = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         if (email === "") {
             setEmailEmpty(true);
@@ -72,19 +76,30 @@ const SignUpAndUpdateForm = (props) => {
             password: password,
         };
         const { data } = await Api.post("/register", values);
-        setData(data);
+        setUserInfo(data.data);
+
+        if (data.data) {
+            localStorage.setItem("user", JSON.stringify(data.data));
+        }
+
         if (data.error) {
-            setEmailDup(data.error);
+            setError(data.error);
+            setLoading(false);
         }
     };
-    console.log(data);
+    let test = JSON.parse(localStorage.getItem("user"));
+    console.log(test, "test");
+    // console.log(userInfo);
     const appUrl = process.env.MIX_APP_URL;
     return (
         <Container className="my-5">
             <Row className="d-flex justify-content-center">
                 <Col className="col-md-8">
+                    {loading && (
+                        <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
+                    )}
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
-                        <Form onSubmit={submitHandler}>
+                        <Form onSubmit={registerSubmitHandler}>
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicEmail"
@@ -107,10 +122,8 @@ const SignUpAndUpdateForm = (props) => {
                                         Required
                                     </span>
                                 )}
-                                {emailDup && (
-                                    <span className="text-danger">
-                                        {emailDup}
-                                    </span>
+                                {error && (
+                                    <span className="text-danger">{error}</span>
                                 )}
                                 <div className="tooltip-arrow">
                                     <Form.Control
@@ -264,7 +277,7 @@ const SignUpAndUpdateForm = (props) => {
             </Row>
         </Container>
     );
-};
+});
 
 SignUpAndUpdateForm.defaultProps = {
     email: "",

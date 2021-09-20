@@ -5457,6 +5457,396 @@ var UserProvider = function UserProvider(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Forms/SignUpAndUpdateForm.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Forms/SignUpAndUpdateForm.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function (props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      userInfo = _useState2[0],
+      setUserInfo = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      error = _useState4[0],
+      setError = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      success = _useState6[0],
+      setSuccess = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      loading = _useState8[0],
+      setLoading = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      eyeTextToggle = _useState10[0],
+      setEyeTextToggle = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.email),
+      _useState12 = _slicedToArray(_useState11, 2),
+      email = _useState12[0],
+      setEmail = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.gamerTag),
+      _useState14 = _slicedToArray(_useState13, 2),
+      gamerTag = _useState14[0],
+      setGamerTag = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.platform),
+      _useState16 = _slicedToArray(_useState15, 2),
+      platform = _useState16[0],
+      setPlatform = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.activisionID),
+      _useState18 = _slicedToArray(_useState17, 2),
+      activisionID = _useState18[0],
+      setActivisionID = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.password),
+      _useState20 = _slicedToArray(_useState19, 2),
+      password = _useState20[0],
+      setPassword = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState22 = _slicedToArray(_useState21, 2),
+      emailEmpty = _useState22[0],
+      setEmailEmpty = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState24 = _slicedToArray(_useState23, 2),
+      gamerTagEmpty = _useState24[0],
+      setGamerTagEmpty = _useState24[1];
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState26 = _slicedToArray(_useState25, 2),
+      passwordEmpty = _useState26[0],
+      setPasswordEmpty = _useState26[1];
+
+  var eyeTextToggleHandler = function eyeTextToggleHandler() {
+    setEyeTextToggle(!eyeTextToggle);
+  };
+
+  var onEmailFocus = function onEmailFocus() {
+    setEmailEmpty(false);
+    setEmailDup(false);
+  };
+
+  var onGamerTagFocus = function onGamerTagFocus() {
+    setGamerTagEmpty(false);
+  };
+
+  var onGamerTagBlur = function onGamerTagBlur() {
+    if (gamerTag === "") {
+      setGamerTagEmpty(true);
+    } else {
+      setGamerTagEmpty(false);
+    }
+  };
+
+  var onPasswordFocus = function onPasswordFocus() {
+    setPasswordEmpty(false);
+  };
+
+  var onPasswordBlur = function onPasswordBlur() {
+    if (password === "" || password.length < 6) {
+      setPasswordEmpty(true);
+    } else {
+      setPasswordEmpty(false);
+    }
+  };
+
+  var registerSubmitHandler = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+      var values, _yield$Api$post, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              e.preventDefault();
+              setLoading(true);
+
+              if (!(email === "")) {
+                _context.next = 5;
+                break;
+              }
+
+              setEmailEmpty(true);
+              return _context.abrupt("return");
+
+            case 5:
+              if (!(gamerTag === "")) {
+                _context.next = 8;
+                break;
+              }
+
+              setGamerTagEmpty(true);
+              return _context.abrupt("return");
+
+            case 8:
+              if (!(password === "")) {
+                _context.next = 11;
+                break;
+              }
+
+              setPasswordEmpty(true);
+              return _context.abrupt("return");
+
+            case 11:
+              values = {
+                email: email,
+                platform: platform,
+                gamertag: gamerTag,
+                activision_username: activisionID,
+                password: password
+              };
+              _context.next = 14;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/register", values);
+
+            case 14:
+              _yield$Api$post = _context.sent;
+              data = _yield$Api$post.data;
+              setUserInfo(data.data);
+
+              if (data.data) {
+                localStorage.setItem("user", JSON.stringify(data.data));
+              }
+
+              if (data.error) {
+                setError(data.error);
+                setLoading(false);
+              }
+
+            case 19:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function registerSubmitHandler(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var test = JSON.parse(localStorage.getItem("user"));
+  console.log(test, "test"); // console.log(userInfo);
+
+  var appUrl = "http://127.0.0.1:8000";
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    className: "my-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      className: "d-flex justify-content-center",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        className: "col-md-8",
+        children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "lds-hourglass d-flex justify-content-center m-auto"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "shadow-sm p-3 mb-5 bg-white rounded",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            onSubmit: registerSubmitHandler,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicEmail",
+              value: email,
+              onChange: function onChange(e) {
+                return setEmail(e.target.value);
+              },
+              onBlur: function onBlur() {
+                return email === "" ? setEmailEmpty(true) : setEmailEmpty(false);
+              },
+              onFocus: onEmailFocus,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Label, {
+                className: emailEmpty ? "text-danger" : "",
+                children: "Email address"
+              }), " ", emailEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "text-danger",
+                children: "Required"
+              }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "text-danger",
+                children: error
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                className: "tooltip-arrow",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
+                  type: "email",
+                  placeholder: "Enter email",
+                  minLength: "6",
+                  maxLength: "60",
+                  className: emailEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
+                }), emailEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                  src: "".concat(appUrl, "/images/curved-arrow-tooltip.png"),
+                  alt: "arrow"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Text, {
+                className: "text-muted",
+                children: "We'll never share your email with anyone else."
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicGamertag",
+              value: gamerTag,
+              onChange: function onChange(e) {
+                return setGamerTag(e.target.value);
+              },
+              onBlur: onGamerTagBlur,
+              onFocus: onGamerTagFocus,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Label, {
+                className: gamerTagEmpty ? "text-danger" : "",
+                children: "Gamertag"
+              }), " ", gamerTagEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "text-danger",
+                children: "Required"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
+                type: "text",
+                placeholder: "Enter gamertag",
+                className: gamerTagEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicPlatform",
+              value: platform,
+              onChange: function onChange(e) {
+                return setPlatform(e.target.value);
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Label, {
+                children: "Platform"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
+                as: "select",
+                "aria-label": "Default select example",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: "psn",
+                  children: "PlayStation Network"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: "battle",
+                  children: "Battle.net"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: "xbl",
+                  children: "Xbox Live"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicActivisionId",
+              value: activisionID,
+              onChange: function onChange(e) {
+                return setActivisionID(e.target.value);
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Label, {
+                children: "Activision ID"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
+                type: "text",
+                placeholder: "Enter Activision ID Username",
+                className: "shadow-none"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Text, {
+                className: "text-muted",
+                children: "Optional"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicPassword",
+              value: password,
+              onChange: function onChange(e) {
+                return setPassword(e.target.value);
+              },
+              onBlur: onPasswordBlur,
+              onFocus: onPasswordFocus,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Label, {
+                className: passwordEmpty ? "text-danger" : "",
+                children: "Password"
+              }), " ", passwordEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "text-danger",
+                children: "Required"
+              }), passwordEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "text-danger",
+                children: [" ", "Must be at least 6 characters"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                className: "eye-text",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
+                  //minLength="6"
+                  maxLength: "60",
+                  type: !eyeTextToggle ? "password" : "text",
+                  placeholder: "Password",
+                  className: passwordEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                  src: "".concat(appUrl, "/images/eye-text.png"),
+                  alt: "eye",
+                  onClick: eyeTextToggleHandler
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              className: "bttn-unite bttn-sm bttn-primary",
+              type: "submit",
+              disabled: emailEmpty || gamerTagEmpty || passwordEmpty,
+              children: props.buttonText
+            })]
+          })
+        })]
+      })
+    })
+  });
+});
+SignUpAndUpdateForm.defaultProps = {
+  email: "",
+  gamerTag: "",
+  platform: "psn",
+  activisionID: "",
+  password: "",
+  buttonText: "Create account",
+  update: false
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SignUpAndUpdateForm);
+
+/***/ }),
+
 /***/ "./resources/js/components/Header.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Header.js ***!
@@ -5645,7 +6035,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _SignUpAndUpdateForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../SignUpAndUpdateForm */ "./resources/js/components/SignUpAndUpdateForm.js");
+/* harmony import */ var _Forms_SignUpAndUpdateForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Forms/SignUpAndUpdateForm */ "./resources/js/components/Forms/SignUpAndUpdateForm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -5658,381 +6048,11 @@ var index = function index() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
       className: "text-center",
       children: "Create your account"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SignUpAndUpdateForm__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Forms_SignUpAndUpdateForm__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
-
-/***/ }),
-
-/***/ "./resources/js/components/SignUpAndUpdateForm.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/SignUpAndUpdateForm.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Api */ "./resources/js/components/Api.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      data = _useState2[0],
-      setData = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      emailDup = _useState4[0],
-      setEmailDup = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      eyeTextToggle = _useState6[0],
-      setEyeTextToggle = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.email),
-      _useState8 = _slicedToArray(_useState7, 2),
-      email = _useState8[0],
-      setEmail = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.gamerTag),
-      _useState10 = _slicedToArray(_useState9, 2),
-      gamerTag = _useState10[0],
-      setGamerTag = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.platform),
-      _useState12 = _slicedToArray(_useState11, 2),
-      platform = _useState12[0],
-      setPlatform = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.activisionID),
-      _useState14 = _slicedToArray(_useState13, 2),
-      activisionID = _useState14[0],
-      setActivisionID = _useState14[1];
-
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.password),
-      _useState16 = _slicedToArray(_useState15, 2),
-      password = _useState16[0],
-      setPassword = _useState16[1];
-
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState18 = _slicedToArray(_useState17, 2),
-      emailEmpty = _useState18[0],
-      setEmailEmpty = _useState18[1];
-
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState20 = _slicedToArray(_useState19, 2),
-      gamerTagEmpty = _useState20[0],
-      setGamerTagEmpty = _useState20[1];
-
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState22 = _slicedToArray(_useState21, 2),
-      passwordEmpty = _useState22[0],
-      setPasswordEmpty = _useState22[1];
-
-  var eyeTextToggleHandler = function eyeTextToggleHandler() {
-    setEyeTextToggle(!eyeTextToggle);
-  };
-
-  var onEmailFocus = function onEmailFocus() {
-    setEmailEmpty(false);
-    setEmailDup(false);
-  };
-
-  var onGamerTagFocus = function onGamerTagFocus() {
-    setGamerTagEmpty(false);
-  };
-
-  var onGamerTagBlur = function onGamerTagBlur() {
-    if (gamerTag === "") {
-      setGamerTagEmpty(true);
-    } else {
-      setGamerTagEmpty(false);
-    }
-  };
-
-  var onPasswordFocus = function onPasswordFocus() {
-    setPasswordEmpty(false);
-  };
-
-  var onPasswordBlur = function onPasswordBlur() {
-    if (password === "" || password.length < 6) {
-      setPasswordEmpty(true);
-    } else {
-      setPasswordEmpty(false);
-    }
-  };
-
-  var submitHandler = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      var values, _yield$Api$post, data;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              e.preventDefault();
-
-              if (!(email === "")) {
-                _context.next = 4;
-                break;
-              }
-
-              setEmailEmpty(true);
-              return _context.abrupt("return");
-
-            case 4:
-              if (!(gamerTag === "")) {
-                _context.next = 7;
-                break;
-              }
-
-              setGamerTagEmpty(true);
-              return _context.abrupt("return");
-
-            case 7:
-              if (!(password === "")) {
-                _context.next = 10;
-                break;
-              }
-
-              setPasswordEmpty(true);
-              return _context.abrupt("return");
-
-            case 10:
-              values = {
-                email: email,
-                platform: platform,
-                gamertag: gamerTag,
-                activision_username: activisionID,
-                password: password
-              };
-              _context.next = 13;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/register", values);
-
-            case 13:
-              _yield$Api$post = _context.sent;
-              data = _yield$Api$post.data;
-              setData(data);
-
-              if (data.error) {
-                setEmailDup(data.error);
-              }
-
-            case 17:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function submitHandler(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
-  console.log(data);
-  var appUrl = "http://127.0.0.1:8000";
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    className: "my-5",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      className: "d-flex justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        className: "col-md-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "shadow-sm p-3 mb-5 bg-white rounded",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-            onSubmit: submitHandler,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Group, {
-              className: "mb-3",
-              controlId: "formBasicEmail",
-              value: email,
-              onChange: function onChange(e) {
-                return setEmail(e.target.value);
-              },
-              onBlur: function onBlur() {
-                return email === "" ? setEmailEmpty(true) : setEmailEmpty(false);
-              },
-              onFocus: onEmailFocus,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
-                className: emailEmpty ? "text-danger" : "",
-                children: "Email address"
-              }), " ", emailEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                className: "text-danger",
-                children: "Required"
-              }), emailDup && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                className: "text-danger",
-                children: emailDup
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "tooltip-arrow",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
-                  type: "email",
-                  placeholder: "Enter email",
-                  minLength: "6",
-                  maxLength: "60",
-                  className: emailEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
-                }), emailEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-                  src: "".concat(appUrl, "/images/curved-arrow-tooltip.png"),
-                  alt: "arrow"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Text, {
-                className: "text-muted",
-                children: "We'll never share your email with anyone else."
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Group, {
-              className: "mb-3",
-              controlId: "formBasicGamertag",
-              value: gamerTag,
-              onChange: function onChange(e) {
-                return setGamerTag(e.target.value);
-              },
-              onBlur: onGamerTagBlur,
-              onFocus: onGamerTagFocus,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
-                className: gamerTagEmpty ? "text-danger" : "",
-                children: "Gamertag"
-              }), " ", gamerTagEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                className: "text-danger",
-                children: "Required"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
-                type: "text",
-                placeholder: "Enter gamertag",
-                className: gamerTagEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Group, {
-              className: "mb-3",
-              controlId: "formBasicPlatform",
-              value: platform,
-              onChange: function onChange(e) {
-                return setPlatform(e.target.value);
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
-                children: "Platform"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
-                as: "select",
-                "aria-label": "Default select example",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "psn",
-                  children: "PlayStation Network"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "battle",
-                  children: "Battle.net"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "xbl",
-                  children: "Xbox Live"
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Group, {
-              className: "mb-3",
-              controlId: "formBasicActivisionId",
-              value: activisionID,
-              onChange: function onChange(e) {
-                return setActivisionID(e.target.value);
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
-                children: "Activision ID"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
-                type: "text",
-                placeholder: "Enter Activision ID Username",
-                className: "shadow-none"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Text, {
-                className: "text-muted",
-                children: "Optional"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Group, {
-              className: "mb-3",
-              controlId: "formBasicPassword",
-              value: password,
-              onChange: function onChange(e) {
-                return setPassword(e.target.value);
-              },
-              onBlur: onPasswordBlur,
-              onFocus: onPasswordFocus,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
-                className: passwordEmpty ? "text-danger" : "",
-                children: "Password"
-              }), " ", passwordEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                className: "text-danger",
-                children: "Required"
-              }), passwordEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                className: "text-danger",
-                children: [" ", "Must be at least 6 characters"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "eye-text",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
-                  //minLength="6"
-                  maxLength: "60",
-                  type: !eyeTextToggle ? "password" : "text",
-                  placeholder: "Password",
-                  className: passwordEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-                  src: "".concat(appUrl, "/images/eye-text.png"),
-                  alt: "eye",
-                  onClick: eyeTextToggleHandler
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              className: "bttn-unite bttn-sm bttn-primary",
-              type: "submit",
-              disabled: emailEmpty || gamerTagEmpty || passwordEmpty,
-              children: props.buttonText
-            })]
-          })
-        })
-      })
-    })
-  });
-};
-
-SignUpAndUpdateForm.defaultProps = {
-  email: "",
-  gamerTag: "",
-  platform: "psn",
-  activisionID: "",
-  password: "",
-  buttonText: "Create account",
-  update: false
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SignUpAndUpdateForm);
 
 /***/ }),
 
