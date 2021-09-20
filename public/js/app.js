@@ -5718,89 +5718,87 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
       data = _useState2[0],
       setData = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      eyeTextToggle = _useState4[0],
-      setEyeTextToggle = _useState4[1];
+      emailDup = _useState4[0],
+      setEmailDup = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.email),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
-      setEmail = _useState6[1];
+      eyeTextToggle = _useState6[0],
+      setEyeTextToggle = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.gamerTag),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.email),
       _useState8 = _slicedToArray(_useState7, 2),
-      gamerTag = _useState8[0],
-      setGamerTag = _useState8[1];
+      email = _useState8[0],
+      setEmail = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.platform),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.gamerTag),
       _useState10 = _slicedToArray(_useState9, 2),
-      platform = _useState10[0],
-      setPlatform = _useState10[1];
+      gamerTag = _useState10[0],
+      setGamerTag = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.activisionID),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.platform),
       _useState12 = _slicedToArray(_useState11, 2),
-      activisionID = _useState12[0],
-      setActivisionID = _useState12[1];
+      platform = _useState12[0],
+      setPlatform = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.password),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.activisionID),
       _useState14 = _slicedToArray(_useState13, 2),
-      password = _useState14[0],
-      setPassword = _useState14[1];
+      activisionID = _useState14[0],
+      setActivisionID = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.password),
       _useState16 = _slicedToArray(_useState15, 2),
-      emailEmpty = _useState16[0],
-      setEmailEmpty = _useState16[1];
+      password = _useState16[0],
+      setPassword = _useState16[1];
 
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState18 = _slicedToArray(_useState17, 2),
-      gamerTagEmpty = _useState18[0],
-      setGamerTagEmpty = _useState18[1];
+      emailEmpty = _useState18[0],
+      setEmailEmpty = _useState18[1];
 
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState20 = _slicedToArray(_useState19, 2),
-      passwordEmpty = _useState20[0],
-      setPasswordEmpty = _useState20[1];
+      gamerTagEmpty = _useState20[0],
+      setGamerTagEmpty = _useState20[1];
 
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState22 = _slicedToArray(_useState21, 2),
-      showEmailRequired = _useState22[0],
-      setShowEmailRequired = _useState22[1];
-
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState24 = _slicedToArray(_useState23, 2),
-      showGamerTagRequired = _useState24[0],
-      setShowGamerTagRequired = _useState24[1];
-
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState26 = _slicedToArray(_useState25, 2),
-      showPasswordRequired = _useState26[0],
-      setShowPasswordRequired = _useState26[1];
-
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState28 = _slicedToArray(_useState27, 2),
-      showPasswordLength = _useState28[0],
-      setShowPasswordLength = _useState28[1];
+      passwordEmpty = _useState22[0],
+      setPasswordEmpty = _useState22[1];
 
   var eyeTextToggleHandler = function eyeTextToggleHandler() {
     setEyeTextToggle(!eyeTextToggle);
   };
 
   var onEmailFocus = function onEmailFocus() {
-    setShowEmailRequired(false);
     setEmailEmpty(false);
+    setEmailDup(false);
   };
 
   var onGamerTagFocus = function onGamerTagFocus() {
-    setShowGamerTagRequired(false);
     setGamerTagEmpty(false);
   };
 
+  var onGamerTagBlur = function onGamerTagBlur() {
+    if (gamerTag === "") {
+      setGamerTagEmpty(true);
+    } else {
+      setGamerTagEmpty(false);
+    }
+  };
+
   var onPasswordFocus = function onPasswordFocus() {
-    setShowPasswordRequired(false);
     setPasswordEmpty(false);
-    setShowPasswordLength(false);
+  };
+
+  var onPasswordBlur = function onPasswordBlur() {
+    if (password === "" || password.length < 6) {
+      setPasswordEmpty(true);
+    } else {
+      setPasswordEmpty(false);
+    }
   };
 
   var submitHandler = /*#__PURE__*/function () {
@@ -5813,30 +5811,33 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
             case 0:
               e.preventDefault();
 
-              if (email === "") {
-                setShowEmailRequired(true);
-              } else {
-                setShowEmailRequired(false);
+              if (!(email === "")) {
+                _context.next = 4;
+                break;
               }
 
-              if (gamerTag === "") {
-                setShowGamerTagRequired(true);
-              } else {
-                setShowGamerTagRequired(false);
+              setEmailEmpty(true);
+              return _context.abrupt("return");
+
+            case 4:
+              if (!(gamerTag === "")) {
+                _context.next = 7;
+                break;
               }
 
-              if (password === "") {
-                setShowPasswordRequired(true);
-              } else {
-                setShowPasswordRequired(false);
+              setGamerTagEmpty(true);
+              return _context.abrupt("return");
+
+            case 7:
+              if (!(password === "")) {
+                _context.next = 10;
+                break;
               }
 
-              if (password.length < 6) {
-                setShowPasswordLength(true);
-              } else {
-                setShowPasswordLength(false);
-              }
+              setPasswordEmpty(true);
+              return _context.abrupt("return");
 
+            case 10:
               values = {
                 email: email,
                 platform: platform,
@@ -5844,15 +5845,19 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
                 activision_username: activisionID,
                 password: password
               };
-              _context.next = 8;
+              _context.next = 13;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/register", values);
 
-            case 8:
+            case 13:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
               setData(data);
 
-            case 11:
+              if (data.error) {
+                setEmailDup(data.error);
+              }
+
+            case 17:
             case "end":
               return _context.stop();
           }
@@ -5891,9 +5896,12 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
                 className: emailEmpty ? "text-danger" : "",
                 children: "Email address"
-              }), " ", showEmailRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              }), " ", emailEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
                 className: "text-danger",
                 children: "Required"
+              }), emailDup && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "text-danger",
+                children: emailDup
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "tooltip-arrow",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
@@ -5902,7 +5910,7 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
                   minLength: "6",
                   maxLength: "60",
                   className: emailEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
-                }), showEmailRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                }), emailEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
                   src: "".concat(appUrl, "/images/curved-arrow-tooltip.png"),
                   alt: "arrow"
                 })]
@@ -5917,14 +5925,12 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onChange: function onChange(e) {
                 return setGamerTag(e.target.value);
               },
-              onBlur: function onBlur() {
-                return gamerTag === "" ? setGamerTagEmpty(true) : setGamerTagEmpty(false);
-              },
+              onBlur: onGamerTagBlur,
               onFocus: onGamerTagFocus,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
                 className: gamerTagEmpty ? "text-danger" : "",
                 children: "Gamertag"
-              }), " ", showGamerTagRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              }), " ", gamerTagEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
                 className: "text-danger",
                 children: "Required"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
@@ -5966,7 +5972,8 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
                 children: "Activision ID"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
                 type: "text",
-                placeholder: "Enter Activision ID Username"
+                placeholder: "Enter Activision ID Username",
+                className: "shadow-none"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Text, {
                 className: "text-muted",
                 children: "Optional"
@@ -5978,17 +5985,15 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
               onChange: function onChange(e) {
                 return setPassword(e.target.value);
               },
-              onBlur: function onBlur() {
-                return password === "" ? setPasswordEmpty(true) : setPasswordEmpty(false);
-              },
+              onBlur: onPasswordBlur,
               onFocus: onPasswordFocus,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Label, {
                 className: passwordEmpty ? "text-danger" : "",
                 children: "Password"
-              }), " ", showPasswordRequired && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              }), " ", passwordEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
                 className: "text-danger",
                 children: "Required"
-              }), showPasswordLength && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              }), passwordEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
                 className: "text-danger",
                 children: [" ", "Must be at least 6 characters"]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -6008,7 +6013,7 @@ var SignUpAndUpdateForm = function SignUpAndUpdateForm(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               className: "bttn-unite bttn-sm bttn-primary",
               type: "submit",
-              disabled: showEmailRequired || showGamerTagRequired || showPasswordRequired || showPasswordLength || gamerTagEmpty,
+              disabled: emailEmpty || gamerTagEmpty || passwordEmpty,
               children: props.buttonText
             })]
           })

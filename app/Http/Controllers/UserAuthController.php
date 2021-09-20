@@ -43,9 +43,10 @@ class UserAuthController extends Controller
             ));
         }
 
-        if ($user) {
-            Mail::to($user->email)->send(new UserRegistered($user));
-        }
+        // un-comment for prod
+        // if ($user) {
+        //     Mail::to($user->email)->send(new UserRegistered($user));
+        // }
 
         $response = array(
             'success' => $user ? true : false,

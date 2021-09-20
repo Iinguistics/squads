@@ -10,7 +10,7 @@ class User extends Model
     protected $primaryKey = 'user_id';
 
     protected $fillable = [
-        'email', 'platform', 'gamertag', 'activision_username', 'password', 'created_at', 'updated_at'
+        'email', 'platform', 'gamertag', 'activision_username', 'password', 'active', 'created_at', 'updated_at'
     ];
 
     protected $hidden = [

@@ -5,6 +5,7 @@ import "../../css/bttn/bttn.min.css";
 
 const SignUpAndUpdateForm = (props) => {
     const [data, setData] = useState([]);
+    const [emailDup, setEmailDup] = useState("");
 
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
 
@@ -18,55 +19,49 @@ const SignUpAndUpdateForm = (props) => {
     const [gamerTagEmpty, setGamerTagEmpty] = useState(false);
     const [passwordEmpty, setPasswordEmpty] = useState(false);
 
-    const [showEmailRequired, setShowEmailRequired] = useState(false);
-    const [showGamerTagRequired, setShowGamerTagRequired] = useState(false);
-    const [showPasswordRequired, setShowPasswordRequired] = useState(false);
-
-    const [showPasswordLength, setShowPasswordLength] = useState(false);
-
     const eyeTextToggleHandler = () => {
         setEyeTextToggle(!eyeTextToggle);
     };
 
     const onEmailFocus = () => {
-        setShowEmailRequired(false);
         setEmailEmpty(false);
+        setEmailDup(false);
     };
     const onGamerTagFocus = () => {
-        setShowGamerTagRequired(false);
         setGamerTagEmpty(false);
     };
+    const onGamerTagBlur = () => {
+        if (gamerTag === "") {
+            setGamerTagEmpty(true);
+        } else {
+            setGamerTagEmpty(false);
+        }
+    };
     const onPasswordFocus = () => {
-        setShowPasswordRequired(false);
         setPasswordEmpty(false);
-        setShowPasswordLength(false);
+    };
+    const onPasswordBlur = () => {
+        if (password === "" || password.length < 6) {
+            setPasswordEmpty(true);
+        } else {
+            setPasswordEmpty(false);
+        }
     };
 
     const submitHandler = async (e) => {
         e.preventDefault();
 
         if (email === "") {
-            setShowEmailRequired(true);
-        } else {
-            setShowEmailRequired(false);
+            setEmailEmpty(true);
+            return;
         }
-
         if (gamerTag === "") {
-            setShowGamerTagRequired(true);
-        } else {
-            setShowGamerTagRequired(false);
+            setGamerTagEmpty(true);
+            return;
         }
-
         if (password === "") {
-            setShowPasswordRequired(true);
-        } else {
-            setShowPasswordRequired(false);
-        }
-
-        if (password.length < 6) {
-            setShowPasswordLength(true);
-        } else {
-            setShowPasswordLength(false);
+            setPasswordEmpty(true);
+            return;
         }
 
         let values = {
@@ -78,6 +73,9 @@ const SignUpAndUpdateForm = (props) => {
         };
         const { data } = await Api.post("/register", values);
         setData(data);
+        if (data.error) {
+            setEmailDup(data.error);
+        }
     };
     console.log(data);
     const appUrl = process.env.MIX_APP_URL;
@@ -104,9 +102,14 @@ const SignUpAndUpdateForm = (props) => {
                                 >
                                     Email address
                                 </Form.Label>{" "}
-                                {showEmailRequired && (
+                                {emailEmpty && (
                                     <span className="text-danger">
                                         Required
+                                    </span>
+                                )}
+                                {emailDup && (
+                                    <span className="text-danger">
+                                        {emailDup}
                                     </span>
                                 )}
                                 <div className="tooltip-arrow">
@@ -121,7 +124,7 @@ const SignUpAndUpdateForm = (props) => {
                                                 : "shadow-none"
                                         }
                                     />
-                                    {showEmailRequired && (
+                                    {emailEmpty && (
                                         <img
                                             src={`${appUrl}/images/curved-arrow-tooltip.png`}
                                             alt="arrow"
@@ -138,11 +141,7 @@ const SignUpAndUpdateForm = (props) => {
                                 controlId="formBasicGamertag"
                                 value={gamerTag}
                                 onChange={(e) => setGamerTag(e.target.value)}
-                                onBlur={() =>
-                                    gamerTag === ""
-                                        ? setGamerTagEmpty(true)
-                                        : setGamerTagEmpty(false)
-                                }
+                                onBlur={onGamerTagBlur}
                                 onFocus={onGamerTagFocus}
                             >
                                 <Form.Label
@@ -152,7 +151,7 @@ const SignUpAndUpdateForm = (props) => {
                                 >
                                     Gamertag
                                 </Form.Label>{" "}
-                                {showGamerTagRequired && (
+                                {gamerTagEmpty && (
                                     <span className="text-danger">
                                         Required
                                     </span>
@@ -197,6 +196,7 @@ const SignUpAndUpdateForm = (props) => {
                                 <Form.Control
                                     type="text"
                                     placeholder="Enter Activision ID Username"
+                                    className="shadow-none"
                                 />
                                 <Form.Text className="text-muted">
                                     Optional
@@ -207,11 +207,7 @@ const SignUpAndUpdateForm = (props) => {
                                 controlId="formBasicPassword"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                onBlur={() =>
-                                    password === ""
-                                        ? setPasswordEmpty(true)
-                                        : setPasswordEmpty(false)
-                                }
+                                onBlur={onPasswordBlur}
                                 onFocus={onPasswordFocus}
                             >
                                 <Form.Label
@@ -221,12 +217,12 @@ const SignUpAndUpdateForm = (props) => {
                                 >
                                     Password
                                 </Form.Label>{" "}
-                                {showPasswordRequired && (
+                                {passwordEmpty && (
                                     <span className="text-danger">
                                         Required
                                     </span>
                                 )}
-                                {showPasswordLength && (
+                                {passwordEmpty && (
                                     <span className="text-danger">
                                         {" "}
                                         Must be at least 6 characters
@@ -257,11 +253,7 @@ const SignUpAndUpdateForm = (props) => {
                                 className="bttn-unite bttn-sm bttn-primary"
                                 type="submit"
                                 disabled={
-                                    showEmailRequired ||
-                                    showGamerTagRequired ||
-                                    showPasswordRequired ||
-                                    showPasswordLength ||
-                                    gamerTagEmpty
+                                    emailEmpty || gamerTagEmpty || passwordEmpty
                                 }
                             >
                                 {props.buttonText}

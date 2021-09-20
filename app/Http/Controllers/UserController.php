@@ -19,7 +19,8 @@ class UserController extends Controller
 
     public function fetchAllUsersEmail()
     {
-        $users = User::all();
+        //$users = User::all();
+        $users = User::where('active', 1)->get();
         $emails = array();
         foreach ($users as $user) {
             array_push($emails, $user->email);
