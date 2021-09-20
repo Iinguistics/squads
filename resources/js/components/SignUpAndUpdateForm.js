@@ -4,6 +4,8 @@ import { Container, Form, Row, Col } from "react-bootstrap";
 import "../../css/bttn/bttn.min.css";
 
 const SignUpAndUpdateForm = (props) => {
+    const [data, setData] = useState([]);
+
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
 
     const [email, setEmail] = useState(props.email);
@@ -40,7 +42,7 @@ const SignUpAndUpdateForm = (props) => {
         setShowPasswordLength(false);
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
         if (email === "") {
@@ -66,8 +68,18 @@ const SignUpAndUpdateForm = (props) => {
         } else {
             setShowPasswordLength(false);
         }
-    };
 
+        let values = {
+            email: email,
+            platform: platform,
+            gamertag: gamerTag,
+            activision_username: activisionID,
+            password: password,
+        };
+        const { data } = await Api.post("/register", values);
+        setData(data);
+    };
+    console.log(data);
     const appUrl = process.env.MIX_APP_URL;
     return (
         <Container className="my-5">
@@ -244,6 +256,13 @@ const SignUpAndUpdateForm = (props) => {
                             <button
                                 className="bttn-unite bttn-sm bttn-primary"
                                 type="submit"
+                                disabled={
+                                    showEmailRequired ||
+                                    showGamerTagRequired ||
+                                    showPasswordRequired ||
+                                    showPasswordLength ||
+                                    gamerTagEmpty
+                                }
                             >
                                 {props.buttonText}
                             </button>
