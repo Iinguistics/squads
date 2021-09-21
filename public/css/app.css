@@ -10287,3 +10287,6 @@ form select {
     transform: translate(24px, 0);
   }
 }
+.test {
+  background: #000;
+}

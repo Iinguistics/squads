@@ -5,6 +5,8 @@ import UserProvider, { UserContext } from "./Context/UserContext";
 
 import Home from "./Home";
 import Register from "./Register";
+import PrivateProfile from "./PrivateProfile";
+import LogoutModal from "./Utils/Modals/LogoutModal";
 
 const Main = (props) => {
     useEffect(() => {
@@ -19,6 +21,15 @@ const Main = (props) => {
                             <Switch>
                                 <Route exact path="/" component={Home} />
                                 <Route path="/register" component={Register} />
+                                <Route
+                                    path="/profile"
+                                    component={PrivateProfile}
+                                />
+                                <Route
+                                    exact
+                                    path="/test"
+                                    component={LogoutModal}
+                                />
                             </Switch>
                         </main>
                     );

@@ -1,5 +1,5 @@
 import React from "react";
-import SignUpAndUpdateForm from "../Forms/SignUpAndUpdateForm";
+import SignUpAndUpdateForm from "../Utils/Forms/SignUpAndUpdateForm";
 
 const index = () => {
     return (

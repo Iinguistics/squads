@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import Api from "../Api";
+import Api from "../../Api";
 import { Container, Form, Row, Col } from "react-bootstrap";
-import "../../../css/bttn/bttn.min.css";
+import "../../../../css/bttn/bttn.min.css";
 
 const SignUpAndUpdateForm = withRouter((props) => {
-    const [userInfo, setUserInfo] = useState([]);
+    useEffect(() => {
+        let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        if (userInfo) {
+            props.history.push("/profile");
+        }
+    }, []);
+    //const [userInfo, setUserInfo] = useState([]);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -28,7 +34,6 @@ const SignUpAndUpdateForm = withRouter((props) => {
 
     const onEmailFocus = () => {
         setEmailEmpty(false);
-        setEmailDup(false);
     };
     const onGamerTagFocus = () => {
         setGamerTagEmpty(false);
@@ -76,10 +81,11 @@ const SignUpAndUpdateForm = withRouter((props) => {
             password: password,
         };
         const { data } = await Api.post("/register", values);
-        setUserInfo(data.data);
+        //setUserInfo(data.data);
 
         if (data.data) {
-            localStorage.setItem("user", JSON.stringify(data.data));
+            localStorage.setItem("userInfo", JSON.stringify(data.data));
+            props.history.push("/profile");
         }
 
         if (data.error) {
@@ -87,9 +93,6 @@ const SignUpAndUpdateForm = withRouter((props) => {
             setLoading(false);
         }
     };
-    let test = JSON.parse(localStorage.getItem("user"));
-    console.log(test, "test");
-    // console.log(userInfo);
     const appUrl = process.env.MIX_APP_URL;
     return (
         <Container className="my-5">

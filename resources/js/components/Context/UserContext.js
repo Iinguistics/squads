@@ -3,10 +3,12 @@ import React, { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 
 const UserProvider = (props) => {
-    const [user, setUser] = useState(localStorage.getItem("user"));
+    const [user, setUser] = useState(
+        JSON.parse(localStorage.getItem("userInfo"))
+    );
 
     useEffect(() => {
-        let userInfo = localStorage.getItem("user");
+        let userInfo = JSON.parse(localStorage.getItem("userInfo"));
         if (userInfo !== user) {
             setUser(userInfo);
         }
@@ -14,7 +16,7 @@ const UserProvider = (props) => {
     return (
         <UserContext.Provider
             value={{
-                user: JSON.parse(user),
+                user: user,
             }}
         >
             {props.children}
