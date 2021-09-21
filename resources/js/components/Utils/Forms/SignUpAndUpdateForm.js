@@ -62,35 +62,46 @@ const SignUpAndUpdateForm = withRouter((props) => {
 
         if (email === "") {
             setEmailEmpty(true);
+            setLoading(false);
             return;
         }
         if (gamerTag === "") {
             setGamerTagEmpty(true);
+            setLoading(false);
             return;
         }
         if (password === "") {
             setPasswordEmpty(true);
+            setLoading(false);
             return;
         }
 
-        let values = {
-            email: email,
-            platform: platform,
-            gamertag: gamerTag,
-            activision_username: activisionID,
-            password: password,
-        };
-        const { data } = await Api.post("/register", values);
-        //setUserInfo(data.data);
+        try {
+            let values = {
+                email: email,
+                platform: platform,
+                gamertag: gamerTag,
+                activision_username: activisionID,
+                password: password,
+            };
+            const { data } = await Api.post("/register", values);
+            //setUserInfo(data.data);
 
-        if (data.data) {
-            localStorage.setItem("userInfo", JSON.stringify(data.data));
-            props.history.push("/profile");
-        }
+            if (data.data) {
+                setLoading(false);
+                localStorage.setItem("userInfo", JSON.stringify(data.data));
+                props.history.push("/profile");
+            }
 
-        if (data.error) {
-            setError(data.error);
+            if (data.error) {
+                setError(data.error);
+                setLoading(false);
+            }
+        } catch (error) {
             setLoading(false);
+            alert(
+                "oops, it looks like something went wrong. Try reloading the page & try again"
+            );
         }
     };
     const appUrl = process.env.MIX_APP_URL;

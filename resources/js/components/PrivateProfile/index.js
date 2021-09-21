@@ -4,9 +4,10 @@ import { withRouter } from "react-router-dom";
 const index = withRouter((props) => {
     useEffect(() => {
         let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (!userInfo) {
-            props.history.push("/");
-        }
+        // if (!userInfo) {
+        //     props.history.push("/");
+        // }
+        console.log(userInfo);
     }, []);
     return (
         <div className="container mt-5">
