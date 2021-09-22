@@ -5854,6 +5854,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var index = function index() {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (userInfo) {
+      props.history.push("/profile");
+    }
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "container mt-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
@@ -5921,7 +5928,7 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withR
     if (userInfo) {
       props.history.push("/profile");
     }
-  }, []); //const [userInfo, setUserInfo] = useState([]);
+  }, []);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6071,11 +6078,10 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withR
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
-              //setUserInfo(data.data);
-              if (data.data) {
+              if (data.success) {
                 setLoading(false);
                 localStorage.setItem("userInfo", JSON.stringify(data.data));
-                props.history.push("/profile");
+                setSuccess(true);
               }
 
               if (data.error) {

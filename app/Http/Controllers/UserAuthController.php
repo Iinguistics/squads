@@ -35,7 +35,6 @@ class UserAuthController extends Controller
         $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
         if (in_array($input['email'], $emails)) {
             $response = array(
-                'data' => null,
                 'success' => false,
                 'error' => "email already in use.",
             );

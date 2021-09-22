@@ -10002,6 +10002,9 @@ h3 {
     border-color: #dee2e6;
   }
 }
+nav {
+  background: #fff;
+}
 nav .logo {
   height: 40px;
   width: 40px;

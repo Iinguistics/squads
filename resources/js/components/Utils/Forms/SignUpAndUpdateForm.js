@@ -11,7 +11,6 @@ const SignUpAndUpdateForm = withRouter((props) => {
             props.history.push("/profile");
         }
     }, []);
-    //const [userInfo, setUserInfo] = useState([]);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -85,12 +84,11 @@ const SignUpAndUpdateForm = withRouter((props) => {
                 password: password,
             };
             const { data } = await Api.post("/register", values);
-            //setUserInfo(data.data);
 
-            if (data.data) {
+            if (data.success) {
                 setLoading(false);
                 localStorage.setItem("userInfo", JSON.stringify(data.data));
-                props.history.push("/profile");
+                setSuccess(true);
             }
 
             if (data.error) {
