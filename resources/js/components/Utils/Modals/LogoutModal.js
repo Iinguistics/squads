@@ -7,6 +7,30 @@ const Test = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const logOutHandler = async () => {
+        const { data } = await Api.post("/logout");
+
+        console.log(data);
+    };
+
+    const test = async () => {
+        let values = {
+            email: "test@example.com",
+            password: "abc123456",
+        };
+        const { data } = await Api.post("/login", values);
+
+        //localStorage.setItem("jwt", data.message);
+
+        console.log(data);
+    };
+
+    const testGetUser = async () => {
+        const { data } = await Api.get("/user");
+
+        console.log(data);
+    };
     return (
         <div className="mt-5 text-center">
             <Container>
@@ -22,15 +46,18 @@ const Test = () => {
                         Woohoo, you're reading this text in a modal!
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
+                        <Button variant="secondary" onClick={testGetUser}>
+                            Cancel
                         </Button>
-                        <Button variant="primary" onClick={handleClose}>
-                            Save Changes
+                        <Button variant="primary" onClick={logOutHandler}>
+                            Log Out
                         </Button>
                     </Modal.Footer>
                 </Modal>
             </Container>
+            <button onClick={test} className="btn btn-dark mt-5">
+                Login test
+            </button>
         </div>
     );
 };

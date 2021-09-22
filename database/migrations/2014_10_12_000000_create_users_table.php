@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('platform');
             $table->string('gamertag');
-            $table->string('activision_username');
+            $table->string('activision_username')->nullable();
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('active')->default("1");

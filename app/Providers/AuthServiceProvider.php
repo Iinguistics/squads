@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Passport\Passport;
+//use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,9 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::tokensExpireIn(now()->addDays(30));
+        // Passport::tokensExpireIn(now()->addDays(30));
 
-        Passport::refreshTokensExpireIn(now()->addDays(30));
+        // Passport::refreshTokensExpireIn(now()->addDays(30));
 
         // if (! $this->app->routesAreCached()) {
         //     Passport::routes();
