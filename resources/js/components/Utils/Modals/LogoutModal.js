@@ -11,7 +11,7 @@ const Test = () => {
     const logOutHandler = async () => {
         const { data } = await Api.post("/logout");
 
-        console.log(data);
+        localStorage.removeItem("userInfo");
     };
 
     const test = async () => {

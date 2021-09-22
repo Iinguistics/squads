@@ -5,6 +5,7 @@ import UserProvider, { UserContext } from "./Context/UserContext";
 
 import Home from "./Home";
 import Register from "./Register";
+import Login from "./Login";
 import PrivateProfile from "./PrivateProfile";
 import LogoutModal from "./Utils/Modals/LogoutModal";
 
@@ -21,6 +22,7 @@ const Main = (props) => {
                             <Switch>
                                 <Route exact path="/" component={Home} />
                                 <Route path="/register" component={Register} />
+                                <Route path="/login" component={Login} />
                                 <Route
                                     path="/profile"
                                     component={PrivateProfile}

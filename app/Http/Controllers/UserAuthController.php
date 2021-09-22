@@ -57,7 +57,7 @@ class UserAuthController extends Controller
 
         $response = array(
             'success' => $user ? true : false,
-            'data' => $user ? $user : null,
+            //'data' => $user ? $user : null,
             'error' => $user ? null : 'failed to register user',
         );
         return response()->json($response, 200);
