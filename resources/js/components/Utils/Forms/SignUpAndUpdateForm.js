@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Api from "../../Api";
 import { Container, Form, Row, Col } from "react-bootstrap";
+import SuccessModal from "../Modals/SuccessModal";
 import "../../../../css/bttn/bttn.min.css";
 
 const SignUpAndUpdateForm = withRouter((props) => {
@@ -33,6 +34,7 @@ const SignUpAndUpdateForm = withRouter((props) => {
 
     const onEmailFocus = () => {
         setEmailEmpty(false);
+        setError(false);
     };
     const onGamerTagFocus = () => {
         setGamerTagEmpty(false);
@@ -84,10 +86,9 @@ const SignUpAndUpdateForm = withRouter((props) => {
                 password: password,
             };
             const { data } = await Api.post("/register", values);
-
+            console.log(data);
             if (data.success) {
                 setLoading(false);
-                localStorage.setItem("userInfo", JSON.stringify(data.data));
                 setSuccess(true);
             }
 
@@ -107,6 +108,13 @@ const SignUpAndUpdateForm = withRouter((props) => {
         <Container className="my-5">
             <Row className="d-flex justify-content-center">
                 <Col className="col-md-8">
+                    <SuccessModal
+                        success={success}
+                        titleText="Successfully Registered"
+                        bodyText="You can now log in & personalize your profile so other players can get to know you & squad up!"
+                        buttonText="Got it"
+                        push="login"
+                    />
                     {loading && (
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
                     )}
