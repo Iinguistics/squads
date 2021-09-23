@@ -1,3 +1,19 @@
+.main-blue {
+    color: #4d89ff;
+}
+
+.help-link {
+    img {
+        background: #4d89ff;
+        border-radius: 50%;
+        height: 18px;
+        width: 18px;
+    }
+}
+.help-link:hover {
+    cursor: pointer;
+}
+
 .eye-text {
     position: relative;
 
@@ -27,11 +43,11 @@ form {
     input {
         outline: none !important;
         border: none !important;
-        border-bottom: 1px solid #1d89ff !important;
+        border-bottom: 1px solid #4d89ff !important;
     }
 
     select {
-        border: 1px solid #1d89ff !important;
+        border: 1px solid #4d89ff !important;
     }
 }
 

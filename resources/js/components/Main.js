@@ -4,10 +4,11 @@ import Moment from "react-moment";
 import UserProvider, { UserContext } from "./Context/UserContext";
 
 import Home from "./Home";
-import Register from "./Register";
 import Login from "./Login";
-import PrivateProfile from "./PrivateProfile";
+import LoginHelp from "./Login/LoginHelp";
 import LogoutModal from "./Utils/Modals/LogoutModal";
+import PrivateProfile from "./PrivateProfile";
+import Register from "./Register";
 
 const Main = (props) => {
     useEffect(() => {
@@ -21,17 +22,17 @@ const Main = (props) => {
                         <main>
                             <Switch>
                                 <Route exact path="/" component={Home} />
-                                <Route path="/register" component={Register} />
                                 <Route path="/login" component={Login} />
+                                <Route
+                                    path="/login-help"
+                                    component={LoginHelp}
+                                />
                                 <Route
                                     path="/profile"
                                     component={PrivateProfile}
                                 />
-                                <Route
-                                    exact
-                                    path="/test"
-                                    component={LogoutModal}
-                                />
+                                <Route path="/test" component={LogoutModal} />
+                                <Route path="/register" component={Register} />
                             </Switch>
                         </main>
                     );

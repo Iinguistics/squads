@@ -17,11 +17,11 @@ const Test = () => {
     const test = async () => {
         let values = {
             email: "test@example.com",
-            password: "abc123456",
+            password: "abc123",
         };
         const { data } = await Api.post("/login", values);
 
-        //localStorage.setItem("jwt", data.message);
+        localStorage.setItem("userInfo", JSON.stringify(data.data));
 
         console.log(data);
     };

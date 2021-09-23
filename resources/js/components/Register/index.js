@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import SignUpAndUpdateForm from "../Utils/Forms/SignUpAndUpdateForm";
+import { withRouter } from "react-router-dom";
 
-const index = () => {
+const index = withRouter((props) => {
     useEffect(() => {
         let userInfo = JSON.parse(localStorage.getItem("userInfo"));
         if (userInfo) {
@@ -15,6 +16,6 @@ const index = () => {
             <SignUpAndUpdateForm />
         </div>
     );
-};
+});
 
 export default index;

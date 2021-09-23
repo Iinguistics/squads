@@ -88,7 +88,10 @@ class UserAuthController extends Controller
         // ])->withCookie($cookie);
 
         return response([
-            'message' => 'still work??'
+            'success' => $user ? true : false,
+            'data' => $user ? $user : null,
+            'error' => $user ? null : 'failed to register user',
+
         ])->withCookie($cookie);
     }
 

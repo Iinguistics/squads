@@ -1,0 +1,31 @@
+.login-help-header {
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    svg {
+        height: 32px;
+        width: 32px;
+        color: #4d89ff;
+    }
+    span {
+        font-size: 42px;
+        margin-left: 15px;
+    }
+}
+
+.login-help-links {
+    a {
+        color: #4d89ff;
+        font-size: 16px;
+    }
+    a:hover {
+        text-decoration: none !important;
+    }
+}
+
+.login-help-links-divider {
+    background: #eeecfb;
+    width: 100%;
+    height: 1px;
+}
