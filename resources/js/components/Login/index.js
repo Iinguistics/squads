@@ -14,7 +14,7 @@ const index = withRouter((props) => {
     return (
         <div className="container mt-5">
             <h1 className="text-center">Sign into Squads</h1>
-            <LoginForm />
+            <LoginForm loggedInToggleHandler={props.loggedInToggleHandler} />
         </div>
     );
 });

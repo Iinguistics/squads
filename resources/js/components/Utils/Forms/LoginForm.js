@@ -24,9 +24,32 @@ const LoginForm = withRouter((props) => {
         setEyeTextToggle(!eyeTextToggle);
     };
 
+    // to do: display Invalid credentials in this error state
     const loginSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log("test");
+
+        try {
+            setLoading(true);
+
+            let values = {
+                email,
+                password,
+            };
+            const { data } = await Api.post("/login", values);
+
+            localStorage.setItem("userInfo", JSON.stringify(data.data));
+
+            if (data.success) {
+                props.loggedInToggleHandler();
+                props.history.push("/profile");
+            } else {
+                setError(data.error);
+                setLoading(false);
+            }
+        } catch (error) {
+            setLoading(false);
+            setError("Invalid credentials");
+        }
     };
 
     const appUrl = process.env.MIX_APP_URL;
@@ -38,6 +61,7 @@ const LoginForm = withRouter((props) => {
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
                     )}
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
+                        {error && <span className="text-danger">{error}</span>}
                         <Form onSubmit={loginSubmitHandler}>
                             <Form.Group
                                 className="mb-3"
@@ -46,9 +70,6 @@ const LoginForm = withRouter((props) => {
                                 onChange={(e) => setEmail(e.target.value)}
                             >
                                 <Form.Label>Email address</Form.Label>{" "}
-                                {error && (
-                                    <span className="text-danger">{error}</span>
-                                )}
                                 <div className="tooltip-arrow">
                                     <Form.Control
                                         type="email"

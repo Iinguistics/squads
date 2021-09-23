@@ -76,23 +76,20 @@ class UserAuthController extends Controller
 
         $cookie = cookie('jwt', $token, 21600); // in minutes 21600 = 15 days
 
-        // $response = array(
+        // return response([
         //     'success' => $user ? true : false,
         //     'data' => $user ? $user : null,
         //     'error' => $user ? null : 'failed to register user',
-        // );
-        // return response()->json($response, 200)->withCookie($cookie);
 
-        // return response([
-        //     'message' => $token
         // ])->withCookie($cookie);
 
-        return response([
+        $response = array(
             'success' => $user ? true : false,
             'data' => $user ? $user : null,
             'error' => $user ? null : 'failed to register user',
+        );
 
-        ])->withCookie($cookie);
+        return response()->json($response, 200)->withCookie($cookie);
     }
 
     public function logout()
@@ -108,7 +105,7 @@ class UserAuthController extends Controller
         $cookie = Cookie::forget('jwt');
 
         return response([
-            'message' => 'Success'
-        ])->withCookie($cookie);
+            'success' => true
+        ], 200)->withCookie($cookie);
     }
 }

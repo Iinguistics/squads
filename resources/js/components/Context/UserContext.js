@@ -6,6 +6,7 @@ const UserProvider = (props) => {
     const [user, setUser] = useState(
         JSON.parse(localStorage.getItem("userInfo"))
     );
+    const [loggedInToggle, setLoggedInToggle] = useState(false);
 
     useEffect(() => {
         let userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -13,10 +14,17 @@ const UserProvider = (props) => {
             setUser(userInfo);
         }
     }, []);
+
+    const loggedInToggleHandler = () => {
+        setLoggedInToggle(!loggedInToggle);
+    };
+
     return (
         <UserContext.Provider
             value={{
                 user: user,
+                loggedInToggleHandler: loggedInToggleHandler,
+                loggedInToggle: loggedInToggle,
             }}
         >
             {props.children}

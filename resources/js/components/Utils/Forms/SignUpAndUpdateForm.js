@@ -13,7 +13,7 @@ const SignUpAndUpdateForm = withRouter((props) => {
         }
     }, []);
     const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState(true);
     const [loading, setLoading] = useState(false);
 
     const [eyeTextToggle, setEyeTextToggle] = useState(false);

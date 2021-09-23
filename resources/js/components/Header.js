@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import LogoutModal from "./Utils/Modals/LogoutModal";
 
-const Header = () => {
+const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("userInfo"))
     );
+    const [signOutClicked, setSignOutClicked] = useState(0);
 
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem("userInfo"));
         if (userInfo !== user) {
             setUserInfo(user);
         }
-    }, []);
+    }, [loggedInToggle]);
 
-    const test = () => {
-        console.log("ran");
+    const signOutClickedHandler = () => {
+        setSignOutClicked((signOutClicked) => signOutClicked + 1);
     };
 
     const renderAuthItems = () => {
@@ -27,7 +29,7 @@ const Header = () => {
                             Profile
                         </NavDropdown.Item>
                     </LinkContainer>
-                    <span onClick={test}>
+                    <span onClick={signOutClickedHandler}>
                         <NavDropdown.Item className="dropdown-item">
                             Sign Out
                         </NavDropdown.Item>
@@ -55,6 +57,10 @@ const Header = () => {
     const appUrl = process.env.MIX_APP_URL;
     return (
         <>
+            <LogoutModal
+                signOutClicked={signOutClicked}
+                loggedInToggleHandler={loggedInToggleHandler}
+            />
             <Navbar
                 expand="lg"
                 collapseOnSelect

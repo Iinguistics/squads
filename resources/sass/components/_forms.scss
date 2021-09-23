@@ -1,10 +1,10 @@
 .main-blue {
-    color: #4d89ff;
+    color: $main-blue;
 }
 
 .help-link {
     img {
-        background: #4d89ff;
+        background: $main-blue;
         border-radius: 50%;
         height: 18px;
         width: 18px;
@@ -43,11 +43,11 @@ form {
     input {
         outline: none !important;
         border: none !important;
-        border-bottom: 1px solid #4d89ff !important;
+        border-bottom: 1px solid $main-blue !important;
     }
 
     select {
-        border: 1px solid #4d89ff !important;
+        border: 1px solid $main-blue !important;
     }
 }
 

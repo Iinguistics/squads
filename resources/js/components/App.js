@@ -2,13 +2,32 @@ import React from "react";
 import Main from "./Main";
 import Header from "./Header";
 
-const App = () => (
-    <div>
-        <Header />
-        <main className="pt-5">
-            <Main />
-        </main>
-    </div>
-);
+import UserProvider, { UserContext } from "./Context/UserContext";
+
+const App = () => {
+    return (
+        <UserProvider>
+            <UserContext.Consumer>
+                {({ loggedInToggleHandler, loggedInToggle }) => {
+                    return (
+                        <>
+                            <Header
+                                loggedInToggle={loggedInToggle}
+                                loggedInToggleHandler={loggedInToggleHandler}
+                            />
+                            <main className="pt-5">
+                                <Main
+                                    loggedInToggleHandler={
+                                        loggedInToggleHandler
+                                    }
+                                />
+                            </main>
+                        </>
+                    );
+                }}
+            </UserContext.Consumer>
+        </UserProvider>
+    );
+};
 
 export default App;

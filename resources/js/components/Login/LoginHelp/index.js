@@ -21,7 +21,7 @@ const index = withRouter((props) => {
                             <Link to="/login">
                                 <TiArrowBack />
                             </Link>
-                            <span>I want to</span>
+                            <span>I need to</span>
                         </div>
                         <div className="login-help-links">
                             <Col>

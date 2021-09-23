@@ -6,7 +6,7 @@
     svg {
         height: 32px;
         width: 32px;
-        color: #4d89ff;
+        color: $main-blue;
     }
     span {
         font-size: 42px;
@@ -16,7 +16,7 @@
 
 .login-help-links {
     a {
-        color: #4d89ff;
+        color: $main-blue;
         font-size: 16px;
     }
     a:hover {

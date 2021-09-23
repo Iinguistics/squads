@@ -1,65 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, Container } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import Api from "../../Api";
 
-const Test = () => {
+const LogoutModal = withRouter((props) => {
     const [show, setShow] = useState(false);
 
+    useEffect(() => {
+        if (props.signOutClicked !== 0) {
+            setShow(true);
+        }
+    }, [props.signOutClicked]);
+
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     const logOutHandler = async () => {
         const { data } = await Api.post("/logout");
 
-        localStorage.removeItem("userInfo");
+        if (data.success) {
+            localStorage.removeItem("userInfo");
+
+            props.loggedInToggleHandler();
+            handleClose();
+            props.history.push("/");
+        }
     };
 
-    const test = async () => {
-        let values = {
-            email: "test@example.com",
-            password: "abc123",
-        };
-        const { data } = await Api.post("/login", values);
-
-        localStorage.setItem("userInfo", JSON.stringify(data.data));
-
-        console.log(data);
-    };
-
-    const testGetUser = async () => {
-        const { data } = await Api.get("/user");
-
-        console.log(data);
-    };
     return (
         <div className="mt-5 text-center">
             <Container>
-                <Button variant="primary" onClick={handleShow}>
-                    Launch demo modal
-                </Button>
-
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Sign Out</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="bg-dark text-white">
-                        Woohoo, you're reading this text in a modal!
+                        Are you sure you want to sign out?
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={testGetUser}>
+                        <button
+                            onClick={handleClose}
+                            className="bttn-material-flat bttn-sm mr-2"
+                        >
                             Cancel
-                        </Button>
-                        <Button variant="primary" onClick={logOutHandler}>
-                            Log Out
-                        </Button>
+                        </button>
+                        <button
+                            onClick={logOutHandler}
+                            className="bttn-material-flat bttn-sm bttn-danger"
+                        >
+                            Sign Out
+                        </button>
                     </Modal.Footer>
                 </Modal>
             </Container>
-            <button onClick={test} className="btn btn-dark mt-5">
-                Login test
-            </button>
         </div>
     );
-};
+});
 
-export default Test;
+export default LogoutModal;
