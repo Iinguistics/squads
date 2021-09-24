@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import Api from "../../Api";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 
 const LoginForm = withRouter((props) => {
-    useEffect(() => {
-        let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (userInfo) {
-            props.history.push("/profile");
-        }
-    }, []);
-
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
