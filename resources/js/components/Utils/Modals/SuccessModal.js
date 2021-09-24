@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Modal, Button, Container } from "react-bootstrap";
+import { Modal, Container } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 
 const SuccessModal = withRouter((props) => {

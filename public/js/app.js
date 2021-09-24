@@ -6298,7 +6298,7 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
       error = _useState2[0],
       setError = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
       success = _useState4[0],
       setSuccess = _useState4[1];
