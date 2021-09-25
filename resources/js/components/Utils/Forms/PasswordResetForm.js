@@ -14,6 +14,7 @@ const PasswordResetForm = withRouter((props) => {
 
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [requestSuccess, setRequestSuccess] = useState(false);
 
     const [email, setEmail] = useState("");
 
@@ -25,22 +26,19 @@ const PasswordResetForm = withRouter((props) => {
 
             let values = {
                 email,
-                password,
             };
-            const { data } = await Api.post("/login", values);
-
-            localStorage.setItem("userInfo", JSON.stringify(data.data));
+            const { data } = await Api.post("/password_reset", values);
 
             if (data.success) {
-                props.loggedInToggleHandler();
-                props.history.push("/profile");
+                setRequestSuccess(true);
+                setLoading(false);
             } else {
                 setError(data.error);
                 setLoading(false);
             }
         } catch (error) {
             setLoading(false);
-            setError("Invalid credentials");
+            setError(error.data.message);
         }
     };
 
@@ -56,7 +54,7 @@ const PasswordResetForm = withRouter((props) => {
                         {error && <span className="text-danger">{error}</span>}
                         <div className="text-muted my-3">
                             Enter your email. If it matches our records, we’ll
-                            send you an email with a verification code to reset
+                            send you an email with a verification pin to reset
                             your password.
                         </div>
                         <Form onSubmit={passwordResetHandler}>

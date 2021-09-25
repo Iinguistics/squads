@@ -6338,10 +6338,15 @@ var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
       loading = _useState4[0],
       setLoading = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
-      setEmail = _useState6[1];
+      requestSuccess = _useState6[0],
+      setRequestSuccess = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      email = _useState8[0],
+      setEmail = _useState8[1];
 
   var passwordResetHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
@@ -6355,40 +6360,38 @@ var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
               _context.prev = 1;
               setLoading(true);
               values = {
-                email: email,
-                password: password
+                email: email
               };
               _context.next = 6;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/login", values);
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/password_reset", values);
 
             case 6:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
-              localStorage.setItem("userInfo", JSON.stringify(data.data));
 
               if (data.success) {
-                props.loggedInToggleHandler();
-                props.history.push("/profile");
+                setRequestSuccess(true);
+                setLoading(false);
               } else {
                 setError(data.error);
                 setLoading(false);
               }
 
-              _context.next = 16;
+              _context.next = 15;
               break;
 
-            case 12:
-              _context.prev = 12;
+            case 11:
+              _context.prev = 11;
               _context.t0 = _context["catch"](1);
               setLoading(false);
-              setError("Invalid credentials");
+              setError(_context.t0.data.message);
 
-            case 16:
+            case 15:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 12]]);
+      }, _callee, null, [[1, 11]]);
     }));
 
     return function passwordResetHandler(_x) {
@@ -6412,7 +6415,7 @@ var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
             children: error
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "text-muted my-3",
-            children: "Enter your email. If it matches our records, we\u2019ll send you an email with a verification code to reset your password."
+            children: "Enter your email. If it matches our records, we\u2019ll send you an email with a verification pin to reset your password."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
             onSubmit: passwordResetHandler,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {

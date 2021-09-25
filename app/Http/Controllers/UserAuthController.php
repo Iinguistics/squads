@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Cookie;
 
 
 use App\User;
+use App\PasswordReset;
 
 use App\Mail\UserRegistered;
+use App\Mail\PasswordResetRequest;
+
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 class UserAuthController extends Controller
@@ -107,5 +110,41 @@ class UserAuthController extends Controller
         return response([
             'success' => true
         ], 200)->withCookie($cookie);
+    }
+
+    public function password_reset(Request $request)
+    {
+
+        $input = $request->all();
+
+        $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
+        if (!in_array($input['email'], $emails)) {
+            $response = array(
+                'success' => false,
+                'error' => "Invalid email.",
+            );
+            return response()->json($response, 200);
+        }
+
+        $pool = '0123456789';
+        $random_pin = substr(str_shuffle(str_repeat($pool, 3)), 0, 6);
+
+        $pin_created = PasswordReset::create(array(
+            "email" => $input['email'],
+            "pin" => $random_pin,
+        ));
+
+        // un-comment for prod
+        // if ($pin_created) {
+        //     Mail::to($pin_created->email)->send(new PasswordResetRequest($pin_created));
+        // }
+
+        $response = array(
+            'success' => $pin_created ? true : false,
+            'error' => "failed to create verification reset",
+        );
+
+
+        return response()->json($response, 200);
     }
 }
