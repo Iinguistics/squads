@@ -208,7 +208,7 @@ const SignUpAndUpdateForm = withRouter((props) => {
                                 <Form.Label>Platform</Form.Label>
                                 <Form.Control
                                     as="select"
-                                    aria-label="Default select example"
+                                    aria-label="Default select"
                                 >
                                     <option value="psn">
                                         PlayStation Network

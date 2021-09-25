@@ -143,8 +143,6 @@ class UserAuthController extends Controller
             'success' => $pin_created ? true : false,
             'error' => "failed to create verification reset",
         );
-
-
         return response()->json($response, 200);
     }
 }
