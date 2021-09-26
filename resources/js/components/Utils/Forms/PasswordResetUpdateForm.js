@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import Api from "../../Api";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
-import PasswordResetModal from "../Modals/PasswordResetModal";
+import SuccessModal from "../Modals/SuccessModal";
 
 const PasswordResetUpdateForm = withRouter((props) => {
     const [error, setError] = useState("");
@@ -25,14 +25,18 @@ const PasswordResetUpdateForm = withRouter((props) => {
             setLoading(true);
 
             let values = {
+                email: props.passwordResetEmail,
                 password,
             };
             const { data } = await Api.post("/password_reset_update", values);
 
             if (data.success) {
                 setLoading(false);
+                setError(false);
+                setSuccess(true);
             } else {
                 setError(data.error);
+                setSuccess(false);
                 setLoading(false);
             }
         } catch (error) {
@@ -48,6 +52,13 @@ const PasswordResetUpdateForm = withRouter((props) => {
                     {loading && (
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
                     )}
+                    <SuccessModal
+                        success={success}
+                        titleText="Successfully Updated Password"
+                        bodyText="You can now log in & with your new password"
+                        buttonText="Got it"
+                        push="login"
+                    />
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
                         {error && <span className="text-danger">{error}</span>}
                         <div className="text-muted my-3">

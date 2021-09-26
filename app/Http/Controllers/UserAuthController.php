@@ -183,4 +183,22 @@ class UserAuthController extends Controller
         );
         return response()->json($response, 200);
     }
+
+    public function password_reset_update(Request $request)
+    {
+
+        $input = $request->all();
+
+        $input['password'] = bcrypt($input['password']);
+
+        $update_user = User::where('email', $input['email']);
+
+        $update_user->update(array('password' => $input['password']));
+
+        $response = array(
+            'success' => $update_user ? true : false,
+            'error' => "failed to update password",
+        );
+        return response()->json($response, 200);
+    }
 }

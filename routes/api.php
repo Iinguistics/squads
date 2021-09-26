@@ -30,7 +30,7 @@ Route::post('register', [UserAuthController::class, 'register']);
 Route::post('login', [UserAuthController::class, 'login']);
 Route::post('password_reset_request', [UserAuthController::class, 'password_reset_request']);
 Route::post('password_reset_verify_pin', [UserAuthController::class, 'password_reset_verify_pin']);
-
+Route::post('password_reset_update', [UserAuthController::class, 'password_reset_update']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserAuthController::class, 'user']);

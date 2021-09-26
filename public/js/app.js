@@ -5780,6 +5780,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -5792,7 +5793,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
     className: "container mt-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
       className: "text-center",
-      children: "Reset Password"
+      children: " Reset Password"
     }), !props.passwordResetPinVerified ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Forms_PasswordResetRequestForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
       passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler,
       passwordResetEmailHandler: props.passwordResetEmailHandler
@@ -6542,7 +6543,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
-/* harmony import */ var _Modals_PasswordResetModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Modals/PasswordResetModal */ "./resources/js/components/Utils/Modals/PasswordResetModal.js");
+/* harmony import */ var _Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Modals/SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -6610,6 +6611,7 @@ var PasswordResetUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.w
               _context.prev = 2;
               setLoading(true);
               values = {
+                email: props.passwordResetEmail,
                 password: password
               };
               _context.next = 7;
@@ -6621,8 +6623,11 @@ var PasswordResetUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.w
 
               if (data.success) {
                 setLoading(false);
+                setError(false);
+                setSuccess(true);
               } else {
                 setError(data.error);
+                setSuccess(false);
                 setLoading(false);
               }
 
@@ -6656,6 +6661,12 @@ var PasswordResetUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.w
         className: "col-md-6",
         children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "lds-hourglass d-flex justify-content-center m-auto"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          success: success,
+          titleText: "Successfully Updated Password",
+          bodyText: "You can now log in & with your new password",
+          buttonText: "Got it",
+          push: "login"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "shadow-sm p-3 mb-5 bg-white rounded",
           children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
