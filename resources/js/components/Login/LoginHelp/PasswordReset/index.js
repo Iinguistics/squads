@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import PasswordResetForm from "../../../Utils/Forms/PasswordResetForm";
+import PasswordResetRequestForm from "../../../Utils/Forms/PasswordResetRequestForm";
 
 const index = withRouter((props) => {
     useEffect(() => {
@@ -13,7 +13,12 @@ const index = withRouter((props) => {
     return (
         <div className="container mt-5">
             <h1 className="text-center">Reset Password</h1>
-            <PasswordResetForm />
+            <PasswordResetRequestForm
+                passwordResetPinVerified={props.passwordResetPinVerified}
+                passwordResetPinVerifiedHandler={
+                    props.passwordResetPinVerifiedHandler
+                }
+            />
         </div>
     );
 });

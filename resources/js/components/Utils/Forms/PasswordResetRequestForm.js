@@ -5,7 +5,7 @@ import { Container, Form, Row, Col } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 import PasswordResetModal from "../Modals/PasswordResetModal";
 
-const PasswordResetForm = withRouter((props) => {
+const PasswordResetRequestForm = withRouter((props) => {
     useEffect(() => {
         let userInfo = JSON.parse(localStorage.getItem("userInfo"));
         if (userInfo) {
@@ -38,10 +38,11 @@ const PasswordResetForm = withRouter((props) => {
             let values = {
                 email,
             };
-            const { data } = await Api.post("/password_reset", values);
+            const { data } = await Api.post("/password_reset_request", values);
 
             if (data.success) {
                 setLoading(false);
+                setAlreadyHasPin(false);
                 showVerifyPindHandler();
             } else {
                 setError(data.error);
@@ -61,6 +62,9 @@ const PasswordResetForm = withRouter((props) => {
                     <PasswordResetModal
                         showVerifyPin={showVerifyPin}
                         alreadyHasPin={alreadyHasPin}
+                        passwordResetPinVerifiedHandler={
+                            props.passwordResetPinVerifiedHandler
+                        }
                     />
                     {loading && (
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
@@ -113,4 +117,4 @@ const PasswordResetForm = withRouter((props) => {
     );
 });
 
-export default PasswordResetForm;
+export default PasswordResetRequestForm;

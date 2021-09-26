@@ -8,7 +8,12 @@ const App = () => {
     return (
         <UserProvider>
             <UserContext.Consumer>
-                {({ loggedInToggleHandler, loggedInToggle }) => {
+                {({
+                    loggedInToggleHandler,
+                    loggedInToggle,
+                    passwordResetPinVerified,
+                    passwordResetPinVerifiedHandler,
+                }) => {
                     return (
                         <>
                             <Header
@@ -19,6 +24,12 @@ const App = () => {
                                 <Main
                                     loggedInToggleHandler={
                                         loggedInToggleHandler
+                                    }
+                                    passwordResetPinVerified={
+                                        passwordResetPinVerified
+                                    }
+                                    passwordResetPinVerifiedHandler={
+                                        passwordResetPinVerifiedHandler
                                     }
                                 />
                             </main>

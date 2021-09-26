@@ -27,7 +27,19 @@ const Main = (props) => {
                     )}
                 />
                 <Route path="/login-help" component={LoginHelp} />
-                <Route path="/password-reset" component={PasswordReset} />
+                <Route
+                    path="/password-reset"
+                    component={() => (
+                        <PasswordReset
+                            passwordResetPinVerified={
+                                props.passwordResetPinVerified
+                            }
+                            passwordResetPinVerifiedHandler={
+                                props.passwordResetPinVerifiedHandler
+                            }
+                        />
+                    )}
+                />
                 <Route path="/profile" component={PrivateProfile} />
                 <Route
                     path="/test"

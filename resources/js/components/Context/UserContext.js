@@ -7,6 +7,8 @@ const UserProvider = (props) => {
         JSON.parse(localStorage.getItem("userInfo"))
     );
     const [loggedInToggle, setLoggedInToggle] = useState(false);
+    const [passwordResetPinVerified, setPasswordResetPinVerified] =
+        useState(false);
 
     useEffect(() => {
         let userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -19,12 +21,19 @@ const UserProvider = (props) => {
         setLoggedInToggle(!loggedInToggle);
     };
 
+    const passwordResetPinVerifiedHandler = () => {
+        setPasswordResetPinVerified(true);
+    };
+
     return (
         <UserContext.Provider
             value={{
                 user: user,
-                loggedInToggleHandler: loggedInToggleHandler,
                 loggedInToggle: loggedInToggle,
+                passwordResetPinVerified: passwordResetPinVerified,
+                loggedInToggleHandler: loggedInToggleHandler,
+                passwordResetPinVerifiedHandler:
+                    passwordResetPinVerifiedHandler,
             }}
         >
             {props.children}

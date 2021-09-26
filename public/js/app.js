@@ -5453,7 +5453,9 @@ var App = function App() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext.Consumer, {
       children: function children(_ref) {
         var loggedInToggleHandler = _ref.loggedInToggleHandler,
-            loggedInToggle = _ref.loggedInToggle;
+            loggedInToggle = _ref.loggedInToggle,
+            passwordResetPinVerified = _ref.passwordResetPinVerified,
+            passwordResetPinVerifiedHandler = _ref.passwordResetPinVerifiedHandler;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
             loggedInToggle: loggedInToggle,
@@ -5461,7 +5463,9 @@ var App = function App() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("main", {
             className: "pt-5",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Main__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              loggedInToggleHandler: loggedInToggleHandler
+              loggedInToggleHandler: loggedInToggleHandler,
+              passwordResetPinVerified: passwordResetPinVerified,
+              passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler
             })
           })]
         });
@@ -5515,6 +5519,11 @@ var UserProvider = function UserProvider(props) {
       loggedInToggle = _useState4[0],
       setLoggedInToggle = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      passwordResetPinVerified = _useState6[0],
+      setPasswordResetPinVerified = _useState6[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -5527,11 +5536,17 @@ var UserProvider = function UserProvider(props) {
     setLoggedInToggle(!loggedInToggle);
   };
 
+  var passwordResetPinVerifiedHandler = function passwordResetPinVerifiedHandler() {
+    setPasswordResetPinVerified(true);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(UserContext.Provider, {
     value: {
       user: user,
+      loggedInToggle: loggedInToggle,
+      passwordResetPinVerified: passwordResetPinVerified,
       loggedInToggleHandler: loggedInToggleHandler,
-      loggedInToggle: loggedInToggle
+      passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler
     },
     children: props.children
   });
@@ -5741,7 +5756,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _Utils_Forms_PasswordResetForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Utils/Forms/PasswordResetForm */ "./resources/js/components/Utils/Forms/PasswordResetForm.js");
+/* harmony import */ var _Utils_Forms_PasswordResetRequestForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Utils/Forms/PasswordResetRequestForm */ "./resources/js/components/Utils/Forms/PasswordResetRequestForm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -5761,7 +5776,10 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
       className: "text-center",
       children: "Reset Password"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Forms_PasswordResetForm__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Forms_PasswordResetRequestForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      passwordResetPinVerified: props.passwordResetPinVerified,
+      passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler
+    })]
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
@@ -5954,7 +5972,12 @@ var Main = function Main(props) {
         component: _Login_LoginHelp__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
         path: "/password-reset",
-        component: _Login_LoginHelp_PasswordReset__WEBPACK_IMPORTED_MODULE_6__["default"]
+        component: function component() {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Login_LoginHelp_PasswordReset__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            passwordResetPinVerified: props.passwordResetPinVerified,
+            passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler
+          });
+        }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
         path: "/profile",
         component: _PrivateProfile__WEBPACK_IMPORTED_MODULE_7__["default"]
@@ -6272,10 +6295,10 @@ var LoginForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(fun
 
 /***/ }),
 
-/***/ "./resources/js/components/Utils/Forms/PasswordResetForm.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/Utils/Forms/PasswordResetForm.js ***!
-  \******************************************************************/
+/***/ "./resources/js/components/Utils/Forms/PasswordResetRequestForm.js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Utils/Forms/PasswordResetRequestForm.js ***!
+  \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6321,7 +6344,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (props) {
+var PasswordResetRequestForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (props) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -6381,7 +6404,7 @@ var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
                 email: email
               };
               _context.next = 6;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/password_reset", values);
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/password_reset_request", values);
 
             case 6:
               _yield$Api$post = _context.sent;
@@ -6389,6 +6412,7 @@ var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
 
               if (data.success) {
                 setLoading(false);
+                setAlreadyHasPin(false);
                 showVerifyPindHandler();
               } else {
                 setError(data.error);
@@ -6426,7 +6450,8 @@ var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
         className: "col-md-6",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_PasswordResetModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
           showVerifyPin: showVerifyPin,
-          alreadyHasPin: alreadyHasPin
+          alreadyHasPin: alreadyHasPin,
+          passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler
         }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "lds-hourglass d-flex justify-content-center m-auto"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -6477,7 +6502,7 @@ var PasswordResetForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
     })
   });
 });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PasswordResetForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PasswordResetRequestForm);
 
 /***/ }),
 
@@ -7090,36 +7115,50 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
     return setShow(false);
   };
 
-  var logOutHandler = /*#__PURE__*/function () {
+  var verifyPinHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _yield$Api$post, data;
+      var values, _yield$Api$post, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/logout");
+              _context.prev = 0;
+              values = {
+                email: email,
+                pin: pin
+              };
+              _context.next = 4;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/password_reset_verify_pin", values);
 
-            case 2:
+            case 4:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
               if (data.success) {
-                localStorage.removeItem("userInfo");
                 handleClose();
-                props.history.push("/");
+                console.log(data);
+                props.passwordResetPinVerifiedHandler();
               }
 
-            case 5:
+              _context.next = 13;
+              break;
+
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](0);
+              handleClose();
+              setError(_context.t0.data.message);
+
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[0, 9]]);
     }));
 
-    return function logOutHandler() {
+    return function verifyPinHandler() {
       return _ref.apply(this, arguments);
     };
   }();
@@ -7137,7 +7176,7 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
           children: props.alreadyHasPin ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            onSubmit: passwordResetHandler,
+            onSubmit: verifyPinHandler,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Group, {
               className: "mb-3",
               controlId: "formBasicEmail",
@@ -7163,12 +7202,12 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
                 children: "PIN"
               }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
                 type: "text",
-                placeholder: "Enter pin",
+                placeholder: "Enter pin #",
                 className: "shadow-none"
               })]
             })]
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            onSubmit: passwordResetHandler,
+            onSubmit: verifyPinHandler,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Group, {
               className: "mb-3",
               controlId: "formBasicPin",
@@ -7180,7 +7219,7 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
                 children: "PIN"
               }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
                 type: "text",
-                placeholder: "Enter pin",
+                placeholder: "Enter pin #",
                 className: "shadow-none"
               })]
             })
@@ -7191,9 +7230,9 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
             className: "bttn-material-flat bttn-sm mr-2",
             children: "Cancel"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            onClick: logOutHandler,
-            className: "bttn-material-flat bttn-sm bttn-danger",
-            children: "Sign Out"
+            onClick: verifyPinHandler,
+            className: "bttn-material-flat bttn-sm bttn-primary",
+            children: "Submit"
           })]
         })]
       })

@@ -112,7 +112,7 @@ class UserAuthController extends Controller
         ], 200)->withCookie($cookie);
     }
 
-    public function password_reset(Request $request)
+    public function password_reset_request(Request $request)
     {
 
         $input = $request->all();
@@ -142,6 +142,44 @@ class UserAuthController extends Controller
         $response = array(
             'success' => $pin_created ? true : false,
             'error' => "failed to create verification reset",
+        );
+        return response()->json($response, 200);
+    }
+
+    public function password_reset_verify_pin(Request $request)
+    {
+
+        $input = $request->all();
+
+        $reset_data = PasswordReset::where('email', $input['email'])
+            ->where('pin', $input['pin'])
+            ->latest()->first();
+
+        if (!$reset_data) {
+            $response = array(
+                'success' => false,
+                'error' => "Invalid credentials",
+            );
+            return response()->json($response, 200);
+        }
+
+        $created_at = $reset_data->created_at;
+        $expire_time = date("Y-m-d H:i:s", strtotime("$created_at +2 hours"));
+        $current_time = date("Y-m-d H:i:s");
+
+        $pin_expired = $current_time > $expire_time;
+
+        if ($pin_expired) {
+            $response = array(
+                'success' => false,
+                'error' => "This pin # has expired",
+            );
+            return response()->json($response, 200);
+        }
+
+        $response = array(
+            'success' => true,
+            'error' => "pin verification failed",
         );
         return response()->json($response, 200);
     }

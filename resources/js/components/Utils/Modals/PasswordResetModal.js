@@ -17,14 +17,25 @@ const PasswordResetModal = withRouter((props) => {
 
     const handleClose = () => setShow(false);
 
-    const logOutHandler = async () => {
-        const { data } = await Api.post("/logout");
+    const verifyPinHandler = async () => {
+        try {
+            let values = {
+                email,
+                pin,
+            };
+            const { data } = await Api.post(
+                "/password_reset_verify_pin",
+                values
+            );
 
-        if (data.success) {
-            localStorage.removeItem("userInfo");
-
+            if (data.success) {
+                handleClose();
+                console.log(data);
+                props.passwordResetPinVerifiedHandler();
+            }
+        } catch (error) {
             handleClose();
-            props.history.push("/");
+            setError(error.data.message);
         }
     };
 
@@ -37,7 +48,7 @@ const PasswordResetModal = withRouter((props) => {
                     </Modal.Header>
                     <Modal.Body>
                         {props.alreadyHasPin ? (
-                            <Form onSubmit={passwordResetHandler}>
+                            <Form onSubmit={verifyPinHandler}>
                                 <Form.Group
                                     className="mb-3"
                                     controlId="formBasicEmail"
@@ -60,13 +71,13 @@ const PasswordResetModal = withRouter((props) => {
                                     <Form.Label>PIN</Form.Label>{" "}
                                     <Form.Control
                                         type="text"
-                                        placeholder="Enter pin"
+                                        placeholder="Enter pin #"
                                         className="shadow-none"
                                     />
                                 </Form.Group>
                             </Form>
                         ) : (
-                            <Form onSubmit={passwordResetHandler}>
+                            <Form onSubmit={verifyPinHandler}>
                                 <Form.Group
                                     className="mb-3"
                                     controlId="formBasicPin"
@@ -76,7 +87,7 @@ const PasswordResetModal = withRouter((props) => {
                                     <Form.Label>PIN</Form.Label>{" "}
                                     <Form.Control
                                         type="text"
-                                        placeholder="Enter pin"
+                                        placeholder="Enter pin #"
                                         className="shadow-none"
                                     />
                                 </Form.Group>
@@ -91,10 +102,10 @@ const PasswordResetModal = withRouter((props) => {
                             Cancel
                         </button>
                         <button
-                            onClick={logOutHandler}
-                            className="bttn-material-flat bttn-sm bttn-danger"
+                            onClick={verifyPinHandler}
+                            className="bttn-material-flat bttn-sm bttn-primary"
                         >
-                            Sign Out
+                            Submit
                         </button>
                     </Modal.Footer>
                 </Modal>

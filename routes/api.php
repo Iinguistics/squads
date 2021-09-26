@@ -28,7 +28,8 @@ use App\Http\Controllers\UserAuthController;
 // Users
 Route::post('register', [UserAuthController::class, 'register']);
 Route::post('login', [UserAuthController::class, 'login']);
-Route::post('password_reset', [UserAuthController::class, 'password_reset']);
+Route::post('password_reset_request', [UserAuthController::class, 'password_reset_request']);
+Route::post('password_reset_verify_pin', [UserAuthController::class, 'password_reset_verify_pin']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
