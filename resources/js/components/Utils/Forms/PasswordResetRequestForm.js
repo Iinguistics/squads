@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Api from "../../Api";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 import PasswordResetModal from "../Modals/PasswordResetModal";
+import { TiArrowBack } from "react-icons/ti";
 
 const PasswordResetRequestForm = withRouter((props) => {
     const [error, setError] = useState(null);
@@ -68,7 +69,10 @@ const PasswordResetRequestForm = withRouter((props) => {
                     )}
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
                         {error && <span className="text-danger">{error}</span>}
-                        <div className="text-muted my-3">
+                        <Link to="/login-help" className="login-help-header">
+                            <TiArrowBack />
+                        </Link>
+                        <div className="text-muted mb-3">
                             Enter your email. If it matches our records, we’ll
                             send you an email with a verification pin to reset
                             your password.

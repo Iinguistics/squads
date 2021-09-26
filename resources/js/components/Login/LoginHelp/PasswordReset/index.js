@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PasswordResetRequestForm from "../../../Utils/Forms/PasswordResetRequestForm";
 import PasswordResetUpdateForm from "../../../Utils/Forms/PasswordResetUpdateForm";
-import { TiArrowBack } from "react-icons/ti";
 
 const index = withRouter((props) => {
     useEffect(() => {
@@ -14,7 +13,7 @@ const index = withRouter((props) => {
 
     return (
         <div className="container mt-5">
-            <h1 className="text-center"> Reset Password</h1>
+            <h1 className="text-center">Reset Password</h1>
             {!props.passwordResetPinVerified ? (
                 <PasswordResetRequestForm
                     passwordResetPinVerifiedHandler={
