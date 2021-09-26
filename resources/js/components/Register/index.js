@@ -11,7 +11,7 @@ const index = withRouter((props) => {
     }, []);
 
     return (
-        <div className="container mt-5">
+        <div className="container my-5 main-header">
             <h1 className="text-center">Create your account</h1>
             <SignUpAndUpdateForm />
         </div>

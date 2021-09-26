@@ -12,7 +12,7 @@ const index = withRouter((props) => {
     }, []);
 
     return (
-        <div className="container mt-5">
+        <div className="container my-5 main-header">
             <h1 className="text-center">Sign into Squads</h1>
             <LoginForm loggedInToggleHandler={props.loggedInToggleHandler} />
         </div>

@@ -13,7 +13,7 @@ const index = withRouter((props) => {
     }, []);
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 main-header">
             <Row className="d-flex justify-content-center">
                 <Col className="col-md-8">
                     <div className="shadow-sm p-3 mb-5 bg-white rounded mt-5">

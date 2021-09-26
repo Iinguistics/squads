@@ -22,7 +22,7 @@ const App = () => {
                                 loggedInToggle={loggedInToggle}
                                 loggedInToggleHandler={loggedInToggleHandler}
                             />
-                            <main className="pt-5">
+                            <main>
                                 <Main
                                     loggedInToggleHandler={
                                         loggedInToggleHandler
