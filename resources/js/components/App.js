@@ -13,6 +13,8 @@ const App = () => {
                     loggedInToggle,
                     passwordResetPinVerified,
                     passwordResetPinVerifiedHandler,
+                    passwordResetEmail,
+                    passwordResetEmailHandler,
                 }) => {
                     return (
                         <>
@@ -30,6 +32,10 @@ const App = () => {
                                     }
                                     passwordResetPinVerifiedHandler={
                                         passwordResetPinVerifiedHandler
+                                    }
+                                    passwordResetEmail={passwordResetEmail}
+                                    passwordResetEmailHandler={
+                                        passwordResetEmailHandler
                                     }
                                 />
                             </main>

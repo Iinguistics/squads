@@ -6,13 +6,6 @@ import "../../../../css/bttn/bttn.min.css";
 import PasswordResetModal from "../Modals/PasswordResetModal";
 
 const PasswordResetRequestForm = withRouter((props) => {
-    useEffect(() => {
-        let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (userInfo) {
-            props.history.push("/profile");
-        }
-    }, []);
-
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [showVerifyPin, setShowVerifyPin] = useState(0);
@@ -44,6 +37,7 @@ const PasswordResetRequestForm = withRouter((props) => {
                 setLoading(false);
                 setAlreadyHasPin(false);
                 showVerifyPindHandler();
+                props.passwordResetEmailHandler(email);
             } else {
                 setError(data.error);
                 setLoading(false);
@@ -64,6 +58,9 @@ const PasswordResetRequestForm = withRouter((props) => {
                         alreadyHasPin={alreadyHasPin}
                         passwordResetPinVerifiedHandler={
                             props.passwordResetPinVerifiedHandler
+                        }
+                        passwordResetEmailHandler={
+                            props.passwordResetEmailHandler
                         }
                     />
                     {loading && (
@@ -87,7 +84,7 @@ const PasswordResetRequestForm = withRouter((props) => {
                                 <div className="tooltip-arrow">
                                     <Form.Control
                                         type="email"
-                                        placeholder="Enter email"
+                                        //placeholder="Enter email"
                                         minLength="6"
                                         maxLength="60"
                                         className="shadow-none"

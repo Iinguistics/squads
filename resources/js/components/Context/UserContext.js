@@ -9,6 +9,7 @@ const UserProvider = (props) => {
     const [loggedInToggle, setLoggedInToggle] = useState(false);
     const [passwordResetPinVerified, setPasswordResetPinVerified] =
         useState(false);
+    const [passwordResetEmail, setPasswordResetEmail] = useState("");
 
     useEffect(() => {
         let userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -25,15 +26,21 @@ const UserProvider = (props) => {
         setPasswordResetPinVerified(true);
     };
 
+    const passwordResetEmailHandler = (e) => {
+        setPasswordResetEmail(e);
+    };
+
     return (
         <UserContext.Provider
             value={{
                 user: user,
                 loggedInToggle: loggedInToggle,
                 passwordResetPinVerified: passwordResetPinVerified,
+                passwordResetEmail,
                 loggedInToggleHandler: loggedInToggleHandler,
                 passwordResetPinVerifiedHandler:
                     passwordResetPinVerifiedHandler,
+                passwordResetEmailHandler,
             }}
         >
             {props.children}

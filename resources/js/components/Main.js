@@ -37,6 +37,10 @@ const Main = (props) => {
                             passwordResetPinVerifiedHandler={
                                 props.passwordResetPinVerifiedHandler
                             }
+                            passwordResetEmail={props.passwordResetEmail}
+                            passwordResetEmailHandler={
+                                props.passwordResetEmailHandler
+                            }
                         />
                     )}
                 />

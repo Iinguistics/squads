@@ -5455,7 +5455,9 @@ var App = function App() {
         var loggedInToggleHandler = _ref.loggedInToggleHandler,
             loggedInToggle = _ref.loggedInToggle,
             passwordResetPinVerified = _ref.passwordResetPinVerified,
-            passwordResetPinVerifiedHandler = _ref.passwordResetPinVerifiedHandler;
+            passwordResetPinVerifiedHandler = _ref.passwordResetPinVerifiedHandler,
+            passwordResetEmail = _ref.passwordResetEmail,
+            passwordResetEmailHandler = _ref.passwordResetEmailHandler;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
             loggedInToggle: loggedInToggle,
@@ -5465,7 +5467,9 @@ var App = function App() {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Main__WEBPACK_IMPORTED_MODULE_1__["default"], {
               loggedInToggleHandler: loggedInToggleHandler,
               passwordResetPinVerified: passwordResetPinVerified,
-              passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler
+              passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler,
+              passwordResetEmail: passwordResetEmail,
+              passwordResetEmailHandler: passwordResetEmailHandler
             })
           })]
         });
@@ -5524,6 +5528,11 @@ var UserProvider = function UserProvider(props) {
       passwordResetPinVerified = _useState6[0],
       setPasswordResetPinVerified = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      passwordResetEmail = _useState8[0],
+      setPasswordResetEmail = _useState8[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -5540,13 +5549,19 @@ var UserProvider = function UserProvider(props) {
     setPasswordResetPinVerified(true);
   };
 
+  var passwordResetEmailHandler = function passwordResetEmailHandler(e) {
+    setPasswordResetEmail(e);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(UserContext.Provider, {
     value: {
       user: user,
       loggedInToggle: loggedInToggle,
       passwordResetPinVerified: passwordResetPinVerified,
+      passwordResetEmail: passwordResetEmail,
       loggedInToggleHandler: loggedInToggleHandler,
-      passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler
+      passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler,
+      passwordResetEmailHandler: passwordResetEmailHandler
     },
     children: props.children
   });
@@ -5755,15 +5770,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Utils_Forms_PasswordResetRequestForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Utils/Forms/PasswordResetRequestForm */ "./resources/js/components/Utils/Forms/PasswordResetRequestForm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Utils_Forms_PasswordResetUpdateForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Utils/Forms/PasswordResetUpdateForm */ "./resources/js/components/Utils/Forms/PasswordResetUpdateForm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function (props) {
+
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -5771,14 +5788,16 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
       props.history.push("/profile");
     }
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "container mt-5",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
       className: "text-center",
       children: "Reset Password"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Forms_PasswordResetRequestForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      passwordResetPinVerified: props.passwordResetPinVerified,
-      passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler
+    }), !props.passwordResetPinVerified ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Forms_PasswordResetRequestForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler,
+      passwordResetEmailHandler: props.passwordResetEmailHandler
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Forms_PasswordResetUpdateForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      passwordResetEmail: props.passwordResetEmail
     })]
   });
 });
@@ -5975,7 +5994,9 @@ var Main = function Main(props) {
         component: function component() {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Login_LoginHelp_PasswordReset__WEBPACK_IMPORTED_MODULE_6__["default"], {
             passwordResetPinVerified: props.passwordResetPinVerified,
-            passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler
+            passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler,
+            passwordResetEmail: props.passwordResetEmail,
+            passwordResetEmailHandler: props.passwordResetEmailHandler
           });
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
@@ -6345,14 +6366,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var PasswordResetRequestForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (props) {
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
-    if (userInfo) {
-      props.history.push("/profile");
-    }
-  }, []);
-
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       error = _useState2[0],
@@ -6414,6 +6427,7 @@ var PasswordResetRequestForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.
                 setLoading(false);
                 setAlreadyHasPin(false);
                 showVerifyPindHandler();
+                props.passwordResetEmailHandler(email);
               } else {
                 setError(data.error);
                 setLoading(false);
@@ -6451,7 +6465,8 @@ var PasswordResetRequestForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Modals_PasswordResetModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
           showVerifyPin: showVerifyPin,
           alreadyHasPin: alreadyHasPin,
-          passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler
+          passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler,
+          passwordResetEmailHandler: props.passwordResetEmailHandler
         }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "lds-hourglass d-flex justify-content-center m-auto"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -6476,8 +6491,8 @@ var PasswordResetRequestForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.
               }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                 className: "tooltip-arrow",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Control, {
-                  type: "email",
-                  placeholder: "Enter email",
+                  type: "email" //placeholder="Enter email"
+                  ,
                   minLength: "6",
                   maxLength: "60",
                   className: "shadow-none"
@@ -6503,6 +6518,198 @@ var PasswordResetRequestForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PasswordResetRequestForm);
+
+/***/ }),
+
+/***/ "./resources/js/components/Utils/Forms/PasswordResetUpdateForm.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Utils/Forms/PasswordResetUpdateForm.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
+/* harmony import */ var _Modals_PasswordResetModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Modals/PasswordResetModal */ "./resources/js/components/Utils/Modals/PasswordResetModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+var PasswordResetUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      error = _useState2[0],
+      setError = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      success = _useState6[0],
+      setSuccess = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      password = _useState8[0],
+      setPassword = _useState8[1];
+
+  var passwordResetUpdateHandler = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+      var values, _yield$Api$post, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              e.preventDefault();
+
+              if (password.length < 6) {
+                setError("password must be at least six characters.");
+              } else {
+                setError("");
+              }
+
+              _context.prev = 2;
+              setLoading(true);
+              values = {
+                password: password
+              };
+              _context.next = 7;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/password_reset_update", values);
+
+            case 7:
+              _yield$Api$post = _context.sent;
+              data = _yield$Api$post.data;
+
+              if (data.success) {
+                setLoading(false);
+              } else {
+                setError(data.error);
+                setLoading(false);
+              }
+
+              _context.next = 16;
+              break;
+
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](2);
+              setLoading(false);
+              setError(_context.t0.data.message);
+
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 12]]);
+    }));
+
+    return function passwordResetUpdateHandler(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    className: "my-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      className: "d-flex justify-content-center",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        className: "col-md-6",
+        children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "lds-hourglass d-flex justify-content-center m-auto"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "shadow-sm p-3 mb-5 bg-white rounded",
+          children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+            className: "text-danger",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "text-muted my-3",
+            children: ["Pin # verified. Enter your new password below.", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("small", {
+              children: "Minimum of six characters "
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            onSubmit: passwordResetUpdateHandler,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicEmail",
+              value: props.passwordResetEmail,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Control, {
+                type: "email",
+                className: "shadow-none",
+                value: props.passwordResetEmail,
+                disabled: true
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicPassword",
+              value: password,
+              onChange: function onChange(e) {
+                return setPassword(e.target.value);
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Label, {
+                children: "New Password"
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "tooltip-arrow",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Control, {
+                  type: "password",
+                  placeholder: "Enter password",
+                  minLength: "6",
+                  maxLength: "60",
+                  className: "shadow-none"
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "bttn-unite bttn-sm bttn-primary",
+              type: "submit",
+              disabled: password === "",
+              children: "Submit"
+            })]
+          })]
+        })]
+      })
+    })
+  });
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PasswordResetUpdateForm);
 
 /***/ }),
 
@@ -7095,15 +7302,20 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      pin = _useState4[0],
-      setPin = _useState4[1];
+      error = _useState4[0],
+      setError = _useState4[1];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
-      setEmail = _useState6[1];
+      pin = _useState6[0],
+      setPin = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      email = _useState8[0],
+      setEmail = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.showVerifyPin !== 0) {
@@ -7112,7 +7324,8 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
   }, [props.showVerifyPin]);
 
   var handleClose = function handleClose() {
-    return setShow(false);
+    setError(false);
+    setShow(false);
   };
 
   var verifyPinHandler = /*#__PURE__*/function () {
@@ -7123,15 +7336,24 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
+              if (!(pin === "" || email === "")) {
+                _context.next = 3;
+                break;
+              }
+
+              setError("please fill out required fields");
+              return _context.abrupt("return");
+
+            case 3:
+              _context.prev = 3;
               values = {
                 email: email,
                 pin: pin
               };
-              _context.next = 4;
+              _context.next = 7;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/password_reset_verify_pin", values);
 
-            case 4:
+            case 7:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
@@ -7139,23 +7361,27 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
                 handleClose();
                 console.log(data);
                 props.passwordResetPinVerifiedHandler();
+                props.passwordResetEmailHandler(email);
+                setError(false);
+              } else {
+                setError(data.error);
               }
 
-              _context.next = 13;
+              _context.next = 16;
               break;
 
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](0);
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](3);
               handleClose();
               setError(_context.t0.data.message);
 
-            case 13:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[3, 12]]);
     }));
 
     return function verifyPinHandler() {
@@ -7171,8 +7397,11 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
         onHide: handleClose,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Header, {
           closeButton: true,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
-            children: "Verify Pin"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
+            children: ["Verify Pin", " ", error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("small", {
+              className: "text-danger",
+              children: error
+            })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
           children: props.alreadyHasPin ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {

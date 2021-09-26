@@ -6,6 +6,7 @@ import Api from "../../Api";
 const PasswordResetModal = withRouter((props) => {
     const [show, setShow] = useState(false);
 
+    const [error, setError] = useState(false);
     const [pin, setPin] = useState("");
     const [email, setEmail] = useState("");
 
@@ -15,9 +16,16 @@ const PasswordResetModal = withRouter((props) => {
         }
     }, [props.showVerifyPin]);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setError(false);
+        setShow(false);
+    };
 
     const verifyPinHandler = async () => {
+        if (pin === "" || email === "") {
+            setError("please fill out required fields");
+            return;
+        }
         try {
             let values = {
                 email,
@@ -32,6 +40,10 @@ const PasswordResetModal = withRouter((props) => {
                 handleClose();
                 console.log(data);
                 props.passwordResetPinVerifiedHandler();
+                props.passwordResetEmailHandler(email);
+                setError(false);
+            } else {
+                setError(data.error);
             }
         } catch (error) {
             handleClose();
@@ -44,7 +56,12 @@ const PasswordResetModal = withRouter((props) => {
             <Container>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Verify Pin</Modal.Title>
+                        <Modal.Title>
+                            Verify Pin{" "}
+                            {error && (
+                                <small className="text-danger">{error}</small>
+                            )}
+                        </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         {props.alreadyHasPin ? (
