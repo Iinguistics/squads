@@ -97,14 +97,6 @@ class UserAuthController extends Controller
 
     public function logout()
     {
-        // if (Auth::check()) {
-        //     Auth::logout();
-        //     return response()->json(['success' => true], 200);
-        // } else {
-        //     $user = Auth::user();
-        //     return response()->json(['success' => false, 'data' => $user], 500);
-        // }
-
         $cookie = Cookie::forget('jwt');
 
         return response([
