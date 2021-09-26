@@ -33,6 +33,7 @@ Route::post('password_reset_verify_pin', [UserAuthController::class, 'password_r
 Route::post('password_reset_update', [UserAuthController::class, 'password_reset_update']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('user', [UserAuthController::class, 'user']);
-    Route::post('logout', [UserAuthController::class, 'logout']);
+    // Users
+    Route::get('current_user', [UserAuthController::class, 'current_user']);
+    Route::get('logout', [UserAuthController::class, 'logout']);
 });

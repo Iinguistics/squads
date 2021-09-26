@@ -7203,18 +7203,18 @@ var LogoutModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(f
 
   var logOutHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _yield$Api$post, data;
+      var _yield$Api$get, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/logout");
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/logout");
 
             case 2:
-              _yield$Api$post = _context.sent;
-              data = _yield$Api$post.data;
+              _yield$Api$get = _context.sent;
+              data = _yield$Api$get.data;
 
               if (data.success) {
                 localStorage.removeItem("userInfo");

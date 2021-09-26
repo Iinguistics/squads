@@ -15,7 +15,7 @@ const LogoutModal = withRouter((props) => {
     const handleClose = () => setShow(false);
 
     const logOutHandler = async () => {
-        const { data } = await Api.post("/logout");
+        const { data } = await Api.get("/logout");
 
         if (data.success) {
             localStorage.removeItem("userInfo");

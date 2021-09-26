@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 class UserAuthController extends Controller
 {
 
-    public function user()
+    public function current_user()
     {
         return Auth::user();
     }
