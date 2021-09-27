@@ -1,9 +1,63 @@
 .section-1 {
     background: $blue-purple;
-    height: 390px;
+    height: 700px;
     width: 100%;
 
-    .test div {
-        margin-top: 195px;
+    h1 {
+        font-weight: 700;
+        color: #ffffff;
+        font-size: 64px;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        color: #ffffff;
+        font-size: 24px;
+    }
+
+    button {
+        color: $purple !important;
+    }
+}
+
+.section-2 {
+    background: $main-white;
+    height: 600px;
+    width: 100%;
+
+    h3 {
+        font-weight: 700;
+        color: #000000;
+        font-size: 28px;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        color: #000000;
+        font-size: 28px;
+    }
+
+    button {
+        color: $purple !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .section-1 {
+        height: 1100px;
+    }
+
+    h1 {
+        font-size: 42px;
+        padding: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        padding: 20px;
+    }
+
+    a {
+        padding: 20px;
     }
 }
