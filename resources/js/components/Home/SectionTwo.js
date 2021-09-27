@@ -6,12 +6,14 @@ import "../../../css/bttn/bttn.min.css";
 const SectionTwo = withRouter((props) => {
     return (
         <div className="section-2">
-            <Container className="mt-5">
-                <h3>Squads is a connection platform for everyone.</h3>
-                <p>How can we help you get started?</p>
-                <Row className="mt-5 test">
-                    <Col>
-                        <Card className="item-1 shadow ">
+            <Container>
+                <div className="my-5">
+                    <h3>Squads is a connection platform for everyone.</h3>
+                    <p>How can we help you get started?</p>
+                </div>
+                <div className="d-flex flex-nowrap justify-content-around align-items-center align-content-center mt-5 test">
+                    <Link to="/">
+                        <Card className="item-1 shadow-lg">
                             <Card.Body>
                                 <Card.Text>
                                     Some quick example text to build on the card
@@ -20,9 +22,9 @@ const SectionTwo = withRouter((props) => {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                    </Col>
-                    <Col>
-                        <Card className="item-2 shadow">
+                    </Link>
+                    <Link to="/">
+                        <Card className="item-2 shadow-lg">
                             <Card.Body>
                                 <Card.Text>
                                     Some quick example text to build on the card
@@ -31,9 +33,9 @@ const SectionTwo = withRouter((props) => {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                    </Col>
-                    <Col>
-                        <Card className="item-3 shadow">
+                    </Link>
+                    <Link to="/">
+                        <Card className="item-3 shadow-lg">
                             <Card.Body>
                                 <Card.Text>
                                     Some quick example text to build on the card
@@ -42,8 +44,8 @@ const SectionTwo = withRouter((props) => {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                    </Col>
-                </Row>
+                    </Link>
+                </div>
             </Container>
         </div>
     );

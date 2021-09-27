@@ -10340,7 +10340,7 @@ form select {
 
 .section-1 {
   background: #5409c8;
-  height: 700px;
+  height: 650px;
   width: 100%;
 }
 .section-1 h1 {
@@ -10356,12 +10356,27 @@ form select {
 .section-1 button {
   color: #5741d9 !important;
 }
+.section-1 .item-1 {
+  margin-top: 148px;
+}
+.section-1 .item-2 {
+  margin-top: 148px;
+}
 
 .section-2 {
   background: #ffffff;
-  height: 600px;
+  height: 525px;
   width: 100%;
-  margin-top: 1.5rem;
+}
+.section-2 .test {
+  overflow: hidden;
+}
+.section-2 a {
+  text-decoration: none;
+}
+.section-2 a:hover p {
+  color: #d5d5d5;
+  transition: 0.3s;
 }
 .section-2 h3 {
   font-weight: 700;
@@ -10372,9 +10387,6 @@ form select {
 .section-2 p {
   color: #0e0c28;
   font-size: 28px;
-}
-.section-2 .test {
-  overflow-x: scroll;
 }
 .section-2 .item-1 {
   height: 16rem;
@@ -10404,6 +10416,28 @@ form select {
   color: #ffffff;
 }
 
+.section-3 {
+  background: #0d0c52;
+  height: 600px;
+  width: 100%;
+}
+.section-3 h1 {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 64px;
+  margin-bottom: 2rem;
+}
+.section-3 p {
+  color: #ffffff;
+  font-size: 24px;
+}
+.section-3 .item-1 {
+  margin-top: 148px;
+}
+.section-3 .item-2 {
+  margin-top: 148px;
+}
+
 @media only screen and (max-width: 600px) {
   .section-1 {
     height: 1100px;
@@ -10411,19 +10445,15 @@ form select {
 
   h1 {
     font-size: 42px;
-    padding: 20px;
   }
 
   p {
     font-size: 16px;
-    padding: 20px;
   }
 
-  a {
-    padding: 20px;
-  }
-
-  .section-2 {
-    height: 1100px;
+  .section-2 .test {
+    flex-wrap: nowrap !important;
+    z-index: 9 !important;
+    overflow-x: scroll !important;
   }
 }
