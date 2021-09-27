@@ -10,7 +10,7 @@ const index = withRouter(() => {
             <SectionOne />
             <SectionTwo />
             <div className=" d-flex flex-column flex-md-row align-items-center justify-content-around">
-                <div className="shadow-sm p-3  rounded ">Regular three</div>
+                <div className="shadow-sm p-3   rounded">Regular three</div>
                 <div className="shadow-sm p-3   rounded">Regular four</div>
                 <div className="shadow-sm p-3   rounded">Regular three</div>
                 <div className="shadow-sm p-3   rounded">Regular four</div>

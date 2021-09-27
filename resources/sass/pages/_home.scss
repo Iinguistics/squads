@@ -24,21 +24,53 @@
     background: $main-white;
     height: 600px;
     width: 100%;
+    margin-top: 1.5rem;
 
     h3 {
         font-weight: 700;
-        color: #000000;
+        color: $purple;
         font-size: 28px;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
     }
 
     p {
-        color: #000000;
+        color: #0e0c28;
         font-size: 28px;
     }
 
-    button {
-        color: $purple !important;
+    .test {
+        overflow-x: scroll;
+    }
+
+    .item-1 {
+        height: 16rem;
+        width: 14rem;
+        background: $purple;
+
+        p {
+            font-size: 20px;
+            color: $main-white;
+        }
+    }
+    .item-2 {
+        height: 16rem;
+        width: 14rem;
+        background: #43196f;
+
+        p {
+            font-size: 20px;
+            color: $main-white;
+        }
+    }
+    .item-3 {
+        height: 16rem;
+        width: 14rem;
+        background: $main-blue;
+
+        p {
+            font-size: 20px;
+            color: $main-white;
+        }
     }
 }
 
@@ -59,5 +91,9 @@
 
     a {
         padding: 20px;
+    }
+
+    .section-2 {
+        height: 1100px;
     }
 }

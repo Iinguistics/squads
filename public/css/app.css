@@ -10361,19 +10361,47 @@ form select {
   background: #ffffff;
   height: 600px;
   width: 100%;
+  margin-top: 1.5rem;
 }
 .section-2 h3 {
   font-weight: 700;
-  color: #000000;
+  color: #5741d9;
   font-size: 28px;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .section-2 p {
-  color: #000000;
+  color: #0e0c28;
   font-size: 28px;
 }
-.section-2 button {
-  color: #5741d9 !important;
+.section-2 .test {
+  overflow-x: scroll;
+}
+.section-2 .item-1 {
+  height: 16rem;
+  width: 14rem;
+  background: #5741d9;
+}
+.section-2 .item-1 p {
+  font-size: 20px;
+  color: #ffffff;
+}
+.section-2 .item-2 {
+  height: 16rem;
+  width: 14rem;
+  background: #43196f;
+}
+.section-2 .item-2 p {
+  font-size: 20px;
+  color: #ffffff;
+}
+.section-2 .item-3 {
+  height: 16rem;
+  width: 14rem;
+  background: #4d89ff;
+}
+.section-2 .item-3 p {
+  font-size: 20px;
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 600px) {
@@ -10393,5 +10421,9 @@ form select {
 
   a {
     padding: 20px;
+  }
+
+  .section-2 {
+    height: 1100px;
   }
 }
