@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Moment from "react-moment";
 
+import EditProfile from "./EditProfile";
 import Home from "./Home";
 import Login from "./Login";
 import LoginHelp from "./Login/LoginHelp";
@@ -18,6 +19,7 @@ const Main = (props) => {
         <main>
             <Switch>
                 <Route exact path="/" component={Home} />
+                <Route path="/edit-profile" component={EditProfile} />
                 <Route
                     path="/login"
                     component={() => (
@@ -45,14 +47,6 @@ const Main = (props) => {
                     )}
                 />
                 <Route path="/profile" component={PrivateProfile} />
-                <Route
-                    path="/test"
-                    component={() => (
-                        <LogoutModal
-                            loggedInToggleHandler={props.loggedInToggleHandler}
-                        />
-                    )}
-                />
                 <Route path="/register" component={Register} />
             </Switch>
         </main>

@@ -29,15 +29,15 @@ const index = withRouter((props) => {
                                     Reset my password
                                 </Link>
                             </Col>
-                            <div className="login-help-links-divider my-3"></div>
+                            <div className="light-divider my-3"></div>
                             <Col>
                                 <Link to="/">Recover my email</Link>
                             </Col>
-                            <div className="login-help-links-divider my-3"></div>
+                            <div className="light-divider my-3"></div>
                             <Col>
                                 <Link to="/">Contact customer support</Link>
                             </Col>
-                            <div className="login-help-links-divider my-3"></div>
+                            <div className="light-divider my-3"></div>
                         </div>
                     </div>
                 </Col>
