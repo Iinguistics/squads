@@ -29,7 +29,7 @@ const ProfileUpdateForm = withRouter((props) => {
     return (
         <Container className="my-5">
             <Row className="d-flex justify-content-center">
-                <Col className="col-9">
+                <Col className="col-12">
                     {loading && (
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
                     )}
@@ -40,13 +40,17 @@ const ProfileUpdateForm = withRouter((props) => {
                             validationSchema={schema}
                             onSubmit={test}
                             initialValues={{
-                                firstName: "Mark",
-                                lastName: "Otto",
-                                username: "",
-                                city: "",
-                                state: "",
-                                zip: "",
-                                terms: false,
+                                firstName: "",
+                                lastName: "",
+                                displayName: "",
+                                carrier: "",
+                                ping: "",
+                                downloadSpeed: "",
+                                uploadSpeed: "",
+                                twitch: "",
+                                twitter: "",
+                                instagram: "",
+                                youtube: "",
                             }}
                         >
                             {({
@@ -59,135 +63,71 @@ const ProfileUpdateForm = withRouter((props) => {
                                 errors,
                             }) => (
                                 <Form noValidate onSubmit={handleSubmit}>
+                                    <h5>Basic info:</h5>
                                     <Form.Row>
                                         <Form.Group
                                             as={Col}
-                                            md="4"
+                                            md="6"
                                             controlId="validationFormik01"
                                         >
                                             <Form.Label>First name</Form.Label>
                                             <Form.Control
                                                 type="text"
                                                 name="firstName"
+                                                placeholder="Enter first name"
                                                 value={values.firstName}
                                                 onChange={handleChange}
-                                                isValid={
-                                                    touched.firstName &&
-                                                    !errors.firstName
-                                                }
+                                                className="shadow-none"
                                             />
-                                            <Form.Control.Feedback>
-                                                Looks good!
-                                            </Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group
                                             as={Col}
-                                            md="4"
+                                            md="6"
                                             controlId="validationFormik02"
                                         >
                                             <Form.Label>Last name</Form.Label>
                                             <Form.Control
                                                 type="text"
                                                 name="lastName"
+                                                placeholder="Enter last name"
                                                 value={values.lastName}
                                                 onChange={handleChange}
-                                                isValid={
-                                                    touched.lastName &&
-                                                    !errors.lastName
-                                                }
+                                                className="shadow-none"
                                             />
-
-                                            <Form.Control.Feedback>
-                                                Looks good!
-                                            </Form.Control.Feedback>
                                         </Form.Group>
                                     </Form.Row>
                                     <Form.Row>
                                         <Form.Group
                                             as={Col}
                                             md="6"
-                                            controlId="validationFormik03"
-                                        >
-                                            <Form.Label>City</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="City"
-                                                name="city"
-                                                value={values.city}
-                                                onChange={handleChange}
-                                                isInvalid={!!errors.city}
-                                            />
-
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.city}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                        <Form.Group
-                                            as={Col}
-                                            md="3"
-                                            controlId="validationFormik04"
-                                        >
-                                            <Form.Label>State</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="State"
-                                                name="state"
-                                                value={values.state}
-                                                onChange={handleChange}
-                                                isInvalid={!!errors.state}
-                                            />
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.state}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                    </Form.Row>
-                                    <Form.Row>
-                                        <Form.Group
-                                            as={Col}
-                                            md="4"
-                                            controlId="validationFormikUsername"
-                                        >
-                                            <Form.Label>Username</Form.Label>
-                                            <InputGroup hasValidation>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text id="inputGroupPrepend">
-                                                        @
-                                                    </InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Form.Control
-                                                    type="text"
-                                                    placeholder="Username"
-                                                    aria-describedby="inputGroupPrepend"
-                                                    name="username"
-                                                    value={values.username}
-                                                    onChange={handleChange}
-                                                    isInvalid={
-                                                        !!errors.username
-                                                    }
-                                                />
-                                                <Form.Control.Feedback type="invalid">
-                                                    {errors.username}
-                                                </Form.Control.Feedback>
-                                            </InputGroup>
-                                        </Form.Group>
-                                        <Form.Group
-                                            as={Col}
-                                            md="3"
                                             controlId="validationFormik05"
                                         >
-                                            <Form.Label>Zip</Form.Label>
+                                            <Form.Label>
+                                                Display name
+                                            </Form.Label>
                                             <Form.Control
                                                 type="text"
-                                                placeholder="Zip"
-                                                name="zip"
-                                                value={values.zip}
+                                                placeholder="Enter display name"
+                                                name="displayName"
+                                                value={values.displayName}
                                                 onChange={handleChange}
-                                                isInvalid={!!errors.zip}
+                                                className="shadow-none"
                                             />
-
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.zip}
-                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group
+                                            as={Col}
+                                            md="6"
+                                            controlId="validationFormik05"
+                                        >
+                                            <Form.Label>Location</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="(e.g. Dallas, Neverland)"
+                                                name="location"
+                                                value={values.location}
+                                                onChange={handleChange}
+                                                className="shadow-none"
+                                            />
                                         </Form.Group>
                                     </Form.Row>
                                     <div className="light-divider my-3"></div>
@@ -205,6 +145,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                                 name="carrier"
                                                 value={values.carrier}
                                                 onChange={handleChange}
+                                                className="shadow-none"
                                             />
                                         </Form.Group>
                                         <Form.Group
@@ -219,6 +160,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                                 name="ping"
                                                 value={values.ping}
                                                 onChange={handleChange}
+                                                className="shadow-none"
                                             />
                                         </Form.Group>
                                         <Form.Group
@@ -232,12 +174,12 @@ const ProfileUpdateForm = withRouter((props) => {
                                             <Form.Control
                                                 type="text"
                                                 placeholder="Enter download"
-                                                name="download"
+                                                name="downloadSpeed"
                                                 value={values.download}
                                                 onChange={handleChange}
+                                                className="shadow-none"
                                             />
                                         </Form.Group>
-
                                         <Form.Group
                                             as={Col}
                                             md="3"
@@ -249,13 +191,112 @@ const ProfileUpdateForm = withRouter((props) => {
                                             <Form.Control
                                                 type="text"
                                                 placeholder="Enter upload"
-                                                name="upload"
+                                                name="uploadSpeed"
                                                 value={values.upload}
                                                 onChange={handleChange}
+                                                className="shadow-none"
                                             />
                                         </Form.Group>
                                     </Form.Row>
-                                    <button type="submit">Submit form</button>
+                                    <a
+                                        href="https://www.speedtest.net/"
+                                        target="_blank"
+                                    >
+                                        Get my speeds
+                                    </a>
+                                    <div className="light-divider my-3"></div>
+                                    <h5>Links:</h5>
+                                    <Form.Row>
+                                        <Form.Group
+                                            as={Col}
+                                            md="6"
+                                            controlId="validationFormik05"
+                                        >
+                                            <Form.Label>Twitch</Form.Label>
+                                            <div className="d-flex flex-row align-items-center">
+                                                <span>
+                                                    https://www.twitch.tv/
+                                                </span>
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="Twitch Channel"
+                                                    name="twitch"
+                                                    value={values.twitch}
+                                                    onChange={handleChange}
+                                                    className="shadow-none"
+                                                />
+                                            </div>
+                                        </Form.Group>
+                                        <Form.Group
+                                            as={Col}
+                                            md="6"
+                                            controlId="validationFormik05"
+                                        >
+                                            <Form.Label>Twitter</Form.Label>
+                                            <div className="d-flex flex-row align-items-center">
+                                                <span>
+                                                    https://twitter.com/
+                                                </span>
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="Twitter Profile"
+                                                    name="twitter"
+                                                    value={values.twitter}
+                                                    onChange={handleChange}
+                                                    className="shadow-none"
+                                                />
+                                            </div>
+                                        </Form.Group>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <Form.Group
+                                            as={Col}
+                                            md="6"
+                                            controlId="validationFormik05"
+                                        >
+                                            <Form.Label>Instagram</Form.Label>
+                                            <div className="d-flex flex-row align-items-center">
+                                                <span>
+                                                    https://www.instagram.com/
+                                                </span>
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="Instagram profile"
+                                                    name="instagram"
+                                                    value={values.instagram}
+                                                    onChange={handleChange}
+                                                    className="shadow-none"
+                                                />
+                                            </div>
+                                        </Form.Group>
+                                        <Form.Group
+                                            as={Col}
+                                            md="6"
+                                            controlId="validationFormik05"
+                                        >
+                                            <Form.Label>Youtube</Form.Label>
+                                            <div className="d-flex flex-row align-items-center">
+                                                <span>
+                                                    https://www.youtube.com/c/
+                                                </span>
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="Youtube Channel"
+                                                    name="youtube"
+                                                    value={values.youtube}
+                                                    onChange={handleChange}
+                                                    className="shadow-none"
+                                                />
+                                            </div>
+                                        </Form.Group>
+                                    </Form.Row>
+
+                                    <button
+                                        className="bttn-unite bttn-sm bttn-primary"
+                                        type="submit"
+                                    >
+                                        Save
+                                    </button>
                                 </Form>
                             )}
                         </Formik>{" "}

@@ -49,6 +49,10 @@ form {
     select {
         border: 1px solid $main-blue !important;
     }
+
+    a {
+        text-decoration: none !important;
+    }
 }
 
 @media only screen and (max-width: 600px) {
