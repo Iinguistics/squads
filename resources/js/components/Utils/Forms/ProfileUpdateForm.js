@@ -17,16 +17,18 @@ const ProfileUpdateForm = withRouter((props) => {
         lastName: yup.string(),
         displayName: yup.string(),
         location: yup.string(),
-        bio: yup.string().max(10, "Must not exceed 300 characters"),
+        bio: yup.string().max(300, "Must not exceed 300 characters"),
         carrier: yup.string(),
         ping: yup.string(),
         downloadSpeed: yup.string(),
         uploadSpeed: yup.string(),
+        twitch: yup.string(),
+        twitter: yup.string(),
+        instagram: yup.string(),
+        youtube: yup.string(),
     });
 
-    const test = (e) => {
-        e.preventDefault();
-
+    const updateProfileHandler = async () => {
         console.log("ran");
     };
 
@@ -42,7 +44,7 @@ const ProfileUpdateForm = withRouter((props) => {
                         {error && <span className="text-danger">{error}</span>}
                         <Formik
                             validationSchema={schema}
-                            onSubmit={test}
+                            onSubmit={updateProfileHandler}
                             initialValues={{
                                 firstName: "",
                                 lastName: "",

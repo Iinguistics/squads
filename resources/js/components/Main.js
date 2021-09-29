@@ -6,7 +6,6 @@ import EditProfile from "./EditProfile";
 import Home from "./Home";
 import Login from "./Login";
 import LoginHelp from "./Login/LoginHelp";
-import LogoutModal from "./Utils/Modals/LogoutModal";
 import PasswordReset from "./Login/LoginHelp/PasswordReset";
 import PrivateProfile from "./PrivateProfile";
 import Register from "./Register";
