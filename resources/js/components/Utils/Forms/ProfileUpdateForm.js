@@ -17,14 +17,16 @@ const ProfileUpdateForm = withRouter((props) => {
         lastName: yup.string(),
         displayName: yup.string(),
         location: yup.string(),
-        bio: yup.string().max(5, "Must be exactly 5 digits"),
+        bio: yup.string().max(10, "Must not exceed 300 characters"),
         carrier: yup.string(),
         ping: yup.string(),
         downloadSpeed: yup.string(),
         uploadSpeed: yup.string(),
     });
 
-    const test = () => {
+    const test = (e) => {
+        e.preventDefault();
+
         console.log("ran");
     };
 
@@ -141,18 +143,25 @@ const ProfileUpdateForm = withRouter((props) => {
                                             controlId="validationFormik05"
                                         >
                                             <Form.Label>Bio</Form.Label>
-                                            <Form.Control
-                                                as="textarea"
-                                                rows={3}
-                                                type="text"
-                                                placeholder="Enter Bio"
-                                                name="bio"
-                                                value={values.bio}
-                                                onChange={handleChange}
-                                                className="shadow-none"
-                                            />
+                                            <InputGroup hasValidation>
+                                                <Form.Control
+                                                    as="textarea"
+                                                    rows={3}
+                                                    type="text"
+                                                    placeholder="Enter Bio"
+                                                    name="bio"
+                                                    value={values.bio}
+                                                    onChange={handleChange}
+                                                    className="shadow-none"
+                                                    isInvalid={!!errors.bio}
+                                                />
+                                                <Form.Control.Feedback type="invalid">
+                                                    {errors.bio}
+                                                </Form.Control.Feedback>
+                                            </InputGroup>
                                         </Form.Group>
                                     </Form.Row>
+
                                     <div className="light-divider my-3"></div>
                                     <h5>Internet info:</h5>
                                     <Form.Row>

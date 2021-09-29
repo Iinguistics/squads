@@ -11,6 +11,8 @@ import PasswordReset from "./Login/LoginHelp/PasswordReset";
 import PrivateProfile from "./PrivateProfile";
 import Register from "./Register";
 
+import Test from "./Test";
+
 const Main = (props) => {
     useEffect(() => {
         console.log(props);
@@ -48,6 +50,7 @@ const Main = (props) => {
                 />
                 <Route path="/profile" component={PrivateProfile} />
                 <Route path="/register" component={Register} />
+                <Route path="/test" component={Test} />
             </Switch>
         </main>
     );
