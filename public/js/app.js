@@ -7040,13 +7040,15 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRou
       setSuccess = _useState6[1];
 
   var schema = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-    firstName: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-    lastName: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-    username: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-    city: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-    state: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-    zip: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-    terms: yup__WEBPACK_IMPORTED_MODULE_2__.bool().required().oneOf([true], "Terms must be accepted")
+    firstName: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    lastName: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    displayName: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    location: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    bio: yup__WEBPACK_IMPORTED_MODULE_2__.string().max(5, "Must be exactly 5 digits"),
+    carrier: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    ping: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    downloadSpeed: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    uploadSpeed: yup__WEBPACK_IMPORTED_MODULE_2__.string()
   });
 
   var test = function test() {
@@ -7073,6 +7075,8 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRou
               firstName: "",
               lastName: "",
               displayName: "",
+              location: "",
+              bio: "",
               carrier: "",
               ping: "",
               downloadSpeed: "",
@@ -7148,13 +7152,31 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRou
                       children: "Location"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Control, {
                       type: "text",
-                      placeholder: "(e.g. Dallas, Neverland)",
+                      placeholder: "(e.g. Dallas, Tx)",
                       name: "location",
                       value: values.location,
                       onChange: handleChange,
                       className: "shadow-none"
                     })]
                   })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Row, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Group, {
+                    as: react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"],
+                    md: "12",
+                    controlId: "validationFormik05",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Label, {
+                      children: "Bio"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Control, {
+                      as: "textarea",
+                      rows: 3,
+                      type: "text",
+                      placeholder: "Enter Bio",
+                      name: "bio",
+                      value: values.bio,
+                      onChange: handleChange,
+                      className: "shadow-none"
+                    })]
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                   className: "light-divider my-3"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h5", {

@@ -13,13 +13,15 @@ const ProfileUpdateForm = withRouter((props) => {
     const [success, setSuccess] = useState(false);
 
     const schema = yup.object().shape({
-        firstName: yup.string().required(),
-        lastName: yup.string().required(),
-        username: yup.string().required(),
-        city: yup.string().required(),
-        state: yup.string().required(),
-        zip: yup.string().required(),
-        terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
+        firstName: yup.string(),
+        lastName: yup.string(),
+        displayName: yup.string(),
+        location: yup.string(),
+        bio: yup.string().max(5, "Must be exactly 5 digits"),
+        carrier: yup.string(),
+        ping: yup.string(),
+        downloadSpeed: yup.string(),
+        uploadSpeed: yup.string(),
     });
 
     const test = () => {
@@ -43,6 +45,8 @@ const ProfileUpdateForm = withRouter((props) => {
                                 firstName: "",
                                 lastName: "",
                                 displayName: "",
+                                location: "",
+                                bio: "",
                                 carrier: "",
                                 ping: "",
                                 downloadSpeed: "",
@@ -122,9 +126,28 @@ const ProfileUpdateForm = withRouter((props) => {
                                             <Form.Label>Location</Form.Label>
                                             <Form.Control
                                                 type="text"
-                                                placeholder="(e.g. Dallas, Neverland)"
+                                                placeholder="(e.g. Dallas, Tx)"
                                                 name="location"
                                                 value={values.location}
+                                                onChange={handleChange}
+                                                className="shadow-none"
+                                            />
+                                        </Form.Group>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <Form.Group
+                                            as={Col}
+                                            md="12"
+                                            controlId="validationFormik05"
+                                        >
+                                            <Form.Label>Bio</Form.Label>
+                                            <Form.Control
+                                                as="textarea"
+                                                rows={3}
+                                                type="text"
+                                                placeholder="Enter Bio"
+                                                name="bio"
+                                                value={values.bio}
                                                 onChange={handleChange}
                                                 className="shadow-none"
                                             />
