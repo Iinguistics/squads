@@ -8,9 +8,25 @@ import "../../../../css/bttn/bttn.min.css";
 import SuccessModal from "../Modals/SuccessModal";
 
 const ProfileUpdateForm = withRouter((props) => {
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [data, setData] = useState(false);
+
+    const fetchProfileHandler = async () => {
+        try {
+            const { data } = await Api.get("/profile");
+            setData(data);
+        } catch (error) {
+            setError(error.data.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchProfileHandler();
+    }, []);
+
+    console.log(data);
 
     const schema = yup.object().shape({
         firstName: yup.string(),

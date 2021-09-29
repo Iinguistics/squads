@@ -1,15 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 
 const index = withRouter((props) => {
-    // useEffect(() => {
-    //     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    //     if (!userInfo) {
-    //         props.history.push("/login");
+    const [userInfo, setUserInfo] = useState({});
+
+    // const fetchProfileHandler = async (id) => {
+    //     try {
+    //         const { data } = await Api.get(`/profile/${id}`);
+    //         console.log(data, props.userInfo);
+    //     } catch (error) {
+    //         setError(error.data.message);
     //     }
-    //     console.log(userInfo);
-    // }, []);
+    // };
+
+    useEffect(() => {
+        let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
+        if (!userInfoData) {
+            props.history.push("/login");
+        }
+        setUserInfo(userInfoData);
+    }, []);
+    console.log(userInfo);
 
     return (
         <div className="container my-5 main-header">

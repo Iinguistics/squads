@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Cookie;
 
 use App\User;
 use App\PasswordReset;
-use App\UserProfile;
+use App\Profile;
 
 use App\Mail\UserRegistered;
 use App\Mail\PasswordResetRequest;
@@ -56,7 +56,7 @@ class UserAuthController extends Controller
         // un-comment for prod
         if ($user) {
             //Mail::to($user->email)->send(new UserRegistered($user));
-            $user_profile_init = UserProfile::create(array(
+            $user_profile_init = Profile::create(array(
                 "id" => $user->id
             ));
         }

@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserAuthController;
-
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,12 @@ Route::post('password_reset_verify_pin', [UserAuthController::class, 'password_r
 Route::post('password_reset_update', [UserAuthController::class, 'password_reset_update']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Users
+    // Users / auth
     Route::get('current_user', [UserAuthController::class, 'current_user']);
     Route::get('logout', [UserAuthController::class, 'logout']);
+
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'show_current_user']);
+    Route::get('/profile/{id}', [ProfileController::class, 'show']);
+    Route::put('/profile/{id}', [ProfileController::class, 'update']);
 });
