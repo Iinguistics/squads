@@ -6,17 +6,20 @@ import { Formik } from "formik";
 import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 import SuccessModal from "../Modals/SuccessModal";
+import { values } from "lodash-es";
 
 const ProfileUpdateForm = withRouter((props) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [data, setData] = useState(false);
+    const [profileData, setProfileData] = useState({});
 
     const fetchProfileHandler = async () => {
         try {
             const { data } = await Api.get("/profile");
-            setData(data);
+            if (data.success) {
+                setProfileData(data.data[0]);
+            }
         } catch (error) {
             setError(error.data.message);
         }
@@ -26,12 +29,12 @@ const ProfileUpdateForm = withRouter((props) => {
         fetchProfileHandler();
     }, []);
 
-    console.log(data);
+    //console.log(profileData);
 
     const schema = yup.object().shape({
-        firstName: yup.string(),
-        lastName: yup.string(),
-        displayName: yup.string(),
+        first_name: yup.string(),
+        last_name: yup.string(),
+        display_name: yup.string(),
         location: yup.string(),
         bio: yup.string().max(300, "Must not exceed 300 characters"),
         carrier: yup.string(),
@@ -44,8 +47,21 @@ const ProfileUpdateForm = withRouter((props) => {
         youtube: yup.string(),
     });
 
-    const updateProfileHandler = async () => {
-        console.log("ran");
+    const updateProfileHandler = async (values) => {
+        // try {
+        //     const { data } = await Api.put("/profile", values);
+
+        //     if (data.success) {
+        //         setSuccess(true);
+        //         setError(false);
+        //     } else {
+        //         setSuccess(false);
+        //         setError(true);
+        //     }
+        // } catch (error) {
+        //     setError(error.data.message);
+        // }
+        console.log(values);
     };
 
     return (
@@ -55,26 +71,54 @@ const ProfileUpdateForm = withRouter((props) => {
                     {loading && (
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
                     )}
-                    <SuccessModal />
+                    <SuccessModal
+                        success={success}
+                        titleText="Success"
+                        bodyText="Your profile has been updated."
+                        buttonText="Got it"
+                        push="profile"
+                    />
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
                         {error && <span className="text-danger">{error}</span>}
                         <Formik
                             validationSchema={schema}
-                            onSubmit={updateProfileHandler}
+                            onSubmit={(values) => updateProfileHandler(values)}
                             initialValues={{
-                                firstName: "",
-                                lastName: "",
-                                displayName: "",
-                                location: "",
-                                bio: "",
-                                carrier: "",
-                                ping: "",
-                                downloadSpeed: "",
-                                uploadSpeed: "",
-                                twitch: "",
-                                twitter: "",
-                                instagram: "",
-                                youtube: "",
+                                first_name: profileData.first_name
+                                    ? profileData.first_name
+                                    : "",
+                                last_name: profileData.last_name
+                                    ? profileData.last_name
+                                    : "",
+                                display_name: profileData.display_name
+                                    ? profileData.display_name
+                                    : "",
+                                location: profileData.location
+                                    ? profileData.location
+                                    : "",
+                                bio: profileData.bio ? profileData.bio : "",
+                                carrier: profileData.carrier
+                                    ? profileData.carrier
+                                    : "",
+                                ping: profileData.ping ? profileData.ping : "",
+                                download_speed: profileData.download_speed
+                                    ? profileData.download_speed
+                                    : "",
+                                upload_speed: profileData.upload_speed
+                                    ? profileData.upload_speed
+                                    : "",
+                                twitch: profileData.twitch
+                                    ? profileData.twitch
+                                    : "",
+                                twitter: profileData.twitter
+                                    ? profileData.twitter
+                                    : "",
+                                instagram: profileData.instagram
+                                    ? profileData.instagram
+                                    : "",
+                                youtube: profileData.youtube
+                                    ? profileData.youtube
+                                    : "",
                             }}
                         >
                             {({
@@ -97,9 +141,9 @@ const ProfileUpdateForm = withRouter((props) => {
                                             <Form.Label>First name</Form.Label>
                                             <Form.Control
                                                 type="text"
-                                                name="firstName"
+                                                name="first_name"
                                                 placeholder="Enter first name"
-                                                value={values.firstName}
+                                                value={values.first_name}
                                                 onChange={handleChange}
                                                 className="shadow-none"
                                             />
@@ -112,9 +156,9 @@ const ProfileUpdateForm = withRouter((props) => {
                                             <Form.Label>Last name</Form.Label>
                                             <Form.Control
                                                 type="text"
-                                                name="lastName"
+                                                name="last_name"
                                                 placeholder="Enter last name"
-                                                value={values.lastName}
+                                                value={values.last_name}
                                                 onChange={handleChange}
                                                 className="shadow-none"
                                             />
@@ -131,9 +175,8 @@ const ProfileUpdateForm = withRouter((props) => {
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
-                                                placeholder="Enter display name"
-                                                name="displayName"
-                                                value={values.displayName}
+                                                name="display_name"
+                                                value={values.display_name}
                                                 onChange={handleChange}
                                                 className="shadow-none"
                                             />
@@ -166,10 +209,14 @@ const ProfileUpdateForm = withRouter((props) => {
                                                     as="textarea"
                                                     rows={3}
                                                     type="text"
-                                                    placeholder="Enter Bio"
                                                     name="bio"
                                                     value={values.bio}
                                                     onChange={handleChange}
+                                                    placeholder={
+                                                        profileData.bio
+                                                            ? profileData.bio
+                                                            : "Enter bio"
+                                                    }
                                                     className="shadow-none"
                                                     isInvalid={!!errors.bio}
                                                 />
@@ -224,8 +271,8 @@ const ProfileUpdateForm = withRouter((props) => {
                                             <Form.Control
                                                 type="text"
                                                 placeholder="Enter download"
-                                                name="downloadSpeed"
-                                                value={values.download}
+                                                name="download_speed"
+                                                value={values.download_speed}
                                                 onChange={handleChange}
                                                 className="shadow-none"
                                             />
@@ -241,8 +288,8 @@ const ProfileUpdateForm = withRouter((props) => {
                                             <Form.Control
                                                 type="text"
                                                 placeholder="Enter upload"
-                                                name="uploadSpeed"
-                                                value={values.upload}
+                                                name="upload_speed"
+                                                value={values.upload_speed}
                                                 onChange={handleChange}
                                                 className="shadow-none"
                                             />

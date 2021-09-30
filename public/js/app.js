@@ -5606,15 +5606,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       userInfo = _useState2[0],
-      setUserInfo = _useState2[1]; // const fetchProfileHandler = async (id) => {
-  //     try {
-  //         const { data } = await Api.get(`/profile/${id}`);
-  //         console.log(data, props.userInfo);
-  //     } catch (error) {
-  //         setError(error.data.message);
-  //     }
-  // };
-
+      setUserInfo = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var userInfoData = JSON.parse(localStorage.getItem("userInfo"));
@@ -7233,6 +7225,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7249,14 +7242,14 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
       success = _useState6[0],
       setSuccess = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState8 = _slicedToArray(_useState7, 2),
-      data = _useState8[0],
-      setData = _useState8[1];
+      profileData = _useState8[0],
+      setProfileData = _useState8[1];
 
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _yield$Api$get, _data;
+      var _yield$Api$get, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -7268,8 +7261,12 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
 
             case 3:
               _yield$Api$get = _context.sent;
-              _data = _yield$Api$get.data;
-              setData(_data);
+              data = _yield$Api$get.data;
+
+              if (data.success) {
+                setProfileData(data.data[0]);
+              }
+
               _context.next = 11;
               break;
 
@@ -7293,12 +7290,12 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchProfileHandler();
-  }, []);
-  console.log(data);
+  }, []); //console.log(profileData);
+
   var schema = yup__WEBPACK_IMPORTED_MODULE_3__.object().shape({
-    firstName: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
-    lastName: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
-    displayName: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
+    first_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
+    last_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
+    display_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
     location: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
     bio: yup__WEBPACK_IMPORTED_MODULE_3__.string().max(300, "Must not exceed 300 characters"),
     carrier: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
@@ -7312,12 +7309,24 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
   });
 
   var updateProfileHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(values) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              console.log("ran");
+              // try {
+              //     const { data } = await Api.put("/profile", values);
+              //     if (data.success) {
+              //         setSuccess(true);
+              //         setError(false);
+              //     } else {
+              //         setSuccess(false);
+              //         setError(true);
+              //     }
+              // } catch (error) {
+              //     setError(error.data.message);
+              // }
+              console.log(values);
 
             case 1:
             case "end":
@@ -7327,7 +7336,7 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
       }, _callee2);
     }));
 
-    return function updateProfileHandler() {
+    return function updateProfileHandler(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
@@ -7340,28 +7349,36 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
         className: "col-12",
         children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "lds-hourglass d-flex justify-content-center m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_6__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          success: success,
+          titleText: "Success",
+          bodyText: "Your profile has been updated.",
+          buttonText: "Got it",
+          push: "profile"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "shadow-sm p-3 mb-5 bg-white rounded",
           children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
             className: "text-danger",
             children: error
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(formik__WEBPACK_IMPORTED_MODULE_4__.Formik, {
             validationSchema: schema,
-            onSubmit: updateProfileHandler,
+            onSubmit: function onSubmit(values) {
+              return updateProfileHandler(values);
+            },
             initialValues: {
-              firstName: "",
-              lastName: "",
-              displayName: "",
-              location: "",
-              bio: "",
-              carrier: "",
-              ping: "",
-              downloadSpeed: "",
-              uploadSpeed: "",
-              twitch: "",
-              twitter: "",
-              instagram: "",
-              youtube: ""
+              first_name: profileData.first_name ? profileData.first_name : "",
+              last_name: profileData.last_name ? profileData.last_name : "",
+              display_name: profileData.display_name ? profileData.display_name : "",
+              location: profileData.location ? profileData.location : "",
+              bio: profileData.bio ? profileData.bio : "",
+              carrier: profileData.carrier ? profileData.carrier : "",
+              ping: profileData.ping ? profileData.ping : "",
+              download_speed: profileData.download_speed ? profileData.download_speed : "",
+              upload_speed: profileData.upload_speed ? profileData.upload_speed : "",
+              twitch: profileData.twitch ? profileData.twitch : "",
+              twitter: profileData.twitter ? profileData.twitter : "",
+              instagram: profileData.instagram ? profileData.instagram : "",
+              youtube: profileData.youtube ? profileData.youtube : ""
             },
             children: function children(_ref3) {
               var handleSubmit = _ref3.handleSubmit,
@@ -7385,9 +7402,9 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                       children: "First name"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
                       type: "text",
-                      name: "firstName",
+                      name: "first_name",
                       placeholder: "Enter first name",
-                      value: values.firstName,
+                      value: values.first_name,
                       onChange: handleChange,
                       className: "shadow-none"
                     })]
@@ -7399,9 +7416,9 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                       children: "Last name"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
                       type: "text",
-                      name: "lastName",
+                      name: "last_name",
                       placeholder: "Enter last name",
-                      value: values.lastName,
+                      value: values.last_name,
                       onChange: handleChange,
                       className: "shadow-none"
                     })]
@@ -7415,9 +7432,8 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                       children: "Display name"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
                       type: "text",
-                      placeholder: "Enter display name",
-                      name: "displayName",
-                      value: values.displayName,
+                      name: "display_name",
+                      value: values.display_name,
                       onChange: handleChange,
                       className: "shadow-none"
                     })]
@@ -7449,10 +7465,10 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                         as: "textarea",
                         rows: 3,
                         type: "text",
-                        placeholder: "Enter Bio",
                         name: "bio",
                         value: values.bio,
                         onChange: handleChange,
+                        placeholder: profileData.bio ? profileData.bio : "Enter bio",
                         className: "shadow-none",
                         isInvalid: !!errors.bio
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
@@ -7503,8 +7519,8 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
                       type: "text",
                       placeholder: "Enter download",
-                      name: "downloadSpeed",
-                      value: values.download,
+                      name: "download_speed",
+                      value: values.download_speed,
                       onChange: handleChange,
                       className: "shadow-none"
                     })]
@@ -7517,8 +7533,8 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
                       type: "text",
                       placeholder: "Enter upload",
-                      name: "uploadSpeed",
-                      value: values.upload,
+                      name: "upload_speed",
+                      value: values.upload_speed,
                       onChange: handleChange,
                       className: "shadow-none"
                     })]

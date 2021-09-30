@@ -39,6 +39,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'show_current_user']);
+    Route::put('/profile', [ProfileController::class, 'update_current_user']);
     Route::get('/profile/{id}', [ProfileController::class, 'show']);
-    Route::put('/profile/{id}', [ProfileController::class, 'update']);
 });

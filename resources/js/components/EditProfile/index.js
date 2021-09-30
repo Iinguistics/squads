@@ -5,21 +5,13 @@ import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState({});
 
-    // const fetchProfileHandler = async (id) => {
-    //     try {
-    //         const { data } = await Api.get(`/profile/${id}`);
-    //         console.log(data, props.userInfo);
-    //     } catch (error) {
-    //         setError(error.data.message);
-    //     }
-    // };
-
     useEffect(() => {
         let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
         if (!userInfoData) {
             props.history.push("/login");
         }
         setUserInfo(userInfoData);
+
     }, []);
     console.log(userInfo);
 

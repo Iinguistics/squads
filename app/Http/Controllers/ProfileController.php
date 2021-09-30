@@ -48,6 +48,25 @@ class ProfileController extends Controller
         return response()->json($response, 200);
     }
 
+    public function update_current_user(Request $request)
+    {
+        $user = Auth::user();
+
+        $input = $request->all();
+
+        $results = Profile::where('id', $user->id)
+            ->update($input);
+
+
+
+        $response = array(
+            'success' => $results ? true : false,
+            'data' => $results,
+        );
+
+        return response()->json($response, 200);
+    }
+
     public function update(Request $request)
     {
         $input = $request->all();
