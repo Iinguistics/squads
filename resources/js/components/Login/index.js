@@ -8,7 +8,6 @@ const index = withRouter((props) => {
         if (userInfo) {
             props.history.push("/profile");
         }
-        console.log(userInfo);
     }, []);
 
     return (

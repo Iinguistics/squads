@@ -18,11 +18,14 @@ const Test = withRouter((props) => {
     };
 
     const schema = yup.object().shape({
-        email: yup.string().required,
-        gamertag: yup.string().required,
-        platform: yup.string().required,
+        email: yup.string().required(),
+        gamertag: yup.string().required(),
+        platform: yup.string().required(),
         activision_username: yup.string(),
-        password: yup.string().min(6, "Must be at least 6 characters").required,
+        password: yup
+            .string()
+            .min(6, "Must be at least 6 characters")
+            .required(),
     });
 
     const registerSubmitHandler = async (values) => {
@@ -87,7 +90,11 @@ const Test = withRouter((props) => {
                                             value={values.email}
                                             onChange={handleChange}
                                             className="shadow-none"
+                                            isInvalid={!!errors.email}
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.email}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
                                     <Form.Group controlId="validationFormik02">
                                         <Form.Label>Gamertag</Form.Label>
@@ -98,9 +105,13 @@ const Test = withRouter((props) => {
                                             value={values.gamertag}
                                             onChange={handleChange}
                                             className="shadow-none"
+                                            isInvalid={!!errors.email}
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.gamertag}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
-                                    <Form.Group controlId="validationFormik05">
+                                    <Form.Group controlId="validationFormik03">
                                         <Form.Label>Platform</Form.Label>
                                         <Form.Control
                                             aria-label="Default select"
@@ -111,6 +122,7 @@ const Test = withRouter((props) => {
                                             value={values.platform}
                                             onChange={handleChange}
                                             className="shadow-none"
+                                            isInvalid={!!errors.email}
                                         >
                                             <option value="psn">
                                                 PlayStation Network
@@ -122,8 +134,11 @@ const Test = withRouter((props) => {
                                                 Xbox Live
                                             </option>
                                         </Form.Control>
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.platform}
+                                        </Form.Control.Feedback>
                                     </Form.Group>
-                                    <Form.Group controlId="validationFormik05">
+                                    <Form.Group controlId="validationFormik04">
                                         <Form.Label>Activision ID</Form.Label>
                                         <Form.Control
                                             type="text"
@@ -136,36 +151,30 @@ const Test = withRouter((props) => {
                                     </Form.Group>
                                     <Form.Group controlId="validationFormik05">
                                         <Form.Label>Password</Form.Label>
-                                        <InputGroup hasValidation>
-                                            <div className="eye-text">
-                                                <Form.Control
-                                                    type={
-                                                        !eyeTextToggle
-                                                            ? "password"
-                                                            : "text"
-                                                    }
-                                                    placeholder="Password"
-                                                    name="password"
-                                                    value={values.password}
-                                                    onChange={handleChange}
-                                                    className="shadow-none"
-                                                    isInvalid={
-                                                        !!errors.password
-                                                    }
-                                                />
-                                                <img
-                                                    src={`${appUrl}/images/eye-text.png`}
-                                                    alt="eye"
-                                                    onClick={
-                                                        eyeTextToggleHandler
-                                                    }
-                                                />
-                                            </div>
+                                        <div className="eye-text">
+                                            <Form.Control
+                                                type={
+                                                    !eyeTextToggle
+                                                        ? "password"
+                                                        : "text"
+                                                }
+                                                placeholder="Password"
+                                                name="password"
+                                                value={values.password}
+                                                onChange={handleChange}
+                                                className="shadow-none"
+                                                isInvalid={!!errors.password}
+                                            />
+                                            <img
+                                                src={`${appUrl}/images/eye-text.png`}
+                                                alt="eye"
+                                                onClick={eyeTextToggleHandler}
+                                            />
 
                                             <Form.Control.Feedback type="invalid">
                                                 {errors.password}
                                             </Form.Control.Feedback>
-                                        </InputGroup>
+                                        </div>
                                     </Form.Group>
 
                                     <button

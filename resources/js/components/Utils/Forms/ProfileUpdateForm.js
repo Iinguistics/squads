@@ -25,7 +25,9 @@ const ProfileUpdateForm = withRouter((props) => {
     };
 
     useEffect(() => {
-        fetchProfileHandler();
+        if (props.userInfo) {
+            fetchProfileHandler();
+        }
     }, []);
 
     const schema = yup.object().shape({

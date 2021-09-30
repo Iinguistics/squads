@@ -5603,19 +5603,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function (props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       userInfo = _useState2[0],
       setUserInfo = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var userInfoData = JSON.parse(localStorage.getItem("userInfo"));
+    setUserInfo(userInfoData);
 
     if (!userInfoData) {
       props.history.push("/login");
     }
-
-    setUserInfo(userInfoData);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "container my-5 main-header",
@@ -5630,7 +5629,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
         children: "All inputs are optional, add what you wish."
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Forms_ProfileUpdateForm__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Forms_ProfileUpdateForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      userInfo: userInfo
+    })]
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
@@ -6185,8 +6186,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
     if (userInfo) {
       props.history.push("/profile");
     }
-
-    console.log(userInfo);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "container my-5 main-header",
@@ -6389,7 +6388,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/InputGroup.js");
 /* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
 /* harmony import */ var _Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Utils/Modals/SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -6447,11 +6445,11 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
   };
 
   var schema = yup__WEBPACK_IMPORTED_MODULE_3__.object().shape({
-    email: yup__WEBPACK_IMPORTED_MODULE_3__.string().required,
-    gamertag: yup__WEBPACK_IMPORTED_MODULE_3__.string().required,
-    platform: yup__WEBPACK_IMPORTED_MODULE_3__.string().required,
+    email: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+    gamertag: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
+    platform: yup__WEBPACK_IMPORTED_MODULE_3__.string().required(),
     activision_username: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
-    password: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(6, "Must be at least 6 characters").required
+    password: yup__WEBPACK_IMPORTED_MODULE_3__.string().min(6, "Must be at least 6 characters").required()
   });
 
   var registerSubmitHandler = /*#__PURE__*/function () {
@@ -6552,7 +6550,11 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
                     placeholder: "Enter email",
                     value: values.email,
                     onChange: handleChange,
-                    className: "shadow-none"
+                    className: "shadow-none",
+                    isInvalid: !!errors.email
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
+                    type: "invalid",
+                    children: errors.email
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
                   controlId: "validationFormik02",
@@ -6564,10 +6566,14 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
                     placeholder: "Enter gamertag",
                     value: values.gamertag,
                     onChange: handleChange,
-                    className: "shadow-none"
+                    className: "shadow-none",
+                    isInvalid: !!errors.email
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
+                    type: "invalid",
+                    children: errors.gamertag
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
-                  controlId: "validationFormik05",
+                  controlId: "validationFormik03",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
                     children: "Platform"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
@@ -6579,6 +6585,7 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
                     value: values.platform,
                     onChange: handleChange,
                     className: "shadow-none",
+                    isInvalid: !!errors.email,
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
                       value: "psn",
                       children: "PlayStation Network"
@@ -6589,9 +6596,12 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
                       value: "xbl",
                       children: "Xbox Live"
                     })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
+                    type: "invalid",
+                    children: errors.platform
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
-                  controlId: "validationFormik05",
+                  controlId: "validationFormik04",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
                     children: "Activision ID"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
@@ -6606,23 +6616,20 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
                   controlId: "validationFormik05",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
                     children: "Password"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-                    hasValidation: true,
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                      className: "eye-text",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
-                        type: !eyeTextToggle ? "password" : "text",
-                        placeholder: "Password",
-                        name: "password",
-                        value: values.password,
-                        onChange: handleChange,
-                        className: "shadow-none",
-                        isInvalid: !!errors.password
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                        src: "".concat(appUrl, "/images/eye-text.png"),
-                        alt: "eye",
-                        onClick: eyeTextToggleHandler
-                      })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    className: "eye-text",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
+                      type: !eyeTextToggle ? "password" : "text",
+                      placeholder: "Password",
+                      name: "password",
+                      value: values.password,
+                      onChange: handleChange,
+                      className: "shadow-none",
+                      isInvalid: !!errors.password
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+                      src: "".concat(appUrl, "/images/eye-text.png"),
+                      alt: "eye",
+                      onClick: eyeTextToggleHandler
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
                       type: "invalid",
                       children: errors.password
@@ -7392,7 +7399,9 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchProfileHandler();
+    if (props.userInfo) {
+      fetchProfileHandler();
+    }
   }, []);
   var schema = yup__WEBPACK_IMPORTED_MODULE_3__.object().shape({
     first_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),

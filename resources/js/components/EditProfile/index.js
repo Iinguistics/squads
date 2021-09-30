@@ -3,14 +3,14 @@ import { withRouter } from "react-router-dom";
 import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 
 const index = withRouter((props) => {
-    const [userInfo, setUserInfo] = useState({});
+    const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
         let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
+        setUserInfo(userInfoData);
         if (!userInfoData) {
             props.history.push("/login");
         }
-        setUserInfo(userInfoData);
     }, []);
 
     return (
@@ -20,7 +20,7 @@ const index = withRouter((props) => {
             <p className="text-center text-muted">
                 <small>All inputs are optional, add what you wish.</small>
             </p>
-            <ProfileUpdateForm />
+            <ProfileUpdateForm userInfo={userInfo} />
         </div>
     );
 });
