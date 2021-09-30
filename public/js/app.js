@@ -5617,7 +5617,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
 
     setUserInfo(userInfoData);
   }, []);
-  console.log(userInfo);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "container my-5 main-header",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
@@ -6242,9 +6241,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Main = function Main(props) {
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(props);
-  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("main", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Switch, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
@@ -7225,7 +7221,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7273,7 +7268,7 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](0);
-              setError(_context.t0.data.message);
+              setError(_context.t0.message);
 
             case 11:
             case "end":
@@ -7290,8 +7285,7 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchProfileHandler();
-  }, []); //console.log(profileData);
-
+  }, []);
   var schema = yup__WEBPACK_IMPORTED_MODULE_3__.object().shape({
     first_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
     last_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
@@ -7310,30 +7304,42 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
 
   var updateProfileHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(values) {
+      var _yield$Api$put, data;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              // try {
-              //     const { data } = await Api.put("/profile", values);
-              //     if (data.success) {
-              //         setSuccess(true);
-              //         setError(false);
-              //     } else {
-              //         setSuccess(false);
-              //         setError(true);
-              //     }
-              // } catch (error) {
-              //     setError(error.data.message);
-              // }
-              console.log(values);
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/profile", values);
 
-            case 1:
+            case 3:
+              _yield$Api$put = _context2.sent;
+              data = _yield$Api$put.data;
+
+              if (data.success) {
+                setSuccess(true);
+                setError(false);
+              } else {
+                setSuccess(false);
+                setError(true);
+              }
+
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](0);
+              setError(_context2.t0.message);
+
+            case 11:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, null, [[0, 8]]);
     }));
 
     return function updateProfileHandler(_x) {
@@ -7380,6 +7386,7 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
               instagram: profileData.instagram ? profileData.instagram : "",
               youtube: profileData.youtube ? profileData.youtube : ""
             },
+            enableReinitialize: true,
             children: function children(_ref3) {
               var handleSubmit = _ref3.handleSubmit,
                   handleChange = _ref3.handleChange,
@@ -7435,7 +7442,8 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                       name: "display_name",
                       value: values.display_name,
                       onChange: handleChange,
-                      className: "shadow-none"
+                      className: "shadow-none",
+                      placeholder: "Enter display name"
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
                     as: react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"],
@@ -7468,9 +7476,9 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                         name: "bio",
                         value: values.bio,
                         onChange: handleChange,
-                        placeholder: profileData.bio ? profileData.bio : "Enter bio",
                         className: "shadow-none",
-                        isInvalid: !!errors.bio
+                        isInvalid: !!errors.bio,
+                        placeholder: "Enter bio"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
                         type: "invalid",
                         children: errors.bio
@@ -7694,14 +7702,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (props) {
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
-    if (userInfo) {
-      props.history.push("/profile");
-    }
-  }, []);
-
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       error = _useState2[0],
@@ -7850,7 +7850,6 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
             case 18:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
-              console.log(data);
 
               if (data.success) {
                 setLoading(false);
@@ -7862,21 +7861,21 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
                 setLoading(false);
               }
 
-              _context.next = 29;
+              _context.next = 28;
               break;
 
-            case 25:
-              _context.prev = 25;
+            case 24:
+              _context.prev = 24;
               _context.t0 = _context["catch"](14);
               setLoading(false);
-              alert("oops, it looks like something went wrong. Try reloading the page & try again");
+              setError(_context.t0.message);
 
-            case 29:
+            case 28:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[14, 25]]);
+      }, _callee, null, [[14, 24]]);
     }));
 
     return function registerSubmitHandler(_x) {

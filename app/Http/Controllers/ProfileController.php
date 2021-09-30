@@ -58,17 +58,11 @@ class ProfileController extends Controller
             ->update($input);
 
 
-
         $response = array(
             'success' => $results ? true : false,
             'data' => $results,
         );
 
         return response()->json($response, 200);
-    }
-
-    public function update(Request $request)
-    {
-        $input = $request->all();
     }
 }

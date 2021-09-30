@@ -6,7 +6,6 @@ import { Formik } from "formik";
 import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 import SuccessModal from "../Modals/SuccessModal";
-import { values } from "lodash-es";
 
 const ProfileUpdateForm = withRouter((props) => {
     const [error, setError] = useState(null);
@@ -21,15 +20,13 @@ const ProfileUpdateForm = withRouter((props) => {
                 setProfileData(data.data[0]);
             }
         } catch (error) {
-            setError(error.data.message);
+            setError(error.message);
         }
     };
 
     useEffect(() => {
         fetchProfileHandler();
     }, []);
-
-    //console.log(profileData);
 
     const schema = yup.object().shape({
         first_name: yup.string(),
@@ -48,20 +45,19 @@ const ProfileUpdateForm = withRouter((props) => {
     });
 
     const updateProfileHandler = async (values) => {
-        // try {
-        //     const { data } = await Api.put("/profile", values);
+        try {
+            const { data } = await Api.put("/profile", values);
 
-        //     if (data.success) {
-        //         setSuccess(true);
-        //         setError(false);
-        //     } else {
-        //         setSuccess(false);
-        //         setError(true);
-        //     }
-        // } catch (error) {
-        //     setError(error.data.message);
-        // }
-        console.log(values);
+            if (data.success) {
+                setSuccess(true);
+                setError(false);
+            } else {
+                setSuccess(false);
+                setError(true);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
     };
 
     return (
@@ -120,6 +116,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                     ? profileData.youtube
                                     : "",
                             }}
+                            enableReinitialize={true}
                         >
                             {({
                                 handleSubmit,
@@ -179,6 +176,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                                 value={values.display_name}
                                                 onChange={handleChange}
                                                 className="shadow-none"
+                                                placeholder="Enter display name"
                                             />
                                         </Form.Group>
                                         <Form.Group
@@ -212,13 +210,9 @@ const ProfileUpdateForm = withRouter((props) => {
                                                     name="bio"
                                                     value={values.bio}
                                                     onChange={handleChange}
-                                                    placeholder={
-                                                        profileData.bio
-                                                            ? profileData.bio
-                                                            : "Enter bio"
-                                                    }
                                                     className="shadow-none"
                                                     isInvalid={!!errors.bio}
+                                                    placeholder="Enter bio"
                                                 />
                                                 <Form.Control.Feedback type="invalid">
                                                     {errors.bio}

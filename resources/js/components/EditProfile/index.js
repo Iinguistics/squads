@@ -11,9 +11,7 @@ const index = withRouter((props) => {
             props.history.push("/login");
         }
         setUserInfo(userInfoData);
-
     }, []);
-    console.log(userInfo);
 
     return (
         <div className="container my-5 main-header">

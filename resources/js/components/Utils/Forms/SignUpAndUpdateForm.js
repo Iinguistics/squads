@@ -6,12 +6,6 @@ import SuccessModal from "../Modals/SuccessModal";
 import "../../../../css/bttn/bttn.min.css";
 
 const SignUpAndUpdateForm = withRouter((props) => {
-    useEffect(() => {
-        let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (userInfo) {
-            props.history.push("/profile");
-        }
-    }, []);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -86,7 +80,6 @@ const SignUpAndUpdateForm = withRouter((props) => {
                 password: password,
             };
             const { data } = await Api.post("/register", values);
-            console.log(data);
             if (data.success) {
                 setLoading(false);
                 setSuccess(true);
@@ -98,9 +91,7 @@ const SignUpAndUpdateForm = withRouter((props) => {
             }
         } catch (error) {
             setLoading(false);
-            alert(
-                "oops, it looks like something went wrong. Try reloading the page & try again"
-            );
+            setError(error.message);
         }
     };
     const appUrl = process.env.MIX_APP_URL;

@@ -13,9 +13,6 @@ import Register from "./Register";
 import Test from "./Test";
 
 const Main = (props) => {
-    useEffect(() => {
-        console.log(props);
-    }, []);
     return (
         <main>
             <Switch>
