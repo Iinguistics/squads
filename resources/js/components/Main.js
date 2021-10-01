@@ -11,6 +11,7 @@ import PrivateProfile from "./PrivateProfile";
 import Register from "./Register";
 
 import Test from "./Test";
+import TestTwo from "./TestTwo";
 
 const Main = (props) => {
     return (

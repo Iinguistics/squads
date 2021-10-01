@@ -18,7 +18,7 @@ const Test = withRouter((props) => {
     };
 
     const schema = yup.object().shape({
-        email: yup.string().required(),
+        email: yup.string().email("Invalid email").required(),
         gamertag: yup.string().required(),
         platform: yup.string().required(),
         activision_username: yup.string(),
@@ -92,9 +92,11 @@ const Test = withRouter((props) => {
                                             className="shadow-none"
                                             isInvalid={!!errors.email}
                                         />
-                                        <Form.Control.Feedback type="invalid">
-                                            {errors.email}
-                                        </Form.Control.Feedback>
+                                        {errors.email && touched.email ? (
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.email}
+                                            </Form.Control.Feedback>
+                                        ) : null}
                                     </Form.Group>
                                     <Form.Group controlId="validationFormik02">
                                         <Form.Label>Gamertag</Form.Label>
