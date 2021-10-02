@@ -1,13 +1,30 @@
 .private-profile-sidebar-container {
-    //max-height: 100vh;
     width: 25%;
     background: #f2f3f5;
 }
 
+.private-profile-sidebar-cat-head {
+    color: #6a7480;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.private-profile-sidebar-cat-content {
+    color: #2e3338;
+    font-size: 16px;
+}
+.private-profile-sidebar-cat-content:hover {
+    cursor: pointer;
+    color: #6a7480;
+}
+
+.content-active {
+    color: #060607;
+}
+
 @media only screen and (max-width: 600px) {
-    .private-profile-sidebar-container {
-        // margin-top: 40px;
-        // height: 40%;
-        // width: 100vw;
-    }
+    // .private-profile-sidebar-container {
+    //     width: 100vw !important;
+    //     flex-direction: row !important;
+    // }
 }

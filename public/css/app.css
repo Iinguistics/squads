@@ -10042,6 +10042,43 @@ nav .dropdown-item {
   background: #f2f3f5;
 }
 
+.private-profile-sidebar-cat-head {
+  color: #6a7480;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.private-profile-sidebar-cat-content {
+  color: #2e3338;
+  font-size: 16px;
+}
+
+.private-profile-sidebar-cat-content:hover {
+  cursor: pointer;
+  color: #6a7480;
+}
+
+.content-active {
+  color: #060607;
+}
+
+.light-divider {
+  background: #eeecfb;
+  width: 100%;
+  height: 1px;
+}
+
+.medium-divider {
+  width: 100%;
+  height: 1px;
+}
+
+.private-profile-sidebar-divider {
+  background: #dddee4;
+  width: 50%;
+  height: 1px;
+}
+
 .main-blue {
   color: #4d89ff;
 }
@@ -10347,12 +10384,6 @@ form a {
 }
 .login-help-links a:hover {
   text-decoration: none !important;
-}
-
-.light-divider {
-  background: #eeecfb;
-  width: 100%;
-  height: 1px;
 }
 
 .section-1 {
