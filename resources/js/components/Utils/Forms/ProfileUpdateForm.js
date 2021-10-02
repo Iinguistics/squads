@@ -74,7 +74,9 @@ const ProfileUpdateForm = withRouter((props) => {
                         titleText="Success"
                         bodyText="Your profile has been updated."
                         buttonText="Got it"
-                        push="profile"
+                        //push="/profile"
+                        tabHandler={props.tabHandler}
+                        tab={props.tab}
                     />
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
                         {error && <span className="text-danger">{error}</span>}

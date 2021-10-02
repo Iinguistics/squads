@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { Modal, Container } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 
 const SuccessModal = withRouter((props) => {
+    const [show, setShow] = useState(props.success);
+
+    useEffect(() => {
+        setShow(props.success);
+    }, [props.success]);
+
     const handleClose = () => {
         if (props.push) {
-            props.history.push(`/${props.push}`);
+            props.history.push(`${props.push}`);
+        } else if (props.tab) {
+            setShow(false);
+            props.tabHandler(props.tab);
+        } else {
+            setShow(false);
         }
     };
 
     return (
         <Container>
-            <Modal show={props.success} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{props.titleText}</Modal.Title>
                 </Modal.Header>
