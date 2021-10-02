@@ -5481,6 +5481,167 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./resources/js/components/Context/PrivateProfileContext.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Context/PrivateProfileContext.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PrivateProfileContext": () => (/* binding */ PrivateProfileContext),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var PrivateProfileContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
+
+var PrivateProfileProvider = function PrivateProfileProvider(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState2 = _slicedToArray(_useState, 2),
+      myProfileTab = _useState2[0],
+      setMyProfileTab = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      generalInfoTab = _useState4[0],
+      setGeneralInfoTab = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      uploadPhotoTab = _useState6[0],
+      setUploadPhotoTab = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      privacyTab = _useState8[0],
+      setPrivacyTab = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      appearanceTab = _useState10[0],
+      setAppearanceTab = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      emailTab = _useState12[0],
+      setEmailTab = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState14 = _slicedToArray(_useState13, 2),
+      gamertagTab = _useState14[0],
+      setGamertagTab = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      activisionIdTab = _useState16[0],
+      setActivisionIdTab = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState18 = _slicedToArray(_useState17, 2),
+      passwordTab = _useState18[0],
+      setPasswordTab = _useState18[1];
+
+  var resetTabs = function resetTabs() {
+    setMyProfileTab(false);
+    setGeneralInfoTab(false);
+    setUploadPhotoTab(false);
+    setPrivacyTab(false);
+    setAppearanceTab(false);
+    setEmailTab(false);
+    setGamertagTab(false);
+    setActivisionIdTab(false);
+    setPasswordTab(false);
+  };
+
+  var tabHandler = function tabHandler(tab) {
+    switch (tab) {
+      case "myProfile":
+        resetTabs();
+        setMyProfileTab(true);
+        break;
+
+      case "generalInfo":
+        resetTabs();
+        setGeneralInfoTab(true);
+        break;
+
+      case "uploadPhoto":
+        resetTabs();
+        setUploadPhotoTab(true);
+        break;
+
+      case "privacy":
+        resetTabs();
+        setPrivacyTab(true);
+        break;
+
+      case "appearance":
+        resetTabs();
+        setAppearanceTab(true);
+        break;
+
+      case "email":
+        resetTabs();
+        setEmailTab(true);
+        break;
+
+      case "gamertag":
+        resetTabs();
+        setGamertagTab(true);
+        break;
+
+      case "activisionId":
+        resetTabs();
+        setActivisionIdTab(true);
+        break;
+
+      case "password":
+        resetTabs();
+        setPasswordTab(true);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(PrivateProfileContext.Provider, {
+    value: {
+      myProfileTab: myProfileTab,
+      generalInfoTab: generalInfoTab,
+      uploadPhotoTab: uploadPhotoTab,
+      privacyTab: privacyTab,
+      appearanceTab: appearanceTab,
+      emailTab: emailTab,
+      gamertagTab: gamertagTab,
+      activisionIdTab: activisionIdTab,
+      passwordTab: passwordTab,
+      tabHandler: tabHandler
+    },
+    children: props.children
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PrivateProfileProvider);
+
+/***/ }),
+
 /***/ "./resources/js/components/Context/UserContext.js":
 /*!********************************************************!*\
   !*** ./resources/js/components/Context/UserContext.js ***!
@@ -6281,7 +6442,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ProfileSideBar = function ProfileSideBar() {
+var ProfileSideBar = function ProfileSideBar(_ref) {
+  var myProfileTab = _ref.myProfileTab,
+      generalInfoTab = _ref.generalInfoTab,
+      uploadPhotoTab = _ref.uploadPhotoTab,
+      privacyTab = _ref.privacyTab,
+      appearanceTab = _ref.appearanceTab,
+      emailTab = _ref.emailTab,
+      gamertagTab = _ref.gamertagTab,
+      activisionIdTab = _ref.activisionIdTab,
+      passwordTab = _ref.passwordTab,
+      tabHandler = _ref.tabHandler;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "private-profile-sidebar-container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6292,10 +6463,16 @@ var ProfileSideBar = function ProfileSideBar() {
           className: "private-profile-sidebar-cat-head mb-2",
           children: "profile settings"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2 content-active",
+          onClick: function onClick() {
+            return tabHandler("myProfile");
+          },
+          className: "private-profile-sidebar-cat-content mb-2 ".concat(myProfileTab ? "content-active" : ""),
           children: "My Profile"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
+          onClick: function onClick() {
+            return tabHandler("generalInfo");
+          },
+          className: "private-profile-sidebar-cat-content mb-2 ".concat(generalInfoTab ? "content-active" : ""),
           children: "General Info"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "private-profile-sidebar-cat-content mb-2",
@@ -6358,16 +6535,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileSideBar */ "./resources/js/components/PrivateProfile/ProfileSideBar.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Context/PrivateProfileContext */ "./resources/js/components/Context/PrivateProfileContext.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
 
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function (props) {
+
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (props) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -6377,16 +6556,43 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
 
     console.log(userInfo);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "d-flex flex-column flex-md-row private-profile-main-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "container mt-5 main-header",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-          className: "text-center",
-          children: "Private Profile"
-        })
-      })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
+      children: function children(_ref) {
+        var myProfileTab = _ref.myProfileTab,
+            generalInfoTab = _ref.generalInfoTab,
+            uploadPhotoTab = _ref.uploadPhotoTab,
+            privacyTab = _ref.privacyTab,
+            appearanceTab = _ref.appearanceTab,
+            emailTab = _ref.emailTab,
+            gamertagTab = _ref.gamertagTab,
+            activisionIdTab = _ref.activisionIdTab,
+            passwordTab = _ref.passwordTab,
+            tabHandler = _ref.tabHandler;
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "d-flex flex-column flex-md-row private-profile-main-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              tabHandler: tabHandler,
+              myProfileTab: myProfileTab,
+              generalInfoTab: generalInfoTab,
+              uploadPhotoTab: uploadPhotoTab,
+              privacyTab: privacyTab,
+              appearanceTab: appearanceTab,
+              emailTab: emailTab,
+              gamertagTab: gamertagTab,
+              activisionIdTab: activisionIdTab,
+              passwordTab: passwordTab
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "container mt-5 main-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+                className: "text-center",
+                children: "Private Profile"
+              })
+            })]
+          })
+        });
+      }
     })
   });
 });

@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
 
-const ProfileSideBar = () => {
+const ProfileSideBar = ({
+    myProfileTab,
+    generalInfoTab,
+    uploadPhotoTab,
+    privacyTab,
+    appearanceTab,
+    emailTab,
+    gamertagTab,
+    activisionIdTab,
+    passwordTab,
+    tabHandler,
+}) => {
     return (
         <div className="private-profile-sidebar-container">
             <div className="container mt-5 main-header">
@@ -9,10 +20,20 @@ const ProfileSideBar = () => {
                     <div className="private-profile-sidebar-cat-head mb-2">
                         profile settings
                     </div>
-                    <div className="private-profile-sidebar-cat-content mb-2 content-active">
+                    <div
+                        onClick={() => tabHandler("myProfile")}
+                        className={`private-profile-sidebar-cat-content mb-2 ${
+                            myProfileTab ? "content-active" : ""
+                        }`}
+                    >
                         My Profile
                     </div>
-                    <div className="private-profile-sidebar-cat-content mb-2">
+                    <div
+                        onClick={() => tabHandler("generalInfo")}
+                        className={`private-profile-sidebar-cat-content mb-2 ${
+                            generalInfoTab ? "content-active" : ""
+                        }`}
+                    >
                         General Info
                     </div>
                     <div className="private-profile-sidebar-cat-content mb-2">

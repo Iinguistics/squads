@@ -19,8 +19,12 @@
 }
 
 .content-active {
-    color: #060607;
-    font-weight: 700;
+    color: $blue-purple-two;
+    font-weight: 900;
+}
+.content-active:hover {
+    cursor: default;
+    color: $blue-purple-two;
 }
 
 @media only screen and (max-width: 600px) {

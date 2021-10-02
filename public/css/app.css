@@ -10059,8 +10059,13 @@ nav .dropdown-item {
 }
 
 .content-active {
-  color: #060607;
-  font-weight: 700;
+  color: #3752c4;
+  font-weight: 900;
+}
+
+.content-active:hover {
+  cursor: default;
+  color: #3752c4;
 }
 
 .light-divider {
