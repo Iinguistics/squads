@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import ProfileSideBar from "./ProfileSideBar";
 
 const index = withRouter((props) => {
     useEffect(() => {
@@ -10,9 +11,14 @@ const index = withRouter((props) => {
         console.log(userInfo);
     }, []);
     return (
-        <div className="container mt-5 main-header">
-            <h1 className="text-center">Private Profile</h1>
-        </div>
+        <>
+            <div className="d-flex flex-column flex-md-row">
+                <ProfileSideBar />
+                <div className="container mt-5 main-header">
+                    <h1 className="text-center">Private Profile</h1>
+                </div>
+            </div>
+        </>
     );
 });
 

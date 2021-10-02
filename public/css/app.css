@@ -10031,6 +10031,12 @@ nav .dropdown-item {
   margin-top: 7rem !important;
 }
 
+.profile-sidebar-container {
+  height: 100vh;
+  width: 25%;
+  background: #f2f3f5;
+}
+
 .main-blue {
   color: #4d89ff;
 }
@@ -10461,5 +10467,10 @@ form a {
     flex-wrap: nowrap !important;
     z-index: 9 !important;
     overflow-x: scroll !important;
+    justify-content: flex-start !important;
+  }
+
+  .section-3 {
+    height: 1100px;
   }
 }

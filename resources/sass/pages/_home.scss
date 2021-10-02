@@ -128,20 +128,10 @@
 
     h1 {
         font-size: 42px;
-        //padding: 20px;
-    }
-
-    h3 {
-        //padding: 20px;
     }
 
     p {
         font-size: 16px;
-        //padding: 20px;
-    }
-
-    a {
-        //padding: 20px;
     }
 
     .section-2 {
@@ -151,6 +141,11 @@
             flex-wrap: nowrap !important;
             z-index: 9 !important;
             overflow-x: scroll !important;
+            justify-content: flex-start !important;
         }
+    }
+
+    .section-3 {
+        height: 1100px;
     }
 }
