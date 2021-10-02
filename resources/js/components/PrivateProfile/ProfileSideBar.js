@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
 
 const ProfileSideBar = () => {
     return (
         <div className="private-profile-sidebar-container">
             <div className="container mt-5 main-header">
-                <div className="d-flex flex-column  align-items-center">
+                <div className="d-flex flex-column justify-content-center align-items-center">
                     <div className="private-profile-sidebar-cat-head mb-2">
                         profile settings
                     </div>
                     <div className="private-profile-sidebar-cat-content mb-2 content-active">
                         My Profile
                     </div>
-                    <div className="private-profile-sidebar-cat-content mb-2 content-active">
+                    <div className="private-profile-sidebar-cat-content mb-2">
                         General Info
                     </div>
                     <div className="private-profile-sidebar-cat-content mb-2">
@@ -28,6 +28,9 @@ const ProfileSideBar = () => {
                     <div className="private-profile-sidebar-divider my-2"></div>
                     <div className="private-profile-sidebar-cat-head mb-2">
                         app settings
+                    </div>
+                    <div className="private-profile-sidebar-cat-content mb-2">
+                        Appearance
                     </div>
                     <div className="private-profile-sidebar-divider my-2"></div>
                     <div className="private-profile-sidebar-cat-head mb-2">

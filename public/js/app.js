@@ -6287,7 +6287,7 @@ var ProfileSideBar = function ProfileSideBar() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "container mt-5 main-header",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "d-flex flex-column  align-items-center",
+        className: "d-flex flex-column justify-content-center align-items-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "private-profile-sidebar-cat-head mb-2",
           children: "profile settings"
@@ -6295,7 +6295,7 @@ var ProfileSideBar = function ProfileSideBar() {
           className: "private-profile-sidebar-cat-content mb-2 content-active",
           children: "My Profile"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2 content-active",
+          className: "private-profile-sidebar-cat-content mb-2",
           children: "General Info"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "private-profile-sidebar-cat-content mb-2",
@@ -6313,6 +6313,9 @@ var ProfileSideBar = function ProfileSideBar() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "private-profile-sidebar-cat-head mb-2",
           children: "app settings"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "private-profile-sidebar-cat-content mb-2",
+          children: "Appearance"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "private-profile-sidebar-divider my-2"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
