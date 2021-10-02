@@ -1,3 +1,9 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
 // Fonts
 //@import url("https://fonts.googleapis.com/css?family=Nunito");
 //@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
@@ -11,7 +17,7 @@
 
 // Layout-related sections
 @import "layout/header";
-@import "layout/profile-sidebar";
+@import "layout/private-profile-sidebar";
 
 // Components
 @import "components/forms";
@@ -20,3 +26,4 @@
 // Page-specific styles
 @import "pages/login-help";
 @import "pages/home";
+@import "pages/private_profile";

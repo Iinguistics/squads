@@ -12,7 +12,7 @@ const index = withRouter((props) => {
     }, []);
     return (
         <>
-            <div className="d-flex flex-column flex-md-row">
+            <div className="d-flex flex-column flex-md-row private-profile-main-container">
                 <ProfileSideBar />
                 <div className="container mt-5 main-header">
                     <h1 className="text-center">Private Profile</h1>

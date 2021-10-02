@@ -1,0 +1,13 @@
+.private-profile-sidebar-container {
+    //max-height: 100vh;
+    width: 25%;
+    background: #f2f3f5;
+}
+
+@media only screen and (max-width: 600px) {
+    .private-profile-sidebar-container {
+        // margin-top: 40px;
+        // height: 40%;
+        // width: 100vw;
+    }
+}

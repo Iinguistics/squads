@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css2?family=Manrope&family=Roboto+Mono&display=swap);
 @charset "UTF-8";
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10031,8 +10037,7 @@ nav .dropdown-item {
   margin-top: 7rem !important;
 }
 
-.profile-sidebar-container {
-  height: 100vh;
+.private-profile-sidebar-container {
   width: 25%;
   background: #f2f3f5;
 }
@@ -10473,4 +10478,7 @@ form a {
   .section-3 {
     height: 1100px;
   }
+}
+.private-profile-main-container {
+  height: calc(100vh - 67px);
 }
