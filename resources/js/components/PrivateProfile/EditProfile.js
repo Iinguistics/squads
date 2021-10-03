@@ -1,18 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 
-const index = withRouter((props) => {
-    // const [userInfo, setUserInfo] = useState(null);
-
-    // useEffect(() => {
-    //     let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
-    //     setUserInfo(userInfoData);
-    //     if (!userInfoData) {
-    //         props.history.push("/login");
-    //     }
-    // }, []);
-
+const EditProfile = withRouter((props) => {
     return (
         <div className="container">
             <h1 className="text-center">General Info</h1>
@@ -29,4 +19,4 @@ const index = withRouter((props) => {
     );
 });
 
-export default index;
+export default EditProfile;

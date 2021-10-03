@@ -5,7 +5,7 @@ import PrivateProfileProvider, {
     PrivateProfileContext,
 } from "../Context/PrivateProfileContext";
 
-import EditProfile from "../EditProfile";
+import EditProfile from "./EditProfile";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -34,6 +34,8 @@ const index = withRouter((props) => {
                     activisionIdTab,
                     passwordTab,
                     tabHandler,
+                    deleteAccountClickedHandler,
+                    deleteAccountClicked,
                 }) => {
                     return (
                         <>
@@ -49,6 +51,10 @@ const index = withRouter((props) => {
                                     gamertagTab={gamertagTab}
                                     activisionIdTab={activisionIdTab}
                                     passwordTab={passwordTab}
+                                    deleteAccountClickedHandler={
+                                        deleteAccountClickedHandler
+                                    }
+                                    deleteAccountClicked={deleteAccountClicked}
                                 />
                                 <div className="container mt-5 main-header">
                                     {/* <h1 className="text-center">

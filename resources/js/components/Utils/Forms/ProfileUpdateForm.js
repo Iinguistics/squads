@@ -15,7 +15,7 @@ const ProfileUpdateForm = withRouter((props) => {
 
     const fetchProfileHandler = async () => {
         try {
-            const { data } = await Api.get("/profile");
+            const { data } = await Api.get("/show_current_user");
             if (data.success) {
                 setProfileData(data.data[0]);
             }
@@ -48,7 +48,7 @@ const ProfileUpdateForm = withRouter((props) => {
 
     const updateProfileHandler = async (values) => {
         try {
-            const { data } = await Api.put("/profile", values);
+            const { data } = await Api.put("/update_current_user", values);
 
             if (data.success) {
                 setSuccess(true);

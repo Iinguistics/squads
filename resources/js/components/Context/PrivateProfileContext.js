@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import Api from "../Api";
 
 export const PrivateProfileContext = createContext();
 
@@ -12,6 +13,8 @@ const PrivateProfileProvider = (props) => {
     const [gamertagTab, setGamertagTab] = useState(false);
     const [activisionIdTab, setActivisionIdTab] = useState(false);
     const [passwordTab, setPasswordTab] = useState(false);
+
+    const [deleteAccountClicked, setDeleteAccountClicked] = useState(0);
 
     const resetTabs = () => {
         setMyProfileTab(false);
@@ -69,6 +72,12 @@ const PrivateProfileProvider = (props) => {
         }
     };
 
+    const deleteAccountClickedHandler = () => {
+        setDeleteAccountClicked(
+            (deleteAccountClicked) => deleteAccountClicked + 1
+        );
+    };
+
     return (
         <PrivateProfileContext.Provider
             value={{
@@ -81,7 +90,9 @@ const PrivateProfileProvider = (props) => {
                 gamertagTab,
                 activisionIdTab,
                 passwordTab,
+                deleteAccountClicked,
                 tabHandler,
+                deleteAccountClickedHandler,
             }}
         >
             {props.children}

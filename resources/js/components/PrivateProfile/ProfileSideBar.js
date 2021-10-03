@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
+import DeleteAccountModal from "../Utils/Modals/DeleteAccountModal";
 
 const ProfileSideBar = ({
     myProfileTab,
@@ -12,6 +13,8 @@ const ProfileSideBar = ({
     activisionIdTab,
     passwordTab,
     tabHandler,
+    deleteAccountClickedHandler,
+    deleteAccountClicked,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -69,9 +72,15 @@ const ProfileSideBar = ({
                     <div className="private-profile-sidebar-cat-content mb-2">
                         Password
                     </div>
-                    <div className="private-profile-sidebar-cat-content mb-2 text-danger">
+                    <div
+                        className="private-profile-sidebar-cat-content mb-2 text-danger"
+                        onClick={() => deleteAccountClickedHandler()}
+                    >
                         Delete Account
                     </div>
+                    <DeleteAccountModal
+                        deleteAccountClicked={deleteAccountClicked}
+                    />
                 </div>
             </div>
         </div>
