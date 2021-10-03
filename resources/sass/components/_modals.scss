@@ -1,0 +1,12 @@
+.delete-account-modal {
+    input {
+        outline: none !important;
+        border: none !important;
+        border-bottom: 1px solid $main-blue !important;
+    }
+}
+
+.delete-account-modal-btn {
+    background: $red !important;
+    color: $main-white !important;
+}

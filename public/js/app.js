@@ -8727,6 +8727,7 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
         show: show,
         onHide: handleClose,
+        className: "delete-account-modal",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
@@ -8742,13 +8743,12 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
               children: "Enter Password "
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "password",
-              className: "form-control block",
+              className: "form-control block shadow-none",
               value: password,
               onChange: function onChange(e) {
                 return setPassword(e.target.value);
               },
-              name: "password",
-              id: "password"
+              name: "password"
             })]
           }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             className: "text-danger",
@@ -8761,7 +8761,7 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
             children: "Cancel"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: deleteAccountHandler,
-            className: "bttn-material-flat bttn-sm bttn-danger",
+            className: "bttn-material-flat bttn-sm delete-account-modal-btn",
             children: "Delete"
           })]
         })]

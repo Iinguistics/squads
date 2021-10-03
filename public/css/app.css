@@ -10369,27 +10369,15 @@ form a {
     transform: translate(24px, 0);
   }
 }
-.login-help-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 50px;
-}
-.login-help-header svg {
-  height: 32px;
-  width: 32px;
-  color: #4d89ff;
-}
-.login-help-header span {
-  font-size: 42px;
-  margin-left: 15px;
+.delete-account-modal input {
+  outline: none !important;
+  border: none !important;
+  border-bottom: 1px solid #4d89ff !important;
 }
 
-.login-help-links a {
-  color: #4d89ff;
-  font-size: 16px;
-}
-.login-help-links a:hover {
-  text-decoration: none !important;
+.delete-account-modal-btn {
+  background: #ed4245 !important;
+  color: #ffffff !important;
 }
 
 .section-1 {
@@ -10516,6 +10504,29 @@ form a {
     height: 1100px;
   }
 }
+.login-help-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.login-help-header svg {
+  height: 32px;
+  width: 32px;
+  color: #4d89ff;
+}
+.login-help-header span {
+  font-size: 42px;
+  margin-left: 15px;
+}
+
+.login-help-links a {
+  color: #4d89ff;
+  font-size: 16px;
+}
+.login-help-links a:hover {
+  text-decoration: none !important;
+}
+
 .private-profile-main-container {
   height: calc(100vh - 67px);
 }
