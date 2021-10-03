@@ -15,6 +15,7 @@ const ProfileSideBar = ({
     tabHandler,
     deleteAccountClickedHandler,
     deleteAccountClicked,
+    loggedInToggleHandler,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -80,6 +81,7 @@ const ProfileSideBar = ({
                     </div>
                     <DeleteAccountModal
                         deleteAccountClicked={deleteAccountClicked}
+                        loggedInToggleHandler={loggedInToggleHandler}
                     />
                 </div>
             </div>

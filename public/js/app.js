@@ -6443,7 +6443,8 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
       passwordTab = _ref.passwordTab,
       tabHandler = _ref.tabHandler,
       deleteAccountClickedHandler = _ref.deleteAccountClickedHandler,
-      deleteAccountClicked = _ref.deleteAccountClicked;
+      deleteAccountClicked = _ref.deleteAccountClicked,
+      loggedInToggleHandler = _ref.loggedInToggleHandler;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "private-profile-sidebar-container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -6508,7 +6509,8 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
           },
           children: "Delete Account"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          deleteAccountClicked: deleteAccountClicked
+          deleteAccountClicked: deleteAccountClicked,
+          loggedInToggleHandler: loggedInToggleHandler
         })]
       })
     })
@@ -6531,11 +6533,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileSideBar */ "./resources/js/components/PrivateProfile/ProfileSideBar.js");
 /* harmony import */ var _Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Context/PrivateProfileContext */ "./resources/js/components/Context/PrivateProfileContext.js");
-/* harmony import */ var _EditProfile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditProfile */ "./resources/js/components/PrivateProfile/EditProfile.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Context_UserContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context/UserContext */ "./resources/js/components/Context/UserContext.js");
+/* harmony import */ var _EditProfile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditProfile */ "./resources/js/components/PrivateProfile/EditProfile.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6556,7 +6559,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function (props) {
+
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       userInfo = _useState2[0],
@@ -6573,45 +6577,53 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(functio
 
     console.log(userInfoData);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext.Consumer, {
       children: function children(_ref) {
-        var myProfileTab = _ref.myProfileTab,
-            generalInfoTab = _ref.generalInfoTab,
-            uploadPhotoTab = _ref.uploadPhotoTab,
-            privacyTab = _ref.privacyTab,
-            appearanceTab = _ref.appearanceTab,
-            emailTab = _ref.emailTab,
-            gamertagTab = _ref.gamertagTab,
-            activisionIdTab = _ref.activisionIdTab,
-            passwordTab = _ref.passwordTab,
-            tabHandler = _ref.tabHandler,
-            deleteAccountClickedHandler = _ref.deleteAccountClickedHandler,
-            deleteAccountClicked = _ref.deleteAccountClicked;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "d-flex flex-column flex-md-row private-profile-main-container",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              tabHandler: tabHandler,
-              myProfileTab: myProfileTab,
-              generalInfoTab: generalInfoTab,
-              uploadPhotoTab: uploadPhotoTab,
-              privacyTab: privacyTab,
-              appearanceTab: appearanceTab,
-              emailTab: emailTab,
-              gamertagTab: gamertagTab,
-              activisionIdTab: activisionIdTab,
-              passwordTab: passwordTab,
-              deleteAccountClickedHandler: deleteAccountClickedHandler,
-              deleteAccountClicked: deleteAccountClicked
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "container mt-5 main-header",
-              children: generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                userInfo: userInfo,
-                tabHandler: tabHandler,
-                tab: "myProfile"
-              })
-            })]
+        var loggedInToggleHandler = _ref.loggedInToggleHandler;
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
+            children: function children(_ref2) {
+              var myProfileTab = _ref2.myProfileTab,
+                  generalInfoTab = _ref2.generalInfoTab,
+                  uploadPhotoTab = _ref2.uploadPhotoTab,
+                  privacyTab = _ref2.privacyTab,
+                  appearanceTab = _ref2.appearanceTab,
+                  emailTab = _ref2.emailTab,
+                  gamertagTab = _ref2.gamertagTab,
+                  activisionIdTab = _ref2.activisionIdTab,
+                  passwordTab = _ref2.passwordTab,
+                  tabHandler = _ref2.tabHandler,
+                  deleteAccountClickedHandler = _ref2.deleteAccountClickedHandler,
+                  deleteAccountClicked = _ref2.deleteAccountClicked;
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "d-flex flex-column flex-md-row private-profile-main-container",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                    tabHandler: tabHandler,
+                    myProfileTab: myProfileTab,
+                    generalInfoTab: generalInfoTab,
+                    uploadPhotoTab: uploadPhotoTab,
+                    privacyTab: privacyTab,
+                    appearanceTab: appearanceTab,
+                    emailTab: emailTab,
+                    gamertagTab: gamertagTab,
+                    activisionIdTab: activisionIdTab,
+                    passwordTab: passwordTab,
+                    deleteAccountClickedHandler: deleteAccountClickedHandler,
+                    deleteAccountClicked: deleteAccountClicked,
+                    loggedInToggleHandler: loggedInToggleHandler
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "container mt-5 main-header",
+                    children: generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      userInfo: userInfo,
+                      tabHandler: tabHandler,
+                      tab: "myProfile"
+                    })
+                  })]
+                })
+              });
+            }
           })
         });
       }
@@ -8633,6 +8645,11 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
       password = _useState4[0],
       setPassword = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      error = _useState6[0],
+      setError = _useState6[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.deleteAccountClicked !== 0) {
       setShow(true);
@@ -8645,44 +8662,58 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
 
   var deleteAccountHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _yield$Api$put, data;
+      var values, _yield$Api$put, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
+              if (!(password.length < 6)) {
+                _context.next = 5;
+                break;
+              }
+
+              setError("Invalid credentials");
+              return _context.abrupt("return");
+
+            case 5:
+              setError("");
+
+            case 6:
+              _context.prev = 6;
               values = {
                 password: password
               };
-              _context.next = 4;
+              _context.next = 10;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/account_destroy", values);
 
-            case 4:
+            case 10:
               _yield$Api$put = _context.sent;
               data = _yield$Api$put.data;
 
               if (data.success) {
-                localStorage.removeItem("userInfo"); //props.loggedInToggleHandler();
-
+                localStorage.removeItem("userInfo");
+                props.loggedInToggleHandler();
                 handleClose();
-                props.history.push("/"); // setDeleteAccountError(false);
-              } else {//setDeleteAccountError(false);
+                props.history.push("/");
+              } else {
+                setError(data.error);
               }
 
-              _context.next = 11;
+              _context.next = 18;
               break;
 
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](0);
+            case 15:
+              _context.prev = 15;
+              _context.t0 = _context["catch"](6);
+              setError(_context.t0.message);
 
-            case 11:
+            case 18:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[6, 15]]);
     }));
 
     return function deleteAccountHandler() {
@@ -8704,12 +8735,13 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
           children: "Are you sure you want to delete your account?"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
               htmlFor: "password",
               children: "Enter Password "
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "password",
               className: "form-control block",
               value: password,
               onChange: function onChange(e) {
@@ -8718,7 +8750,10 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
               name: "password",
               id: "password"
             })]
-          })
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            className: "text-danger",
+            children: error
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: handleClose,

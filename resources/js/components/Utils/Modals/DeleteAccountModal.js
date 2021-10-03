@@ -6,6 +6,7 @@ import Api from "../../Api";
 const DeleteAccountModal = withRouter((props) => {
     const [show, setShow] = useState(false);
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     useEffect(() => {
         if (props.deleteAccountClicked !== 0) {
@@ -16,24 +17,28 @@ const DeleteAccountModal = withRouter((props) => {
     const handleClose = () => setShow(false);
 
     const deleteAccountHandler = async () => {
+        if (password.length < 6) {
+            setError("Invalid credentials");
+            return;
+        } else {
+            setError("");
+        }
         try {
-            values = {
+            const values = {
                 password: password,
             };
             const { data } = await Api.put("/account_destroy", values);
 
             if (data.success) {
                 localStorage.removeItem("userInfo");
-
-                //props.loggedInToggleHandler();
+                props.loggedInToggleHandler();
                 handleClose();
                 props.history.push("/");
-                // setDeleteAccountError(false);
             } else {
-                //setDeleteAccountError(false);
+                setError(data.error);
             }
         } catch (error) {
-            // setDeleteAccountError(false);
+            setError(error.message);
         }
     };
 
@@ -53,6 +58,7 @@ const DeleteAccountModal = withRouter((props) => {
                         <div>
                             <label htmlFor="password">Enter Password </label>
                             <input
+                                type="password"
                                 className="form-control block"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -60,6 +66,7 @@ const DeleteAccountModal = withRouter((props) => {
                                 id="password"
                             />
                         </div>
+                        {error && <span className="text-danger">{error}</span>}
                     </Modal.Body>
                     <Modal.Footer>
                         <button

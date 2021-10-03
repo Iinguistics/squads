@@ -200,22 +200,21 @@ class UserAuthController extends Controller
 
     public function account_destroy(Request $request)
     {
-        if (!Auth::attempt(['password' => $request->password, 'active' => 1])) {
-            return response([
-                'message' => 'Invalid credentials'
-            ], HttpFoundationResponse::HTTP_UNAUTHORIZED);
-        }
-
         $user = Auth::user();
+
+        if (!Auth::guard('web')->attempt(['email' => $user->email, 'password' => $request->password, 'active' => 1])) {
+            return response([
+                'error' => 'Invalid credentials'
+            ], 200);
+        }
 
         $destroyed_user = User::where('email', $user['email']);
 
         $destroyed_user->update(array('active' => 0));
 
-
         $response = array(
             'success' => $destroyed_user ? true : false,
-            'error' => "failed to delete account",
+            'error' => $destroyed_user ? null : "failed to delete account",
         );
         return response()->json($response, 200);
     }
