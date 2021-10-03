@@ -33,9 +33,7 @@ const LogoutModal = withRouter((props) => {
                     <Modal.Header closeButton>
                         <Modal.Title>Sign Out</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="bg-dark text-white">
-                        Are you sure you want to sign out?
-                    </Modal.Body>
+                    <Modal.Body>Are you sure you want to sign out?</Modal.Body>
                     <Modal.Footer>
                         <button
                             onClick={handleClose}

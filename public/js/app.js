@@ -8670,7 +8670,6 @@ var LogoutModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(f
             children: "Sign Out"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
-          className: "bg-dark text-white",
           children: "Are you sure you want to sign out?"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
