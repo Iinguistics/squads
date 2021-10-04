@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Container } from "react-bootstrap";
+import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import Api from "../../../Api";
 import SuccessModal from "../SuccessModal";
 
-const EmailModal = withRouter((props) => {
+const GamertagModal = withRouter((props) => {
     const [show, setShow] = useState(false);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [email, setEmail] = useState("");
+    const [gamertag, setGamertag] = useState("");
 
     useEffect(() => {
-        if (props.emailClicked !== 0) {
+        if (props.gamertagClicked !== 0) {
             setShow(true);
         }
-    }, [props.emailClicked]);
+    }, [props.gamertagClicked]);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setGamertag(data.gamertag);
+    };
 
     const fetchProfileHandler = async () => {
         setLoading(true);
         try {
             const { data } = await Api.get("/current_user");
             if (data) {
-                setEmail(data.email);
+                setGamertag(data.gamertag);
                 setLoading(false);
             }
         } catch (error) {
@@ -38,17 +41,13 @@ const EmailModal = withRouter((props) => {
     }, []);
 
     const updateAccountHandler = async () => {
-        if (email === "") {
+        if (gamertag === "") {
             setError("Required");
-            return;
-        }
-        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-            setError("Invalid email address");
             return;
         }
         try {
             let value = {
-                email: email,
+                gamertag: gamertag,
             };
             const { data } = await Api.put(
                 "/update_current_user_account",
@@ -61,7 +60,7 @@ const EmailModal = withRouter((props) => {
                 setShow(false);
             } else {
                 setSuccess(false);
-                setError(data.error);
+                setError(true);
             }
         } catch (error) {
             setError(error.message);
@@ -74,7 +73,7 @@ const EmailModal = withRouter((props) => {
                 <SuccessModal
                     success={success}
                     titleText="Success"
-                    bodyText="Your email has been updated."
+                    bodyText="Your gamertag has been updated."
                     buttonText="Got it"
                     tabHandler={props.tabHandler}
                     tab="myProfile"
@@ -85,17 +84,16 @@ const EmailModal = withRouter((props) => {
                     className="account-modal"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Update Email</Modal.Title>
+                        <Modal.Title>Update Gamertag</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <label htmlFor="email">Enter new email</label>
+                        <label htmlFor="gamertag">Enter new gamertag</label>
                         <input
-                            type="email"
+                            type="text"
                             className="form-control block shadow-none"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            name="email"
-                            minLength="6"
+                            value={gamertag}
+                            onChange={(e) => setGamertag(e.target.value)}
+                            name="text"
                         />
                         {error && <span className="text-danger">{error}</span>}
                     </Modal.Body>
@@ -119,4 +117,4 @@ const EmailModal = withRouter((props) => {
     );
 });
 
-export default EmailModal;
+export default GamertagModal;

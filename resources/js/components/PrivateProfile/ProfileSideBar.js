@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import DeleteAccountModal from "../Utils/Modals/DeleteAccountModal";
 import EmailModal from "../Utils/Modals/UserSettings/EmailModal";
+import GamertagModal from "../Utils/Modals/UserSettings/GamertagModal";
 
 const ProfileSideBar = ({
     myProfileTab,
@@ -19,6 +20,8 @@ const ProfileSideBar = ({
     loggedInToggleHandler,
     emailClickedHandler,
     emailClicked,
+    gamertagClickedHandler,
+    gamertagClicked,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -77,7 +80,10 @@ const ProfileSideBar = ({
                         >
                             Email
                         </div>
-                        <div className="private-profile-sidebar-cat-content mb-2">
+                        <div
+                            className="private-profile-sidebar-cat-content mb-2"
+                            onClick={() => gamertagClickedHandler()}
+                        >
                             Gamertag
                         </div>
                         <div className="private-profile-sidebar-cat-content mb-2">
@@ -100,6 +106,10 @@ const ProfileSideBar = ({
                 loggedInToggleHandler={loggedInToggleHandler}
             />
             <EmailModal emailClicked={emailClicked} tabHandler={tabHandler} />
+            <GamertagModal
+                gamertagClicked={gamertagClicked}
+                tabHandler={tabHandler}
+            />
         </div>
     );
 };

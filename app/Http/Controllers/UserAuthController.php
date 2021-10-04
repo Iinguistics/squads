@@ -225,6 +225,18 @@ class UserAuthController extends Controller
 
         $input = $request->all();
 
+        // if updating email
+        if ($input['email']) {
+            $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
+            if (in_array($input['email'], $emails)) {
+                $response = array(
+                    'success' => false,
+                    'error' => "email already in use.",
+                );
+                return response()->json($response, 200);
+            }
+        }
+
         $results = User::where('id', $user->id)
             ->update($input);
 
