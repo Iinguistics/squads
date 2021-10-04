@@ -96,8 +96,10 @@ const PrivateProfileProvider = (props) => {
                 activisionIdTab,
                 passwordTab,
                 deleteAccountClicked,
+                emailClicked,
                 tabHandler,
                 deleteAccountClickedHandler,
+                emailClickedHandler,
             }}
         >
             {props.children}

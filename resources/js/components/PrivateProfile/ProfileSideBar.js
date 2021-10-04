@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import DeleteAccountModal from "../Utils/Modals/DeleteAccountModal";
+import EmailModal from "../Utils/Modals/UserSettings/EmailModal";
 
 const ProfileSideBar = ({
     myProfileTab,
@@ -16,6 +17,8 @@ const ProfileSideBar = ({
     deleteAccountClickedHandler,
     deleteAccountClicked,
     loggedInToggleHandler,
+    emailClickedHandler,
+    emailClicked,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -61,7 +64,10 @@ const ProfileSideBar = ({
                     <div className="private-profile-sidebar-cat-head mb-2">
                         user settings
                     </div>
-                    <div className="private-profile-sidebar-cat-content mb-2">
+                    <div
+                        className="private-profile-sidebar-cat-content mb-2"
+                        onClick={() => emailClickedHandler()}
+                    >
                         Email
                     </div>
                     <div className="private-profile-sidebar-cat-content mb-2">
@@ -83,6 +89,7 @@ const ProfileSideBar = ({
                         deleteAccountClicked={deleteAccountClicked}
                         loggedInToggleHandler={loggedInToggleHandler}
                     />
+                    <EmailModal emailClicked={emailClicked} />
                 </div>
             </div>
         </div>

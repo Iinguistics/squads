@@ -10369,7 +10369,7 @@ form a {
     transform: translate(24px, 0);
   }
 }
-.delete-account-modal input {
+.account-modal input {
   outline: none !important;
   border: none !important;
   border-bottom: 1px solid #4d89ff !important;
@@ -10377,6 +10377,11 @@ form a {
 
 .delete-account-modal-btn {
   background: #ed4245 !important;
+  color: #ffffff !important;
+}
+
+.update-account-modal-btn {
+  background: #4d89ff !important;
   color: #ffffff !important;
 }
 

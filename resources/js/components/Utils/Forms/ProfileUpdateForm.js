@@ -14,12 +14,15 @@ const ProfileUpdateForm = withRouter((props) => {
     const [profileData, setProfileData] = useState({});
 
     const fetchProfileHandler = async () => {
+        setLoading(true);
         try {
-            const { data } = await Api.get("/show_current_user");
+            const { data } = await Api.get("/show_current_user_profile");
             if (data.success) {
                 setProfileData(data.data[0]);
+                setLoading(false);
             }
         } catch (error) {
+            setLoading(false);
             setError(error.message);
         }
     };
@@ -48,7 +51,10 @@ const ProfileUpdateForm = withRouter((props) => {
 
     const updateProfileHandler = async (values) => {
         try {
-            const { data } = await Api.put("/update_current_user", values);
+            const { data } = await Api.put(
+                "/update_current_user_profile",
+                values
+            );
 
             if (data.success) {
                 setSuccess(true);
@@ -186,7 +192,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="6"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik06"
                                         >
                                             <Form.Label>Location</Form.Label>
                                             <Form.Control
@@ -203,7 +209,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="12"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik07"
                                         >
                                             <Form.Label>Bio</Form.Label>
                                             <InputGroup hasValidation>
@@ -231,7 +237,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="3"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik08"
                                         >
                                             <Form.Label>Carrier</Form.Label>
                                             <Form.Control
@@ -246,7 +252,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="3"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik09"
                                         >
                                             <Form.Label>Ping</Form.Label>
                                             <Form.Control
@@ -261,7 +267,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="3"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik10"
                                         >
                                             <Form.Label>
                                                 Download Speed
@@ -278,7 +284,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="3"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik11"
                                         >
                                             <Form.Label>
                                                 Upload Speed
@@ -305,7 +311,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="6"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik12"
                                         >
                                             <Form.Label>Twitch</Form.Label>
                                             <div className="d-flex flex-row align-items-center">
@@ -325,7 +331,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="6"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik13"
                                         >
                                             <Form.Label>Twitter</Form.Label>
                                             <div className="d-flex flex-row align-items-center">
@@ -347,7 +353,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="6"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik14"
                                         >
                                             <Form.Label>Instagram</Form.Label>
                                             <div className="d-flex flex-row align-items-center">
@@ -367,7 +373,7 @@ const ProfileUpdateForm = withRouter((props) => {
                                         <Form.Group
                                             as={Col}
                                             md="6"
-                                            controlId="validationFormik05"
+                                            controlId="validationFormik15"
                                         >
                                             <Form.Label>Youtube</Form.Label>
                                             <div className="d-flex flex-row align-items-center">

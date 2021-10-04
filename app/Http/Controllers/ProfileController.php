@@ -22,7 +22,7 @@ class ProfileController extends Controller
     {
     }
 
-    public function show_current_user()
+    public function show_current_user_profile()
     {
         $user = Auth::user();
 
@@ -48,7 +48,7 @@ class ProfileController extends Controller
         return response()->json($response, 200);
     }
 
-    public function update_current_user(Request $request)
+    public function update_current_user_profile(Request $request)
     {
         $user = Auth::user();
 

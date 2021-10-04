@@ -39,7 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('account_destroy', [UserAuthController::class, 'account_destroy']);
 
     // Profile
-    Route::get('show_current_user', [ProfileController::class, 'show_current_user']);
-    Route::put('update_current_user', [ProfileController::class, 'update_current_user']);
+    Route::get('show_current_user_profile', [ProfileController::class, 'show_current_user_profile']);
+    Route::put('update_current_user_profile', [ProfileController::class, 'update_current_user_profile']);
     Route::get('profile/{id}', [ProfileController::class, 'show']);
 });

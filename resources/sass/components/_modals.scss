@@ -1,4 +1,4 @@
-.delete-account-modal {
+.account-modal {
     input {
         outline: none !important;
         border: none !important;
@@ -8,5 +8,10 @@
 
 .delete-account-modal-btn {
     background: $red !important;
+    color: $main-white !important;
+}
+
+.update-account-modal-btn {
+    background: $main-blue !important;
     color: $main-white !important;
 }

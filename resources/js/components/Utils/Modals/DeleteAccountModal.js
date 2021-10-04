@@ -48,7 +48,7 @@ const DeleteAccountModal = withRouter((props) => {
                 <Modal
                     show={show}
                     onHide={handleClose}
-                    className="delete-account-modal"
+                    className="account-modal"
                 >
                     <Modal.Header closeButton>
                         <Modal.Title className="text-danger">
@@ -60,7 +60,7 @@ const DeleteAccountModal = withRouter((props) => {
                     </Modal.Body>
                     <Modal.Body>
                         <div>
-                            <label htmlFor="password">Enter Password </label>
+                            <label htmlFor="password">Enter Password</label>
                             <input
                                 type="password"
                                 className="form-control block shadow-none"
