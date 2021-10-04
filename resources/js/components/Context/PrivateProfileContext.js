@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import Api from "../Api";
 
 export const PrivateProfileContext = createContext();
@@ -15,6 +15,7 @@ const PrivateProfileProvider = (props) => {
     const [passwordTab, setPasswordTab] = useState(false);
 
     const [deleteAccountClicked, setDeleteAccountClicked] = useState(0);
+    const [emailClicked, setEmailClicked] = useState(0);
 
     const resetTabs = () => {
         setMyProfileTab(false);
@@ -76,6 +77,10 @@ const PrivateProfileProvider = (props) => {
         setDeleteAccountClicked(
             (deleteAccountClicked) => deleteAccountClicked + 1
         );
+    };
+
+    const emailClickedHandler = () => {
+        setEmailClicked((emailClicked) => emailClicked + 1);
     };
 
     return (

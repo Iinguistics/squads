@@ -5564,6 +5564,11 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       deleteAccountClicked = _useState20[0],
       setDeleteAccountClicked = _useState20[1];
 
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState22 = _slicedToArray(_useState21, 2),
+      emailClicked = _useState22[0],
+      setEmailClicked = _useState22[1];
+
   var resetTabs = function resetTabs() {
     setMyProfileTab(false);
     setGeneralInfoTab(false);
@@ -5631,6 +5636,12 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
   var deleteAccountClickedHandler = function deleteAccountClickedHandler() {
     setDeleteAccountClicked(function (deleteAccountClicked) {
       return deleteAccountClicked + 1;
+    });
+  };
+
+  var emailClickedHandler = function emailClickedHandler() {
+    setEmailClicked(function (emailClicked) {
+      return emailClicked + 1;
     });
   };
 
@@ -8887,7 +8898,7 @@ var LogoutModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(f
             children: "Cancel"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: logOutHandler,
-            className: "bttn-material-flat bttn-sm bttn-danger",
+            className: "bttn-material-flat bttn-sm bttn-primary",
             children: "Sign Out"
           })]
         })]

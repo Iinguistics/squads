@@ -43,7 +43,7 @@ const LogoutModal = withRouter((props) => {
                         </button>
                         <button
                             onClick={logOutHandler}
-                            className="bttn-material-flat bttn-sm bttn-danger"
+                            className="bttn-material-flat bttn-sm bttn-primary"
                         >
                             Sign Out
                         </button>
