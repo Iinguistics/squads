@@ -27,13 +27,11 @@ const SuccessModal = withRouter((props) => {
                 <Modal.Header closeButton>
                     <Modal.Title>{props.titleText}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="bg-dark text-white">
-                    {props.bodyText}
-                </Modal.Body>
+                <Modal.Body>{props.bodyText}</Modal.Body>
                 <Modal.Footer className="m-auto">
                     <button
                         onClick={handleClose}
-                        className="bttn-pill bttn-sm bttn-primary bg-dark"
+                        className="bttn-material-flat bttn-sm update-account-modal-btn"
                     >
                         {props.buttonText}
                     </button>

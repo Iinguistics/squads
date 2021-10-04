@@ -89,7 +89,10 @@ const ProfileSideBar = ({
                         deleteAccountClicked={deleteAccountClicked}
                         loggedInToggleHandler={loggedInToggleHandler}
                     />
-                    <EmailModal emailClicked={emailClicked} />
+                    <EmailModal
+                        emailClicked={emailClicked}
+                        tabHandler={tabHandler}
+                    />
                 </div>
             </div>
         </div>

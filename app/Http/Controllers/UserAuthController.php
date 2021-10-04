@@ -218,4 +218,22 @@ class UserAuthController extends Controller
         );
         return response()->json($response, 200);
     }
+
+    public function update_current_user_account(Request $request)
+    {
+        $user = Auth::user();
+
+        $input = $request->all();
+
+        $results = User::where('id', $user->id)
+            ->update($input);
+
+
+        $response = array(
+            'success' => $results ? true : false,
+            'data' => $results,
+        );
+
+        return response()->json($response, 200);
+    }
 }

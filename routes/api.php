@@ -37,6 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('current_user', [UserAuthController::class, 'current_user']);
     Route::get('logout', [UserAuthController::class, 'logout']);
     Route::put('account_destroy', [UserAuthController::class, 'account_destroy']);
+    Route::put('update_current_user_account', [UserAuthController::class, 'update_current_user_account']);
+
 
     // Profile
     Route::get('show_current_user_profile', [ProfileController::class, 'show_current_user_profile']);

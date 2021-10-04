@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import Api from "../../../Api";
+import SuccessModal from "../SuccessModal";
 
 const EmailModal = withRouter((props) => {
     const [show, setShow] = useState(false);
@@ -37,11 +38,40 @@ const EmailModal = withRouter((props) => {
         fetchProfileHandler();
     }, []);
 
-    console.log(email, "email");
+    const updateAccountHandler = async () => {
+        try {
+            let value = {
+                email: email,
+            };
+            const { data } = await Api.put(
+                "/update_current_user_account",
+                value
+            );
+
+            if (data.success) {
+                setSuccess(true);
+                setError(false);
+                setShow(false);
+            } else {
+                setSuccess(false);
+                setError(true);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     return (
         <div className="mt-5 text-center">
             <Container>
+                <SuccessModal
+                    success={success}
+                    titleText="Success"
+                    bodyText="Your email has been updated."
+                    buttonText="Got it"
+                    tabHandler={props.tabHandler}
+                    tab="myProfile"
+                />
                 <Modal
                     show={show}
                     onHide={handleClose}
@@ -69,7 +99,7 @@ const EmailModal = withRouter((props) => {
                             Cancel
                         </button>
                         <button
-                            onClick={() => console.log("ran")}
+                            onClick={updateAccountHandler}
                             className="bttn-material-flat bttn-sm update-account-modal-btn"
                         >
                             Update
