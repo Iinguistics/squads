@@ -10037,37 +10037,6 @@ nav .dropdown-item {
   margin-top: 7rem !important;
 }
 
-.private-profile-sidebar-container {
-  width: 25%;
-  background: #f2f3f5;
-}
-
-.private-profile-sidebar-cat-head {
-  color: #6a7480;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.private-profile-sidebar-cat-content {
-  color: #2e3338;
-  font-size: 16px;
-}
-
-.private-profile-sidebar-cat-content:hover {
-  cursor: pointer;
-  color: #6a7480;
-}
-
-.content-active {
-  color: #3752c4;
-  font-weight: 900;
-}
-
-.content-active:hover {
-  cursor: default;
-  color: #3752c4;
-}
-
 .light-divider {
   background: #eeecfb;
   width: 100%;
@@ -10534,4 +10503,45 @@ form a {
 
 .private-profile-main-container {
   height: calc(100vh - 67px);
+}
+
+.private-profile-sidebar-container {
+  width: 25%;
+  background: #f2f3f5;
+}
+
+.private-profile-sidebar-cat-head {
+  color: #6a7480;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.private-profile-sidebar-cat-content {
+  color: #2e3338;
+  font-size: 16px;
+}
+
+.private-profile-sidebar-cat-content:hover {
+  cursor: pointer;
+  color: #6a7480;
+}
+
+.content-active {
+  color: #3752c4;
+  font-weight: 900;
+}
+
+.content-active:hover {
+  cursor: default;
+  color: #3752c4;
+}
+
+@media only screen and (max-width: 600px) {
+  .private-profile-sidebar-container {
+    width: 100%;
+  }
+
+  .private-profile-sidebar-divider {
+    display: none;
+  }
 }

@@ -6462,81 +6462,89 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
       loggedInToggleHandler = _ref.loggedInToggleHandler,
       emailClickedHandler = _ref.emailClickedHandler,
       emailClicked = _ref.emailClicked;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "private-profile-sidebar-container",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "container mt-5 main-header",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "d-flex flex-column justify-content-center align-items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-head mb-2",
-          children: "profile settings"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          onClick: function onClick() {
-            return tabHandler("myProfile");
-          },
-          className: "private-profile-sidebar-cat-content mb-2 ".concat(myProfileTab ? "content-active" : ""),
-          children: "My Profile"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          onClick: function onClick() {
-            return tabHandler("generalInfo");
-          },
-          className: "private-profile-sidebar-cat-content mb-2 ".concat(generalInfoTab ? "content-active" : ""),
-          children: "General Info"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
-          children: "Upload Photo"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
-          children: "Privacy"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-divider my-2"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-head mb-2",
-          children: "my squads"
+        className: "d-flex flex-row flex-md-column justify-content-between align-items-center flex-wrap",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-head mb-2",
+            children: "profile settings"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            onClick: function onClick() {
+              return tabHandler("myProfile");
+            },
+            className: "private-profile-sidebar-cat-content mb-2 ".concat(myProfileTab ? "content-active" : ""),
+            children: "My Profile"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            onClick: function onClick() {
+              return tabHandler("generalInfo");
+            },
+            className: "private-profile-sidebar-cat-content mb-2 ".concat(generalInfoTab ? "content-active" : ""),
+            children: "General Info"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            children: "Upload Photo"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            children: "Privacy"
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "private-profile-sidebar-divider my-2"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-head mb-2",
-          children: "app settings"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
-          children: "Appearance"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-head mb-2",
+            children: "my squads"
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "private-profile-sidebar-divider my-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-head mb-2",
+            children: "app settings"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            children: "Appearance"
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-head mb-2",
-          children: "user settings"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
-          onClick: function onClick() {
-            return emailClickedHandler();
-          },
-          children: "Email"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
-          children: "Gamertag"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
-          children: "Activision Id"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2",
-          children: "Password"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "private-profile-sidebar-cat-content mb-2 text-danger",
-          onClick: function onClick() {
-            return deleteAccountClickedHandler();
-          },
-          children: "Delete Account"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          deleteAccountClicked: deleteAccountClicked,
-          loggedInToggleHandler: loggedInToggleHandler
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Modals_UserSettings_EmailModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          emailClicked: emailClicked,
-          tabHandler: tabHandler
+          className: "private-profile-sidebar-divider my-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-head mb-2",
+            children: "user settings"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            onClick: function onClick() {
+              return emailClickedHandler();
+            },
+            children: "Email"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            children: "Gamertag"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            children: "Activision Id"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            children: "Password"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2 text-danger",
+            onClick: function onClick() {
+              return deleteAccountClickedHandler();
+            },
+            children: "Delete Account"
+          })]
         })]
       })
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      deleteAccountClicked: deleteAccountClicked,
+      loggedInToggleHandler: loggedInToggleHandler
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Modals_UserSettings_EmailModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      emailClicked: emailClicked,
+      tabHandler: tabHandler
+    })]
   });
 };
 
