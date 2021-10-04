@@ -9433,7 +9433,7 @@ var EmailModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(fu
                 email: email
               };
               _context2.next = 10;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_account", value);
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_account_email", value);
 
             case 10:
               _yield$Api$put = _context2.sent;
@@ -9603,12 +9603,11 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
 
   var handleClose = function handleClose() {
     setShow(false);
-    setGamertag(data.gamertag);
   };
 
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _yield$Api$get, _data;
+      var _yield$Api$get, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -9621,10 +9620,10 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
 
             case 4:
               _yield$Api$get = _context.sent;
-              _data = _yield$Api$get.data;
+              data = _yield$Api$get.data;
 
-              if (_data) {
-                setGamertag(_data.gamertag);
+              if (data) {
+                setGamertag(data.gamertag);
                 setLoading(false);
               }
 
@@ -9656,7 +9655,7 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
 
   var updateAccountHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var value, _yield$Api$put, _data2;
+      var value, _yield$Api$put, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
@@ -9680,9 +9679,9 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
 
             case 7:
               _yield$Api$put = _context2.sent;
-              _data2 = _yield$Api$put.data;
+              data = _yield$Api$put.data;
 
-              if (_data2.success) {
+              if (data.success) {
                 setSuccess(true);
                 setError(false);
                 setShow(false);

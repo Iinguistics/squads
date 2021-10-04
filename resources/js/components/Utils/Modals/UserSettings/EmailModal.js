@@ -51,7 +51,7 @@ const EmailModal = withRouter((props) => {
                 email: email,
             };
             const { data } = await Api.put(
-                "/update_current_user_account",
+                "/update_current_user_account_email",
                 value
             );
 

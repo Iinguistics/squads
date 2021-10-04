@@ -19,7 +19,6 @@ const GamertagModal = withRouter((props) => {
 
     const handleClose = () => {
         setShow(false);
-        setGamertag(data.gamertag);
     };
 
     const fetchProfileHandler = async () => {
