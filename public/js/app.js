@@ -9304,15 +9304,10 @@ var EmailModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(fu
       success = _useState8[0],
       setSuccess = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
-      profileData = _useState10[0],
-      setProfileData = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
-      _useState12 = _slicedToArray(_useState11, 2),
-      email = _useState12[0],
-      setEmail = _useState12[1];
+      email = _useState10[0],
+      setEmail = _useState10[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.emailClicked !== 0) {

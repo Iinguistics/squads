@@ -9,7 +9,6 @@ const EmailModal = withRouter((props) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [profileData, setProfileData] = useState(null);
     const [email, setEmail] = useState("");
 
     useEffect(() => {
