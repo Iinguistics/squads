@@ -18,6 +18,7 @@ const PrivateProfileProvider = (props) => {
     const [emailClicked, setEmailClicked] = useState(0);
     const [gamertagClicked, setGamertagClicked] = useState(0);
     const [activisionClicked, setActivisionClicked] = useState(0);
+    const [passwordClicked, setPasswordClicked] = useState(0);
 
     const resetTabs = () => {
         setMyProfileTab(false);
@@ -93,6 +94,10 @@ const PrivateProfileProvider = (props) => {
         setActivisionClicked((activisionClicked) => activisionClicked + 1);
     };
 
+    const passwordClickedHandler = () => {
+        setPasswordClicked((passwordClicked) => passwordClicked + 1);
+    };
+
     return (
         <PrivateProfileContext.Provider
             value={{
@@ -109,11 +114,13 @@ const PrivateProfileProvider = (props) => {
                 emailClicked,
                 gamertagClicked,
                 activisionClicked,
+                passwordClicked,
                 tabHandler,
                 deleteAccountClickedHandler,
                 emailClickedHandler,
                 gamertagClickedHandler,
                 activisionClickedHandler,
+                passwordClickedHandler,
             }}
         >
             {props.children}

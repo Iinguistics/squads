@@ -267,10 +267,10 @@ class UserAuthController extends Controller
     {
         $user = Auth::user();
 
-        if (!Auth::attempt(['email' => $user->email, 'password' => $request->current_password, 'active' => 1])) {
+        if (!Auth::guard('web')->attempt(['email' => $user->email, 'password' => $request->current_password, 'active' => 1])) {
             return response([
-                'message' => 'Invalid credentials'
-            ], HttpFoundationResponse::HTTP_UNAUTHORIZED);
+                'error' => 'Invalid credentials'
+            ], 200);
         }
 
         $input = $request->all();

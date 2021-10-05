@@ -47,6 +47,8 @@ const index = withRouter((props) => {
                                     gamertagClicked,
                                     activisionClickedHandler,
                                     activisionClicked,
+                                    passwordClickedHandler,
+                                    passwordClicked,
                                 }) => {
                                     return (
                                         <>
@@ -94,6 +96,12 @@ const index = withRouter((props) => {
                                                     }
                                                     activisionClicked={
                                                         activisionClicked
+                                                    }
+                                                    passwordClickedHandler={
+                                                        passwordClickedHandler
+                                                    }
+                                                    passwordClicked={
+                                                        passwordClicked
                                                     }
                                                 />
                                                 <div className="container mt-5 main-header">

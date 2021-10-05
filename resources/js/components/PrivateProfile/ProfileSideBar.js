@@ -4,6 +4,7 @@ import DeleteAccountModal from "../Utils/Modals/DeleteAccountModal";
 import EmailModal from "../Utils/Modals/UserSettings/EmailModal";
 import GamertagModal from "../Utils/Modals/UserSettings/GamertagModal";
 import ActivisionIdModal from "../Utils/Modals/UserSettings/ActivisionIdModal";
+import PasswordModal from "../Utils/Modals/UserSettings/PasswordModal";
 
 const ProfileSideBar = ({
     myProfileTab,
@@ -25,6 +26,8 @@ const ProfileSideBar = ({
     gamertagClicked,
     activisionClickedHandler,
     activisionClicked,
+    passwordClickedHandler,
+    passwordClicked,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -95,7 +98,10 @@ const ProfileSideBar = ({
                         >
                             Activision Id
                         </div>
-                        <div className="private-profile-sidebar-cat-content mb-2">
+                        <div
+                            className="private-profile-sidebar-cat-content mb-2"
+                            onClick={() => passwordClickedHandler()}
+                        >
                             Password
                         </div>
                         <div
@@ -118,6 +124,10 @@ const ProfileSideBar = ({
             />
             <ActivisionIdModal
                 activisionClicked={activisionClicked}
+                tabHandler={tabHandler}
+            />
+            <PasswordModal
+                passwordClicked={passwordClicked}
                 tabHandler={tabHandler}
             />
         </div>
