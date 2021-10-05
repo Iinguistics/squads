@@ -255,7 +255,6 @@ class UserAuthController extends Controller
         $results = User::where('id', $user->id)
             ->update($input);
 
-
         $response = array(
             'success' => $results ? true : false,
             'data' => $results,
