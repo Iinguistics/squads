@@ -6484,8 +6484,9 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "container mt-5 main-header",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "d-flex flex-row flex-md-column justify-content-between align-items-center flex-wrap",
+        className: "d-flex flex-row flex-md-column justify-content-between flex-wrap",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "m-auto",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "profile settings"
@@ -6509,15 +6510,17 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
             children: "Privacy"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "private-profile-sidebar-divider my-2"
+          className: "private-profile-sidebar-divider my-2 m-auto"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "m-auto",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "my squads"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "private-profile-sidebar-divider my-2"
+          className: "private-profile-sidebar-divider my-2 m-auto"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "m-auto",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "app settings"
@@ -6526,8 +6529,9 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
             children: "Appearance"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "private-profile-sidebar-divider my-2"
+          className: "private-profile-sidebar-divider my-2 m-auto"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "m-auto",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "user settings"

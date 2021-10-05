@@ -26,8 +26,8 @@ const ProfileSideBar = ({
     return (
         <div className="private-profile-sidebar-container">
             <div className="container mt-5 main-header">
-                <div className="d-flex flex-row flex-md-column justify-content-between align-items-center flex-wrap">
-                    <div>
+                <div className="d-flex flex-row flex-md-column justify-content-between flex-wrap">
+                    <div className="m-auto">
                         <div className="private-profile-sidebar-cat-head mb-2">
                             profile settings
                         </div>
@@ -54,14 +54,14 @@ const ProfileSideBar = ({
                             Privacy
                         </div>
                     </div>
-                    <div className="private-profile-sidebar-divider my-2"></div>
-                    <div>
+                    <div className="private-profile-sidebar-divider my-2 m-auto"></div>
+                    <div className="m-auto">
                         <div className="private-profile-sidebar-cat-head mb-2">
                             my squads
                         </div>
                     </div>
-                    <div className="private-profile-sidebar-divider my-2"></div>
-                    <div>
+                    <div className="private-profile-sidebar-divider my-2 m-auto"></div>
+                    <div className="m-auto">
                         <div className="private-profile-sidebar-cat-head mb-2">
                             app settings
                         </div>
@@ -69,8 +69,8 @@ const ProfileSideBar = ({
                             Appearance
                         </div>
                     </div>
-                    <div className="private-profile-sidebar-divider my-2"></div>
-                    <div>
+                    <div className="private-profile-sidebar-divider my-2 m-auto"></div>
+                    <div className="m-auto">
                         <div className="private-profile-sidebar-cat-head mb-2">
                             user settings
                         </div>

@@ -89,9 +89,6 @@ const index = withRouter((props) => {
                                                     }
                                                 />
                                                 <div className="container mt-5 main-header">
-                                                    {/* <h1 className="text-center">
-                                        Private Profile
-                                    </h1> */}
                                                     {generalInfoTab && (
                                                         <EditProfile
                                                             userInfo={userInfo}

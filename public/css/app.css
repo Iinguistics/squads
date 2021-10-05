@@ -10537,6 +10537,10 @@ form a {
 }
 
 @media only screen and (max-width: 600px) {
+  .private-profile-main-container {
+    height: 100%;
+  }
+
   .private-profile-sidebar-container {
     width: 100%;
   }
