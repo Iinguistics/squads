@@ -4,18 +4,18 @@ import { withRouter } from "react-router-dom";
 import Api from "../../../Api";
 import SuccessModal from "../SuccessModal";
 
-const GamertagModal = withRouter((props) => {
+const ActivisionIdModal = withRouter((props) => {
     const [show, setShow] = useState(false);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [gamertag, setGamertag] = useState("");
+    const [activisionId, setActivisionId] = useState("");
 
     useEffect(() => {
-        if (props.gamertagClicked !== 0) {
+        if (props.activisionClicked !== 0) {
             setShow(true);
         }
-    }, [props.gamertagClicked]);
+    }, [props.activisionClicked]);
 
     const handleClose = () => {
         setShow(false);
@@ -26,7 +26,7 @@ const GamertagModal = withRouter((props) => {
         try {
             const { data } = await Api.get("/current_user");
             if (data) {
-                setGamertag(data.gamertag);
+                setActivisionId(data.activision_username);
                 setLoading(false);
             }
         } catch (error) {
@@ -40,13 +40,13 @@ const GamertagModal = withRouter((props) => {
     }, []);
 
     const updateAccountHandler = async () => {
-        if (gamertag === "") {
+        if (activisionId === "") {
             setError("Required");
             return;
         }
         try {
             let value = {
-                gamertag: gamertag,
+                activision_username: activisionId,
             };
             const { data } = await Api.put(
                 "/update_current_user_account",
@@ -72,7 +72,7 @@ const GamertagModal = withRouter((props) => {
                 <SuccessModal
                     success={success}
                     titleText="Success"
-                    bodyText="Your gamertag has been updated."
+                    bodyText="Your activision id has been updated."
                     buttonText="Got it"
                     tabHandler={props.tabHandler}
                     tab="myProfile"
@@ -83,16 +83,18 @@ const GamertagModal = withRouter((props) => {
                     className="account-modal"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Update Gamertag</Modal.Title>
+                        <Modal.Title>Update Activision id</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <label htmlFor="gamertag">Enter new gamertag</label>
+                        <label htmlFor="activisionId">
+                            Enter new activision id
+                        </label>
                         <input
                             type="text"
                             className="form-control block shadow-none"
-                            value={gamertag}
-                            onChange={(e) => setGamertag(e.target.value)}
-                            name="gamertag"
+                            value={activisionId ? activisionId : ""}
+                            onChange={(e) => setActivisionId(e.target.value)}
+                            name="activisionId"
                         />
                         {error && <span className="text-danger">{error}</span>}
                     </Modal.Body>
@@ -116,4 +118,4 @@ const GamertagModal = withRouter((props) => {
     );
 });
 
-export default GamertagModal;
+export default ActivisionIdModal;
