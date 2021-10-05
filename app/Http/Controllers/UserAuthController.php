@@ -262,4 +262,31 @@ class UserAuthController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function update_current_user_account_password(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!Auth::attempt(['email' => $user->email, 'password' => $request->current_password, 'active' => 1])) {
+            return response([
+                'message' => 'Invalid credentials'
+            ], HttpFoundationResponse::HTTP_UNAUTHORIZED);
+        }
+
+        $input = $request->all();
+
+        $input['new_password'] = bcrypt($input['new_password']);
+
+        $results = User::where('id', $user->id)
+            ->update([
+                'password' => $input['new_password']
+            ]);
+
+        $response = array(
+            'success' => $results ? true : false,
+            'error' => $results ? false : 'failed to update password'
+        );
+
+        return response()->json($response, 200);
+    }
 }
