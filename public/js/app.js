@@ -10122,28 +10122,23 @@ var PasswordModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      loading = _useState6[0],
-      setLoading = _useState6[1];
+      success = _useState6[0],
+      setSuccess = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
-      success = _useState8[0],
-      setSuccess = _useState8[1];
+      newPassword = _useState8[0],
+      setNewPassword = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
-      newPassword = _useState10[0],
-      setNewPassword = _useState10[1];
+      verifiedCurrentPassword = _useState10[0],
+      setVerifiedCurrentPassword = _useState10[1];
 
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState12 = _slicedToArray(_useState11, 2),
-      verifiedCurrentPassword = _useState12[0],
-      setVerifiedCurrentPassword = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
-      _useState14 = _slicedToArray(_useState13, 2),
-      currentPassword = _useState14[0],
-      setCurrentPassword = _useState14[1];
+      currentPassword = _useState12[0],
+      setCurrentPassword = _useState12[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.passwordClicked !== 0) {
