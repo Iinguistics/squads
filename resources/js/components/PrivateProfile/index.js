@@ -6,6 +6,7 @@ import PrivateProfileProvider, {
 } from "../Context/PrivateProfileContext";
 import UserProvider, { UserContext } from "../Context/UserContext";
 
+import Appearance from "./Appearance";
 import EditProfile from "./EditProfile";
 
 const index = withRouter((props) => {
@@ -107,6 +108,15 @@ const index = withRouter((props) => {
                                                 <div className="container mt-5 main-header">
                                                     {generalInfoTab && (
                                                         <EditProfile
+                                                            userInfo={userInfo}
+                                                            tabHandler={
+                                                                tabHandler
+                                                            }
+                                                            tab="myProfile"
+                                                        />
+                                                    )}
+                                                    {appearanceTab && (
+                                                        <Appearance
                                                             userInfo={userInfo}
                                                             tabHandler={
                                                                 tabHandler

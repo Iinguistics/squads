@@ -71,7 +71,12 @@ const ProfileSideBar = ({
                         <div className="private-profile-sidebar-cat-head mb-2">
                             app settings
                         </div>
-                        <div className="private-profile-sidebar-cat-content mb-2">
+                        <div
+                            onClick={() => tabHandler("appearance")}
+                            className={`private-profile-sidebar-cat-content mb-2 ${
+                                appearanceTab ? "content-active" : ""
+                            }`}
+                        >
                             Appearance
                         </div>
                     </div>

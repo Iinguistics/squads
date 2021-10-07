@@ -6418,6 +6418,37 @@ var Main = function Main(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/PrivateProfile/Appearance.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/Appearance.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+ //import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
+
+
+var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(function (props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "container",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      className: "text-center",
+      children: "Appearance"
+    })
+  });
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Appearance);
+
+/***/ }),
+
 /***/ "./resources/js/components/PrivateProfile/EditProfile.js":
 /*!***************************************************************!*\
   !*** ./resources/js/components/PrivateProfile/EditProfile.js ***!
@@ -6559,7 +6590,10 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "app settings"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-            className: "private-profile-sidebar-cat-content mb-2",
+            onClick: function onClick() {
+              return tabHandler("appearance");
+            },
+            className: "private-profile-sidebar-cat-content mb-2 ".concat(appearanceTab ? "content-active" : ""),
             children: "Appearance"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -6637,12 +6671,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileSideBar */ "./resources/js/components/PrivateProfile/ProfileSideBar.js");
 /* harmony import */ var _Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Context/PrivateProfileContext */ "./resources/js/components/Context/PrivateProfileContext.js");
 /* harmony import */ var _Context_UserContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context/UserContext */ "./resources/js/components/Context/UserContext.js");
-/* harmony import */ var _EditProfile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditProfile */ "./resources/js/components/PrivateProfile/EditProfile.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Appearance__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Appearance */ "./resources/js/components/PrivateProfile/Appearance.js");
+/* harmony import */ var _EditProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./EditProfile */ "./resources/js/components/PrivateProfile/EditProfile.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6664,7 +6699,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (props) {
+
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       userInfo = _useState2[0],
@@ -6681,12 +6717,12 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
 
     console.log(userInfoData);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext.Consumer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext.Consumer, {
       children: function children(_ref) {
         var loggedInToggleHandler = _ref.loggedInToggleHandler;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
             children: function children(_ref2) {
               var myProfileTab = _ref2.myProfileTab,
                   generalInfoTab = _ref2.generalInfoTab,
@@ -6708,10 +6744,10 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
                   activisionClicked = _ref2.activisionClicked,
                   passwordClickedHandler = _ref2.passwordClickedHandler,
                   passwordClicked = _ref2.passwordClicked;
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                   className: "d-flex flex-column flex-md-row private-profile-main-container",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
                     tabHandler: tabHandler,
                     myProfileTab: myProfileTab,
                     generalInfoTab: generalInfoTab,
@@ -6733,13 +6769,17 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
                     activisionClicked: activisionClicked,
                     passwordClickedHandler: passwordClickedHandler,
                     passwordClicked: passwordClicked
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                     className: "container mt-5 main-header",
-                    children: generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    children: [generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {
                       userInfo: userInfo,
                       tabHandler: tabHandler,
                       tab: "myProfile"
-                    })
+                    }), appearanceTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Appearance__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                      userInfo: userInfo,
+                      tabHandler: tabHandler,
+                      tab: "myProfile"
+                    })]
                   })]
                 })
               });
