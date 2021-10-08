@@ -30,6 +30,8 @@ const index = withRouter((props) => {
                         <PrivateProfileProvider>
                             <PrivateProfileContext.Consumer>
                                 {({
+                                    error,
+                                    success,
                                     myProfileTab,
                                     generalInfoTab,
                                     uploadPhotoTab,
@@ -50,6 +52,8 @@ const index = withRouter((props) => {
                                     activisionClicked,
                                     passwordClickedHandler,
                                     passwordClicked,
+                                    fetchProfileHandler,
+                                    profileData,
                                 }) => {
                                     return (
                                         <>
@@ -122,6 +126,14 @@ const index = withRouter((props) => {
                                                                 tabHandler
                                                             }
                                                             tab="myProfile"
+                                                            fetchProfileHandler={
+                                                                fetchProfileHandler
+                                                            }
+                                                            profileData={
+                                                                profileData
+                                                            }
+                                                            error={error}
+                                                            success={success}
                                                         />
                                                     )}
                                                 </div>

@@ -4,6 +4,12 @@ import Api from "../Api";
 export const PrivateProfileContext = createContext();
 
 const PrivateProfileProvider = (props) => {
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+
+    const [profileData, setProfileData] = useState(null);
+
     const [myProfileTab, setMyProfileTab] = useState(true);
     const [generalInfoTab, setGeneralInfoTab] = useState(false);
     const [uploadPhotoTab, setUploadPhotoTab] = useState(false);
@@ -98,9 +104,28 @@ const PrivateProfileProvider = (props) => {
         setPasswordClicked((passwordClicked) => passwordClicked + 1);
     };
 
+    const fetchProfileHandler = async () => {
+        try {
+            const { data } = await Api.get("/current_user");
+            if (data.success) {
+                setProfileData(data.data);
+                setError("");
+                setSuccess(true);
+            } else {
+                setError(data.error);
+                setSuccess(false);
+            }
+        } catch (error) {
+            setError(error.message);
+            setSuccess(false);
+        }
+    };
+
     return (
         <PrivateProfileContext.Provider
             value={{
+                error,
+                success,
                 myProfileTab,
                 generalInfoTab,
                 uploadPhotoTab,
@@ -115,12 +140,14 @@ const PrivateProfileProvider = (props) => {
                 gamertagClicked,
                 activisionClicked,
                 passwordClicked,
+                profileData,
                 tabHandler,
                 deleteAccountClickedHandler,
                 emailClickedHandler,
                 gamertagClickedHandler,
                 activisionClickedHandler,
                 passwordClickedHandler,
+                fetchProfileHandler,
             }}
         >
             {props.children}

@@ -31,6 +31,7 @@ class ProfileController extends Controller
         $response = array(
             'success' => $profile ? true : false,
             'data' => $profile,
+            'error' => $profile ? false : "failed to retrieve profile"
         );
 
         return response()->json($response, 200);
