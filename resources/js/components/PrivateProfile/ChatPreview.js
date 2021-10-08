@@ -16,9 +16,9 @@ const ChatPreview = ({ fetchProfileHandler, profileData, success, error }) => {
                             <div className="img item-1 mr-3">
                                 {" "}
                                 <img
-                                    src={`${appUrl}/images/happy-face-black.png`}
+                                    src={`${appUrl}/images/default-photo-black-outline.png`}
                                     alt="happy face"
-                                    className="chat-preview-happy-face"
+                                    className="chat-preview-default-photo"
                                 />
                             </div>
                             <div className="item 2 ">

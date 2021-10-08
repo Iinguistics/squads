@@ -6584,9 +6584,9 @@ var ChatPreview = function ChatPreview(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "img item-1 mr-3",
               children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-                src: "".concat(appUrl, "/images/happy-face-black.png"),
+                src: "".concat(appUrl, "/images/default-photo-black-outline.png"),
                 alt: "happy face",
-                className: "chat-preview-happy-face"
+                className: "chat-preview-default-photo"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "item 2 ",
