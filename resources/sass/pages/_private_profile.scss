@@ -31,10 +31,16 @@
     color: $blue-purple-two;
 }
 
-// .happy-face {
-//     height: 32px;
-//     width: 32px;
-// }
+.chat-preview-happy-face {
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    background: $red;
+}
+
+.appearance-bg {
+    background: $profile-sidebar-light-bg;
+}
 
 @media only screen and (max-width: 600px) {
     .private-profile-main-container {

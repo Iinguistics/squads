@@ -10536,6 +10536,17 @@ form a {
   color: #3752c4;
 }
 
+.chat-preview-happy-face {
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+  background: #ed4245;
+}
+
+.appearance-bg {
+  background: #f4f5f7;
+}
+
 @media only screen and (max-width: 600px) {
   .private-profile-main-container {
     height: 100%;
