@@ -5733,24 +5733,22 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
 
               if (data.success) {
                 setProfileData(data.data[0]);
-                setError("");
-                setSuccess(true);
+                setError(""); //setSuccess(true);
+
                 setFontColor(data.data[0].font_color);
               } else {
-                setError(data.error);
-                setSuccess(false);
+                setError(data.error); //setSuccess(false);
               }
 
-              _context.next = 12;
+              _context.next = 11;
               break;
 
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](0);
-              setError(_context.t0.message);
-              setSuccess(false);
+              setError(_context.t0.message); //setSuccess(false);
 
-            case 12:
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -6606,7 +6604,8 @@ var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(fu
       success: success,
       userInfo: userInfo,
       fontColor: fontColor,
-      fontColorHandler: fontColorHandler
+      fontColorHandler: fontColorHandler,
+      updateProfileHandler: updateProfileHandler
     })]
   });
 });
@@ -6744,10 +6743,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
+/* harmony import */ var _Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils/Modals/SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
@@ -6760,43 +6764,68 @@ var ProfileColors = function ProfileColors(_ref) {
       success = _ref.success,
       error = _ref.error,
       fontColorHandler = _ref.fontColorHandler,
-      fontColor = _ref.fontColor;
+      fontColor = _ref.fontColor,
+      updateProfileHandler = _ref.updateProfileHandler;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProfileHandler();
   }, []);
-  var appUrl = "http://127.0.0.1:8000";
   console.log(profileData, "appearance");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: "my-5",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
       className: "d-flex",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
         className: "col-12 col-md-9",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          success: success,
+          titleText: "Success",
+          bodyText: "Your font color has been updated.",
+          buttonText: "Got it" //push="/profile"
+          // tabHandler={props.tabHandler}
+          //tab={"appearance"}
+
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "shadow-sm p-3 mb-5 appearance-bg rounded",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            "for": "fontColor",
-            children: "Select a font color:"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-            name: "fontColor",
-            onChange: function onChange(e) {
-              return fontColorHandler(e.target.value);
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            onSubmit: function onSubmit() {
+              return updateProfileHandler({
+                font_color: fontColor
+              });
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "",
-              children: "--Please choose an option--"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "red",
-              children: "Red"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "blue",
-              children: "Blue"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "green",
-              children: "Green"
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicPlatform",
+              value: fontColor,
+              onChange: function onChange(e) {
+                return fontColorHandler(e.target.value);
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
+                children: "Font Color"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
+                as: "select",
+                "aria-label": "Default select",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                  value: "",
+                  children: "Select a color"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                  value: "red",
+                  children: "Red"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                  value: "blue",
+                  children: "Blue"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                  value: "green",
+                  children: "Green"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+              className: "bttn-unite bttn-sm bttn-primary",
+              type: "submit",
+              disabled: !fontColor,
+              children: "Save"
             })]
-          })]
-        })
+          })
+        })]
       })
     })
   });
@@ -7141,13 +7170,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function (props) {
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
-    if (userInfo) {
-      props.history.push("/profile");
-    }
-  }, []);
+  // useEffect(() => {
+  //     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  //     if (userInfo) {
+  //         props.history.push("/profile");
+  //     }
+  // }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "container my-5 main-header",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {

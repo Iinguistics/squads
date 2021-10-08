@@ -116,15 +116,15 @@ const PrivateProfileProvider = (props) => {
             if (data.success) {
                 setProfileData(data.data[0]);
                 setError("");
-                setSuccess(true);
+                //setSuccess(true);
                 setFontColor(data.data[0].font_color);
             } else {
                 setError(data.error);
-                setSuccess(false);
+                //setSuccess(false);
             }
         } catch (error) {
             setError(error.message);
-            setSuccess(false);
+            //setSuccess(false);
         }
     };
 

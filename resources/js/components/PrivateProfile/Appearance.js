@@ -34,6 +34,7 @@ const Appearance = withRouter(
                     userInfo={userInfo}
                     fontColor={fontColor}
                     fontColorHandler={fontColorHandler}
+                    updateProfileHandler={updateProfileHandler}
                 />
             </div>
         );
