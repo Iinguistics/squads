@@ -5716,14 +5716,14 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/current_user");
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/show_current_user_profile");
 
             case 3:
               _yield$Api$get = _context.sent;
               data = _yield$Api$get.data;
 
               if (data.success) {
-                setProfileData(data.data);
+                setProfileData(data.data[0]);
                 setError("");
                 setSuccess(true);
               } else {
@@ -6570,6 +6570,7 @@ var ChatPreview = function ChatPreview(_ref) {
     fetchProfileHandler();
   }, []);
   var appUrl = "http://127.0.0.1:8000";
+  console.log(profileData, "appearance");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "my-5",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -6595,6 +6596,7 @@ var ChatPreview = function ChatPreview(_ref) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
                 children: "Today at 3:01 PM"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+                className: "appearance-font-color-".concat(profileData ? profileData.font_color : ""),
                 children: "Waiting for the day when compact mode would be turned on"
               })]
             })]

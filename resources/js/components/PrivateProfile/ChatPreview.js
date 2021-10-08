@@ -6,7 +6,7 @@ const ChatPreview = ({ fetchProfileHandler, profileData, success, error }) => {
         fetchProfileHandler();
     }, []);
     const appUrl = process.env.MIX_APP_URL;
-
+    console.log(profileData, "appearance");
     return (
         <Container className="my-5">
             <Row className="d-flex justify-content-center">
@@ -26,7 +26,13 @@ const ChatPreview = ({ fetchProfileHandler, profileData, success, error }) => {
                                     thyJames{" "}
                                 </span>
                                 <span>Today at 3:01 PM</span>
-                                <p>
+                                <p
+                                    className={`appearance-font-color-${
+                                        profileData
+                                            ? profileData.font_color
+                                            : ""
+                                    }`}
+                                >
                                     Waiting for the day when compact mode would
                                     be turned on
                                 </p>

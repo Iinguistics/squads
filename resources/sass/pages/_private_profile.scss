@@ -42,6 +42,16 @@
     background: $profile-sidebar-light-bg;
 }
 
+.appearance-font-color-red {
+    color: $red;
+}
+.appearance-font-color-blue {
+    color: $blue;
+}
+.appearance-font-color-green {
+    color: $green;
+}
+
 @media only screen and (max-width: 600px) {
     .private-profile-main-container {
         height: 100%;

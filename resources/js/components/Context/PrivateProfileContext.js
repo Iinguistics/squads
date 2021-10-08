@@ -106,9 +106,9 @@ const PrivateProfileProvider = (props) => {
 
     const fetchProfileHandler = async () => {
         try {
-            const { data } = await Api.get("/current_user");
+            const { data } = await Api.get("/show_current_user_profile");
             if (data.success) {
-                setProfileData(data.data);
+                setProfileData(data.data[0]);
                 setError("");
                 setSuccess(true);
             } else {
