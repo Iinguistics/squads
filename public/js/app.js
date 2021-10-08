@@ -5612,6 +5612,11 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       passwordClicked = _useState36[0],
       setPasswordClicked = _useState36[1];
 
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState38 = _slicedToArray(_useState37, 2),
+      fontColor = _useState38[0],
+      setFontColor = _useState38[1];
+
   var resetTabs = function resetTabs() {
     setMyProfileTab(false);
     setGeneralInfoTab(false);
@@ -5706,6 +5711,10 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
     });
   };
 
+  var fontColorHandler = function fontColorHandler(color) {
+    setFontColor(color);
+  };
+
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _yield$Api$get, data;
@@ -5726,6 +5735,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
                 setProfileData(data.data[0]);
                 setError("");
                 setSuccess(true);
+                setFontColor(data.data[0].font_color);
               } else {
                 setError(data.error);
                 setSuccess(false);
@@ -5753,6 +5763,52 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
     };
   }();
 
+  var updateProfileHandler = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(values) {
+      var _yield$Api$put, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_profile", values);
+
+            case 3:
+              _yield$Api$put = _context2.sent;
+              data = _yield$Api$put.data;
+
+              if (data.success) {
+                setProfileData(data.data);
+                setSuccess(true);
+                setError(false);
+              } else {
+                setSuccess(false);
+                setError(true);
+              }
+
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](0);
+              setError(_context2.t0.message);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 8]]);
+    }));
+
+    return function updateProfileHandler(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PrivateProfileContext.Provider, {
     value: {
       error: error,
@@ -5772,13 +5828,16 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       activisionClicked: activisionClicked,
       passwordClicked: passwordClicked,
       profileData: profileData,
+      fontColor: fontColor,
       tabHandler: tabHandler,
       deleteAccountClickedHandler: deleteAccountClickedHandler,
       emailClickedHandler: emailClickedHandler,
       gamertagClickedHandler: gamertagClickedHandler,
       activisionClickedHandler: activisionClickedHandler,
       passwordClickedHandler: passwordClickedHandler,
-      fetchProfileHandler: fetchProfileHandler
+      fetchProfileHandler: fetchProfileHandler,
+      updateProfileHandler: updateProfileHandler,
+      fontColorHandler: fontColorHandler
     },
     children: props.children
   });
@@ -6509,31 +6568,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _ChatPreview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChatPreview */ "./resources/js/components/PrivateProfile/ChatPreview.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _ProfileColors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileColors */ "./resources/js/components/PrivateProfile/ProfileColors.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
  //import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 
 
 
-var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function (_ref) {
+var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (_ref) {
   var fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
       error = _ref.error,
       success = _ref.success,
-      userInfo = _ref.userInfo;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      userInfo = _ref.userInfo,
+      updateProfileHandler = _ref.updateProfileHandler,
+      fontColorHandler = _ref.fontColorHandler,
+      fontColor = _ref.fontColor;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       children: "Appearance"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ChatPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ChatPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
       fetchProfileHandler: fetchProfileHandler,
       profileData: profileData,
       error: error,
       success: success,
-      userInfo: userInfo
+      userInfo: userInfo,
+      fontColor: fontColor
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ProfileColors__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      fetchProfileHandler: fetchProfileHandler,
+      profileData: profileData,
+      error: error,
+      success: success,
+      userInfo: userInfo,
+      fontColor: fontColor,
+      fontColorHandler: fontColorHandler
     })]
   });
 });
@@ -6567,7 +6640,8 @@ var ChatPreview = function ChatPreview(_ref) {
       fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
       success = _ref.success,
-      error = _ref.error;
+      error = _ref.error,
+      fontColor = _ref.fontColor;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProfileHandler();
   }, []);
@@ -6598,7 +6672,7 @@ var ChatPreview = function ChatPreview(_ref) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
                 children: "Today at 3:01 PM"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-                className: "appearance-font-color-".concat(profileData ? profileData.font_color : ""),
+                className: "appearance-font-color-".concat(fontColor),
                 children: "Waiting for the day when compact mode would be turned on"
               })]
             })]
@@ -6655,6 +6729,80 @@ var EditProfile = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(f
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditProfile);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrivateProfile/ProfileColors.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/ProfileColors.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var ProfileColors = function ProfileColors(_ref) {
+  var userInfo = _ref.userInfo,
+      fetchProfileHandler = _ref.fetchProfileHandler,
+      profileData = _ref.profileData,
+      success = _ref.success,
+      error = _ref.error,
+      fontColorHandler = _ref.fontColorHandler,
+      fontColor = _ref.fontColor;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchProfileHandler();
+  }, []);
+  var appUrl = "http://127.0.0.1:8000";
+  console.log(profileData, "appearance");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "my-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      className: "d-flex",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        className: "col-12 col-md-9",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "shadow-sm p-3 mb-5 appearance-bg rounded",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            "for": "fontColor",
+            children: "Select a font color:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+            name: "fontColor",
+            onChange: function onChange(e) {
+              return fontColorHandler(e.target.value);
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "",
+              children: "--Please choose an option--"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "red",
+              children: "Red"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "blue",
+              children: "Blue"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "green",
+              children: "Green"
+            })]
+          })]
+        })
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileColors);
 
 /***/ }),
 
@@ -6911,7 +7059,10 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
                   passwordClickedHandler = _ref2.passwordClickedHandler,
                   passwordClicked = _ref2.passwordClicked,
                   fetchProfileHandler = _ref2.fetchProfileHandler,
-                  profileData = _ref2.profileData;
+                  profileData = _ref2.profileData,
+                  updateProfileHandler = _ref2.updateProfileHandler,
+                  fontColorHandler = _ref2.fontColorHandler,
+                  fontColor = _ref2.fontColor;
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                   className: "d-flex flex-column flex-md-row private-profile-main-container",
@@ -6950,7 +7101,10 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
                       fetchProfileHandler: fetchProfileHandler,
                       profileData: profileData,
                       error: error,
-                      success: success
+                      success: success,
+                      updateProfileHandler: updateProfileHandler,
+                      fontColorHandler: fontColorHandler,
+                      fontColor: fontColor
                     })]
                   })]
                 })

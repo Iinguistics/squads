@@ -7,6 +7,7 @@ const ChatPreview = ({
     profileData,
     success,
     error,
+    fontColor,
 }) => {
     useEffect(() => {
         fetchProfileHandler();
@@ -33,11 +34,7 @@ const ChatPreview = ({
                                 </span>
                                 <span>Today at 3:01 PM</span>
                                 <p
-                                    className={`appearance-font-color-${
-                                        profileData
-                                            ? profileData.font_color
-                                            : ""
-                                    }`}
+                                    className={`appearance-font-color-${fontColor}`}
                                 >
                                     Waiting for the day when compact mode would
                                     be turned on

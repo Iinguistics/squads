@@ -26,6 +26,8 @@ const PrivateProfileProvider = (props) => {
     const [activisionClicked, setActivisionClicked] = useState(0);
     const [passwordClicked, setPasswordClicked] = useState(0);
 
+    const [fontColor, setFontColor] = useState("");
+
     const resetTabs = () => {
         setMyProfileTab(false);
         setGeneralInfoTab(false);
@@ -104,6 +106,10 @@ const PrivateProfileProvider = (props) => {
         setPasswordClicked((passwordClicked) => passwordClicked + 1);
     };
 
+    const fontColorHandler = (color) => {
+        setFontColor(color);
+    };
+
     const fetchProfileHandler = async () => {
         try {
             const { data } = await Api.get("/show_current_user_profile");
@@ -111,6 +117,7 @@ const PrivateProfileProvider = (props) => {
                 setProfileData(data.data[0]);
                 setError("");
                 setSuccess(true);
+                setFontColor(data.data[0].font_color);
             } else {
                 setError(data.error);
                 setSuccess(false);
@@ -118,6 +125,26 @@ const PrivateProfileProvider = (props) => {
         } catch (error) {
             setError(error.message);
             setSuccess(false);
+        }
+    };
+
+    const updateProfileHandler = async (values) => {
+        try {
+            const { data } = await Api.put(
+                "/update_current_user_profile",
+                values
+            );
+
+            if (data.success) {
+                setProfileData(data.data);
+                setSuccess(true);
+                setError(false);
+            } else {
+                setSuccess(false);
+                setError(true);
+            }
+        } catch (error) {
+            setError(error.message);
         }
     };
 
@@ -141,6 +168,7 @@ const PrivateProfileProvider = (props) => {
                 activisionClicked,
                 passwordClicked,
                 profileData,
+                fontColor,
                 tabHandler,
                 deleteAccountClickedHandler,
                 emailClickedHandler,
@@ -148,6 +176,8 @@ const PrivateProfileProvider = (props) => {
                 activisionClickedHandler,
                 passwordClickedHandler,
                 fetchProfileHandler,
+                updateProfileHandler,
+                fontColorHandler,
             }}
         >
             {props.children}

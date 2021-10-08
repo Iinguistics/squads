@@ -54,6 +54,9 @@ const index = withRouter((props) => {
                                     passwordClicked,
                                     fetchProfileHandler,
                                     profileData,
+                                    updateProfileHandler,
+                                    fontColorHandler,
+                                    fontColor,
                                 }) => {
                                     return (
                                         <>
@@ -134,6 +137,15 @@ const index = withRouter((props) => {
                                                             }
                                                             error={error}
                                                             success={success}
+                                                            updateProfileHandler={
+                                                                updateProfileHandler
+                                                            }
+                                                            fontColorHandler={
+                                                                fontColorHandler
+                                                            }
+                                                            fontColor={
+                                                                fontColor
+                                                            }
                                                         />
                                                     )}
                                                 </div>
