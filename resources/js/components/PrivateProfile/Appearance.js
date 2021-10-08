@@ -4,15 +4,16 @@ import ChatPreview from "./ChatPreview";
 //import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 
 const Appearance = withRouter(
-    ({ fetchProfileHandler, profileData, error, success }) => {
+    ({ fetchProfileHandler, profileData, error, success, userInfo }) => {
         return (
             <div className="container">
-                <h1 className="text-center">Appearance</h1>
+                <h2>Appearance</h2>
                 <ChatPreview
                     fetchProfileHandler={fetchProfileHandler}
                     profileData={profileData}
                     error={error}
                     success={success}
+                    userInfo={userInfo}
                 />
             </div>
         );

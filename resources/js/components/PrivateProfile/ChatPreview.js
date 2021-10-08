@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
 
-const ChatPreview = ({ fetchProfileHandler, profileData, success, error }) => {
+const ChatPreview = ({
+    userInfo,
+    fetchProfileHandler,
+    profileData,
+    success,
+    error,
+}) => {
     useEffect(() => {
         fetchProfileHandler();
     }, []);
@@ -9,8 +15,8 @@ const ChatPreview = ({ fetchProfileHandler, profileData, success, error }) => {
     console.log(profileData, "appearance");
     return (
         <Container className="my-5">
-            <Row className="d-flex justify-content-center">
-                <Col className="col-12">
+            <Row className="d-flex">
+                <Col className="col-12 col-md-9">
                     <div className="shadow-sm p-3 mb-5 appearance-bg rounded">
                         <div className="d-flex justify-content-start align-items-center">
                             <div className="img item-1 mr-3">
@@ -22,8 +28,8 @@ const ChatPreview = ({ fetchProfileHandler, profileData, success, error }) => {
                                 />
                             </div>
                             <div className="item 2 ">
-                                <span className="mr-2 font-weight-bold">
-                                    thyJames{" "}
+                                <span className="mr-1 font-weight-bold">
+                                    {userInfo.gamertag}{" "}
                                 </span>
                                 <span>Today at 3:01 PM</span>
                                 <p

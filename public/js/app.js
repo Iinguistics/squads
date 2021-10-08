@@ -6522,17 +6522,18 @@ var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(fu
   var fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
       error = _ref.error,
-      success = _ref.success;
+      success = _ref.success,
+      userInfo = _ref.userInfo;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-      className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
       children: "Appearance"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ChatPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
       fetchProfileHandler: fetchProfileHandler,
       profileData: profileData,
       error: error,
-      success: success
+      success: success,
+      userInfo: userInfo
     })]
   });
 });
@@ -6562,7 +6563,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ChatPreview = function ChatPreview(_ref) {
-  var fetchProfileHandler = _ref.fetchProfileHandler,
+  var userInfo = _ref.userInfo,
+      fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
       success = _ref.success,
       error = _ref.error;
@@ -6574,9 +6576,9 @@ var ChatPreview = function ChatPreview(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "my-5",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      className: "d-flex justify-content-center",
+      className: "d-flex",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        className: "col-12",
+        className: "col-12 col-md-9",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "shadow-sm p-3 mb-5 appearance-bg rounded",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -6591,8 +6593,8 @@ var ChatPreview = function ChatPreview(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "item 2 ",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-                className: "mr-2 font-weight-bold",
-                children: ["thyJames", " "]
+                className: "mr-1 font-weight-bold",
+                children: [userInfo.gamertag, " "]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
                 children: "Today at 3:01 PM"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
