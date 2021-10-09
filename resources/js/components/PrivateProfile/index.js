@@ -30,8 +30,6 @@ const index = withRouter((props) => {
                         <PrivateProfileProvider>
                             <PrivateProfileContext.Consumer>
                                 {({
-                                    error,
-                                    success,
                                     myProfileTab,
                                     generalInfoTab,
                                     uploadPhotoTab,
@@ -54,7 +52,6 @@ const index = withRouter((props) => {
                                     passwordClicked,
                                     fetchProfileHandler,
                                     profileData,
-                                    updateProfileHandler,
                                     fontColorHandler,
                                     fontColor,
                                 }) => {
@@ -135,16 +132,14 @@ const index = withRouter((props) => {
                                                             profileData={
                                                                 profileData
                                                             }
-                                                            error={error}
-                                                            success={success}
-                                                            updateProfileHandler={
-                                                                updateProfileHandler
-                                                            }
                                                             fontColorHandler={
                                                                 fontColorHandler
                                                             }
                                                             fontColor={
                                                                 fontColor
+                                                            }
+                                                            tabHandler={
+                                                                tabHandler
                                                             }
                                                         />
                                                     )}

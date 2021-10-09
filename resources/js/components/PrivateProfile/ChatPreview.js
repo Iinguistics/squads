@@ -1,14 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
+import Api from "../Api";
 
 const ChatPreview = ({
     userInfo,
     fetchProfileHandler,
     profileData,
-    success,
-    error,
     fontColor,
 }) => {
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    //const [fontColor, setFontColor] = useState("");
+
+    // const fetchProfileHandler = async () => {
+    //     try {
+    //         const { data } = await Api.get("/show_current_user_profile");
+    //         if (data.success) {
+    //             setProfileData(data.data[0]);
+    //             setError("");
+    //             setFontColor(data.data[0].font_color);
+    //         } else {
+    //             setError(data.error);
+    //         }
+    //     } catch (error) {
+    //         setError(error.message);
+    //     }
+    // };
     useEffect(() => {
         fetchProfileHandler();
     }, []);

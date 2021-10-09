@@ -116,32 +116,9 @@ const PrivateProfileProvider = (props) => {
             if (data.success) {
                 setProfileData(data.data[0]);
                 setError("");
-                //setSuccess(true);
                 setFontColor(data.data[0].font_color);
             } else {
                 setError(data.error);
-                //setSuccess(false);
-            }
-        } catch (error) {
-            setError(error.message);
-            //setSuccess(false);
-        }
-    };
-
-    const updateProfileHandler = async (values) => {
-        try {
-            const { data } = await Api.put(
-                "/update_current_user_profile",
-                values
-            );
-
-            if (data.success) {
-                setProfileData(data.data);
-                setSuccess(true);
-                setError(false);
-            } else {
-                setSuccess(false);
-                setError(true);
             }
         } catch (error) {
             setError(error.message);
@@ -151,8 +128,6 @@ const PrivateProfileProvider = (props) => {
     return (
         <PrivateProfileContext.Provider
             value={{
-                error,
-                success,
                 myProfileTab,
                 generalInfoTab,
                 uploadPhotoTab,
@@ -176,7 +151,6 @@ const PrivateProfileProvider = (props) => {
                 activisionClickedHandler,
                 passwordClickedHandler,
                 fetchProfileHandler,
-                updateProfileHandler,
                 fontColorHandler,
             }}
         >

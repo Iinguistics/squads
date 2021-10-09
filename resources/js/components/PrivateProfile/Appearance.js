@@ -8,12 +8,10 @@ const Appearance = withRouter(
     ({
         fetchProfileHandler,
         profileData,
-        error,
-        success,
         userInfo,
-        updateProfileHandler,
         fontColorHandler,
         fontColor,
+        tabHandler,
     }) => {
         return (
             <div className="container">
@@ -21,20 +19,16 @@ const Appearance = withRouter(
                 <ChatPreview
                     fetchProfileHandler={fetchProfileHandler}
                     profileData={profileData}
-                    error={error}
-                    success={success}
                     userInfo={userInfo}
                     fontColor={fontColor}
                 />
                 <ProfileColors
                     fetchProfileHandler={fetchProfileHandler}
                     profileData={profileData}
-                    error={error}
-                    success={success}
                     userInfo={userInfo}
                     fontColor={fontColor}
                     fontColorHandler={fontColorHandler}
-                    updateProfileHandler={updateProfileHandler}
+                    tabHandler={tabHandler}
                 />
             </div>
         );

@@ -5733,11 +5733,10 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
 
               if (data.success) {
                 setProfileData(data.data[0]);
-                setError(""); //setSuccess(true);
-
+                setError("");
                 setFontColor(data.data[0].font_color);
               } else {
-                setError(data.error); //setSuccess(false);
+                setError(data.error);
               }
 
               _context.next = 11;
@@ -5746,7 +5745,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](0);
-              setError(_context.t0.message); //setSuccess(false);
+              setError(_context.t0.message);
 
             case 11:
             case "end":
@@ -5761,56 +5760,8 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
     };
   }();
 
-  var updateProfileHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(values) {
-      var _yield$Api$put, data;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_profile", values);
-
-            case 3:
-              _yield$Api$put = _context2.sent;
-              data = _yield$Api$put.data;
-
-              if (data.success) {
-                setProfileData(data.data);
-                setSuccess(true);
-                setError(false);
-              } else {
-                setSuccess(false);
-                setError(true);
-              }
-
-              _context2.next = 11;
-              break;
-
-            case 8:
-              _context2.prev = 8;
-              _context2.t0 = _context2["catch"](0);
-              setError(_context2.t0.message);
-
-            case 11:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[0, 8]]);
-    }));
-
-    return function updateProfileHandler(_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PrivateProfileContext.Provider, {
     value: {
-      error: error,
-      success: success,
       myProfileTab: myProfileTab,
       generalInfoTab: generalInfoTab,
       uploadPhotoTab: uploadPhotoTab,
@@ -5834,7 +5785,6 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       activisionClickedHandler: activisionClickedHandler,
       passwordClickedHandler: passwordClickedHandler,
       fetchProfileHandler: fetchProfileHandler,
-      updateProfileHandler: updateProfileHandler,
       fontColorHandler: fontColorHandler
     },
     children: props.children
@@ -6580,12 +6530,10 @@ __webpack_require__.r(__webpack_exports__);
 var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (_ref) {
   var fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
-      error = _ref.error,
-      success = _ref.success,
       userInfo = _ref.userInfo,
-      updateProfileHandler = _ref.updateProfileHandler,
       fontColorHandler = _ref.fontColorHandler,
-      fontColor = _ref.fontColor;
+      fontColor = _ref.fontColor,
+      tabHandler = _ref.tabHandler;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
@@ -6593,19 +6541,15 @@ var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(fu
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ChatPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
       fetchProfileHandler: fetchProfileHandler,
       profileData: profileData,
-      error: error,
-      success: success,
       userInfo: userInfo,
       fontColor: fontColor
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ProfileColors__WEBPACK_IMPORTED_MODULE_2__["default"], {
       fetchProfileHandler: fetchProfileHandler,
       profileData: profileData,
-      error: error,
-      success: success,
       userInfo: userInfo,
       fontColor: fontColor,
       fontColorHandler: fontColorHandler,
-      updateProfileHandler: updateProfileHandler
+      tabHandler: tabHandler
     })]
   });
 });
@@ -6625,10 +6569,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -6638,39 +6596,68 @@ var ChatPreview = function ChatPreview(_ref) {
   var userInfo = _ref.userInfo,
       fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
-      success = _ref.success,
-      error = _ref.error,
       fontColor = _ref.fontColor;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      error = _useState2[0],
+      setError = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      success = _useState6[0],
+      setSuccess = _useState6[1]; //const [fontColor, setFontColor] = useState("");
+  // const fetchProfileHandler = async () => {
+  //     try {
+  //         const { data } = await Api.get("/show_current_user_profile");
+  //         if (data.success) {
+  //             setProfileData(data.data[0]);
+  //             setError("");
+  //             setFontColor(data.data[0].font_color);
+  //         } else {
+  //             setError(data.error);
+  //         }
+  //     } catch (error) {
+  //         setError(error.message);
+  //     }
+  // };
+
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProfileHandler();
   }, []);
   var appUrl = "http://127.0.0.1:8000";
   console.log(profileData, "appearance");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "my-5",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
       className: "d-flex",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: "col-12 col-md-9",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "shadow-sm p-3 mb-5 appearance-bg rounded",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "d-flex justify-content-start align-items-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "img item-1 mr-3",
-              children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
                 src: "".concat(appUrl, "/images/default-photo-black-outline.png"),
                 alt: "happy face",
                 className: "chat-preview-default-photo"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "item 2 ",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
                 className: "mr-1 font-weight-bold",
                 children: [userInfo.gamertag, " "]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                 children: "Today at 3:01 PM"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "appearance-font-color-".concat(fontColor),
                 children: "Waiting for the day when compact mode would be turned on"
               })]
@@ -6742,14 +6729,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
-/* harmony import */ var _Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils/Modals/SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
+/* harmony import */ var _Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Utils/Modals/SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -6759,66 +6768,164 @@ __webpack_require__.r(__webpack_exports__);
 
 var ProfileColors = function ProfileColors(_ref) {
   var userInfo = _ref.userInfo,
-      fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
-      success = _ref.success,
-      error = _ref.error,
       fontColorHandler = _ref.fontColorHandler,
       fontColor = _ref.fontColor,
-      updateProfileHandler = _ref.updateProfileHandler;
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+      tabHandler = _ref.tabHandler;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      error = _useState2[0],
+      setError = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      success = _useState4[0],
+      setSuccess = _useState4[1];
+
+  var fetchProfileHandler = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _yield$Api$get, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_4__["default"].get("/show_current_user_profile");
+
+            case 3:
+              _yield$Api$get = _context.sent;
+              data = _yield$Api$get.data;
+
+              if (data.success) {
+                setProfileData(data.data[0]);
+                setError("");
+                setFontColor(data.data[0].font_color);
+              } else {
+                setError(data.error);
+              }
+
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              setError(_context.t0.message);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 8]]);
+    }));
+
+    return function fetchProfileHandler() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchProfileHandler();
   }, []);
+
+  var updateProfileHandler = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
+      var _yield$Api$put, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              e.preventDefault();
+              console.log("ran");
+              _context2.prev = 2;
+              values = {
+                font_color: fontColor
+              };
+              _context2.next = 6;
+              return _Api__WEBPACK_IMPORTED_MODULE_4__["default"].put("/update_current_user_profile", values);
+
+            case 6:
+              _yield$Api$put = _context2.sent;
+              data = _yield$Api$put.data;
+
+              if (data.success) {
+                setSuccess(true);
+                setError(false);
+              } else {
+                setSuccess(false);
+                setError(true);
+              }
+
+              _context2.next = 14;
+              break;
+
+            case 11:
+              _context2.prev = 11;
+              _context2.t0 = _context2["catch"](2);
+              setError(_context2.t0.message);
+
+            case 14:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[2, 11]]);
+    }));
+
+    return function updateProfileHandler(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   console.log(profileData, "appearance");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     className: "my-5",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
       className: "d-flex",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
         className: "col-12 col-md-9",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
           success: success,
           titleText: "Success",
           bodyText: "Your font color has been updated.",
           buttonText: "Got it" //push="/profile"
-          // tabHandler={props.tabHandler}
-          //tab={"appearance"}
 
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "shadow-sm p-3 mb-5 appearance-bg rounded",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            onSubmit: function onSubmit() {
-              return updateProfileHandler({
-                font_color: fontColor
-              });
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Group, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            onSubmit: updateProfileHandler,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {
               className: "mb-3",
               controlId: "formBasicPlatform",
               value: fontColor,
               onChange: function onChange(e) {
                 return fontColorHandler(e.target.value);
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Label, {
                 children: "Font Color"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
                 as: "select",
                 "aria-label": "Default select",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
                   value: "",
                   children: "Select a color"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
                   value: "red",
                   children: "Red"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
                   value: "blue",
                   children: "Blue"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
                   value: "green",
                   children: "Green"
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               className: "bttn-unite bttn-sm bttn-primary",
               type: "submit",
               disabled: !fontColor,
@@ -7019,6 +7126,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Appearance__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Appearance */ "./resources/js/components/PrivateProfile/Appearance.js");
 /* harmony import */ var _EditProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./EditProfile */ "./resources/js/components/PrivateProfile/EditProfile.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7065,9 +7174,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
             children: function children(_ref2) {
-              var error = _ref2.error,
-                  success = _ref2.success,
-                  myProfileTab = _ref2.myProfileTab,
+              var myProfileTab = _ref2.myProfileTab,
                   generalInfoTab = _ref2.generalInfoTab,
                   uploadPhotoTab = _ref2.uploadPhotoTab,
                   privacyTab = _ref2.privacyTab,
@@ -7089,7 +7196,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
                   passwordClicked = _ref2.passwordClicked,
                   fetchProfileHandler = _ref2.fetchProfileHandler,
                   profileData = _ref2.profileData,
-                  updateProfileHandler = _ref2.updateProfileHandler,
                   fontColorHandler = _ref2.fontColorHandler,
                   fontColor = _ref2.fontColor;
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
@@ -7123,18 +7229,15 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
                       userInfo: userInfo,
                       tabHandler: tabHandler,
                       tab: "myProfile"
-                    }), appearanceTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Appearance__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    }), appearanceTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Appearance__WEBPACK_IMPORTED_MODULE_4__["default"], _defineProperty({
                       userInfo: userInfo,
                       tabHandler: tabHandler,
                       tab: "myProfile",
                       fetchProfileHandler: fetchProfileHandler,
                       profileData: profileData,
-                      error: error,
-                      success: success,
-                      updateProfileHandler: updateProfileHandler,
                       fontColorHandler: fontColorHandler,
                       fontColor: fontColor
-                    })]
+                    }, "tabHandler", tabHandler))]
                   })]
                 })
               });
