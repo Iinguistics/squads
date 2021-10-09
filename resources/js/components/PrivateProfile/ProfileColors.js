@@ -6,7 +6,7 @@ import Api from "../Api";
 
 const ProfileColors = ({
     userInfo,
-    //fetchProfileHandler,
+    fetchProfileHandler,
     profileData,
     fontColorHandler,
     fontColor,
@@ -15,30 +15,18 @@ const ProfileColors = ({
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
-    const fetchProfileHandler = async () => {
-        try {
-            const { data } = await Api.get("/show_current_user_profile");
-            if (data.success) {
-                setProfileData(data.data[0]);
-                setError("");
-                setFontColor(data.data[0].font_color);
-            } else {
-                setError(data.error);
-            }
-        } catch (error) {
-            setError(error.message);
-        }
-    };
-
-    useEffect(() => {
-        fetchProfileHandler();
-    }, []);
+    // useEffect(() => {
+    //     fetchProfileHandler();
+    // }, []);
 
     const updateProfileHandler = async (e) => {
         e.preventDefault();
+
         console.log("ran");
+
         try {
-            values = { font_color: fontColor };
+            let values = { font_color: fontColor };
+
             const { data } = await Api.put(
                 "/update_current_user_profile",
                 values
@@ -66,7 +54,8 @@ const ProfileColors = ({
                         titleText="Success"
                         bodyText="Your font color has been updated."
                         buttonText="Got it"
-                        //push="/profile"
+                        tabHandler={tabHandler}
+                        tab="appearance"
                     />
                     <div className="shadow-sm p-3 mb-5 appearance-bg rounded">
                         <Form onSubmit={updateProfileHandler}>

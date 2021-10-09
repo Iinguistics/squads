@@ -6768,6 +6768,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var ProfileColors = function ProfileColors(_ref) {
   var userInfo = _ref.userInfo,
+      fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
       fontColorHandler = _ref.fontColorHandler,
       fontColor = _ref.fontColor,
@@ -6781,76 +6782,30 @@ var ProfileColors = function ProfileColors(_ref) {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
       success = _useState4[0],
-      setSuccess = _useState4[1];
+      setSuccess = _useState4[1]; // useEffect(() => {
+  //     fetchProfileHandler();
+  // }, []);
 
-  var fetchProfileHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _yield$Api$get, data;
+
+  var updateProfileHandler = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+      var values, _yield$Api$put, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return _Api__WEBPACK_IMPORTED_MODULE_4__["default"].get("/show_current_user_profile");
-
-            case 3:
-              _yield$Api$get = _context.sent;
-              data = _yield$Api$get.data;
-
-              if (data.success) {
-                setProfileData(data.data[0]);
-                setError("");
-                setFontColor(data.data[0].font_color);
-              } else {
-                setError(data.error);
-              }
-
-              _context.next = 11;
-              break;
-
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](0);
-              setError(_context.t0.message);
-
-            case 11:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[0, 8]]);
-    }));
-
-    return function fetchProfileHandler() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchProfileHandler();
-  }, []);
-
-  var updateProfileHandler = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
-      var _yield$Api$put, data;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
               e.preventDefault();
               console.log("ran");
-              _context2.prev = 2;
+              _context.prev = 2;
               values = {
                 font_color: fontColor
               };
-              _context2.next = 6;
+              _context.next = 6;
               return _Api__WEBPACK_IMPORTED_MODULE_4__["default"].put("/update_current_user_profile", values);
 
             case 6:
-              _yield$Api$put = _context2.sent;
+              _yield$Api$put = _context.sent;
               data = _yield$Api$put.data;
 
               if (data.success) {
@@ -6861,24 +6816,24 @@ var ProfileColors = function ProfileColors(_ref) {
                 setError(true);
               }
 
-              _context2.next = 14;
+              _context.next = 14;
               break;
 
             case 11:
-              _context2.prev = 11;
-              _context2.t0 = _context2["catch"](2);
-              setError(_context2.t0.message);
+              _context.prev = 11;
+              _context.t0 = _context["catch"](2);
+              setError(_context.t0.message);
 
             case 14:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, null, [[2, 11]]);
+      }, _callee, null, [[2, 11]]);
     }));
 
     return function updateProfileHandler(_x) {
-      return _ref3.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -6893,8 +6848,9 @@ var ProfileColors = function ProfileColors(_ref) {
           success: success,
           titleText: "Success",
           bodyText: "Your font color has been updated.",
-          buttonText: "Got it" //push="/profile"
-
+          buttonText: "Got it",
+          tabHandler: tabHandler,
+          tab: "appearance"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "shadow-sm p-3 mb-5 appearance-bg rounded",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
