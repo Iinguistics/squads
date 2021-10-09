@@ -27,6 +27,7 @@ const PrivateProfileProvider = (props) => {
     const [passwordClicked, setPasswordClicked] = useState(0);
 
     const [fontColor, setFontColor] = useState("");
+    const [profileColor, setProfileColor] = useState("");
 
     const resetTabs = () => {
         setMyProfileTab(false);
@@ -110,6 +111,10 @@ const PrivateProfileProvider = (props) => {
         setFontColor(color);
     };
 
+    const profileColorHandler = (color) => {
+        setProfileColor(color);
+    };
+
     const fetchProfileHandler = async () => {
         try {
             const { data } = await Api.get("/show_current_user_profile");
@@ -117,6 +122,7 @@ const PrivateProfileProvider = (props) => {
                 setProfileData(data.data[0]);
                 setError("");
                 setFontColor(data.data[0].font_color);
+                setProfileColor(data.data[0].profile_color);
             } else {
                 setError(data.error);
             }
@@ -144,6 +150,7 @@ const PrivateProfileProvider = (props) => {
                 passwordClicked,
                 profileData,
                 fontColor,
+                profileColor,
                 tabHandler,
                 deleteAccountClickedHandler,
                 emailClickedHandler,
@@ -152,6 +159,7 @@ const PrivateProfileProvider = (props) => {
                 passwordClickedHandler,
                 fetchProfileHandler,
                 fontColorHandler,
+                profileColorHandler,
             }}
         >
             {props.children}

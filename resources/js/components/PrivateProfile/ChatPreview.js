@@ -23,15 +23,15 @@ const ChatPreview = ({
                 <Col className="col-12 col-md-9">
                     <div className="shadow-sm p-3 mb-5 appearance-bg rounded">
                         <div className="d-flex justify-content-start align-items-center">
-                            <div className="img item-1 mr-3">
+                            <div className="mr-3">
                                 {" "}
                                 <img
                                     src={`${appUrl}/images/default-photo-black-outline.png`}
-                                    alt="happy face"
+                                    alt="profile photo"
                                     className="chat-preview-default-photo"
                                 />
                             </div>
-                            <div className="item 2 ">
+                            <div className="item 2">
                                 <span className="mr-1 font-weight-bold">
                                     {userInfo.gamertag}{" "}
                                 </span>

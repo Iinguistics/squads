@@ -1,7 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ChatPreview from "./ChatPreview";
-import ProfileColors from "./ProfileColors";
+import FontColor from "./FontColor";
+import ProfileColor from "./ProfileColor";
 
 const Appearance = withRouter(
     ({
@@ -10,7 +11,8 @@ const Appearance = withRouter(
         userInfo,
         fontColorHandler,
         fontColor,
-        tabHandler,
+        profileColorHandler,
+        profileColor,
     }) => {
         return (
             <div className="container">
@@ -20,13 +22,16 @@ const Appearance = withRouter(
                     profileData={profileData}
                     userInfo={userInfo}
                     fontColor={fontColor}
+                    profileColor={profileColor}
                 />
-                <ProfileColors
+                <FontColor
                     fetchProfileHandler={fetchProfileHandler}
-                    profileData={profileData}
                     fontColor={fontColor}
                     fontColorHandler={fontColorHandler}
-                    tabHandler={tabHandler}
+                />
+                <ProfileColor
+                    profileColor={profileColor}
+                    profileColorHandler={profileColorHandler}
                 />
             </div>
         );

@@ -10540,6 +10540,7 @@ form a {
   height: 64px;
   width: 64px;
   border-radius: 50%;
+  border: 2px solid #ed4245;
   background: #ed4245;
 }
 

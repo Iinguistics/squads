@@ -4,13 +4,7 @@ import "../../../css/bttn/bttn.min.css";
 import SuccessModal from "../Utils/Modals/SuccessModal";
 import Api from "../Api";
 
-const ProfileColors = ({
-    fetchProfileHandler,
-    profileData,
-    fontColorHandler,
-    fontColor,
-    tabHandler,
-}) => {
+const FontColor = ({ fontColorHandler, fontColor }) => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
@@ -41,7 +35,6 @@ const ProfileColors = ({
         }
     };
 
-    console.log(profileData, "appearance");
     return (
         <Container className="my-5">
             <Row className="d-flex">
@@ -91,4 +84,4 @@ const ProfileColors = ({
     );
 };
 
-export default ProfileColors;
+export default FontColor;

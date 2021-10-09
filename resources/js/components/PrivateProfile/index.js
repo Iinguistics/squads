@@ -54,6 +54,8 @@ const index = withRouter((props) => {
                                     profileData,
                                     fontColorHandler,
                                     fontColor,
+                                    profileColorHandler,
+                                    profileColor,
                                 }) => {
                                     return (
                                         <>
@@ -140,6 +142,12 @@ const index = withRouter((props) => {
                                                             }
                                                             tabHandler={
                                                                 tabHandler
+                                                            }
+                                                            profileColorHandler={
+                                                                profileColorHandler
+                                                            }
+                                                            profileColor={
+                                                                profileColor
                                                             }
                                                         />
                                                     )}
