@@ -5,7 +5,6 @@ import SuccessModal from "../Utils/Modals/SuccessModal";
 import Api from "../Api";
 
 const ProfileColors = ({
-    userInfo,
     fetchProfileHandler,
     profileData,
     fontColorHandler,
@@ -52,8 +51,6 @@ const ProfileColors = ({
                         titleText="Success"
                         bodyText="Your font color has been updated."
                         buttonText="Got it"
-                        tabHandler={tabHandler}
-                        tab="appearance"
                     />
                     <div className="shadow-sm p-3 mb-5 appearance-bg rounded">
                         <Form onSubmit={updateProfileHandler}>
@@ -74,6 +71,9 @@ const ProfileColors = ({
                                     <option value="red">Red</option>
                                     <option value="blue">Blue</option>
                                     <option value="green">Green</option>
+                                    <option value="orange">Orange</option>
+                                    <option value="pink">Pink</option>
+                                    <option value="purple">Purple</option>
                                 </Form.Control>
                             </Form.Group>
                             <button

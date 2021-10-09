@@ -6523,7 +6523,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 
 
 
@@ -6546,7 +6545,6 @@ var Appearance = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(fu
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ProfileColors__WEBPACK_IMPORTED_MODULE_2__["default"], {
       fetchProfileHandler: fetchProfileHandler,
       profileData: profileData,
-      userInfo: userInfo,
       fontColor: fontColor,
       fontColorHandler: fontColorHandler,
       tabHandler: tabHandler
@@ -6611,22 +6609,7 @@ var ChatPreview = function ChatPreview(_ref) {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
       success = _useState6[0],
-      setSuccess = _useState6[1]; //const [fontColor, setFontColor] = useState("");
-  // const fetchProfileHandler = async () => {
-  //     try {
-  //         const { data } = await Api.get("/show_current_user_profile");
-  //         if (data.success) {
-  //             setProfileData(data.data[0]);
-  //             setError("");
-  //             setFontColor(data.data[0].font_color);
-  //         } else {
-  //             setError(data.error);
-  //         }
-  //     } catch (error) {
-  //         setError(error.message);
-  //     }
-  // };
-
+      setSuccess = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProfileHandler();
@@ -6767,8 +6750,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var ProfileColors = function ProfileColors(_ref) {
-  var userInfo = _ref.userInfo,
-      fetchProfileHandler = _ref.fetchProfileHandler,
+  var fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData,
       fontColorHandler = _ref.fontColorHandler,
       fontColor = _ref.fontColor,
@@ -6796,15 +6778,14 @@ var ProfileColors = function ProfileColors(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               e.preventDefault();
-              console.log("ran");
-              _context.prev = 2;
+              _context.prev = 1;
               values = {
                 font_color: fontColor
               };
-              _context.next = 6;
+              _context.next = 5;
               return _Api__WEBPACK_IMPORTED_MODULE_4__["default"].put("/update_current_user_profile", values);
 
-            case 6:
+            case 5:
               _yield$Api$put = _context.sent;
               data = _yield$Api$put.data;
 
@@ -6816,20 +6797,20 @@ var ProfileColors = function ProfileColors(_ref) {
                 setError(true);
               }
 
-              _context.next = 14;
+              _context.next = 13;
               break;
 
-            case 11:
-              _context.prev = 11;
-              _context.t0 = _context["catch"](2);
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](1);
               setError(_context.t0.message);
 
-            case 14:
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 11]]);
+      }, _callee, null, [[1, 10]]);
     }));
 
     return function updateProfileHandler(_x) {
@@ -6848,9 +6829,7 @@ var ProfileColors = function ProfileColors(_ref) {
           success: success,
           titleText: "Success",
           bodyText: "Your font color has been updated.",
-          buttonText: "Got it",
-          tabHandler: tabHandler,
-          tab: "appearance"
+          buttonText: "Got it"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "shadow-sm p-3 mb-5 appearance-bg rounded",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -6879,6 +6858,15 @@ var ProfileColors = function ProfileColors(_ref) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
                   value: "green",
                   children: "Green"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "orange",
+                  children: "Orange"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "pink",
+                  children: "Pink"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "purple",
+                  children: "Purple"
                 })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {

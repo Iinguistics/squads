@@ -24,7 +24,6 @@ const Appearance = withRouter(
                 <ProfileColors
                     fetchProfileHandler={fetchProfileHandler}
                     profileData={profileData}
-                    userInfo={userInfo}
                     fontColor={fontColor}
                     fontColorHandler={fontColorHandler}
                     tabHandler={tabHandler}
