@@ -22,8 +22,6 @@ const ProfileColors = ({
     const updateProfileHandler = async (e) => {
         e.preventDefault();
 
-        console.log("ran");
-
         try {
             let values = { font_color: fontColor };
 

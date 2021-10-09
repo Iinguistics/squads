@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import ChatPreview from "./ChatPreview";
 import ProfileColors from "./ProfileColors";
-//import ProfileUpdateForm from "../Utils/Forms/ProfileUpdateForm";
 
 const Appearance = withRouter(
     ({
