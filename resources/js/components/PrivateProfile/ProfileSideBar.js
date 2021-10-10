@@ -5,6 +5,7 @@ import EmailModal from "../Utils/Modals/UserSettings/EmailModal";
 import GamertagModal from "../Utils/Modals/UserSettings/GamertagModal";
 import ActivisionIdModal from "../Utils/Modals/UserSettings/ActivisionIdModal";
 import PasswordModal from "../Utils/Modals/UserSettings/PasswordModal";
+import UploadPhotoModal from "../Utils/Modals/UploadPhotoModal";
 
 const ProfileSideBar = ({
     myProfileTab,
@@ -28,6 +29,8 @@ const ProfileSideBar = ({
     activisionClicked,
     passwordClickedHandler,
     passwordClicked,
+    photoClickedHandler,
+    photoClicked,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -53,7 +56,10 @@ const ProfileSideBar = ({
                         >
                             General Info
                         </div>
-                        <div className="private-profile-sidebar-cat-content mb-2">
+                        <div
+                            className="private-profile-sidebar-cat-content mb-2"
+                            onClick={() => photoClickedHandler()}
+                        >
                             Upload Photo
                         </div>
                         <div className="private-profile-sidebar-cat-content mb-2">
@@ -118,6 +124,10 @@ const ProfileSideBar = ({
                     </div>
                 </div>
             </div>
+            <UploadPhotoModal
+                photoClicked={photoClicked}
+                tabHandler={tabHandler}
+            />
             <DeleteAccountModal
                 deleteAccountClicked={deleteAccountClicked}
                 loggedInToggleHandler={loggedInToggleHandler}

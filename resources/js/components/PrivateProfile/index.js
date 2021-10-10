@@ -50,6 +50,8 @@ const index = withRouter((props) => {
                                     activisionClicked,
                                     passwordClickedHandler,
                                     passwordClicked,
+                                    photoClickedHandler,
+                                    photoClicked,
                                     fetchProfileHandler,
                                     profileData,
                                     fontColorHandler,
@@ -110,6 +112,10 @@ const index = withRouter((props) => {
                                                     passwordClicked={
                                                         passwordClicked
                                                     }
+                                                    photoClickedHandler={
+                                                        photoClickedHandler
+                                                    }
+                                                    photoClicked={photoClicked}
                                                 />
                                                 <div className="container mt-5 main-header">
                                                     {generalInfoTab && (

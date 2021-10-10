@@ -5612,15 +5612,20 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       passwordClicked = _useState36[0],
       setPasswordClicked = _useState36[1];
 
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState38 = _slicedToArray(_useState37, 2),
-      fontColor = _useState38[0],
-      setFontColor = _useState38[1];
+      photoClicked = _useState38[0],
+      setPhotoClicked = _useState38[1];
 
   var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState40 = _slicedToArray(_useState39, 2),
-      profileColor = _useState40[0],
-      setProfileColor = _useState40[1];
+      fontColor = _useState40[0],
+      setFontColor = _useState40[1];
+
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState42 = _slicedToArray(_useState41, 2),
+      profileColor = _useState42[0],
+      setProfileColor = _useState42[1];
 
   var resetTabs = function resetTabs() {
     setMyProfileTab(false);
@@ -5716,6 +5721,12 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
     });
   };
 
+  var photoClickedHandler = function photoClickedHandler() {
+    setPhotoClicked(function (photoClicked) {
+      return photoClicked + 1;
+    });
+  };
+
   var fontColorHandler = function fontColorHandler(color) {
     setFontColor(color);
   };
@@ -5786,6 +5797,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       gamertagClicked: gamertagClicked,
       activisionClicked: activisionClicked,
       passwordClicked: passwordClicked,
+      photoClicked: photoClicked,
       profileData: profileData,
       fontColor: fontColor,
       profileColor: profileColor,
@@ -5795,6 +5807,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       gamertagClickedHandler: gamertagClickedHandler,
       activisionClickedHandler: activisionClickedHandler,
       passwordClickedHandler: passwordClickedHandler,
+      photoClickedHandler: photoClickedHandler,
       fetchProfileHandler: fetchProfileHandler,
       fontColorHandler: fontColorHandler,
       profileColorHandler: profileColorHandler
@@ -7097,7 +7110,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Modals_UserSettings_GamertagModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Utils/Modals/UserSettings/GamertagModal */ "./resources/js/components/Utils/Modals/UserSettings/GamertagModal.js");
 /* harmony import */ var _Utils_Modals_UserSettings_ActivisionIdModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Utils/Modals/UserSettings/ActivisionIdModal */ "./resources/js/components/Utils/Modals/UserSettings/ActivisionIdModal.js");
 /* harmony import */ var _Utils_Modals_UserSettings_PasswordModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Utils/Modals/UserSettings/PasswordModal */ "./resources/js/components/Utils/Modals/UserSettings/PasswordModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Utils_Modals_UploadPhotoModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Utils/Modals/UploadPhotoModal */ "./resources/js/components/Utils/Modals/UploadPhotoModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -7129,91 +7144,96 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
       activisionClickedHandler = _ref.activisionClickedHandler,
       activisionClicked = _ref.activisionClicked,
       passwordClickedHandler = _ref.passwordClickedHandler,
-      passwordClicked = _ref.passwordClicked;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      passwordClicked = _ref.passwordClicked,
+      photoClickedHandler = _ref.photoClickedHandler,
+      photoClicked = _ref.photoClicked;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "private-profile-sidebar-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       className: "container mt-5 main-header",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "d-flex flex-row flex-md-column justify-content-between flex-wrap",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "m-auto",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "profile settings"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             onClick: function onClick() {
               return tabHandler("myProfile");
             },
             className: "private-profile-sidebar-cat-content mb-2 ".concat(myProfileTab ? "content-active" : ""),
             children: "My Profile"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             onClick: function onClick() {
               return tabHandler("generalInfo");
             },
             className: "private-profile-sidebar-cat-content mb-2 ".concat(generalInfoTab ? "content-active" : ""),
             children: "General Info"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
+            onClick: function onClick() {
+              return photoClickedHandler();
+            },
             children: "Upload Photo"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             children: "Privacy"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "private-profile-sidebar-divider my-2 m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "m-auto",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "my squads"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "private-profile-sidebar-divider my-2 m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "m-auto",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "app settings"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             onClick: function onClick() {
               return tabHandler("appearance");
             },
             className: "private-profile-sidebar-cat-content mb-2 ".concat(appearanceTab ? "content-active" : ""),
             children: "Appearance"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "private-profile-sidebar-divider my-2 m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "m-auto",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "user settings"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return emailClickedHandler();
             },
             children: "Email"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return gamertagClickedHandler();
             },
             children: "Gamertag"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return activisionClickedHandler();
             },
             children: "Activision Id"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return passwordClickedHandler();
             },
             children: "Password"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2 text-danger",
             onClick: function onClick() {
               return deleteAccountClickedHandler();
@@ -7222,19 +7242,22 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Utils_Modals_UploadPhotoModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      photoClicked: photoClicked,
+      tabHandler: tabHandler
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
       deleteAccountClicked: deleteAccountClicked,
       loggedInToggleHandler: loggedInToggleHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_UserSettings_EmailModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Utils_Modals_UserSettings_EmailModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
       emailClicked: emailClicked,
       tabHandler: tabHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_UserSettings_GamertagModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Utils_Modals_UserSettings_GamertagModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
       gamertagClicked: gamertagClicked,
       tabHandler: tabHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_UserSettings_ActivisionIdModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Utils_Modals_UserSettings_ActivisionIdModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       activisionClicked: activisionClicked,
       tabHandler: tabHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_UserSettings_PasswordModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Utils_Modals_UserSettings_PasswordModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
       passwordClicked: passwordClicked,
       tabHandler: tabHandler
     })]
@@ -7334,6 +7357,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
                   activisionClicked = _ref2.activisionClicked,
                   passwordClickedHandler = _ref2.passwordClickedHandler,
                   passwordClicked = _ref2.passwordClicked,
+                  photoClickedHandler = _ref2.photoClickedHandler,
+                  photoClicked = _ref2.photoClicked,
                   fetchProfileHandler = _ref2.fetchProfileHandler,
                   profileData = _ref2.profileData,
                   fontColorHandler = _ref2.fontColorHandler,
@@ -7364,7 +7389,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
                     activisionClickedHandler: activisionClickedHandler,
                     activisionClicked: activisionClicked,
                     passwordClickedHandler: passwordClickedHandler,
-                    passwordClicked: passwordClicked
+                    passwordClicked: passwordClicked,
+                    photoClickedHandler: photoClickedHandler,
+                    photoClicked: photoClicked
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                     className: "container mt-5 main-header",
                     children: [generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -9967,6 +9994,210 @@ SuccessModal.defaultProps = {
   buttonText: "Close"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SuccessModal);
+
+/***/ }),
+
+/***/ "./resources/js/components/Utils/Modals/UploadPhotoModal.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Utils/Modals/UploadPhotoModal.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var _SuccessModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var UploadPhotoModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function (props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      show = _useState2[0],
+      setShow = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      error = _useState4[0],
+      setError = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      loading = _useState6[0],
+      setLoading = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      success = _useState8[0],
+      setSuccess = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      selectedFile = _useState10[0],
+      setSelectedFile = _useState10[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (props.photoClicked !== 0) {
+      setShow(true);
+    }
+  }, [props.photoClicked]);
+
+  var handleClose = function handleClose() {
+    setShow(false);
+  }; // const fetchProfilePhotoHandler = async () => {
+  //     setLoading(true);
+  //     try {
+  //         const { data } = await Api.get("/get_current_user_profile_photo");
+  //         if (!data.success) {
+  //             setPhotoPath(data);
+  //             setLoading(false);
+  //             setError("");
+  //         } else {
+  //             setError(data.error);
+  //         }
+  //     } catch (error) {
+  //         setLoading(false);
+  //         setError(error.message);
+  //     }
+  // };
+  // useEffect(() => {
+  //     fetchProfilePhotoHandler();
+  // }, []);
+
+
+  var updatePhotoHandler = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+      var value, _yield$Api$post, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              e.preventDefault();
+              _context.prev = 1;
+              value = {
+                photo: selectedFile
+              };
+              _context.next = 5;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/update_current_user_profile_photo", value);
+
+            case 5:
+              _yield$Api$post = _context.sent;
+              data = _yield$Api$post.data;
+
+              if (data.success) {
+                setSuccess(true);
+                setError(false);
+                setShow(false);
+              } else {
+                setSuccess(false);
+                setError(true);
+              }
+
+              _context.next = 13;
+              break;
+
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](1);
+              setError(_context.t0.message);
+
+            case 13:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 10]]);
+    }));
+
+    return function updatePhotoHandler(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "mt-5 text-center",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SuccessModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        success: success,
+        titleText: "Success",
+        bodyText: "Your photo has been updated.",
+        buttonText: "Got it",
+        tabHandler: props.tabHandler,
+        tab: "myProfile"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        show: show,
+        onHide: handleClose,
+        className: "account-modal",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Header, {
+          closeButton: true,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Title, {
+            children: "Update Photo"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+          onSubmit: updatePhotoHandler,
+          enctype: "multipart/form-data",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "file",
+              id: "form-input-no-underline" //value={selectedFile}
+              ,
+              onChange: function onChange(e) {
+                return setSelectedFile(e.target.files[0]);
+              }
+            }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "text-danger",
+              children: error
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              onClick: handleClose,
+              className: "bttn-material-flat bttn-sm mr-2",
+              children: "Cancel"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              type: "submit",
+              className: "bttn-material-flat bttn-sm update-account-modal-btn",
+              children: "Update"
+            })]
+          })]
+        })]
+      })]
+    })
+  });
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UploadPhotoModal);
 
 /***/ }),
 

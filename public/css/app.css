@@ -10107,6 +10107,10 @@ form a {
   text-decoration: none !important;
 }
 
+#form-input-no-underline {
+  border-bottom: none !important;
+}
+
 @media only screen and (max-width: 600px) {
   .eye-text img {
     height: 24px;
