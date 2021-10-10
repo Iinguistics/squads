@@ -7033,7 +7033,7 @@ var ProfileColor = function ProfileColor(_ref) {
               controlId: "formBasicPlatform",
               value: fontColor,
               onChange: function onChange(e) {
-                return fontColorHandler(e.target.value);
+                return profileColorHandler(e.target.value);
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Label, {
                 children: "Profile Color"

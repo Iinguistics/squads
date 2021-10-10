@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Config;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\User;
 use App\Profile;
@@ -65,5 +66,45 @@ class ProfileController extends Controller
         );
 
         return response()->json($response, 200);
+    }
+
+    public function update_current_user_profile_photo(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $file->storeAs('photo/' . $user->id, $filename, 's3');
+
+            $results = Profile::where('id', $user->id)
+                ->update([
+                    'photo' => $filename
+                ]);
+        }
+
+        $response = array(
+            'success' => $results ? true : false,
+            // 'data' => $results,
+            'error' => $results ? false : 'failed to upload photo'
+        );
+
+        return response()->json($response, 200);
+    }
+
+    public function get_current_user_profile_photo(Request $request)
+    {
+        $user = Auth::user();
+
+        $profile = Profile::where('id', $user->id)->get();
+
+        if ($profile->photo) {
+            return Storage::disk('s3')->response('photo/' . $user->id . '/' . $profile->photo);
+        } else {
+            $response = array(
+                'error' => 'failed to retrieve photo'
+            );
+            return response()->json($response, 200);
+        }
     }
 }

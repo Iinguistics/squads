@@ -52,7 +52,7 @@ const ProfileColor = ({ profileColorHandler, profileColor }) => {
                                 controlId="formBasicPlatform"
                                 value={fontColor}
                                 onChange={(e) =>
-                                    fontColorHandler(e.target.value)
+                                    profileColorHandler(e.target.value)
                                 }
                             >
                                 <Form.Label>Profile Color</Form.Label>
