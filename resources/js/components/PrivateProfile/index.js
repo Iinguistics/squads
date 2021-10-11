@@ -8,6 +8,7 @@ import UserProvider, { UserContext } from "../Context/UserContext";
 
 import Appearance from "./Appearance";
 import EditProfile from "./EditProfile";
+import Privacy from "./Privacy/Privacy";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -133,7 +134,6 @@ const index = withRouter((props) => {
                                                             tabHandler={
                                                                 tabHandler
                                                             }
-                                                            tab="myProfile"
                                                             fetchProfileHandler={
                                                                 fetchProfileHandler
                                                             }
@@ -154,6 +154,14 @@ const index = withRouter((props) => {
                                                             }
                                                             profileColor={
                                                                 profileColor
+                                                            }
+                                                        />
+                                                    )}
+                                                    {privacyTab && (
+                                                        <Privacy
+                                                            userInfo={userInfo}
+                                                            tabHandler={
+                                                                tabHandler
                                                             }
                                                         />
                                                     )}

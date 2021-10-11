@@ -62,7 +62,12 @@ const ProfileSideBar = ({
                         >
                             Upload Photo
                         </div>
-                        <div className="private-profile-sidebar-cat-content mb-2">
+                        <div
+                            onClick={() => tabHandler("privacy")}
+                            className={`private-profile-sidebar-cat-content mb-2 ${
+                                privacyTab ? "content-active" : ""
+                            }`}
+                        >
                             Privacy
                         </div>
                     </div>
