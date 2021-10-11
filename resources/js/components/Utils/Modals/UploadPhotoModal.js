@@ -21,49 +21,33 @@ const UploadPhotoModal = withRouter((props) => {
         setShow(false);
     };
 
-    // const fetchProfilePhotoHandler = async () => {
-    //     setLoading(true);
-    //     try {
-    //         const { data } = await Api.get("/get_current_user_profile_photo");
-    //         if (!data.success) {
-    //             setPhotoPath(data);
-    //             setLoading(false);
-    //             setError("");
-    //         } else {
-    //             setError(data.error);
-    //         }
-    //     } catch (error) {
-    //         setLoading(false);
-    //         setError(error.message);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchProfilePhotoHandler();
-    // }, []);
-
     const updatePhotoHandler = async (e) => {
         e.preventDefault();
 
         try {
-            let value = {
-                photo: selectedFile,
-            };
+            setLoading(true);
+
+            const fData = new FormData();
+            fData.append("photo", selectedFile);
             const { data } = await Api.post(
                 "/update_current_user_profile_photo",
-                value
+                fData
             );
 
             if (data.success) {
                 setSuccess(true);
                 setError(false);
                 setShow(false);
+                setLoading(false);
             } else {
                 setSuccess(false);
                 setError(true);
+                setLoading(false);
             }
         } catch (error) {
             setError(error.message);
+            setSuccess(false);
+            setLoading(false);
         }
     };
 
@@ -83,13 +67,14 @@ const UploadPhotoModal = withRouter((props) => {
                     onHide={handleClose}
                     className="account-modal"
                 >
+                    {loading && (
+                        <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
+                    )}
+
                     <Modal.Header closeButton>
                         <Modal.Title>Update Photo</Modal.Title>
                     </Modal.Header>
-                    <form
-                        onSubmit={updatePhotoHandler}
-                        enctype="multipart/form-data"
-                    >
+                    <form onSubmit={updatePhotoHandler}>
                         <Modal.Body>
                             <input
                                 type="file"

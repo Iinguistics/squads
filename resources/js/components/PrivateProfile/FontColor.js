@@ -55,7 +55,7 @@ const FontColor = ({ fontColorHandler, fontColor }) => {
                                     fontColorHandler(e.target.value)
                                 }
                             >
-                                <Form.Label>Font Color</Form.Label>
+                                <Form.Label>Chat Font Color</Form.Label>
                                 <Form.Control
                                     as="select"
                                     aria-label="Default select"

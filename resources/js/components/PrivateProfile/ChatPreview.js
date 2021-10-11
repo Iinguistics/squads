@@ -7,13 +7,37 @@ const ChatPreview = ({
     fetchProfileHandler,
     profileData,
     fontColor,
+    profileColor,
 }) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
+    const [photoPath, setPhotoPath] = useState("");
+
     useEffect(() => {
         fetchProfileHandler();
+    }, []);
+
+    const fetchProfilePhotoHandler = async () => {
+        setLoading(true);
+        try {
+            const { data } = await Api.get("/get_current_user_profile_photo");
+            if (data.success) {
+                setPhotoPath(data.data);
+                setLoading(false);
+            } else {
+                setLoading(false);
+                setPhotoPath("");
+            }
+        } catch (error) {
+            setLoading(false);
+            setError(error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchProfilePhotoHandler();
     }, []);
     const appUrl = process.env.MIX_APP_URL;
     console.log(profileData, "appearance");
@@ -26,9 +50,13 @@ const ChatPreview = ({
                             <div className="mr-3">
                                 {" "}
                                 <img
-                                    src={`${appUrl}/images/default-photo-black-outline.png`}
+                                    src={
+                                        photoPath
+                                            ? photoPath
+                                            : `${appUrl}/images/default-photo-black-outline.png`
+                                    }
                                     alt="profile photo"
-                                    className="chat-preview-default-photo"
+                                    className={`chat-preview-photo appearance-profile-color-${profileColor}`}
                                 />
                             </div>
                             <div className="item 2">

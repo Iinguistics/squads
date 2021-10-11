@@ -72,8 +72,6 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        $results = null;
-
         // if ($request->hasFile('photo')) {
         //     $file = $request->file('photo');
         //     $filename = $file->getClientOriginalName();
@@ -85,9 +83,20 @@ class ProfileController extends Controller
         //         ]);
         // }
 
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = $file->getClientOriginalName();
+            $path = $file->storeAs('photo/' . $user->id, $filename, 's3');
+            Storage::disk('s3')->setVisibility($path, 'public');
+
+            $results = Profile::where('id', $user->id)
+                ->update([
+                    'photo' => Storage::disk('s3')->url($path)
+                ]);
+        }
+
         $response = array(
             'success' => $results ? true : false,
-            'data' => $request->hasFile('photo'),
             'error' => $results ? false : 'failed to upload photo'
         );
 
@@ -101,13 +110,16 @@ class ProfileController extends Controller
         $profile = Profile::where('id', $user->id)->get()->first();
 
         if ($profile->photo) {
-            return Storage::disk('s3')->response('photo/' . $user->id . '/' . $profile->photo);
+            $response = array(
+                'success' => true,
+                'data' => $profile->photo
+            );
+            return response()->json($response, 200);
         } else {
             $response = array(
                 'success' => false
             );
             return response()->json($response, 200);
         }
-        // return $profile->photo;
     }
 }

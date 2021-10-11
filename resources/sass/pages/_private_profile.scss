@@ -31,12 +31,12 @@
     color: $blue-purple-two;
 }
 
-.chat-preview-default-photo {
+.chat-preview-photo {
     height: 64px;
     width: 64px;
     border-radius: 50%;
-    border: 2px solid $red;
-    background: $red;
+    object-fit: cover;
+    object-position: center;
 }
 
 .appearance-bg {
@@ -72,6 +72,31 @@
 }
 .appearance-font-color-graydolphin {
     color: $gray-dolphin;
+}
+
+.appearance-profile-color-red {
+    border: 2px solid $red;
+    background: $red;
+}
+.appearance-profile-color-blue {
+    border: 2px solid $blue;
+    background: $blue;
+}
+.appearance-profile-color-green {
+    border: 2px solid $green;
+    background: $green;
+}
+.appearance-profile-color-orange {
+    border: 2px solid $orange;
+    background: $orange;
+}
+.appearance-profile-color-pink {
+    border: 2px solid $pink;
+    background: $pink;
+}
+.appearance-profile-color-purple {
+    border: 2px solid $purple;
+    background: $purple;
 }
 
 @media only screen and (max-width: 600px) {

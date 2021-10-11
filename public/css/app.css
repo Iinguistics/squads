@@ -10540,12 +10540,14 @@ form a {
   color: #3752c4;
 }
 
-.chat-preview-default-photo {
+.chat-preview-photo {
   height: 64px;
   width: 64px;
   border-radius: 50%;
-  border: 2px solid #ed4245;
-  background: #ed4245;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .appearance-bg {
@@ -10590,6 +10592,36 @@ form a {
 
 .appearance-font-color-graydolphin {
   color: #5c5858;
+}
+
+.appearance-profile-color-red {
+  border: 2px solid #ed4245;
+  background: #ed4245;
+}
+
+.appearance-profile-color-blue {
+  border: 2px solid #3490dc;
+  background: #3490dc;
+}
+
+.appearance-profile-color-green {
+  border: 2px solid #00ff00;
+  background: #00ff00;
+}
+
+.appearance-profile-color-orange {
+  border: 2px solid #f6993f;
+  background: #f6993f;
+}
+
+.appearance-profile-color-pink {
+  border: 2px solid #f66d9b;
+  background: #f66d9b;
+}
+
+.appearance-profile-color-purple {
+  border: 2px solid #5741d9;
+  background: #5741d9;
 }
 
 @media only screen and (max-width: 600px) {

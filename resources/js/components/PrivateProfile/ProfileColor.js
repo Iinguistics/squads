@@ -50,12 +50,12 @@ const ProfileColor = ({ profileColorHandler, profileColor }) => {
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicPlatform"
-                                value={fontColor}
+                                value={profileColor}
                                 onChange={(e) =>
                                     profileColorHandler(e.target.value)
                                 }
                             >
-                                <Form.Label>Profile Color</Form.Label>
+                                <Form.Label>Profile Theme Color</Form.Label>
                                 <Form.Control
                                     as="select"
                                     aria-label="Default select"
@@ -72,7 +72,7 @@ const ProfileColor = ({ profileColorHandler, profileColor }) => {
                             <button
                                 className="bttn-unite bttn-sm bttn-primary"
                                 type="submit"
-                                disabled={!fontColor}
+                                disabled={!profileColor}
                             >
                                 Save
                             </button>
