@@ -99,6 +99,18 @@
     background: $purple;
 }
 
+.privacy-direct-messaging {
+    background: $profile-sidebar-light-bg;
+}
+
+.privacy-direct-messaging-item-1:nth-child(1) {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: $blue;
+    border: 2px solid #333;
+}
+
 @media only screen and (max-width: 600px) {
     .private-profile-main-container {
         height: 100%;
