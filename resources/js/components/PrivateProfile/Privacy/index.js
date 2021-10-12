@@ -4,7 +4,7 @@ import DirectMessaging from "./DirectMessaging";
 
 const Index = withRouter((props) => {
     return (
-        <div className="container">
+        <div className="col-12 col-md-7">
             <h2>Privacy</h2>
             <DirectMessaging />
         </div>
