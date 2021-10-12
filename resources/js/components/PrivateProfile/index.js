@@ -8,7 +8,7 @@ import UserProvider, { UserContext } from "../Context/UserContext";
 
 import Appearance from "./Appearance";
 import EditProfile from "./EditProfile";
-import Privacy from "./Privacy/Privacy";
+import Privacy from "./Privacy";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
