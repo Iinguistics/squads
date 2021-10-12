@@ -47,6 +47,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('update_current_user_profile', [ProfileController::class, 'update_current_user_profile']);
     Route::post('update_current_user_profile_photo', [ProfileController::class, 'update_current_user_profile_photo']);
     Route::get('get_current_user_profile_photo', [ProfileController::class, 'get_current_user_profile_photo']);
+    Route::put('update_profile_privacy_messaging', [ProfileController::class, 'update_profile_privacy_messaging']);
+
 
     Route::get('profile/{id}', [ProfileController::class, 'show']);
 });

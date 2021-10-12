@@ -163,6 +163,12 @@ const index = withRouter((props) => {
                                                             tabHandler={
                                                                 tabHandler
                                                             }
+                                                            fetchProfileHandler={
+                                                                fetchProfileHandler
+                                                            }
+                                                            profileData={
+                                                                profileData
+                                                            }
                                                         />
                                                     )}
                                                 </div>

@@ -10632,8 +10632,11 @@ form a {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: #3490dc;
   border: 2px solid #333;
+}
+
+.privacy-circle-active {
+  background: #3490dc;
 }
 
 .privacy-icon {

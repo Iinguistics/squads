@@ -122,4 +122,24 @@ class ProfileController extends Controller
             return response()->json($response, 200);
         }
     }
+
+    public function update_profile_privacy_messaging(Request $request)
+    {
+        $user = Auth::user();
+
+        $profile = Profile::where('id', $user->id)->get()->first();
+
+        if ($profile->photo) {
+            $response = array(
+                'success' => true,
+                'data' => $profile->photo
+            );
+            return response()->json($response, 200);
+        } else {
+            $response = array(
+                'success' => false
+            );
+            return response()->json($response, 200);
+        }
+    }
 }

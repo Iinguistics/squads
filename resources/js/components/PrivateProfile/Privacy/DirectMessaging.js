@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Api from "../../Api";
 
-const DirectMessaging = () => {
+const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
+    const [allUsers, setAllUsers] = useState(true);
+    const [teammates, setTeammates] = useState(false);
+    const [none, setNone] = useState(false);
+
+    useEffect(() => {
+        fetchProfileHandler();
+    }, []);
+
+    console.log(profileData, "direct messaging");
+
     const appUrl = process.env.MIX_APP_URL;
     return (
         <div>
@@ -10,7 +21,7 @@ const DirectMessaging = () => {
                 inbox.
             </p>
             <div className="d-flex flex-row align-items-center privacy-direct-messaging p-3 mb-3">
-                <div className="privacy-direct-messaging-item-1 mr-1">
+                <div className="privacy-direct-messaging-item-1 mr-2">
                     <div className="privacy-circle"></div>
                 </div>
                 <div className="privacy-direct-messaging-item-2 mr-3">
@@ -26,12 +37,12 @@ const DirectMessaging = () => {
             </div>
 
             <div className="d-flex flex-row align-items-center privacy-direct-messaging p-3 mb-3">
-                <div className="privacy-direct-messaging-item-1 mr-1">
+                <div className="privacy-direct-messaging-item-1 mr-2">
                     <div className="privacy-circle"></div>
                 </div>
                 <div className="privacy-direct-messaging-item-2 mr-3">
                     <img
-                        src={`${appUrl}/images/privacy/privacy-messaging-users.png`}
+                        src={`${appUrl}/images/privacy/privacy-messaging-teammates.png`}
                         alt="all users"
                         className="privacy-icon"
                     />
@@ -41,13 +52,13 @@ const DirectMessaging = () => {
                 </div>
             </div>
 
-            <div className="d-flex flex-row align-items-center privacy-direct-messaging p-3 ">
-                <div className="privacy-direct-messaging-item-1 mr-1">
+            <div className="d-flex flex-row align-items-center privacy-direct-messaging p-3">
+                <div className="privacy-direct-messaging-item-1 mr-2">
                     <div className="privacy-circle"></div>
                 </div>
                 <div className="privacy-direct-messaging-item-2 mr-3">
                     <img
-                        src={`${appUrl}/images/privacy/privacy-messaging-users.png`}
+                        src={`${appUrl}/images/privacy/privacy-messaging-block.png`}
                         alt="all users"
                         className="privacy-icon"
                     />
