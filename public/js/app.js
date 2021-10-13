@@ -7025,10 +7025,6 @@ var DirectMessaging = function DirectMessaging(_ref) {
       error = _useState2[0],
       setError = _useState2[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchProfileHandler();
-  }, []);
-
   var updateProfileHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(tab) {
       var value, _yield$Api$put, data;
@@ -7209,10 +7205,6 @@ var SquadInvite = function SquadInvite(_ref) {
       error = _useState2[0],
       setError = _useState2[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchProfileHandler();
-  }, []);
-
   var updateProfileHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(tab) {
       var value, _yield$Api$put, data;
@@ -7223,7 +7215,7 @@ var SquadInvite = function SquadInvite(_ref) {
             case 0:
               _context.prev = 0;
               value = {
-                privacy_messaging: tab
+                privacy_squad_invite: tab
               };
               _context.next = 4;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_profile", value);
@@ -7279,7 +7271,7 @@ var SquadInvite = function SquadInvite(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "mr-2",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: profileData ? profileData.privacy_messaging === "all" ? "privacy-circle privacy-circle-active shadow" : "privacy-circle" : "privacy-circle"
+          className: profileData ? profileData.privacy_squad_invite === "all" ? "privacy-circle privacy-circle-active shadow" : "privacy-circle" : "privacy-circle"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "mr-3",
@@ -7301,7 +7293,7 @@ var SquadInvite = function SquadInvite(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "mr-2",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: profileData ? profileData.privacy_messaging === "none" ? "privacy-circle privacy-circle-active shadow" : "privacy-circle" : "privacy-circle"
+          className: profileData ? profileData.privacy_squad_invite === "none" ? "privacy-circle privacy-circle-active shadow" : "privacy-circle" : "privacy-circle"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "mr-3",
@@ -7348,6 +7340,9 @@ __webpack_require__.r(__webpack_exports__);
 var Index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (_ref) {
   var fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchProfileHandler();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "col-12 col-md-7",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {

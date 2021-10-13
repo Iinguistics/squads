@@ -4,10 +4,6 @@ import Api from "../../Api";
 const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        fetchProfileHandler();
-    }, []);
-
     const updateProfileHandler = async (tab) => {
         try {
             let value = { privacy_messaging: tab };

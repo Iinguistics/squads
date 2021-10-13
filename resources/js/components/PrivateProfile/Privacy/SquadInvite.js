@@ -4,13 +4,9 @@ import Api from "../../Api";
 const SquadInvite = ({ fetchProfileHandler, profileData }) => {
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        fetchProfileHandler();
-    }, []);
-
     const updateProfileHandler = async (tab) => {
         try {
-            let value = { privacy_messaging: tab };
+            let value = { privacy_squad_invite: tab };
             const { data } = await Api.put(
                 "/update_current_user_profile",
                 value
@@ -41,7 +37,7 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_messaging === "all"
+                                ? profileData.privacy_squad_invite === "all"
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
@@ -68,7 +64,7 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_messaging === "none"
+                                ? profileData.privacy_squad_invite === "none"
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
