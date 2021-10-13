@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Api from "../../Api";
 
-const SquadInvite = ({ fetchProfileHandler, profileData }) => {
+const ProfileView = ({ fetchProfileHandler, profileData }) => {
     const [error, setError] = useState(null);
 
     const updateProfileHandler = async (tab) => {
         try {
-            let value = { privacy_squad_invite: tab };
+            let value = { privacy_profile_viewing: tab };
             const { data } = await Api.put(
                 "/update_current_user_profile",
                 value
@@ -26,8 +26,8 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
     const appUrl = process.env.MIX_APP_URL;
     return (
         <div className="mb-5">
-            <p>Squad Invites</p>
-            <p className="text-muted">Choose to allow squad invites</p>
+            <p>Profile viewing</p>
+            <p className="text-muted">Who can view your profile</p>
             {error && <span className="text-danger">{error}</span>}
             <div
                 className="d-flex flex-row align-items-center privacy-content-bg p-3 mb-3"
@@ -37,7 +37,7 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_squad_invite === "all"
+                                ? profileData.privacy_profile_viewing === "all"
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
@@ -52,7 +52,34 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
                     />
                 </div>
                 <div>
-                    <span>Allow users to send me squad invites</span>
+                    <span>All users</span>
+                </div>
+            </div>
+            <div
+                className="d-flex flex-row align-items-center privacy-content-bg p-3 mb-3"
+                onClick={() => updateProfileHandler("teammates")}
+            >
+                <div className="mr-2">
+                    <div
+                        className={
+                            profileData
+                                ? profileData.privacy_profile_viewing ===
+                                  "teammates"
+                                    ? "privacy-circle privacy-circle-active shadow"
+                                    : "privacy-circle"
+                                : "privacy-circle"
+                        }
+                    ></div>
+                </div>
+                <div className="mr-3">
+                    <img
+                        src={`${appUrl}/images/privacy/privacy-messaging-teammates.png`}
+                        alt="all users"
+                        className="privacy-icon"
+                    />
+                </div>
+                <div>
+                    <span>Only my squad teammates</span>
                 </div>
             </div>
 
@@ -64,7 +91,7 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_squad_invite === "none"
+                                ? profileData.privacy_profile_viewing === "none"
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
@@ -79,11 +106,11 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
                     />
                 </div>
                 <div>
-                    <span>Do not allow users to send me squad invites</span>
+                    <span>No one but me</span>
                 </div>
             </div>
         </div>
     );
 };
 
-export default SquadInvite;
+export default ProfileView;
