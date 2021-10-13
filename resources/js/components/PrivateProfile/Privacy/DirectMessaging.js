@@ -5,10 +5,59 @@ const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
     const [allUsers, setAllUsers] = useState(true);
     const [teammates, setTeammates] = useState(false);
     const [none, setNone] = useState(false);
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchProfileHandler();
     }, []);
+
+    const resetTabs = () => {
+        setAllUsers(false);
+        setTeammates(false);
+        setNone(false);
+    };
+
+    const updateTabs = (tab) => {
+        switch (tab) {
+            case "all":
+                resetTabs();
+                setAllUsers(true);
+                break;
+
+            case "teammates":
+                resetTabs();
+                setTeammates(true);
+                break;
+
+            case "none":
+                resetTabs();
+                setNone(true);
+                break;
+
+            default:
+                break;
+        }
+    };
+
+    const updateProfileHandler = async (tab) => {
+        try {
+            let value = { privacy_messaging: tab };
+            const { data } = await Api.put(
+                "/update_current_user_profile",
+                value
+            );
+
+            if (data.success) {
+                fetchProfileHandler();
+                setError(false);
+            } else {
+                setError(true);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     console.log(profileData, "direct messaging");
 
@@ -20,9 +69,21 @@ const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
                 Choose who can send you messages that you will receive in your
                 inbox.
             </p>
-            <div className="d-flex flex-row align-items-center privacy-direct-messaging p-3 mb-3">
+            {error && <span className="text-danger">{error}</span>}
+            <div
+                className="d-flex flex-row align-items-center privacy-direct-messaging p-3 mb-3"
+                onClick={() => updateProfileHandler("all")}
+            >
                 <div className="privacy-direct-messaging-item-1 mr-2">
-                    <div className="privacy-circle"></div>
+                    <div
+                        className={
+                            profileData
+                                ? profileData.privacy_messaging === "all"
+                                    ? "privacy-circle privacy-circle-active"
+                                    : "privacy-circle"
+                                : "privacy-circle"
+                        }
+                    ></div>
                 </div>
                 <div className="privacy-direct-messaging-item-2 mr-3">
                     <img
@@ -36,9 +97,20 @@ const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
                 </div>
             </div>
 
-            <div className="d-flex flex-row align-items-center privacy-direct-messaging p-3 mb-3">
+            <div
+                className="d-flex flex-row align-items-center privacy-direct-messaging p-3 mb-3"
+                onClick={() => updateProfileHandler("teammates")}
+            >
                 <div className="privacy-direct-messaging-item-1 mr-2">
-                    <div className="privacy-circle"></div>
+                    <div
+                        className={
+                            profileData
+                                ? profileData.privacy_messaging === "teammates"
+                                    ? "privacy-circle privacy-circle-active"
+                                    : "privacy-circle"
+                                : "privacy-circle"
+                        }
+                    ></div>
                 </div>
                 <div className="privacy-direct-messaging-item-2 mr-3">
                     <img
@@ -52,9 +124,20 @@ const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
                 </div>
             </div>
 
-            <div className="d-flex flex-row align-items-center privacy-direct-messaging p-3">
+            <div
+                className="d-flex flex-row align-items-center privacy-direct-messaging p-3"
+                onClick={() => updateProfileHandler("none")}
+            >
                 <div className="privacy-direct-messaging-item-1 mr-2">
-                    <div className="privacy-circle"></div>
+                    <div
+                        className={
+                            profileData
+                                ? profileData.privacy_messaging === "none"
+                                    ? "privacy-circle privacy-circle-active"
+                                    : "privacy-circle"
+                                : "privacy-circle"
+                        }
+                    ></div>
                 </div>
                 <div className="privacy-direct-messaging-item-2 mr-3">
                     <img
