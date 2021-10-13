@@ -7020,62 +7020,14 @@ var DirectMessaging = function DirectMessaging(_ref) {
   var fetchProfileHandler = _ref.fetchProfileHandler,
       profileData = _ref.profileData;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
-      allUsers = _useState2[0],
-      setAllUsers = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      teammates = _useState4[0],
-      setTeammates = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      none = _useState6[0],
-      setNone = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState8 = _slicedToArray(_useState7, 2),
-      success = _useState8[0],
-      setSuccess = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState10 = _slicedToArray(_useState9, 2),
-      error = _useState10[0],
-      setError = _useState10[1];
+      error = _useState2[0],
+      setError = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchProfileHandler();
   }, []);
-
-  var resetTabs = function resetTabs() {
-    setAllUsers(false);
-    setTeammates(false);
-    setNone(false);
-  };
-
-  var updateTabs = function updateTabs(tab) {
-    switch (tab) {
-      case "all":
-        resetTabs();
-        setAllUsers(true);
-        break;
-
-      case "teammates":
-        resetTabs();
-        setTeammates(true);
-        break;
-
-      case "none":
-        resetTabs();
-        setNone(true);
-        break;
-
-      default:
-        break;
-    }
-  };
 
   var updateProfileHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(tab) {
@@ -7124,7 +7076,6 @@ var DirectMessaging = function DirectMessaging(_ref) {
     };
   }();
 
-  console.log(profileData, "direct messaging");
   var appUrl = "http://127.0.0.1:8000";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {

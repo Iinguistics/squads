@@ -2,43 +2,11 @@ import React, { useEffect, useState } from "react";
 import Api from "../../Api";
 
 const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
-    const [allUsers, setAllUsers] = useState(true);
-    const [teammates, setTeammates] = useState(false);
-    const [none, setNone] = useState(false);
-    const [success, setSuccess] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchProfileHandler();
     }, []);
-
-    const resetTabs = () => {
-        setAllUsers(false);
-        setTeammates(false);
-        setNone(false);
-    };
-
-    const updateTabs = (tab) => {
-        switch (tab) {
-            case "all":
-                resetTabs();
-                setAllUsers(true);
-                break;
-
-            case "teammates":
-                resetTabs();
-                setTeammates(true);
-                break;
-
-            case "none":
-                resetTabs();
-                setNone(true);
-                break;
-
-            default:
-                break;
-        }
-    };
 
     const updateProfileHandler = async (tab) => {
         try {
@@ -58,8 +26,6 @@ const DirectMessaging = ({ fetchProfileHandler, profileData }) => {
             setError(error.message);
         }
     };
-
-    console.log(profileData, "direct messaging");
 
     const appUrl = process.env.MIX_APP_URL;
     return (
