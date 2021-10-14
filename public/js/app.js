@@ -7717,7 +7717,7 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       className: "container mt-5 main-header",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "d-flex flex-row flex-md-column justify-content-between flex-wrap",
+        className: "d-flex flex-row flex-md-column justify-content-between",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "m-auto",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -7747,22 +7747,6 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
             },
             className: "private-profile-sidebar-cat-content mb-2 ".concat(privacyTab ? "content-active" : ""),
             children: "Privacy"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          className: "private-profile-sidebar-divider my-2 m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          className: "m-auto",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "private-profile-sidebar-cat-head mb-2",
-            children: "my squads"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          className: "private-profile-sidebar-divider my-2 m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "m-auto",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "private-profile-sidebar-cat-head mb-2",
-            children: "app settings"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             onClick: function onClick() {
               return tabHandler("appearance");
@@ -7771,11 +7755,11 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
             children: "Appearance"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          className: "private-profile-sidebar-divider my-2 m-auto"
+          className: "private-profile-sidebar-divider m-auto"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           className: "m-auto",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            className: "private-profile-sidebar-cat-head mb-2",
+            className: "private-profile-sidebar-cat-head my-2",
             children: "user settings"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",

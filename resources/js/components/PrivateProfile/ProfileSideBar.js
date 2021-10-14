@@ -35,7 +35,7 @@ const ProfileSideBar = ({
     return (
         <div className="private-profile-sidebar-container">
             <div className="container mt-5 main-header">
-                <div className="d-flex flex-row flex-md-column justify-content-between flex-wrap">
+                <div className="d-flex flex-row flex-md-column justify-content-between">
                     <div className="m-auto">
                         <div className="private-profile-sidebar-cat-head mb-2">
                             profile settings
@@ -70,18 +70,6 @@ const ProfileSideBar = ({
                         >
                             Privacy
                         </div>
-                    </div>
-                    <div className="private-profile-sidebar-divider my-2 m-auto"></div>
-                    <div className="m-auto">
-                        <div className="private-profile-sidebar-cat-head mb-2">
-                            my squads
-                        </div>
-                    </div>
-                    <div className="private-profile-sidebar-divider my-2 m-auto"></div>
-                    <div className="m-auto">
-                        <div className="private-profile-sidebar-cat-head mb-2">
-                            app settings
-                        </div>
                         <div
                             onClick={() => tabHandler("appearance")}
                             className={`private-profile-sidebar-cat-content mb-2 ${
@@ -91,9 +79,9 @@ const ProfileSideBar = ({
                             Appearance
                         </div>
                     </div>
-                    <div className="private-profile-sidebar-divider my-2 m-auto"></div>
+                    <div className="private-profile-sidebar-divider m-auto"></div>
                     <div className="m-auto">
-                        <div className="private-profile-sidebar-cat-head mb-2">
+                        <div className="private-profile-sidebar-cat-head my-2">
                             user settings
                         </div>
                         <div
