@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Api from "../../Api";
+import { ALL, TEAMMATES, NONE } from "./Types";
 
 const ProfileView = ({ fetchProfileHandler, profileData }) => {
     const [error, setError] = useState(null);
@@ -31,13 +32,13 @@ const ProfileView = ({ fetchProfileHandler, profileData }) => {
             {error && <span className="text-danger">{error}</span>}
             <div
                 className="d-flex flex-row align-items-center privacy-content-bg p-3 mb-3"
-                onClick={() => updateProfileHandler("all")}
+                onClick={() => updateProfileHandler(ALL)}
             >
                 <div className="mr-2">
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_profile_viewing === "all"
+                                ? profileData.privacy_profile_viewing === ALL
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
@@ -57,14 +58,14 @@ const ProfileView = ({ fetchProfileHandler, profileData }) => {
             </div>
             <div
                 className="d-flex flex-row align-items-center privacy-content-bg p-3 mb-3"
-                onClick={() => updateProfileHandler("teammates")}
+                onClick={() => updateProfileHandler(TEAMMATES)}
             >
                 <div className="mr-2">
                     <div
                         className={
                             profileData
                                 ? profileData.privacy_profile_viewing ===
-                                  "teammates"
+                                  TEAMMATES
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
@@ -85,13 +86,13 @@ const ProfileView = ({ fetchProfileHandler, profileData }) => {
 
             <div
                 className="d-flex flex-row align-items-center privacy-content-bg p-3"
-                onClick={() => updateProfileHandler("none")}
+                onClick={() => updateProfileHandler(NONE)}
             >
                 <div className="mr-2">
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_profile_viewing === "none"
+                                ? profileData.privacy_profile_viewing === NONE
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
