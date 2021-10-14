@@ -102,6 +102,9 @@
 .privacy-content-bg {
     background: $profile-sidebar-light-bg;
 }
+.privacy-content-bg:hover {
+    cursor: pointer;
+}
 
 .privacy-circle {
     height: 20px;
