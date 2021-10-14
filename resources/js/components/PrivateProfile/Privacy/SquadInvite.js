@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Api from "../../Api";
+import { ALL, NONE } from "./Types";
 
 const SquadInvite = ({ fetchProfileHandler, profileData }) => {
     const [error, setError] = useState(null);
@@ -31,13 +32,13 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
             {error && <span className="text-danger">{error}</span>}
             <div
                 className="d-flex flex-row align-items-center privacy-content-bg p-3 mb-3"
-                onClick={() => updateProfileHandler("all")}
+                onClick={() => updateProfileHandler(ALL)}
             >
                 <div className="mr-2">
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_squad_invite === "all"
+                                ? profileData.privacy_squad_invite === ALL
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
@@ -58,13 +59,13 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
 
             <div
                 className="d-flex flex-row align-items-center privacy-content-bg p-3"
-                onClick={() => updateProfileHandler("none")}
+                onClick={() => updateProfileHandler(NONE)}
             >
                 <div className="mr-2">
                     <div
                         className={
                             profileData
-                                ? profileData.privacy_squad_invite === "none"
+                                ? profileData.privacy_squad_invite === NONE
                                     ? "privacy-circle privacy-circle-active shadow"
                                     : "privacy-circle"
                                 : "privacy-circle"
