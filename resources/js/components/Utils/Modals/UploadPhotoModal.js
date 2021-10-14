@@ -88,21 +88,23 @@ const UploadPhotoModal = withRouter((props) => {
                                 <span className="text-danger">{error}</span>
                             )}
                         </Modal.Body>
-                        <Modal.Footer>
-                            <button
-                                onClick={handleClose}
-                                className="bttn-material-flat bttn-sm mr-2"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                type="submit"
-                                className="bttn-material-flat bttn-sm update-account-modal-btn"
-                            >
-                                Update
-                            </button>
-                        </Modal.Footer>
                     </form>
+                    <Modal.Footer>
+                        <button
+                            onClick={handleClose}
+                            className="bttn-material-flat bttn-sm mr-2"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            //type="submit"
+                            onClick={updatePhotoHandler}
+                            className="bttn-material-flat bttn-sm update-account-modal-btn"
+                            disabled={!selectedFile}
+                        >
+                            Update
+                        </button>
+                    </Modal.Footer>
                 </Modal>
             </Container>
         </div>

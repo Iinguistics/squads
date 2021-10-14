@@ -101,7 +101,7 @@ const ProfileView = ({ fetchProfileHandler, profileData }) => {
                 </div>
                 <div className="mr-3">
                     <img
-                        src={`${appUrl}/images/privacy/privacy-messaging-block.png`}
+                        src={`${appUrl}/images/privacy/privacy-profile-view-block.png`}
                         alt="all users"
                         className="privacy-icon"
                     />

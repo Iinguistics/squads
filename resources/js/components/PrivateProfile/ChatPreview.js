@@ -2,43 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
 import Api from "../Api";
 
-const ChatPreview = ({
-    userInfo,
-    fetchProfileHandler,
-    profileData,
-    fontColor,
-    profileColor,
-}) => {
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
-
-    const [photoPath, setPhotoPath] = useState("");
-
-    useEffect(() => {
-        fetchProfileHandler();
-    }, []);
-
-    const fetchProfilePhotoHandler = async () => {
-        setLoading(true);
-        try {
-            const { data } = await Api.get("/get_current_user_profile_photo");
-            if (data.success) {
-                setPhotoPath(data.data);
-                setLoading(false);
-            } else {
-                setLoading(false);
-                setPhotoPath("");
-            }
-        } catch (error) {
-            setLoading(false);
-            setError(error.message);
-        }
-    };
-
-    useEffect(() => {
-        fetchProfilePhotoHandler();
-    }, []);
+const ChatPreview = ({ userInfo, profileData, fontColor, profileColor }) => {
     const appUrl = process.env.MIX_APP_URL;
     console.log(profileData, "appearance");
     return (
@@ -51,8 +15,10 @@ const ChatPreview = ({
                                 {" "}
                                 <img
                                     src={
-                                        photoPath
-                                            ? photoPath
+                                        profileData
+                                            ? profileData.photo
+                                                ? profileData.photo
+                                                : `${appUrl}/images/default-photo-black-outline.png`
                                             : `${appUrl}/images/default-photo-black-outline.png`
                                     }
                                     alt="profile photo"

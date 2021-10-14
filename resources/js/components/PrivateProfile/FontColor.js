@@ -8,19 +8,15 @@ const FontColor = ({ fontColorHandler, fontColor }) => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
-    // useEffect(() => {
-    //     fetchProfileHandler();
-    // }, []);
-
     const updateProfileHandler = async (e) => {
         e.preventDefault();
 
         try {
-            let values = { font_color: fontColor };
+            let value = { font_color: fontColor };
 
             const { data } = await Api.put(
                 "/update_current_user_profile",
-                values
+                value
             );
 
             if (data.success) {
@@ -46,6 +42,7 @@ const FontColor = ({ fontColorHandler, fontColor }) => {
                         buttonText="Got it"
                     />
                     <div className="shadow-sm p-3 mb-5 appearance-bg rounded">
+                        {error && <span className="text-danger">{error}</span>}
                         <Form onSubmit={updateProfileHandler}>
                             <Form.Group
                                 className="mb-3"

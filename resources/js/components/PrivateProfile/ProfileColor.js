@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import "../../../css/bttn/bttn.min.css";
 import SuccessModal from "../Utils/Modals/SuccessModal";
 import Api from "../Api";
@@ -7,10 +7,6 @@ import Api from "../Api";
 const ProfileColor = ({ profileColorHandler, profileColor }) => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
-
-    // useEffect(() => {
-    //     fetchProfileHandler();
-    // }, []);
 
     const updateProfileHandler = async (e) => {
         e.preventDefault();
@@ -46,6 +42,7 @@ const ProfileColor = ({ profileColorHandler, profileColor }) => {
                         buttonText="Got it"
                     />
                     <div className="shadow-sm p-3 mb-5 appearance-bg rounded">
+                        {error && <span className="text-danger">{error}</span>}
                         <Form onSubmit={updateProfileHandler}>
                             <Form.Group
                                 className="mb-3"
