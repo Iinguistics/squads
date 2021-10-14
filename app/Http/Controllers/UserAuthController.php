@@ -92,13 +92,6 @@ class UserAuthController extends Controller
 
         $cookie = cookie('jwt', $token, 21600); // in minutes 21600 = 15 days
 
-        // return response([
-        //     'success' => $user ? true : false,
-        //     'data' => $user ? $user : null,
-        //     'error' => $user ? null : 'failed to register user',
-
-        // ])->withCookie($cookie);
-
         $response = array(
             'success' => $user ? true : false,
             'data' => $user ? $user : null,
