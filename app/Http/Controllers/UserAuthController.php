@@ -36,8 +36,17 @@ class UserAuthController extends Controller
 
         $input['password'] = bcrypt($input['password']);
 
-        $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
-        if (in_array($input['email'], $emails)) {
+        $existing = User::where('email', $input['email'])->get()->first();
+
+
+        // $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
+        // if (in_array($input['email'], $emails)) {
+        //     $response = array(
+        //         'success' => false,
+        //         'error' => "email already in use.",
+        //     );
+        //     return response()->json($response, 200);
+        if ($existing) {
             $response = array(
                 'success' => false,
                 'error' => "email already in use.",

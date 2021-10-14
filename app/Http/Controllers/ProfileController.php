@@ -103,25 +103,25 @@ class ProfileController extends Controller
         return response()->json($response, 200);
     }
 
-    public function get_current_user_profile_photo(Request $request)
-    {
-        $user = Auth::user();
+    // public function get_current_user_profile_photo(Request $request)
+    // {
+    //     $user = Auth::user();
 
-        $profile = Profile::where('id', $user->id)->get()->first();
+    //     $profile = Profile::where('id', $user->id)->get()->first();
 
-        if ($profile->photo) {
-            $response = array(
-                'success' => true,
-                'data' => $profile->photo
-            );
-            return response()->json($response, 200);
-        } else {
-            $response = array(
-                'success' => false
-            );
-            return response()->json($response, 200);
-        }
-    }
+    //     if ($profile->photo) {
+    //         $response = array(
+    //             'success' => true,
+    //             'data' => $profile->photo
+    //         );
+    //         return response()->json($response, 200);
+    //     } else {
+    //         $response = array(
+    //             'success' => false
+    //         );
+    //         return response()->json($response, 200);
+    //     }
+    // }
 
     public function update_profile_privacy_messaging(Request $request)
     {
