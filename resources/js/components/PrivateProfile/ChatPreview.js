@@ -6,8 +6,8 @@ const ChatPreview = ({ userInfo, profileData, fontColor, profileColor }) => {
     const appUrl = process.env.MIX_APP_URL;
     console.log(profileData, "appearance");
     return (
-        <Container className="my-5">
-            <Row className="d-flex">
+        <div className="my-5">
+            <Row>
                 <Col className="col-12 col-md-9">
                     <div className="shadow-sm p-3 mb-5 appearance-bg rounded">
                         <div className="d-flex justify-content-start align-items-center">
@@ -41,7 +41,7 @@ const ChatPreview = ({ userInfo, profileData, fontColor, profileColor }) => {
                     </div>
                 </Col>
             </Row>
-        </Container>
+        </div>
     );
 };
 

@@ -20,7 +20,7 @@ const Appearance = withRouter(
 
         return (
             <div className="container">
-                <h2>Appearance</h2>
+                <h2 className="text-center text-md-left">Appearance</h2>
                 <ChatPreview
                     profileData={profileData}
                     userInfo={userInfo}

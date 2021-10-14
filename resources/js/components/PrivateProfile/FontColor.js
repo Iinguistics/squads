@@ -32,7 +32,7 @@ const FontColor = ({ fontColorHandler, fontColor }) => {
     };
 
     return (
-        <Container className="my-5">
+        <div className="my-5">
             <Row className="d-flex">
                 <Col className="col-12 col-md-9">
                     <SuccessModal
@@ -77,7 +77,7 @@ const FontColor = ({ fontColorHandler, fontColor }) => {
                     </div>
                 </Col>
             </Row>
-        </Container>
+        </div>
     );
 };
 
