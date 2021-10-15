@@ -11,7 +11,7 @@ const SectionTwo = withRouter((props) => {
                     <h3>Squads is a connection platform for everyone.</h3>
                     <p>How can we help you get started?</p>
                 </div>
-                <div className="d-flex flex-nowrap justify-content-around align-items-center align-content-center mt-5 test">
+                <div className="d-flex flex-nowrap justify-content-around align-items-center align-content-center mt-5 section-2-swipe">
                     <Link to="/">
                         <Card className="item-1 shadow-lg">
                             <Card.Body>

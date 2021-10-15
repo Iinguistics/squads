@@ -10388,7 +10388,7 @@ form a {
   height: 525px;
   width: 100%;
 }
-.section-2 .test {
+.section-2 .section-2-swipe {
   overflow: hidden;
 }
 .section-2 a {
@@ -10471,7 +10471,7 @@ form a {
     font-size: 16px;
   }
 
-  .section-2 .test {
+  .section-2 .section-2-swipe {
     flex-wrap: nowrap !important;
     z-index: 9 !important;
     overflow-x: scroll !important;

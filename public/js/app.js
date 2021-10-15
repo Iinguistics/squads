@@ -6199,7 +6199,7 @@ var SectionTwo = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(fu
           children: "How can we help you get started?"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "d-flex flex-nowrap justify-content-around align-items-center align-content-center mt-5 test",
+        className: "d-flex flex-nowrap justify-content-around align-items-center align-content-center mt-5 section-2-swipe",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
           to: "/",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
