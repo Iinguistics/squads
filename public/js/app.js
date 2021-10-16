@@ -5980,6 +5980,12 @@ var Header = function Header(_ref) {
     if (userInfo) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_bootstrap__WEBPACK_IMPORTED_MODULE_1__.LinkContainer, {
+          to: "/search",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
+            className: "dropdown-item",
+            children: "Search"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_bootstrap__WEBPACK_IMPORTED_MODULE_1__.LinkContainer, {
           to: "/profile",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
             className: "dropdown-item",
@@ -7997,12 +8003,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function (props) {
-  // useEffect(() => {
-  //     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  //     if (userInfo) {
-  //         props.history.push("/profile");
-  //     }
-  // }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (userInfo) {
+      props.history.push("/profile");
+    }
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "container my-5 main-header",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {

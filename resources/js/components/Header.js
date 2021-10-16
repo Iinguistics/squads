@@ -24,6 +24,11 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
         if (userInfo) {
             return (
                 <>
+                    <LinkContainer to="/search">
+                        <NavDropdown.Item className="dropdown-item">
+                            Search
+                        </NavDropdown.Item>
+                    </LinkContainer>
                     <LinkContainer to="/profile">
                         <NavDropdown.Item className="dropdown-item">
                             Profile

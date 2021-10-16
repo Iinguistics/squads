@@ -3,12 +3,12 @@ import SignUpAndUpdateForm from "../Utils/Forms/SignUpAndUpdateForm";
 import { withRouter } from "react-router-dom";
 
 const index = withRouter((props) => {
-    // useEffect(() => {
-    //     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    //     if (userInfo) {
-    //         props.history.push("/profile");
-    //     }
-    // }, []);
+    useEffect(() => {
+        let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        if (userInfo) {
+            props.history.push("/profile");
+        }
+    }, []);
 
     return (
         <div className="container my-5 main-header">
