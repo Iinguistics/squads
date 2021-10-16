@@ -32,6 +32,11 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
                 <>
                     <span onClick={searchClickedHandler}>
                         <NavDropdown.Item className="dropdown-item">
+                            <img
+                                className="search-img"
+                                src={`${appUrl}/images/nav-search.png`}
+                                alt="Search"
+                            />
                             Search
                         </NavDropdown.Item>
                     </span>

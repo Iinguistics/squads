@@ -6,6 +6,11 @@ nav {
         width: 40px;
     }
 
+    .search-img {
+        height: 16px;
+        width: 16px;
+    }
+
     .dropdown-item:hover {
         color: #757575 !important;
         background: none !important;
@@ -29,4 +34,12 @@ nav {
 
 .main-header {
     margin-top: 7rem !important;
+}
+
+@media only screen and (max-width: 995px) {
+    nav {
+        .search-img {
+            display: none;
+        }
+    }
 }

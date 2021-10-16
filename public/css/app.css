@@ -10015,6 +10015,10 @@ nav .logo {
   height: 40px;
   width: 40px;
 }
+nav .search-img {
+  height: 16px;
+  width: 16px;
+}
 nav .dropdown-item:hover {
   color: #757575 !important;
   background: none !important;
@@ -10037,6 +10041,11 @@ nav .dropdown-item {
   margin-top: 7rem !important;
 }
 
+@media only screen and (max-width: 995px) {
+  nav .search-img {
+    display: none;
+  }
+}
 .light-divider {
   background: #eeecfb;
   width: 100%;
