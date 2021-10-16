@@ -29,7 +29,7 @@ const index = withRouter((props) => {
     return (
         <div className="mt-5 text-center">
             <Container>
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={show} onHide={handleClose} size="lg" centered>
                     <Modal.Header closeButton>
                         <Modal.Title>Sign Out</Modal.Title>
                     </Modal.Header>
