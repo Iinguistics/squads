@@ -122,4 +122,27 @@ class ProfileController extends Controller
             return response()->json($response, 200);
         }
     }
+
+    public function search_player_profile(Request $request)
+    {
+        $input = $request->all();
+
+        $profile = User::where('platform', $input['platform'])
+            ->where('gamertag', $input['gamertag'])
+            ->get()->first();
+
+        if ($profile) {
+            $response = array(
+                'success' => true,
+                'id' => $profile->id
+            );
+            return response()->json($response, 200);
+        } else {
+            $response = array(
+                'success' => false,
+                'message' => 'profile not found'
+            );
+            return response()->json($response, 200);
+        }
+    }
 }

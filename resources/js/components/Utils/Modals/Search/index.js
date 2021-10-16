@@ -22,7 +22,7 @@ const index = withRouter((props) => {
                         <Modal.Title>Player search</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <PlayerProfile />
+                        <PlayerProfile handleClose={handleClose} />
                     </Modal.Body>
                     <Modal.Footer>
                         <button

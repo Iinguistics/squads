@@ -1,44 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
 import "../../../../../css/bttn/bttn.min.css";
 import Api from "../../../Api";
 
-const PlayerProfile = ({}) => {
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
+const PlayerProfile = withRouter((props) => {
+    const [error, setError] = useState("");
     const [gamertag, setGamertag] = useState("");
-    const [platform, setPlatform] = useState("");
+    const [platform, setPlatform] = useState("psn");
 
-    const updateProfileHandler = async (e) => {
+    const searchProfileHandler = async (e) => {
         e.preventDefault();
 
         try {
-            let value = { font_color: fontColor };
+            let values = { platform: platform, gamertag: gamertag };
 
-            const { data } = await Api.put(
-                "/update_current_user_profile",
-                value
-            );
+            const { data } = await Api.post("/search_player_profile", values);
 
             if (data.success) {
-                setSuccess(true);
-                setError(false);
+                setError("");
+                props.history.push(`profile/${data.id}`);
+                props.handleClose();
             } else {
-                setSuccess(false);
-                setError(true);
+                setError(data.message);
             }
         } catch (error) {
             setError(error.message);
         }
     };
+    console.log(platform);
 
     return (
         <div className="my-3">
             <Row>
                 <Col>
                     {error && <span className="text-danger">{error}</span>}
-                    <form onSubmit={updateProfileHandler}>
-                        <label>Search player profile</label>
+                    <form onSubmit={searchProfileHandler}>
+                        <label>Search for player profile</label>
                         <br />
                         <select
                             value={platform}
@@ -68,6 +66,6 @@ const PlayerProfile = ({}) => {
             </Row>
         </div>
     );
-};
+});
 
 export default PlayerProfile;
