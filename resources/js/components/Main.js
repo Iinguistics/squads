@@ -8,7 +8,6 @@ import LoginHelp from "./Login/LoginHelp";
 import PasswordReset from "./Login/LoginHelp/PasswordReset";
 import PrivateProfile from "./PrivateProfile";
 import Register from "./Register";
-import Search from "./Search";
 
 import Test from "./Test";
 import TestTwo from "./TestTwo";
@@ -46,7 +45,6 @@ const Main = (props) => {
                 />
                 <Route path="/profile" component={PrivateProfile} />
                 <Route path="/register" component={Register} />
-                <Route path="/search" component={Search} />
                 <Route path="/test" component={TestTwo} />
             </Switch>
         </main>

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import LogoutModal from "./Utils/Modals/LogoutModal";
+import SearchModal from "./Utils/Modals/Search";
 
 const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("userInfo"))
     );
     const [signOutClicked, setSignOutClicked] = useState(0);
+    const [searchClicked, setSearchClicked] = useState(0);
 
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem("userInfo"));
@@ -20,15 +22,19 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
         setSignOutClicked((signOutClicked) => signOutClicked + 1);
     };
 
+    const searchClickedHandler = () => {
+        setSearchClicked((searchClicked) => searchClicked + 1);
+    };
+
     const renderAuthItems = () => {
         if (userInfo) {
             return (
                 <>
-                    <LinkContainer to="/search">
+                    <span onClick={searchClickedHandler}>
                         <NavDropdown.Item className="dropdown-item">
                             Search
                         </NavDropdown.Item>
-                    </LinkContainer>
+                    </span>
                     <LinkContainer to="/profile">
                         <NavDropdown.Item className="dropdown-item">
                             Profile
@@ -66,6 +72,8 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
                 signOutClicked={signOutClicked}
                 loggedInToggleHandler={loggedInToggleHandler}
             />
+
+            <SearchModal searchClicked={searchClicked} />
             <Navbar
                 expand="lg"
                 collapseOnSelect
