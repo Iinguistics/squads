@@ -43,7 +43,7 @@ const PlayerProfile = ({}) => {
                         <select
                             value={platform}
                             onChange={(e) => setPlatform(e.target.value)}
-                            className="mr-4 "
+                            className="mr-4 p-1 player-search-select"
                         >
                             <option value="psn">PlayStation Network</option>
                             <option value="battle">Battle.net</option>
@@ -54,7 +54,7 @@ const PlayerProfile = ({}) => {
                             placeholder="Enter gamertag"
                             value={gamertag}
                             onChange={(e) => setGamertag(e.target.value)}
-                            className="shadow-none"
+                            className="shadow-none mr-1"
                         />
                         <button
                             className="bttn-unite bttn-sm bttn-primary"

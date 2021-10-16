@@ -10115,6 +10115,9 @@ form textarea {
 form a {
   text-decoration: none !important;
 }
+form .player-search-select {
+  background: #fff;
+}
 
 #form-input-no-underline {
   border-bottom: none !important;

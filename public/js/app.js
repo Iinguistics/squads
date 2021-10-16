@@ -10623,7 +10623,7 @@ var PlayerProfile = function PlayerProfile(_ref) {
             onChange: function onChange(e) {
               return setPlatform(e.target.value);
             },
-            className: "mr-4 ",
+            className: "mr-4 p-1 player-search-select",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
               value: "psn",
               children: "PlayStation Network"
@@ -10641,7 +10641,7 @@ var PlayerProfile = function PlayerProfile(_ref) {
             onChange: function onChange(e) {
               return setGamertag(e.target.value);
             },
-            className: "shadow-none"
+            className: "shadow-none mr-1"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
             className: "bttn-unite bttn-sm bttn-primary",
             type: "submit",
@@ -10716,7 +10716,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(functio
         show: show,
         onHide: handleClose,
         size: "lg",
-        centered: true,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Title, {
