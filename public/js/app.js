@@ -9194,8 +9194,8 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
   var schema = yup__WEBPACK_IMPORTED_MODULE_3__.object().shape({
     first_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
     last_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
-    display_name: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
     location: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
+    favorite_game: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
     bio: yup__WEBPACK_IMPORTED_MODULE_3__.string().max(300, "Must not exceed 300 characters"),
     carrier: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
     ping: yup__WEBPACK_IMPORTED_MODULE_3__.string(),
@@ -9281,7 +9281,7 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
             initialValues: {
               first_name: profileData.first_name ? profileData.first_name : "",
               last_name: profileData.last_name ? profileData.last_name : "",
-              display_name: profileData.display_name ? profileData.display_name : "",
+              favorite_game: profileData.favorite_game ? profileData.favorite_game : "",
               location: profileData.location ? profileData.location : "",
               bio: profileData.bio ? profileData.bio : "",
               carrier: profileData.carrier ? profileData.carrier : "",
@@ -9343,14 +9343,14 @@ var ProfileUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRou
                     md: "6",
                     controlId: "validationFormik05",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
-                      children: "Display name"
+                      children: "Favorite game"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
                       type: "text",
-                      name: "display_name",
-                      value: values.display_name,
+                      name: "favorite_game",
+                      value: values.favorite_game,
                       onChange: handleChange,
                       className: "shadow-none",
-                      placeholder: "Enter display name"
+                      placeholder: "Enter favorite game"
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
                     as: react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"],
@@ -9634,40 +9634,50 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
       email = _useState10[0],
       setEmail = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.gamerTag),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.username),
       _useState12 = _slicedToArray(_useState11, 2),
-      gamerTag = _useState12[0],
-      setGamerTag = _useState12[1];
+      username = _useState12[0],
+      setUsername = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.platform),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.gamerTag),
       _useState14 = _slicedToArray(_useState13, 2),
-      platform = _useState14[0],
-      setPlatform = _useState14[1];
+      gamerTag = _useState14[0],
+      setGamerTag = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.activisionID),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.platform),
       _useState16 = _slicedToArray(_useState15, 2),
-      activisionID = _useState16[0],
-      setActivisionID = _useState16[1];
+      platform = _useState16[0],
+      setPlatform = _useState16[1];
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.password),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.activisionID),
       _useState18 = _slicedToArray(_useState17, 2),
-      password = _useState18[0],
-      setPassword = _useState18[1];
+      activisionID = _useState18[0],
+      setActivisionID = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.password),
       _useState20 = _slicedToArray(_useState19, 2),
-      emailEmpty = _useState20[0],
-      setEmailEmpty = _useState20[1];
+      password = _useState20[0],
+      setPassword = _useState20[1];
 
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState22 = _slicedToArray(_useState21, 2),
-      gamerTagEmpty = _useState22[0],
-      setGamerTagEmpty = _useState22[1];
+      emailEmpty = _useState22[0],
+      setEmailEmpty = _useState22[1];
 
   var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState24 = _slicedToArray(_useState23, 2),
-      passwordEmpty = _useState24[0],
-      setPasswordEmpty = _useState24[1];
+      usernameEmpty = _useState24[0],
+      setUsernameEmpty = _useState24[1];
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState26 = _slicedToArray(_useState25, 2),
+      gamerTagEmpty = _useState26[0],
+      setGamerTagEmpty = _useState26[1];
+
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState28 = _slicedToArray(_useState27, 2),
+      passwordEmpty = _useState28[0],
+      setPasswordEmpty = _useState28[1];
 
   var eyeTextToggleHandler = function eyeTextToggleHandler() {
     setEyeTextToggle(!eyeTextToggle);
@@ -9676,6 +9686,19 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
   var onEmailFocus = function onEmailFocus() {
     setEmailEmpty(false);
     setError(false);
+  };
+
+  var onUsernameFocus = function onUsernameFocus() {
+    setUsernameEmpty(false);
+    setError(false);
+  };
+
+  var onUsernameBlur = function onUsernameBlur() {
+    if (username === "") {
+      setUsernameEmpty(true);
+    } else {
+      setUsernameEmpty(false);
+    }
   };
 
   var onGamerTagFocus = function onGamerTagFocus() {
@@ -9723,8 +9746,18 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
               return _context.abrupt("return");
 
             case 6:
-              if (!(gamerTag === "")) {
+              if (!(username === "")) {
                 _context.next = 10;
+                break;
+              }
+
+              setUsernameEmpty(true);
+              setLoading(false);
+              return _context.abrupt("return");
+
+            case 10:
+              if (!(gamerTag === "")) {
+                _context.next = 14;
                 break;
               }
 
@@ -9732,9 +9765,9 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
               setLoading(false);
               return _context.abrupt("return");
 
-            case 10:
+            case 14:
               if (!(password === "")) {
-                _context.next = 14;
+                _context.next = 18;
                 break;
               }
 
@@ -9742,19 +9775,20 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
               setLoading(false);
               return _context.abrupt("return");
 
-            case 14:
-              _context.prev = 14;
+            case 18:
+              _context.prev = 18;
               values = {
                 email: email,
+                username: username,
                 platform: platform,
                 gamertag: gamerTag,
                 activision_username: activisionID,
                 password: password
               };
-              _context.next = 18;
+              _context.next = 22;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/register", values);
 
-            case 18:
+            case 22:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
@@ -9768,21 +9802,21 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
                 setLoading(false);
               }
 
-              _context.next = 28;
+              _context.next = 32;
               break;
 
-            case 24:
-              _context.prev = 24;
-              _context.t0 = _context["catch"](14);
+            case 28:
+              _context.prev = 28;
+              _context.t0 = _context["catch"](18);
               setLoading(false);
               setError(_context.t0.message);
 
-            case 28:
+            case 32:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[14, 24]]);
+      }, _callee, null, [[18, 28]]);
     }));
 
     return function registerSubmitHandler(_x) {
@@ -9805,9 +9839,12 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
           push: "login"
         }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "lds-hourglass d-flex justify-content-center m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "shadow-sm p-3 mb-5 bg-white rounded",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+            className: "text-danger",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
             onSubmit: registerSubmitHandler,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Group, {
               className: "mb-3",
@@ -9826,9 +9863,6 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
               }), " ", emailEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
                 className: "text-danger",
                 children: "Required"
-              }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "text-danger",
-                children: error
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "tooltip-arrow",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Control, {
@@ -9844,6 +9878,26 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Text, {
                 className: "text-muted",
                 children: "We'll never share your email with anyone else."
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Group, {
+              className: "mb-3",
+              controlId: "formBasicUsername",
+              value: username,
+              onChange: function onChange(e) {
+                return setUsername(e.target.value);
+              },
+              onBlur: onUsernameBlur,
+              onFocus: onUsernameFocus,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Label, {
+                className: usernameEmpty ? "text-danger" : "",
+                children: "Username"
+              }), " ", usernameEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                className: "text-danger",
+                children: "Required"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Control, {
+                type: "text",
+                placeholder: "Enter a username",
+                className: usernameEmpty ? "border-bottom border-danger shadow-none" : "shadow-none"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Group, {
               className: "mb-3",
@@ -9943,7 +9997,7 @@ var SignUpAndUpdateForm = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withR
               disabled: emailEmpty || gamerTagEmpty || passwordEmpty,
               children: props.buttonText
             })]
-          })
+          })]
         })]
       })
     })

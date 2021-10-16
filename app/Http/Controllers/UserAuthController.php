@@ -36,7 +36,8 @@ class UserAuthController extends Controller
 
         $input['password'] = bcrypt($input['password']);
 
-        $existing = User::where('email', $input['email'])->get()->first();
+        $existing_email = User::where('email', $input['email'])->get()->first();
+        $existing_username = User::where('username', $input['username'])->get()->first();
 
 
         // $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
@@ -46,15 +47,16 @@ class UserAuthController extends Controller
         //         'error' => "email already in use.",
         //     );
         //     return response()->json($response, 200);
-        if ($existing) {
+        if ($existing_email || $existing_username) {
             $response = array(
                 'success' => false,
-                'error' => "email already in use.",
+                'error' => $existing_email ? "email already in use." : "username already in use.",
             );
             return response()->json($response, 200);
         } else {
             $user = User::create(array(
                 "email" => $input['email'],
+                "username" => $input['username'],
                 "platform" => $input['platform'],
                 "gamertag" => $input['gamertag'],
                 "activision_username" => $input['activision_username'] ? $input['activision_username'] : null,

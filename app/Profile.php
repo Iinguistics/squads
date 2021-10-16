@@ -12,7 +12,7 @@ class Profile extends Model
     protected $primaryKey = 'profile_id';
 
     protected $fillable = [
-        'id', 'first_name', 'last_name', 'display_name', 'location', 'bio', 'carrier', 'ping', 'download_speed', 'upload_speed', 'twitch', 'twitter', 'instagram', 'youtube', 'font_color', 'profile_color', 'photo', 'created_at', 'updated_at'
+        'id', 'first_name', 'last_name', 'location', 'favorite_game', 'bio', 'carrier', 'ping', 'download_speed', 'upload_speed', 'twitch', 'twitter', 'instagram', 'youtube', 'font_color', 'profile_color', 'photo', 'created_at', 'updated_at'
     ];
 
     public function user()

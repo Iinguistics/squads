@@ -36,8 +36,8 @@ const ProfileUpdateForm = withRouter((props) => {
     const schema = yup.object().shape({
         first_name: yup.string(),
         last_name: yup.string(),
-        display_name: yup.string(),
         location: yup.string(),
+        favorite_game: yup.string(),
         bio: yup.string().max(300, "Must not exceed 300 characters"),
         carrier: yup.string(),
         ping: yup.string(),
@@ -96,8 +96,8 @@ const ProfileUpdateForm = withRouter((props) => {
                                 last_name: profileData.last_name
                                     ? profileData.last_name
                                     : "",
-                                display_name: profileData.display_name
-                                    ? profileData.display_name
+                                favorite_game: profileData.favorite_game
+                                    ? profileData.favorite_game
                                     : "",
                                 location: profileData.location
                                     ? profileData.location
@@ -178,15 +178,15 @@ const ProfileUpdateForm = withRouter((props) => {
                                             controlId="validationFormik05"
                                         >
                                             <Form.Label>
-                                                Display name
+                                                Favorite game
                                             </Form.Label>
                                             <Form.Control
                                                 type="text"
-                                                name="display_name"
-                                                value={values.display_name}
+                                                name="favorite_game"
+                                                value={values.favorite_game}
                                                 onChange={handleChange}
                                                 className="shadow-none"
-                                                placeholder="Enter display name"
+                                                placeholder="Enter favorite game"
                                             />
                                         </Form.Group>
                                         <Form.Group

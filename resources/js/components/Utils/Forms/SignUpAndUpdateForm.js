@@ -13,12 +13,14 @@ const SignUpAndUpdateForm = withRouter((props) => {
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
 
     const [email, setEmail] = useState(props.email);
+    const [username, setUsername] = useState(props.username);
     const [gamerTag, setGamerTag] = useState(props.gamerTag);
     const [platform, setPlatform] = useState(props.platform);
     const [activisionID, setActivisionID] = useState(props.activisionID);
     const [password, setPassword] = useState(props.password);
 
     const [emailEmpty, setEmailEmpty] = useState(false);
+    const [usernameEmpty, setUsernameEmpty] = useState(false);
     const [gamerTagEmpty, setGamerTagEmpty] = useState(false);
     const [passwordEmpty, setPasswordEmpty] = useState(false);
 
@@ -29,6 +31,17 @@ const SignUpAndUpdateForm = withRouter((props) => {
     const onEmailFocus = () => {
         setEmailEmpty(false);
         setError(false);
+    };
+    const onUsernameFocus = () => {
+        setUsernameEmpty(false);
+        setError(false);
+    };
+    const onUsernameBlur = () => {
+        if (username === "") {
+            setUsernameEmpty(true);
+        } else {
+            setUsernameEmpty(false);
+        }
     };
     const onGamerTagFocus = () => {
         setGamerTagEmpty(false);
@@ -60,6 +73,11 @@ const SignUpAndUpdateForm = withRouter((props) => {
             setLoading(false);
             return;
         }
+        if (username === "") {
+            setUsernameEmpty(true);
+            setLoading(false);
+            return;
+        }
         if (gamerTag === "") {
             setGamerTagEmpty(true);
             setLoading(false);
@@ -74,6 +92,7 @@ const SignUpAndUpdateForm = withRouter((props) => {
         try {
             let values = {
                 email: email,
+                username: username,
                 platform: platform,
                 gamertag: gamerTag,
                 activision_username: activisionID,
@@ -110,6 +129,8 @@ const SignUpAndUpdateForm = withRouter((props) => {
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
                     )}
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
+                        {error && <span className="text-danger">{error}</span>}
+
                         <Form onSubmit={registerSubmitHandler}>
                             <Form.Group
                                 className="mb-3"
@@ -132,9 +153,6 @@ const SignUpAndUpdateForm = withRouter((props) => {
                                     <span className="text-danger">
                                         Required
                                     </span>
-                                )}
-                                {error && (
-                                    <span className="text-danger">{error}</span>
                                 )}
                                 <div className="tooltip-arrow">
                                     <Form.Control
@@ -159,6 +177,36 @@ const SignUpAndUpdateForm = withRouter((props) => {
                                     We'll never share your email with anyone
                                     else.
                                 </Form.Text>
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="formBasicUsername"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                onBlur={onUsernameBlur}
+                                onFocus={onUsernameFocus}
+                            >
+                                <Form.Label
+                                    className={
+                                        usernameEmpty ? "text-danger" : ""
+                                    }
+                                >
+                                    Username
+                                </Form.Label>{" "}
+                                {usernameEmpty && (
+                                    <span className="text-danger">
+                                        Required
+                                    </span>
+                                )}
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter a username"
+                                    className={
+                                        usernameEmpty
+                                            ? "border-bottom border-danger shadow-none"
+                                            : "shadow-none"
+                                    }
+                                />
                             </Form.Group>
                             <Form.Group
                                 className="mb-3"

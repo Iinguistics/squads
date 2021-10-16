@@ -17,7 +17,7 @@ class User extends Authenticatable
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'email', 'platform', 'gamertag', 'activision_username', 'password', 'active', 'created_at', 'updated_at'
+        'email', 'username', 'platform', 'gamertag', 'activision_username', 'password', 'active', 'created_at', 'updated_at'
     ];
 
     protected $hidden = [
