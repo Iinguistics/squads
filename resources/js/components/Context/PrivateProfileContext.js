@@ -22,6 +22,7 @@ const PrivateProfileProvider = (props) => {
 
     const [deleteAccountClicked, setDeleteAccountClicked] = useState(0);
     const [emailClicked, setEmailClicked] = useState(0);
+    const [usernameClicked, setUsernameClicked] = useState(0);
     const [gamertagClicked, setGamertagClicked] = useState(0);
     const [activisionClicked, setActivisionClicked] = useState(0);
     const [passwordClicked, setPasswordClicked] = useState(0);
@@ -96,6 +97,10 @@ const PrivateProfileProvider = (props) => {
         setEmailClicked((emailClicked) => emailClicked + 1);
     };
 
+    const usernameClickedHandler = () => {
+        setUsernameClicked((usernameClicked) => usernameClicked + 1);
+    };
+
     const gamertagClickedHandler = () => {
         setGamertagClicked((gamertagClicked) => gamertagClicked + 1);
     };
@@ -157,6 +162,7 @@ const PrivateProfileProvider = (props) => {
                 profileData,
                 fontColor,
                 profileColor,
+                usernameClicked,
                 tabHandler,
                 deleteAccountClickedHandler,
                 emailClickedHandler,
@@ -167,6 +173,7 @@ const PrivateProfileProvider = (props) => {
                 fetchProfileHandler,
                 fontColorHandler,
                 profileColorHandler,
+                usernameClickedHandler,
             }}
         >
             {props.children}

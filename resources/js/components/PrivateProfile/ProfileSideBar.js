@@ -6,6 +6,7 @@ import GamertagModal from "../Utils/Modals/UserSettings/GamertagModal";
 import ActivisionIdModal from "../Utils/Modals/UserSettings/ActivisionIdModal";
 import PasswordModal from "../Utils/Modals/UserSettings/PasswordModal";
 import UploadPhotoModal from "../Utils/Modals/UploadPhotoModal";
+import UsernameModal from "../Utils/Modals/UserSettings/UsernameModal";
 
 const ProfileSideBar = ({
     myProfileTab,
@@ -23,6 +24,8 @@ const ProfileSideBar = ({
     loggedInToggleHandler,
     emailClickedHandler,
     emailClicked,
+    usernameClickedHandler,
+    usernameClicked,
     gamertagClickedHandler,
     gamertagClicked,
     activisionClickedHandler,
@@ -92,6 +95,12 @@ const ProfileSideBar = ({
                         </div>
                         <div
                             className="private-profile-sidebar-cat-content mb-2"
+                            onClick={() => usernameClickedHandler()}
+                        >
+                            Username
+                        </div>
+                        <div
+                            className="private-profile-sidebar-cat-content mb-2"
                             onClick={() => gamertagClickedHandler()}
                         >
                             Gamertag
@@ -126,6 +135,10 @@ const ProfileSideBar = ({
                 loggedInToggleHandler={loggedInToggleHandler}
             />
             <EmailModal emailClicked={emailClicked} tabHandler={tabHandler} />
+            <UsernameModal
+                usernameClicked={usernameClicked}
+                tabHandler={tabHandler}
+            />
             <GamertagModal
                 gamertagClicked={gamertagClicked}
                 tabHandler={tabHandler}

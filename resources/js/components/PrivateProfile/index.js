@@ -45,6 +45,8 @@ const index = withRouter((props) => {
                                     deleteAccountClicked,
                                     emailClickedHandler,
                                     emailClicked,
+                                    usernameClickedHandler,
+                                    usernameClicked,
                                     gamertagClickedHandler,
                                     gamertagClicked,
                                     activisionClickedHandler,
@@ -95,6 +97,12 @@ const index = withRouter((props) => {
                                                         emailClickedHandler
                                                     }
                                                     emailClicked={emailClicked}
+                                                    usernameClickedHandler={
+                                                        usernameClickedHandler
+                                                    }
+                                                    usernameClicked={
+                                                        usernameClicked
+                                                    }
                                                     gamertagClickedHandler={
                                                         gamertagClickedHandler
                                                     }
