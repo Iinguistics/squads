@@ -265,31 +265,6 @@ class UserAuthController extends Controller
         return response()->json($response, 200);
     }
 
-    public function update_current_user_account_email(Request $request)
-    {
-        $user = Auth::user();
-
-        $input = $request->all();
-
-        $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
-        if (in_array($input['email'], $emails)) {
-            $response = array(
-                'success' => false,
-                'error' => "email already in use.",
-            );
-            return response()->json($response, 200);
-        }
-
-        $results = User::where('id', $user->id)
-            ->update($input);
-
-        $response = array(
-            'success' => $results ? true : false,
-            'data' => $results,
-        );
-
-        return response()->json($response, 200);
-    }
 
     public function update_current_user_account_password(Request $request)
     {
