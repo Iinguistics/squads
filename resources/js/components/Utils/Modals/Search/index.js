@@ -29,7 +29,6 @@ const index = withRouter((props) => {
                     <Modal.Body>
                         <PlayerStats handleClose={handleClose} />
                     </Modal.Body>
-
                     <Modal.Footer>
                         <button
                             onClick={handleClose}

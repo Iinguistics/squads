@@ -39,6 +39,10 @@ const GamertagModal = withRouter((props) => {
         fetchProfileHandler();
     }, []);
 
+    const successReset = () => {
+        setSuccess(false);
+    };
+
     const updateAccountHandler = async () => {
         if (gamertag === "") {
             setError("Required");
@@ -76,6 +80,7 @@ const GamertagModal = withRouter((props) => {
                     buttonText="Got it"
                     tabHandler={props.tabHandler}
                     tab="myProfile"
+                    successReset={successReset}
                 />
                 <Modal
                     show={show}

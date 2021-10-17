@@ -37,6 +37,10 @@ const EmailModal = withRouter((props) => {
         fetchProfileHandler();
     }, []);
 
+    const successReset = () => {
+        setSuccess(false);
+    };
+
     const updateAccountHandler = async () => {
         if (email === "") {
             setError("Required");
@@ -51,7 +55,7 @@ const EmailModal = withRouter((props) => {
                 email: email,
             };
             const { data } = await Api.put(
-                "/update_current_user_account_email",
+                "/update_current_user_account",
                 value
             );
 
@@ -78,6 +82,7 @@ const EmailModal = withRouter((props) => {
                     buttonText="Got it"
                     tabHandler={props.tabHandler}
                     tab="myProfile"
+                    successReset={successReset}
                 />
                 <Modal
                     show={show}

@@ -39,6 +39,10 @@ const ActivisionIdModal = withRouter((props) => {
         fetchProfileHandler();
     }, []);
 
+    const successReset = () => {
+        setSuccess(false);
+    };
+
     const updateAccountHandler = async () => {
         if (activisionId === "") {
             setError("Required");
@@ -76,6 +80,7 @@ const ActivisionIdModal = withRouter((props) => {
                     buttonText="Got it"
                     tabHandler={props.tabHandler}
                     tab="myProfile"
+                    successReset={successReset}
                 />
                 <Modal
                     show={show}

@@ -10431,7 +10431,6 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
 
               if (data.success) {
                 handleClose();
-                console.log(data);
                 props.passwordResetPinVerifiedHandler();
                 props.passwordResetEmailHandler(email);
                 setError(false);
@@ -10446,7 +10445,7 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
               _context.prev = 12;
               _context.t0 = _context["catch"](3);
               handleClose();
-              setError(_context.t0.data.message);
+              setError(_context.t0.message);
 
             case 16:
             case "end":
@@ -10982,12 +10981,13 @@ var SuccessModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(
 
   var handleClose = function handleClose() {
     if (props.push) {
+      props.successReset ? props.successReset() : setShow(false);
       props.history.push("".concat(props.push));
     } else if (props.tab) {
-      setShow(false);
+      props.successReset ? props.successReset() : setShow(false);
       props.tabHandler(props.tab);
     } else {
-      setShow(false);
+      props.successReset ? props.successReset() : setShow(false);
     }
   };
 
@@ -11345,6 +11345,10 @@ var ActivisionIdModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
     fetchProfileHandler();
   }, []);
 
+  var successReset = function successReset() {
+    setSuccess(false);
+  };
+
   var updateAccountHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       var value, _yield$Api$put, data;
@@ -11412,7 +11416,8 @@ var ActivisionIdModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
         bodyText: "Your activision id has been updated.",
         buttonText: "Got it",
         tabHandler: props.tabHandler,
-        tab: "myProfile"
+        tab: "myProfile",
+        successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
         onHide: handleClose,
@@ -11586,6 +11591,10 @@ var EmailModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(fu
     fetchProfileHandler();
   }, []);
 
+  var successReset = function successReset() {
+    setSuccess(false);
+  };
+
   var updateAccountHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       var value, _yield$Api$put, data;
@@ -11617,7 +11626,7 @@ var EmailModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(fu
                 email: email
               };
               _context2.next = 10;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_account_email", value);
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_account", value);
 
             case 10:
               _yield$Api$put = _context2.sent;
@@ -11662,7 +11671,8 @@ var EmailModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(fu
         bodyText: "Your email has been updated.",
         buttonText: "Got it",
         tabHandler: props.tabHandler,
-        tab: "myProfile"
+        tab: "myProfile",
+        successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
         onHide: handleClose,
@@ -11837,6 +11847,10 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
     fetchProfileHandler();
   }, []);
 
+  var successReset = function successReset() {
+    setSuccess(false);
+  };
+
   var updateAccountHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       var value, _yield$Api$put, data;
@@ -11904,7 +11918,8 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
         bodyText: "Your gamertag has been updated.",
         buttonText: "Got it",
         tabHandler: props.tabHandler,
-        tab: "myProfile"
+        tab: "myProfile",
+        successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
         onHide: handleClose,
@@ -12112,6 +12127,10 @@ var PasswordModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
     };
   }();
 
+  var successReset = function successReset() {
+    setSuccess(false);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "mt-5 text-center",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -12121,7 +12140,8 @@ var PasswordModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
         bodyText: "Your password has been updated.",
         buttonText: "Got it",
         tabHandler: props.tabHandler,
-        tab: "myProfile"
+        tab: "myProfile",
+        successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
         onHide: handleClose,

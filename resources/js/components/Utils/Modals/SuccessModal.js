@@ -12,12 +12,13 @@ const SuccessModal = withRouter((props) => {
 
     const handleClose = () => {
         if (props.push) {
+            props.successReset ? props.successReset() : setShow(false);
             props.history.push(`${props.push}`);
         } else if (props.tab) {
-            setShow(false);
+            props.successReset ? props.successReset() : setShow(false);
             props.tabHandler(props.tab);
         } else {
-            setShow(false);
+            props.successReset ? props.successReset() : setShow(false);
         }
     };
 

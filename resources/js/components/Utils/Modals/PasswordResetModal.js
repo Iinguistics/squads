@@ -38,7 +38,6 @@ const PasswordResetModal = withRouter((props) => {
 
             if (data.success) {
                 handleClose();
-                console.log(data);
                 props.passwordResetPinVerifiedHandler();
                 props.passwordResetEmailHandler(email);
                 setError(false);
@@ -47,7 +46,7 @@ const PasswordResetModal = withRouter((props) => {
             }
         } catch (error) {
             handleClose();
-            setError(error.data.message);
+            setError(error.message);
         }
     };
 

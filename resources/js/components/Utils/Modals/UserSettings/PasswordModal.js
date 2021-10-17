@@ -59,6 +59,10 @@ const PasswordModal = withRouter((props) => {
         }
     };
 
+    const successReset = () => {
+        setSuccess(false);
+    };
+
     return (
         <div className="mt-5 text-center">
             <Container>
@@ -69,6 +73,7 @@ const PasswordModal = withRouter((props) => {
                     buttonText="Got it"
                     tabHandler={props.tabHandler}
                     tab="myProfile"
+                    successReset={successReset}
                 />
                 <Modal
                     show={show}

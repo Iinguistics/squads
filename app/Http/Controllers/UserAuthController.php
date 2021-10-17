@@ -229,6 +229,30 @@ class UserAuthController extends Controller
 
         $input = $request->all();
 
+        if (isset($input['email'])) {
+            $existing_email = User::where('email', $input['email'])->get()->first();
+
+            if ($existing_email) {
+                $response = array(
+                    'success' => false,
+                    'error' =>  "email already in use."
+                );
+                return response()->json($response, 200);
+            }
+        }
+
+        if (isset($input['username'])) {
+            $existing_username = User::where('username', $input['username'])->get()->first();
+
+            if ($existing_username) {
+                $response = array(
+                    'success' => false,
+                    'error' =>  "username already in use."
+                );
+                return response()->json($response, 200);
+            }
+        }
+
         $results = User::where('id', $user->id)
             ->update($input);
 
