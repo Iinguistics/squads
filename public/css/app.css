@@ -10063,6 +10063,12 @@ nav .dropdown-item {
   height: 1px;
 }
 
+.search-modal-divider {
+  background: #dddee4;
+  width: 100%;
+  height: 1px;
+}
+
 .main-blue {
   color: #4d89ff;
 }

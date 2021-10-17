@@ -127,9 +127,7 @@ class ProfileController extends Controller
     {
         $input = $request->all();
 
-        $profile = User::where('platform', $input['platform'])
-            ->where('gamertag', $input['gamertag'])
-            ->get()->first();
+        $profile = User::where('username', $input['username'])->get()->first();
 
         if ($profile) {
             $response = array(
