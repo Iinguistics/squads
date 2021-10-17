@@ -10773,6 +10773,11 @@ var PlayerStats = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(f
       platform = _useState6[0],
       setPlatform = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("cod"),
+      _useState8 = _slicedToArray(_useState7, 2),
+      title = _useState8[0],
+      setTitle = _useState8[1];
+
   var searchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
       var values, _yield$Api$post, data;
@@ -10851,6 +10856,16 @@ var PlayerStats = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(f
               value: "xbl",
               children: "Xbox Live"
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
+            value: title,
+            onChange: function onChange(e) {
+              return setTitle(e.target.value);
+            },
+            className: "mr-4 p-1 player-search-select",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "cod",
+              children: "Call of Duty: Vanguard"
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "text",
             placeholder: "Enter player's gamertag",

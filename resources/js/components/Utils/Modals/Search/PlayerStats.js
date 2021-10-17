@@ -8,6 +8,7 @@ const PlayerStats = withRouter((props) => {
     const [error, setError] = useState("");
     const [gamertag, setGamertag] = useState("");
     const [platform, setPlatform] = useState("psn");
+    const [title, setTitle] = useState("cod");
 
     const searchProfileHandler = async (e) => {
         e.preventDefault();
@@ -46,6 +47,13 @@ const PlayerStats = withRouter((props) => {
                             <option value="psn">PlayStation Network</option>
                             <option value="battle">Battle.net</option>
                             <option value="xbl">Xbox Live</option>
+                        </select>
+                        <select
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="mr-4 p-1 player-search-select"
+                        >
+                            <option value="cod">Call of Duty: Vanguard</option>
                         </select>
                         <input
                             type="text"
