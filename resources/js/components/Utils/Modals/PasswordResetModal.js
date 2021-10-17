@@ -6,7 +6,7 @@ import Api from "../../Api";
 const PasswordResetModal = withRouter((props) => {
     const [show, setShow] = useState(false);
 
-    const [error, setError] = useState(false);
+    const [error, setError] = useState("");
     const [pin, setPin] = useState("");
     const [email, setEmail] = useState("");
 
@@ -40,7 +40,7 @@ const PasswordResetModal = withRouter((props) => {
                 handleClose();
                 props.passwordResetPinVerifiedHandler();
                 props.passwordResetEmailHandler(email);
-                setError(false);
+                setError("");
             } else {
                 setError(data.error);
             }

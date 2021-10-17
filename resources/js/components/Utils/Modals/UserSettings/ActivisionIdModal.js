@@ -6,7 +6,7 @@ import SuccessModal from "../SuccessModal";
 
 const ActivisionIdModal = withRouter((props) => {
     const [show, setShow] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [activisionId, setActivisionId] = useState("");
@@ -59,11 +59,11 @@ const ActivisionIdModal = withRouter((props) => {
 
             if (data.success) {
                 setSuccess(true);
-                setError(false);
+                setError("");
                 setShow(false);
             } else {
                 setSuccess(false);
-                setError(true);
+                setError(data.error);
             }
         } catch (error) {
             setError(error.message);

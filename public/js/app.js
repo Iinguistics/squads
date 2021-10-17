@@ -10404,7 +10404,7 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       error = _useState4[0],
       setError = _useState4[1];
@@ -10463,7 +10463,7 @@ var PasswordResetModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
                 handleClose();
                 props.passwordResetPinVerifiedHandler();
                 props.passwordResetEmailHandler(email);
-                setError(false);
+                setError("");
               } else {
                 setError(data.error);
               }
@@ -11297,7 +11297,7 @@ var ActivisionIdModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       error = _useState4[0],
       setError = _useState4[1];
@@ -11409,11 +11409,11 @@ var ActivisionIdModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
 
               if (data.success) {
                 setSuccess(true);
-                setError(false);
+                setError("");
                 setShow(false);
               } else {
                 setSuccess(false);
-                setError(true);
+                setError(data.error);
               }
 
               _context2.next = 15;
@@ -11543,7 +11543,7 @@ var EmailModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(fu
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       error = _useState4[0],
       setError = _useState4[1];
@@ -11799,7 +11799,7 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       error = _useState4[0],
       setError = _useState4[1];
@@ -11915,7 +11915,7 @@ var GamertagModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
                 setShow(false);
               } else {
                 setSuccess(false);
-                setError(true);
+                setError(data.error);
               }
 
               _context2.next = 15;

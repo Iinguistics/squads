@@ -6,7 +6,7 @@ import SuccessModal from "../SuccessModal";
 
 const GamertagModal = withRouter((props) => {
     const [show, setShow] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [gamertag, setGamertag] = useState("");
@@ -63,7 +63,7 @@ const GamertagModal = withRouter((props) => {
                 setShow(false);
             } else {
                 setSuccess(false);
-                setError(true);
+                setError(data.error);
             }
         } catch (error) {
             setError(error.message);

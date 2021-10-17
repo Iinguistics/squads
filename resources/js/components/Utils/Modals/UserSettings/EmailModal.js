@@ -6,7 +6,7 @@ import SuccessModal from "../SuccessModal";
 
 const EmailModal = withRouter((props) => {
     const [show, setShow] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [email, setEmail] = useState("");
