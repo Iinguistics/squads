@@ -6919,6 +6919,86 @@ var FontColor = function FontColor(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/Head.js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/Head.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var Head = function Head(_ref) {
+  var userInfo = _ref.userInfo,
+      profileData = _ref.profileData,
+      profileColor = _ref.profileColor;
+  var appUrl = "http://127.0.0.1:8000";
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+      src: profileData ? profileData.photo ? profileData.photo : "".concat(appUrl, "/images/default-photo-black-outline.png") : "".concat(appUrl, "/images/default-photo-black-outline.png"),
+      alt: "profile photo",
+      className: "chat-preview-photo appearance-profile-color-".concat(profileColor)
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Head);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/index.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/index.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ProfileColor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ProfileColor */ "./resources/js/components/PrivateProfile/ProfileColor.js");
+/* harmony import */ var _Head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Head */ "./resources/js/components/PrivateProfile/MyProfilePreview/Head.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var index = function index(_ref) {
+  var userInfo = _ref.userInfo,
+      profileData = _ref.profileData,
+      profileColor = _ref.profileColor,
+      fetchProfileHandler = _ref.fetchProfileHandler;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchProfileHandler();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "container text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+      className: "mb-5",
+      children: "Profile Preview"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      userInfo: userInfo,
+      profileData: profileData,
+      profileColor: profileColor
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
+
+/***/ }),
+
 /***/ "./resources/js/components/PrivateProfile/Privacy/DirectMessaging.js":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/PrivateProfile/Privacy/DirectMessaging.js ***!
@@ -7881,14 +7961,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileSideBar */ "./resources/js/components/PrivateProfile/ProfileSideBar.js");
 /* harmony import */ var _Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Context/PrivateProfileContext */ "./resources/js/components/Context/PrivateProfileContext.js");
 /* harmony import */ var _Context_UserContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context/UserContext */ "./resources/js/components/Context/UserContext.js");
 /* harmony import */ var _Appearance__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Appearance */ "./resources/js/components/PrivateProfile/Appearance.js");
 /* harmony import */ var _EditProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./EditProfile */ "./resources/js/components/PrivateProfile/EditProfile.js");
 /* harmony import */ var _Privacy__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Privacy */ "./resources/js/components/PrivateProfile/Privacy/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _MyProfilePreview__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MyProfilePreview */ "./resources/js/components/PrivateProfile/MyProfilePreview/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -7914,7 +7995,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function (props) {
+
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       userInfo = _useState2[0],
@@ -7931,12 +8013,12 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
 
     console.log(userInfoData);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext.Consumer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext.Consumer, {
       children: function children(_ref) {
         var loggedInToggleHandler = _ref.loggedInToggleHandler;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Context_PrivateProfileContext__WEBPACK_IMPORTED_MODULE_2__.PrivateProfileContext.Consumer, {
             children: function children(_ref2) {
               var _jsx2;
 
@@ -7970,10 +8052,10 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
                   fontColor = _ref2.fontColor,
                   profileColorHandler = _ref2.profileColorHandler,
                   profileColor = _ref2.profileColor;
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                   className: "d-flex flex-column flex-md-row private-profile-main-container",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ProfileSideBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
                     tabHandler: tabHandler,
                     myProfileTab: myProfileTab,
                     generalInfoTab: generalInfoTab,
@@ -7999,20 +8081,27 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
                     passwordClicked: passwordClicked,
                     photoClickedHandler: photoClickedHandler,
                     photoClicked: photoClicked
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     className: "container mt-5 main-header",
-                    children: [generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                    children: [myProfileTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MyProfilePreview__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                      userInfo: userInfo,
+                      tabHandler: tabHandler,
+                      tab: "myProfile",
+                      fetchProfileHandler: fetchProfileHandler,
+                      profileData: profileData,
+                      profileColor: profileColor
+                    }), generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {
                       userInfo: userInfo,
                       tabHandler: tabHandler,
                       tab: "myProfile"
-                    }), appearanceTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Appearance__WEBPACK_IMPORTED_MODULE_4__["default"], (_jsx2 = {
+                    }), appearanceTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Appearance__WEBPACK_IMPORTED_MODULE_4__["default"], (_jsx2 = {
                       userInfo: userInfo,
                       tabHandler: tabHandler,
                       fetchProfileHandler: fetchProfileHandler,
                       profileData: profileData,
                       fontColorHandler: fontColorHandler,
                       fontColor: fontColor
-                    }, _defineProperty(_jsx2, "tabHandler", tabHandler), _defineProperty(_jsx2, "profileColorHandler", profileColorHandler), _defineProperty(_jsx2, "profileColor", profileColor), _jsx2)), privacyTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Privacy__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                    }, _defineProperty(_jsx2, "tabHandler", tabHandler), _defineProperty(_jsx2, "profileColorHandler", profileColorHandler), _defineProperty(_jsx2, "profileColor", profileColor), _jsx2)), privacyTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Privacy__WEBPACK_IMPORTED_MODULE_6__["default"], {
                       userInfo: userInfo,
                       tabHandler: tabHandler,
                       fetchProfileHandler: fetchProfileHandler,

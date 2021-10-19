@@ -9,6 +9,7 @@ import UserProvider, { UserContext } from "../Context/UserContext";
 import Appearance from "./Appearance";
 import EditProfile from "./EditProfile";
 import Privacy from "./Privacy";
+import MyProfilePreview from "./MyProfilePreview";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -127,6 +128,24 @@ const index = withRouter((props) => {
                                                     photoClicked={photoClicked}
                                                 />
                                                 <div className="container mt-5 main-header">
+                                                    {myProfileTab && (
+                                                        <MyProfilePreview
+                                                            userInfo={userInfo}
+                                                            tabHandler={
+                                                                tabHandler
+                                                            }
+                                                            tab="myProfile"
+                                                            fetchProfileHandler={
+                                                                fetchProfileHandler
+                                                            }
+                                                            profileData={
+                                                                profileData
+                                                            }
+                                                            profileColor={
+                                                                profileColor
+                                                            }
+                                                        />
+                                                    )}
                                                     {generalInfoTab && (
                                                         <EditProfile
                                                             userInfo={userInfo}
