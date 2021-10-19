@@ -29,7 +29,6 @@ const PlayerStats = withRouter((props) => {
             setError(error.message);
         }
     };
-    console.log(platform);
 
     return (
         <div className="my-3">

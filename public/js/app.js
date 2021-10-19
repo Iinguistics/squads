@@ -10828,7 +10828,6 @@ var PlayerStats = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(f
     };
   }();
 
-  console.log(platform);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "my-3",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
