@@ -129,8 +129,34 @@
     width: 24px;
 }
 
+// profile preview
+
 .private-profile-preview-head-item-2 {
     max-width: 50%;
+}
+
+.private-profile-preview-social-links-red:hover {
+    color: $red;
+}
+.private-profile-preview-social-links-blue:hover {
+    color: $blue;
+}
+.private-profile-preview-social-links-green:hover {
+    color: $green;
+}
+.private-profile-preview-social-links-orange:hover {
+    color: $orange;
+}
+.private-profile-preview-social-links-pink:hover {
+    color: $pink;
+}
+.private-profile-preview-social-links-purple:hover {
+    text-decoration: none;
+    color: $purple !important;
+    img {
+        border: 2px solid $purple !important;
+        border-radius: 7px;
+    }
 }
 
 @media only screen and (max-width: 768px) {

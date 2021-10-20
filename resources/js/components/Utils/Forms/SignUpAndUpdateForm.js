@@ -252,7 +252,9 @@ const SignUpAndUpdateForm = withRouter((props) => {
                                     <option value="psn">
                                         PlayStation Network
                                     </option>
-                                    <option value="battle">Battle.net</option>
+                                    <option value="battle.net">
+                                        Battle.net
+                                    </option>
                                     <option value="xbl">Xbox Live</option>
                                 </Form.Control>
                             </Form.Group>

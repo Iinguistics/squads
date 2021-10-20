@@ -1,11 +1,12 @@
 import React from "react";
+import SocialLinks from "./SocialLinks";
 
 const Head = ({ profileData, profileColor }) => {
     const appUrl = process.env.MIX_APP_URL;
     console.log(profileData, "profile");
 
     return (
-        <div className="d-flex flex-column flex-md-row justify-content-center align-items-center">
+        <div className="d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded">
             <div className="item-1 mr-5">
                 <img
                     src={
@@ -22,7 +23,7 @@ const Head = ({ profileData, profileColor }) => {
 
             <div className="private-profile-preview-head-item-2">
                 {profileData && (
-                    <span className="mr-2 fs-22">
+                    <span className="mr-3 fs-22">
                         Gamertag: {profileData.user.gamertag}
                     </span>
                 )}
@@ -33,12 +34,21 @@ const Head = ({ profileData, profileColor }) => {
                     Invite to squad
                 </button>
                 <div className="fs-16">
-                    {profileData && <p>{profileData.first_name}</p>}
                     {profileData && (
-                        <span>Username: {profileData.user.username}</span>
+                        <>
+                            <span>Username: {profileData.user.username}</span>
+                            <br />
+                        </>
+                    )}
+                    {profileData && (
+                        <>
+                            <span>Platform: {profileData.user.platform}</span>
+                            <br />
+                        </>
                     )}
                     <p>{profileData ? profileData.bio : "No bio"}</p>
                 </div>
+                <SocialLinks profileData={profileData} />
             </div>
         </div>
     );

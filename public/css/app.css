@@ -10700,6 +10700,35 @@ form .player-search-select {
   max-width: 50%;
 }
 
+.private-profile-preview-social-links-red:hover {
+  color: #ed4245;
+}
+
+.private-profile-preview-social-links-blue:hover {
+  color: #3490dc;
+}
+
+.private-profile-preview-social-links-green:hover {
+  color: #00ff00;
+}
+
+.private-profile-preview-social-links-orange:hover {
+  color: #f6993f;
+}
+
+.private-profile-preview-social-links-pink:hover {
+  color: #f66d9b;
+}
+
+.private-profile-preview-social-links-purple:hover {
+  text-decoration: none;
+  color: #5741d9 !important;
+}
+.private-profile-preview-social-links-purple:hover img {
+  border: 2px solid #5741d9 !important;
+  border-radius: 7px;
+}
+
 @media only screen and (max-width: 768px) {
   .private-profile-main-container {
     height: 100%;
