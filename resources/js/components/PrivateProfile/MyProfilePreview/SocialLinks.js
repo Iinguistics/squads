@@ -6,7 +6,7 @@ const SocialLinks = ({ profileData }) => {
     return (
         <>
             {profileData ? (
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between private-profile-preview-social-links-container">
                     {profileData.twitch && (
                         <a
                             href={`https://www.twitch.tv/${profileData.twitch}`}

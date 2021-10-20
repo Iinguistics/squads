@@ -6955,9 +6955,9 @@ var Head = function Head(_ref) {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "private-profile-preview-head-item-2",
-      children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+      children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
         className: "mr-3 fs-22",
-        children: ["Gamertag: ", profileData.user.gamertag]
+        children: profileData.user.gamertag
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
         className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
         children: "Send Message"
@@ -6965,7 +6965,7 @@ var Head = function Head(_ref) {
         className: "bttn-material-flat bttn-sm update-account-modal-btn",
         children: "Invite to squad"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "fs-16",
+        className: "fs-16 mt-3 mt-md-0",
         children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
             children: ["Username: ", profileData.user.username]
@@ -7011,7 +7011,7 @@ var SocialLinks = function SocialLinks(_ref) {
   var appUrl = "http://127.0.0.1:8000";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: profileData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "d-flex justify-content-between",
+      className: "d-flex justify-content-between private-profile-preview-social-links-container",
       children: [profileData.twitch && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
         href: "https://www.twitch.tv/".concat(profileData.twitch),
         target: "_blank",

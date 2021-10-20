@@ -24,7 +24,7 @@ const Head = ({ profileData, profileColor }) => {
             <div className="private-profile-preview-head-item-2">
                 {profileData && (
                     <span className="mr-3 fs-22">
-                        Gamertag: {profileData.user.gamertag}
+                        {profileData.user.gamertag}
                     </span>
                 )}
                 <button className="my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn">
@@ -33,7 +33,7 @@ const Head = ({ profileData, profileColor }) => {
                 <button className="bttn-material-flat bttn-sm update-account-modal-btn">
                     Invite to squad
                 </button>
-                <div className="fs-16">
+                <div className="fs-16 mt-3 mt-md-0">
                     {profileData && (
                         <>
                             <span>Username: {profileData.user.username}</span>

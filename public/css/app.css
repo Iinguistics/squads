@@ -10701,32 +10701,41 @@ form .player-search-select {
 }
 
 .private-profile-preview-social-links-red:hover {
+  text-decoration: none;
   color: #ed4245;
 }
 
 .private-profile-preview-social-links-blue:hover {
+  text-decoration: none;
   color: #3490dc;
 }
 
 .private-profile-preview-social-links-green:hover {
+  text-decoration: none;
   color: #00ff00;
 }
 
 .private-profile-preview-social-links-orange:hover {
+  text-decoration: none;
   color: #f6993f;
+}
+.private-profile-preview-social-links-orange:hover img {
+  border: 2px solid #f6993f;
+  border-radius: 50%;
 }
 
 .private-profile-preview-social-links-pink:hover {
+  text-decoration: none;
   color: #f66d9b;
 }
 
 .private-profile-preview-social-links-purple:hover {
   text-decoration: none;
-  color: #5741d9 !important;
+  color: #5741d9;
 }
 .private-profile-preview-social-links-purple:hover img {
-  border: 2px solid #5741d9 !important;
-  border-radius: 7px;
+  border: 2px solid #5741d9;
+  border-radius: 50%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -10739,6 +10748,10 @@ form .player-search-select {
   }
 
   .private-profile-sidebar-divider {
+    display: none;
+  }
+
+  .private-profile-preview-social-links-container a span {
     display: none;
   }
 }

@@ -136,26 +136,35 @@
 }
 
 .private-profile-preview-social-links-red:hover {
+    text-decoration: none;
     color: $red;
 }
 .private-profile-preview-social-links-blue:hover {
+    text-decoration: none;
     color: $blue;
 }
 .private-profile-preview-social-links-green:hover {
+    text-decoration: none;
     color: $green;
 }
 .private-profile-preview-social-links-orange:hover {
+    text-decoration: none;
     color: $orange;
+    img {
+        border: 2px solid $orange;
+        border-radius: 50%;
+    }
 }
 .private-profile-preview-social-links-pink:hover {
+    text-decoration: none;
     color: $pink;
 }
 .private-profile-preview-social-links-purple:hover {
     text-decoration: none;
-    color: $purple !important;
+    color: $purple;
     img {
-        border: 2px solid $purple !important;
-        border-radius: 7px;
+        border: 2px solid $purple;
+        border-radius: 50%;
     }
 }
 
@@ -170,5 +179,13 @@
 
     .private-profile-sidebar-divider {
         display: none;
+    }
+
+    .private-profile-preview-social-links-container {
+        a {
+            span {
+                display: none;
+            }
+        }
     }
 }
