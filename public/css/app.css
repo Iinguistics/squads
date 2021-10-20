@@ -10568,6 +10568,16 @@ form .player-search-select {
      object-position: center;
 }
 
+.profile-preview-photo {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
 .appearance-bg {
   background: #f4f5f7;
 }

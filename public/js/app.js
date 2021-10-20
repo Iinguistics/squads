@@ -6948,7 +6948,7 @@ var Head = function Head(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
         src: profileData ? profileData.photo ? profileData.photo : "".concat(appUrl, "/images/default-photo-black-outline.png") : "".concat(appUrl, "/images/default-photo-black-outline.png"),
         alt: "profile photo",
-        className: "chat-preview-photo appearance-profile-color-".concat(profileColor)
+        className: "profile-preview-photo appearance-profile-color-".concat(profileColor)
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "private-profile-preview-head-item-2",
@@ -6961,8 +6961,10 @@ var Head = function Head(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
         className: "bttn-material-flat bttn-sm update-account-modal-btn",
         children: "Invite to squad"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-        children: "first name"
+      }), profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: profileData.first_name
+      }), userInfo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+        children: ["Username: ", userInfo.username]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
         children: ["Bio: ", profileData ? profileData.bio : ""]
       })]

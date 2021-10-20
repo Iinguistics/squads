@@ -39,6 +39,14 @@
     object-position: center;
 }
 
+.profile-preview-photo {
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
 .appearance-bg {
     background: $profile-sidebar-light-bg;
 }

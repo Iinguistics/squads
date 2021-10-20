@@ -15,7 +15,7 @@ const Head = ({ userInfo, profileData, profileColor }) => {
                             : `${appUrl}/images/default-photo-black-outline.png`
                     }
                     alt="profile photo"
-                    className={`chat-preview-photo appearance-profile-color-${profileColor}`}
+                    className={`profile-preview-photo appearance-profile-color-${profileColor}`}
                 />
             </div>
 
@@ -30,7 +30,8 @@ const Head = ({ userInfo, profileData, profileColor }) => {
                     Invite to squad
                 </button>
 
-                <p>first name</p>
+                {profileData && <p>{profileData.first_name}</p>}
+                {userInfo && <span>Username: {userInfo.username}</span>}
                 <p>Bio: {profileData ? profileData.bio : ""}</p>
             </div>
         </div>
