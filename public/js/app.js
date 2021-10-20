@@ -6941,6 +6941,7 @@ var Head = function Head(_ref) {
       profileData = _ref.profileData,
       profileColor = _ref.profileColor;
   var appUrl = "http://127.0.0.1:8000";
+  console.log(profileData, "profile");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "d-flex justify-content-center align-items-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6952,21 +6953,24 @@ var Head = function Head(_ref) {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "private-profile-preview-head-item-2",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "mr-2 private-profile-preview-head-item-2-gamertag",
-        children: "gamertag"
+      children: [userInfo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+        className: "mr-2 fs-22",
+        children: ["Gamertag: ", userInfo.gamertag]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
         className: "mr-2 bttn-material-flat bttn-sm update-account-modal-btn",
         children: "Send Message"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
         className: "bttn-material-flat bttn-sm update-account-modal-btn",
         children: "Invite to squad"
-      }), profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-        children: profileData.first_name
-      }), userInfo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-        children: ["Username: ", userInfo.username]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-        children: ["Bio: ", profileData ? profileData.bio : ""]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "fs-16",
+        children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: profileData.first_name
+        }), userInfo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+          children: ["Username: ", userInfo.username]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: profileData ? profileData.bio : "No bio"
+        })]
       })]
     })]
   });

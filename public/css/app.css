@@ -6,6 +6,26 @@
   box-sizing: border-box;
 }
 
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-22 {
+  font-size: 22px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10678,10 +10698,6 @@ form .player-search-select {
 
 .private-profile-preview-head-item-2 {
   max-width: 50%;
-}
-
-.private-profile-preview-head-item-2-gamertag {
-  font-size: 20px;
 }
 
 @media only screen and (max-width: 768px) {

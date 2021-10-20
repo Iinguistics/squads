@@ -2,6 +2,7 @@ import React from "react";
 
 const Head = ({ userInfo, profileData, profileColor }) => {
     const appUrl = process.env.MIX_APP_URL;
+    console.log(profileData, "profile");
 
     return (
         <div className="d-flex justify-content-center align-items-center">
@@ -20,19 +21,22 @@ const Head = ({ userInfo, profileData, profileColor }) => {
             </div>
 
             <div className="private-profile-preview-head-item-2">
-                <span className="mr-2 private-profile-preview-head-item-2-gamertag">
-                    gamertag
-                </span>
+                {userInfo && (
+                    <span className="mr-2 fs-22">
+                        Gamertag: {userInfo.gamertag}
+                    </span>
+                )}
                 <button className="mr-2 bttn-material-flat bttn-sm update-account-modal-btn">
                     Send Message
                 </button>
                 <button className="bttn-material-flat bttn-sm update-account-modal-btn">
                     Invite to squad
                 </button>
-
-                {profileData && <p>{profileData.first_name}</p>}
-                {userInfo && <span>Username: {userInfo.username}</span>}
-                <p>Bio: {profileData ? profileData.bio : ""}</p>
+                <div className="fs-16">
+                    {profileData && <p>{profileData.first_name}</p>}
+                    {userInfo && <span>Username: {userInfo.username}</span>}
+                    <p>{profileData ? profileData.bio : "No bio"}</p>
+                </div>
             </div>
         </div>
     );

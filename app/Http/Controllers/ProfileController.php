@@ -27,7 +27,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        $profile = Profile::where('id', $user->id)->get();
+        $profile = Profile::where('id', $user->id)
+            ->with(['user'])
+            ->get();
 
         $response = array(
             'success' => $profile ? true : false,
