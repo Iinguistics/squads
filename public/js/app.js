@@ -6954,16 +6954,18 @@ var Head = function Head(_ref) {
         className: "profile-preview-photo appearance-profile-color-".concat(profileColor)
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "private-profile-preview-head-item-2",
+      className: "private-profile-preview-head-item-2 mt-2 mt-md-0",
       children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
         className: "mr-3 fs-22",
         children: profileData.user.gamertag
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
-        children: "Send Message"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        className: "bttn-material-flat bttn-sm update-account-modal-btn",
-        children: "Invite to squad"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
+          children: "Send Message"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "bttn-material-flat bttn-sm update-account-modal-btn",
+          children: "Invite to squad"
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "fs-16 mt-3 mt-md-0",
         children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
