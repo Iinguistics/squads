@@ -1,11 +1,11 @@
 import React from "react";
 
-const Head = ({ userInfo, profileData, profileColor }) => {
+const Head = ({ profileData, profileColor }) => {
     const appUrl = process.env.MIX_APP_URL;
     console.log(profileData, "profile");
 
     return (
-        <div className="d-flex justify-content-center align-items-center">
+        <div className="d-flex flex-column flex-md-row justify-content-center align-items-center">
             <div className="item-1 mr-5">
                 <img
                     src={
@@ -21,12 +21,12 @@ const Head = ({ userInfo, profileData, profileColor }) => {
             </div>
 
             <div className="private-profile-preview-head-item-2">
-                {userInfo && (
+                {profileData && (
                     <span className="mr-2 fs-22">
-                        Gamertag: {userInfo.gamertag}
+                        Gamertag: {profileData.user.gamertag}
                     </span>
                 )}
-                <button className="mr-2 bttn-material-flat bttn-sm update-account-modal-btn">
+                <button className="my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn">
                     Send Message
                 </button>
                 <button className="bttn-material-flat bttn-sm update-account-modal-btn">
@@ -34,7 +34,9 @@ const Head = ({ userInfo, profileData, profileColor }) => {
                 </button>
                 <div className="fs-16">
                     {profileData && <p>{profileData.first_name}</p>}
-                    {userInfo && <span>Username: {userInfo.username}</span>}
+                    {profileData && (
+                        <span>Username: {profileData.user.username}</span>
+                    )}
                     <p>{profileData ? profileData.bio : "No bio"}</p>
                 </div>
             </div>
