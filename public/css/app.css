@@ -10559,8 +10559,8 @@ form .player-search-select {
 }
 
 .chat-preview-photo {
-  height: 64px;
-  width: 64px;
+  height: 72px;
+  width: 72px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -10664,6 +10664,14 @@ form .player-search-select {
 .privacy-icon {
   height: 24px;
   width: 24px;
+}
+
+.private-profile-preview-head-item-2 {
+  max-width: 50%;
+}
+
+.private-profile-preview-head-item-2-gamertag {
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 768px) {

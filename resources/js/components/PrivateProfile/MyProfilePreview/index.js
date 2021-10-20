@@ -12,8 +12,8 @@ const index = ({
         fetchProfileHandler();
     }, []);
     return (
-        <div className="container text-center">
-            <h2 className="mb-5">Profile Preview</h2>
+        <div className="container">
+            <h2 className="mb-5 text-center">Profile Preview</h2>
             <Head
                 userInfo={userInfo}
                 profileData={profileData}
