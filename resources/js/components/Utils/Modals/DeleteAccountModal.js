@@ -31,9 +31,11 @@ const DeleteAccountModal = withRouter((props) => {
 
             if (data.success) {
                 localStorage.removeItem("userInfo");
+
                 props.loggedInToggleHandler();
                 handleClose();
                 props.history.push("/");
+                window.location.reload();
             } else {
                 setError(data.error);
             }

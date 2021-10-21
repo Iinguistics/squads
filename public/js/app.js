@@ -10350,6 +10350,7 @@ var DeleteAccountModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRo
                 props.loggedInToggleHandler();
                 handleClose();
                 props.history.push("/");
+                window.location.reload();
               } else {
                 setError(data.error);
               }

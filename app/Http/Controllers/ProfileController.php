@@ -129,7 +129,9 @@ class ProfileController extends Controller
     {
         $input = $request->all();
 
-        $profile = User::where('username', $input['username'])->get()->first();
+        $profile = User::where('username', $input['username'])
+            ->where('active', 1)
+            ->get()->first();
 
         if ($profile) {
             $response = array(
