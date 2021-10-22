@@ -6990,6 +6990,79 @@ var Head = function Head(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _InternetInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InternetInfo */ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetInfo.js");
+/* harmony import */ var _SquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SquadInfo */ "./resources/js/components/PrivateProfile/MyProfilePreview/SquadInfo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var InternetAndSquadInfo = function InternetAndSquadInfo(_ref) {
+  var profileData = _ref.profileData;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "d-flex flex-column flex-md-row justify-content-around mb-5 text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded m-auto",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_InternetInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        profileData: profileData
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded m-auto",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        profileData: profileData
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InternetAndSquadInfo);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetInfo.js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/InternetInfo.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var InternetInfo = function InternetInfo(_ref) {
+  var profileData = _ref.profileData;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      children: "test"
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InternetInfo);
+
+/***/ }),
+
 /***/ "./resources/js/components/PrivateProfile/MyProfilePreview/SocialLinks.js":
 /*!********************************************************************************!*\
   !*** ./resources/js/components/PrivateProfile/MyProfilePreview/SocialLinks.js ***!
@@ -7067,6 +7140,36 @@ var SocialLinks = function SocialLinks(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/SquadInfo.js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/SquadInfo.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var SquadInfo = function SquadInfo(_ref) {
+  var profileData = _ref.profileData;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      children: "test"
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SquadInfo);
+
+/***/ }),
+
 /***/ "./resources/js/components/PrivateProfile/MyProfilePreview/index.js":
 /*!**************************************************************************!*\
   !*** ./resources/js/components/PrivateProfile/MyProfilePreview/index.js ***!
@@ -7080,7 +7183,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Head */ "./resources/js/components/PrivateProfile/MyProfilePreview/Head.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InternetAndSquadInfo */ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -7093,14 +7198,16 @@ var index = function index(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProfileHandler();
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       className: "mb-5 text-center",
       children: "Profile Preview"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_1__["default"], {
       profileData: profileData,
       profileColor: profileColor
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      profileData: profileData
     })]
   });
 };

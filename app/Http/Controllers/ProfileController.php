@@ -42,7 +42,8 @@ class ProfileController extends Controller
 
     public function show($id)
     {
-        $profile = Profile::find($id);
+        $profile = Profile::where('id', $id)
+            ->get();
 
         $response = array(
             'success' => $profile ? true : false,

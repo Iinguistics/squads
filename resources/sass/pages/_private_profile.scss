@@ -138,14 +138,26 @@
 .private-profile-preview-social-links-red:hover {
     text-decoration: none;
     color: $red;
+    img {
+        border: 2px solid $red;
+        border-radius: 50%;
+    }
 }
 .private-profile-preview-social-links-blue:hover {
     text-decoration: none;
     color: $blue;
+    img {
+        border: 2px solid $blue;
+        border-radius: 50%;
+    }
 }
 .private-profile-preview-social-links-green:hover {
     text-decoration: none;
     color: $green;
+    img {
+        border: 2px solid $green;
+        border-radius: 50%;
+    }
 }
 .private-profile-preview-social-links-orange:hover {
     text-decoration: none;
@@ -158,6 +170,10 @@
 .private-profile-preview-social-links-pink:hover {
     text-decoration: none;
     color: $pink;
+    img {
+        border: 2px solid $pink;
+        border-radius: 50%;
+    }
 }
 .private-profile-preview-social-links-purple:hover {
     text-decoration: none;
