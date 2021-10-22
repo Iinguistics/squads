@@ -7014,14 +7014,14 @@ __webpack_require__.r(__webpack_exports__);
 var InternetAndSquadInfo = function InternetAndSquadInfo(_ref) {
   var profileData = _ref.profileData;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "d-flex flex-column flex-md-row justify-content-around mb-5 text-center",
+    className: "d-flex flex-column flex-md-row justify-content-around align-items-center mb-5 text-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded m-auto",
+      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_InternetInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
         profileData: profileData
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded m-auto",
+      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         profileData: profileData
       })
@@ -7049,10 +7049,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var InternetInfo = function InternetInfo(_ref) {
   var profileData = _ref.profileData;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
       children: "test"
     })
