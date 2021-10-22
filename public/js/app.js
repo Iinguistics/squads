@@ -7014,7 +7014,7 @@ __webpack_require__.r(__webpack_exports__);
 var InternetAndSquadInfo = function InternetAndSquadInfo(_ref) {
   var profileData = _ref.profileData;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "d-flex flex-column flex-md-row justify-content-between align-items-center mb-5 text-center",
+    className: "d-flex flex-column flex-md-row justify-content-between align-items-center mb-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_InternetInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -7050,12 +7050,54 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var InternetInfo = function InternetInfo(_ref) {
   var profileData = _ref.profileData;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-      children: "test"
-    })
+  var appUrl = "http://127.0.0.1:8000";
+  var noInfo = "Not available";
+
+  var checkInternetInfo = function checkInternetInfo() {
+    if (profileData) {
+      if (!profileData.carrier && !profileData.ping && !profileData.download_speed && !profileData.upload_speed) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: "Info has not yet been provided"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            src: "".concat(appUrl, "/images/empty.png"),
+            alt: "empty",
+            className: "profile-preview-photo"
+          })]
+        });
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Carrier:", " ", profileData.carrier ? profileData.carrier : noInfo]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Ping: ", profileData.ping ? profileData.ping : noInfo]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Download speed:", " ", profileData.download_speed ? profileData.download_speed : noInfo]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Upload speed:", " ", profileData.upload_speed ? profileData.upload_speed : noInfo]
+          })]
+        });
+      }
+    } else {
+      return null;
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+      className: "text-center",
+      children: "Internet Info"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "d-flex flex-wrap justify-content-around align-items-center text-center",
+      children: checkInternetInfo()
+    })]
   });
 };
 
