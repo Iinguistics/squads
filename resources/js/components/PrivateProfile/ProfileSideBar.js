@@ -7,6 +7,7 @@ import ActivisionIdModal from "../Utils/Modals/UserSettings/ActivisionIdModal";
 import PasswordModal from "../Utils/Modals/UserSettings/PasswordModal";
 import UploadPhotoModal from "../Utils/Modals/UploadPhotoModal";
 import UsernameModal from "../Utils/Modals/UserSettings/UsernameModal";
+import UploadImageModal from "../Utils/Modals/UploadImageModal";
 
 const ProfileSideBar = ({
     myProfileTab,
@@ -35,6 +36,8 @@ const ProfileSideBar = ({
     photoClickedHandler,
     photoClicked,
     fetchProfileHandler,
+    imageClickedHandler,
+    imageClicked,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -64,15 +67,7 @@ const ProfileSideBar = ({
                             className="private-profile-sidebar-cat-content mb-2"
                             onClick={() => photoClickedHandler()}
                         >
-                            Upload Photo
-                        </div>
-                        <div
-                            onClick={() => tabHandler("privacy")}
-                            className={`private-profile-sidebar-cat-content mb-2 ${
-                                privacyTab ? "content-active" : ""
-                            }`}
-                        >
-                            Privacy
+                            Profile Photo
                         </div>
                         <div
                             onClick={() => tabHandler("appearance")}
@@ -81,6 +76,20 @@ const ProfileSideBar = ({
                             }`}
                         >
                             Appearance
+                        </div>
+                        <div
+                            className="private-profile-sidebar-cat-content mb-2"
+                            onClick={() => imageClickedHandler()}
+                        >
+                            Upload Image
+                        </div>
+                        <div
+                            onClick={() => tabHandler("privacy")}
+                            className={`private-profile-sidebar-cat-content mb-2 ${
+                                privacyTab ? "content-active" : ""
+                            }`}
+                        >
+                            Privacy
                         </div>
                     </div>
                     <div className="private-profile-sidebar-divider m-auto"></div>
@@ -129,6 +138,11 @@ const ProfileSideBar = ({
             </div>
             <UploadPhotoModal
                 photoClicked={photoClicked}
+                tabHandler={tabHandler}
+                fetchProfileHandler={fetchProfileHandler}
+            />
+            <UploadImageModal
+                imageClicked={imageClicked}
                 tabHandler={tabHandler}
                 fetchProfileHandler={fetchProfileHandler}
             />

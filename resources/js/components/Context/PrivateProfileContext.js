@@ -27,6 +27,7 @@ const PrivateProfileProvider = (props) => {
     const [activisionClicked, setActivisionClicked] = useState(0);
     const [passwordClicked, setPasswordClicked] = useState(0);
     const [photoClicked, setPhotoClicked] = useState(0);
+    const [imageClicked, setImageClicked] = useState(0);
 
     const [fontColor, setFontColor] = useState("");
     const [profileColor, setProfileColor] = useState("");
@@ -117,6 +118,10 @@ const PrivateProfileProvider = (props) => {
         setPhotoClicked((photoClicked) => photoClicked + 1);
     };
 
+    const imageClickedHandler = () => {
+        setImageClicked((imageClicked) => imageClicked + 1);
+    };
+
     const fontColorHandler = (color) => {
         setFontColor(color);
     };
@@ -159,6 +164,7 @@ const PrivateProfileProvider = (props) => {
                 activisionClicked,
                 passwordClicked,
                 photoClicked,
+                imageClicked,
                 profileData,
                 fontColor,
                 profileColor,
@@ -174,6 +180,7 @@ const PrivateProfileProvider = (props) => {
                 fontColorHandler,
                 profileColorHandler,
                 usernameClickedHandler,
+                imageClickedHandler,
             }}
         >
             {props.children}

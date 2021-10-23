@@ -62,6 +62,8 @@ const index = withRouter((props) => {
                                     fontColor,
                                     profileColorHandler,
                                     profileColor,
+                                    imageClickedHandler,
+                                    imageClicked,
                                 }) => {
                                     return (
                                         <>
@@ -129,6 +131,10 @@ const index = withRouter((props) => {
                                                     fetchProfileHandler={
                                                         fetchProfileHandler
                                                     }
+                                                    imageClickedHandler={
+                                                        imageClickedHandler
+                                                    }
+                                                    imageClicked={imageClicked}
                                                 />
                                                 <div className="container mt-5 main-header">
                                                     {myProfileTab && (

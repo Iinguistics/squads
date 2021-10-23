@@ -5622,15 +5622,20 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       photoClicked = _useState40[0],
       setPhotoClicked = _useState40[1];
 
-  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState42 = _slicedToArray(_useState41, 2),
-      fontColor = _useState42[0],
-      setFontColor = _useState42[1];
+      imageClicked = _useState42[0],
+      setImageClicked = _useState42[1];
 
   var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState44 = _slicedToArray(_useState43, 2),
-      profileColor = _useState44[0],
-      setProfileColor = _useState44[1];
+      fontColor = _useState44[0],
+      setFontColor = _useState44[1];
+
+  var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState46 = _slicedToArray(_useState45, 2),
+      profileColor = _useState46[0],
+      setProfileColor = _useState46[1];
 
   var resetTabs = function resetTabs() {
     setMyProfileTab(false);
@@ -5738,6 +5743,12 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
     });
   };
 
+  var imageClickedHandler = function imageClickedHandler() {
+    setImageClicked(function (imageClicked) {
+      return imageClicked + 1;
+    });
+  };
+
   var fontColorHandler = function fontColorHandler(color) {
     setFontColor(color);
   };
@@ -5809,6 +5820,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       activisionClicked: activisionClicked,
       passwordClicked: passwordClicked,
       photoClicked: photoClicked,
+      imageClicked: imageClicked,
       profileData: profileData,
       fontColor: fontColor,
       profileColor: profileColor,
@@ -5823,7 +5835,8 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       fetchProfileHandler: fetchProfileHandler,
       fontColorHandler: fontColorHandler,
       profileColorHandler: profileColorHandler,
-      usernameClickedHandler: usernameClickedHandler
+      usernameClickedHandler: usernameClickedHandler,
+      imageClickedHandler: imageClickedHandler
     },
     children: props.children
   });
@@ -8052,7 +8065,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Modals_UserSettings_PasswordModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Utils/Modals/UserSettings/PasswordModal */ "./resources/js/components/Utils/Modals/UserSettings/PasswordModal.js");
 /* harmony import */ var _Utils_Modals_UploadPhotoModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Utils/Modals/UploadPhotoModal */ "./resources/js/components/Utils/Modals/UploadPhotoModal.js");
 /* harmony import */ var _Utils_Modals_UserSettings_UsernameModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Utils/Modals/UserSettings/UsernameModal */ "./resources/js/components/Utils/Modals/UserSettings/UsernameModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Utils_Modals_UploadImageModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Utils/Modals/UploadImageModal */ "./resources/js/components/Utils/Modals/UploadImageModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -8091,87 +8106,95 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
       passwordClicked = _ref.passwordClicked,
       photoClickedHandler = _ref.photoClickedHandler,
       photoClicked = _ref.photoClicked,
-      fetchProfileHandler = _ref.fetchProfileHandler;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      fetchProfileHandler = _ref.fetchProfileHandler,
+      imageClickedHandler = _ref.imageClickedHandler,
+      imageClicked = _ref.imageClicked;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: "private-profile-sidebar-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       className: "container mt-5 main-header",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
         className: "d-flex flex-row flex-md-column justify-content-between",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "m-auto",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-head mb-2",
             children: "profile settings"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             onClick: function onClick() {
               return tabHandler("myProfile");
             },
             className: "private-profile-sidebar-cat-content mb-2 ".concat(myProfileTab ? "content-active" : ""),
             children: "My Profile"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             onClick: function onClick() {
               return tabHandler("generalInfo");
             },
             className: "private-profile-sidebar-cat-content mb-2 ".concat(generalInfoTab ? "content-active" : ""),
             children: "General Info"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return photoClickedHandler();
             },
-            children: "Upload Photo"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-            onClick: function onClick() {
-              return tabHandler("privacy");
-            },
-            className: "private-profile-sidebar-cat-content mb-2 ".concat(privacyTab ? "content-active" : ""),
-            children: "Privacy"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            children: "Profile Photo"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             onClick: function onClick() {
               return tabHandler("appearance");
             },
             className: "private-profile-sidebar-cat-content mb-2 ".concat(appearanceTab ? "content-active" : ""),
             children: "Appearance"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "private-profile-sidebar-cat-content mb-2",
+            onClick: function onClick() {
+              return imageClickedHandler();
+            },
+            children: "Upload Image"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            onClick: function onClick() {
+              return tabHandler("privacy");
+            },
+            className: "private-profile-sidebar-cat-content mb-2 ".concat(privacyTab ? "content-active" : ""),
+            children: "Privacy"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
           className: "private-profile-sidebar-divider m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "m-auto",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-head my-2",
             children: "user settings"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return emailClickedHandler();
             },
             children: "Email"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return usernameClickedHandler();
             },
             children: "Username"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return gamertagClickedHandler();
             },
             children: "Gamertag"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return activisionClickedHandler();
             },
             children: "Activision Id"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2",
             onClick: function onClick() {
               return passwordClickedHandler();
             },
             children: "Password"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: "private-profile-sidebar-cat-content mb-2 text-danger",
             onClick: function onClick() {
               return deleteAccountClickedHandler();
@@ -8180,26 +8203,30 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_UploadPhotoModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UploadPhotoModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
       photoClicked: photoClicked,
       tabHandler: tabHandler,
       fetchProfileHandler: fetchProfileHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UploadImageModal__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      imageClicked: imageClicked,
+      tabHandler: tabHandler,
+      fetchProfileHandler: fetchProfileHandler
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
       deleteAccountClicked: deleteAccountClicked,
       loggedInToggleHandler: loggedInToggleHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_UserSettings_EmailModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UserSettings_EmailModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
       emailClicked: emailClicked,
       tabHandler: tabHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_UserSettings_UsernameModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UserSettings_UsernameModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
       usernameClicked: usernameClicked,
       tabHandler: tabHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_UserSettings_GamertagModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UserSettings_GamertagModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
       gamertagClicked: gamertagClicked,
       tabHandler: tabHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_UserSettings_ActivisionIdModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UserSettings_ActivisionIdModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       activisionClicked: activisionClicked,
       tabHandler: tabHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_UserSettings_PasswordModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UserSettings_PasswordModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
       passwordClicked: passwordClicked,
       tabHandler: tabHandler
     })]
@@ -8312,7 +8339,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
                   fontColorHandler = _ref2.fontColorHandler,
                   fontColor = _ref2.fontColor,
                   profileColorHandler = _ref2.profileColorHandler,
-                  profileColor = _ref2.profileColor;
+                  profileColor = _ref2.profileColor,
+                  imageClickedHandler = _ref2.imageClickedHandler,
+                  imageClicked = _ref2.imageClicked;
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                   className: "d-flex flex-column flex-md-row private-profile-main-container",
@@ -8342,7 +8371,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
                     passwordClicked: passwordClicked,
                     photoClickedHandler: photoClickedHandler,
                     photoClicked: photoClicked,
-                    fetchProfileHandler: fetchProfileHandler
+                    fetchProfileHandler: fetchProfileHandler,
+                    imageClickedHandler: imageClickedHandler,
+                    imageClicked: imageClicked
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     className: "container mt-5 main-header",
                     children: [myProfileTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MyProfilePreview__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -11291,6 +11322,223 @@ SuccessModal.defaultProps = {
   buttonText: "Close"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SuccessModal);
+
+/***/ }),
+
+/***/ "./resources/js/components/Utils/Modals/UploadImageModal.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Utils/Modals/UploadImageModal.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var _SuccessModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var UploadImageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function (props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      show = _useState2[0],
+      setShow = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      error = _useState4[0],
+      setError = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      loading = _useState6[0],
+      setLoading = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      success = _useState8[0],
+      setSuccess = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      selectedFile = _useState10[0],
+      setSelectedFile = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState12 = _slicedToArray(_useState11, 2),
+      description = _useState12[0],
+      setDescription = _useState12[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (props.imageClicked !== 0) {
+      setShow(true);
+    }
+  }, [props.imageClicked]);
+
+  var handleClose = function handleClose() {
+    setShow(false);
+  };
+
+  var uploadImageHandler = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+      var fData, _yield$Api$post, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              e.preventDefault();
+              _context.prev = 1;
+              setLoading(true);
+              fData = new FormData();
+              fData.append("image", selectedFile);
+              fData.append("description", description);
+              _context.next = 8;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/upload_current_user_profile_image", fData);
+
+            case 8:
+              _yield$Api$post = _context.sent;
+              data = _yield$Api$post.data;
+
+              if (data.success) {
+                setSuccess(true);
+                setError(false);
+                setShow(false);
+                setLoading(false);
+                props.fetchProfileHandler();
+              } else {
+                setSuccess(false);
+                setError(true);
+                setLoading(false);
+              }
+
+              _context.next = 18;
+              break;
+
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context["catch"](1);
+              setError(_context.t0.message);
+              setSuccess(false);
+              setLoading(false);
+
+            case 18:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 13]]);
+    }));
+
+    return function uploadImageHandler(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "mt-5 text-center",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SuccessModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        success: success,
+        titleText: "Success",
+        bodyText: "Image has been added.",
+        buttonText: "Got it",
+        tabHandler: props.tabHandler,
+        tab: "myProfile"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        show: show,
+        onHide: handleClose,
+        className: "account-modal",
+        children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "lds-hourglass d-flex justify-content-center m-auto"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Header, {
+          closeButton: true,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Title, {
+            children: "Upload image"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+          // encType="multipart/form-data"
+          onSubmit: uploadImageHandler,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "file",
+              id: "form-input-no-underline" //value={selectedFile}
+              ,
+              onChange: function onChange(e) {
+                return setSelectedFile(e.target.files[0]);
+              }
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              htmlFor: "desc",
+              children: "Description"
+            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "text-muted",
+              children: "(optional)"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+              name: "desc",
+              id: "desc",
+              rows: "4",
+              cols: "33",
+              value: description,
+              onChange: function onChange(e) {
+                return setDescription(e.target.value);
+              }
+            }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "text-danger",
+              children: error
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Footer, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            onClick: handleClose,
+            className: "bttn-material-flat bttn-sm mr-2",
+            children: "Cancel"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            //type="submit"
+            onClick: uploadImageHandler,
+            className: "bttn-material-flat bttn-sm update-account-modal-btn",
+            disabled: !selectedFile,
+            children: "Upload"
+          })]
+        })]
+      })]
+    })
+  });
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UploadImageModal);
 
 /***/ }),
 
