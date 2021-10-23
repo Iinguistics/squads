@@ -3,7 +3,10 @@ import SocialLinks from "./SocialLinks";
 
 const Head = ({ profileData, profileColor }) => {
     const appUrl = process.env.MIX_APP_URL;
-    console.log(profileData, "profile");
+    console.log(
+        profileData,
+        "profile data logged from MyProfilePreview/Head.js"
+    );
 
     return (
         <div className="d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded">

@@ -17,6 +17,6 @@ class Image extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User', 'id', 'id');
+        return $this->hasMany('App\User', 'id', 'id');
     }
 }

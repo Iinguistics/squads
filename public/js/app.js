@@ -6956,7 +6956,7 @@ var Head = function Head(_ref) {
   var profileData = _ref.profileData,
       profileColor = _ref.profileColor;
   var appUrl = "http://127.0.0.1:8000";
-  console.log(profileData, "profile");
+  console.log(profileData, "profile data logged from MyProfilePreview/Head.js");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -11467,6 +11467,10 @@ var UploadImageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
     };
   }();
 
+  var successReset = function successReset() {
+    setSuccess(false);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "mt-5 text-center",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -11476,7 +11480,8 @@ var UploadImageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
         bodyText: "Image has been added.",
         buttonText: "Got it",
         tabHandler: props.tabHandler,
-        tab: "myProfile"
+        tab: "myProfile",
+        successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
         onHide: handleClose,
@@ -11678,6 +11683,10 @@ var UploadPhotoModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
     };
   }();
 
+  var successReset = function successReset() {
+    setSuccess(false);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "mt-5 text-center",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -11687,7 +11696,8 @@ var UploadPhotoModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
         bodyText: "Your photo has been updated.",
         buttonText: "Got it",
         tabHandler: props.tabHandler,
-        tab: "myProfile"
+        tab: "myProfile",
+        successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
         onHide: handleClose,

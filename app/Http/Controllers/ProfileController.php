@@ -28,9 +28,13 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
+        $images = Image::where('id', $user->id)->get();
+
         $profile = Profile::where('id', $user->id)
             ->with(['user'])
             ->get();
+
+        $profile[0]['images'] = $images;
 
         $response = array(
             'success' => $profile ? true : false,
