@@ -39,6 +39,7 @@ const UploadPhotoModal = withRouter((props) => {
                 setError(false);
                 setShow(false);
                 setLoading(false);
+                props.fetchProfileHandler();
             } else {
                 setSuccess(false);
                 setError(true);
@@ -74,7 +75,10 @@ const UploadPhotoModal = withRouter((props) => {
                     <Modal.Header closeButton>
                         <Modal.Title>Update Photo</Modal.Title>
                     </Modal.Header>
-                    <form onSubmit={updatePhotoHandler}>
+                    <form
+                        // encType="multipart/form-data"
+                        onSubmit={updatePhotoHandler}
+                    >
                         <Modal.Body>
                             <input
                                 type="file"

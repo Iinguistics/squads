@@ -34,6 +34,7 @@ const ProfileSideBar = ({
     passwordClicked,
     photoClickedHandler,
     photoClicked,
+    fetchProfileHandler,
 }) => {
     return (
         <div className="private-profile-sidebar-container">
@@ -129,6 +130,7 @@ const ProfileSideBar = ({
             <UploadPhotoModal
                 photoClicked={photoClicked}
                 tabHandler={tabHandler}
+                fetchProfileHandler={fetchProfileHandler}
             />
             <DeleteAccountModal
                 deleteAccountClicked={deleteAccountClicked}

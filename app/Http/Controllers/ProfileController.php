@@ -89,7 +89,7 @@ class ProfileController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = $file->getClientOriginalName();
-            $path = $file->storeAs('photo/' . $user->id, $filename, 's3');
+            $path = $file->storeAs('profilePhoto/' . $user->id, $filename, 's3');
             Storage::disk('s3')->setVisibility($path, 'public');
 
             $results = Profile::where('id', $user->id)

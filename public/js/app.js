@@ -6558,7 +6558,7 @@ var Main = function Main(props) {
         component: _Register__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
         path: "/test",
-        component: _TestTwo__WEBPACK_IMPORTED_MODULE_9__["default"]
+        component: _Test__WEBPACK_IMPORTED_MODULE_8__["default"]
       })]
     })
   });
@@ -8090,7 +8090,8 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
       passwordClickedHandler = _ref.passwordClickedHandler,
       passwordClicked = _ref.passwordClicked,
       photoClickedHandler = _ref.photoClickedHandler,
-      photoClicked = _ref.photoClicked;
+      photoClicked = _ref.photoClicked,
+      fetchProfileHandler = _ref.fetchProfileHandler;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "private-profile-sidebar-container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
@@ -8181,7 +8182,8 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_UploadPhotoModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
       photoClicked: photoClicked,
-      tabHandler: tabHandler
+      tabHandler: tabHandler,
+      fetchProfileHandler: fetchProfileHandler
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
       deleteAccountClicked: deleteAccountClicked,
       loggedInToggleHandler: loggedInToggleHandler
@@ -8339,7 +8341,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
                     passwordClickedHandler: passwordClickedHandler,
                     passwordClicked: passwordClicked,
                     photoClickedHandler: photoClickedHandler,
-                    photoClicked: photoClicked
+                    photoClicked: photoClicked,
+                    fetchProfileHandler: fetchProfileHandler
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     className: "container mt-5 main-header",
                     children: [myProfileTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MyProfilePreview__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -8438,10 +8441,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Api */ "./resources/js/components/Api.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var _css_bttn_bttn_min_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../css/bttn/bttn.min.css */ "./resources/css/bttn/bttn.min.css");
 /* harmony import */ var _Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Utils/Modals/SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -8472,7 +8471,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8489,10 +8487,15 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
       success = _useState6[0],
       setSuccess = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState8 = _slicedToArray(_useState7, 2),
-      eyeTextToggle = _useState8[0],
-      setEyeTextToggle = _useState8[1];
+      selectedFile = _useState8[0],
+      setSelectedFile = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      eyeTextToggle = _useState10[0],
+      setEyeTextToggle = _useState10[1];
 
   var eyeTextToggleHandler = function eyeTextToggleHandler() {
     setEyeTextToggle(!eyeTextToggle);
@@ -8551,153 +8554,27 @@ var Test = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function
     };
   }();
 
+  var updatePhotoHandler = function updatePhotoHandler(e) {
+    e.preventDefault();
+    return;
+  };
+
   var appUrl = "http://127.0.0.1:8000";
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "my-5",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      className: "d-flex justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        className: "col-md-8",
-        children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          className: "lds-hourglass d-flex justify-content-center m-auto"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Utils_Modals_SuccessModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          success: success,
-          titleText: "Success",
-          bodyText: "Your profile has been updated.",
-          buttonText: "Got it",
-          push: "profile"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          className: "shadow-sm p-3 mb-5 bg-white rounded",
-          children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
-            className: "text-danger",
-            children: error
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(formik__WEBPACK_IMPORTED_MODULE_4__.Formik, {
-            validationSchema: schema,
-            onSubmit: function onSubmit(values) {
-              return registerSubmitHandler(values);
-            },
-            initialValues: {
-              email: "",
-              gamertag: "",
-              platform: "",
-              activision_username: "",
-              password: ""
-            },
-            children: function children(_ref2) {
-              var handleSubmit = _ref2.handleSubmit,
-                  handleChange = _ref2.handleChange,
-                  handleBlur = _ref2.handleBlur,
-                  values = _ref2.values,
-                  touched = _ref2.touched,
-                  isValid = _ref2.isValid,
-                  errors = _ref2.errors;
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
-                noValidate: true,
-                onSubmit: handleSubmit,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
-                  controlId: "validationFormik01",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
-                    children: "Email"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
-                    type: "email",
-                    name: "email",
-                    placeholder: "Enter email",
-                    value: values.email,
-                    onChange: handleChange,
-                    className: "shadow-none",
-                    isInvalid: !!errors.email
-                  }), errors.email && touched.email ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
-                    type: "invalid",
-                    children: errors.email
-                  }) : null]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
-                  controlId: "validationFormik02",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
-                    children: "Gamertag"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
-                    type: "text",
-                    name: "gamertag",
-                    placeholder: "Enter gamertag",
-                    value: values.gamertag,
-                    onChange: handleChange,
-                    className: "shadow-none",
-                    isInvalid: !!errors.email
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
-                    type: "invalid",
-                    children: errors.gamertag
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
-                  controlId: "validationFormik03",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
-                    children: "Platform"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
-                    "aria-label": "Default select",
-                    as: "select",
-                    type: "text",
-                    name: "platform",
-                    placeholder: "Enter display name",
-                    value: values.platform,
-                    onChange: handleChange,
-                    className: "shadow-none",
-                    isInvalid: !!errors.email,
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                      value: "psn",
-                      children: "PlayStation Network"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                      value: "battle",
-                      children: "Battle.net"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                      value: "xbl",
-                      children: "Xbox Live"
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
-                    type: "invalid",
-                    children: errors.platform
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
-                  controlId: "validationFormik04",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
-                    children: "Activision ID"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
-                    type: "text",
-                    placeholder: "Enter activision id",
-                    name: "activision_username",
-                    value: values.activision_username,
-                    onChange: handleChange,
-                    className: "shadow-none"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Group, {
-                  controlId: "validationFormik05",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Label, {
-                    children: "Password"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                    className: "eye-text",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control, {
-                      type: !eyeTextToggle ? "password" : "text",
-                      placeholder: "Password",
-                      name: "password",
-                      value: values.password,
-                      onChange: handleChange,
-                      className: "shadow-none",
-                      isInvalid: !!errors.password
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                      src: "".concat(appUrl, "/images/eye-text.png"),
-                      alt: "eye",
-                      onClick: eyeTextToggleHandler
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Control.Feedback, {
-                      type: "invalid",
-                      children: errors.password
-                    })]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                  className: "bttn-unite bttn-sm bttn-primary",
-                  type: "submit",
-                  children: "Save"
-                })]
-              });
-            }
-          }), " "]
-        })]
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("form", {
+      className: "pt-5",
+      encType: "multipart/form-data",
+      onSubmit: updatePhotoHandler,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+        type: "file",
+        id: "form-input-no-underline",
+        onClick: function onClick() {
+          return console.log("ran");
+        },
+        onChange: function onChange(e) {
+          return setSelectedFile(e.target.files[0]);
+        }
       })
     })
   });
@@ -11523,6 +11400,7 @@ var UploadPhotoModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
                 setError(false);
                 setShow(false);
                 setLoading(false);
+                props.fetchProfileHandler();
               } else {
                 setSuccess(false);
                 setError(true);
@@ -11574,6 +11452,7 @@ var UploadPhotoModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
             children: "Update Photo"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+          // encType="multipart/form-data"
           onSubmit: updatePhotoHandler,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {

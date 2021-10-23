@@ -45,7 +45,7 @@ const Main = (props) => {
                 />
                 <Route path="/profile" exact component={PrivateProfile} />
                 <Route path="/register" component={Register} />
-                <Route path="/test" component={TestTwo} />
+                <Route path="/test" component={Test} />
             </Switch>
         </main>
     );

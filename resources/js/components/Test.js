@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import Api from "./Api";
 import * as yup from "yup";
 import { Formik } from "formik";
-import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
+import { Container, Row, Col, Form, InputGroup, Modal } from "react-bootstrap";
 import "../../css/bttn/bttn.min.css";
 import SuccessModal from "./Utils/Modals/SuccessModal";
 
@@ -11,6 +11,7 @@ const Test = withRouter((props) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
 
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
     const eyeTextToggleHandler = () => {
@@ -43,10 +44,15 @@ const Test = withRouter((props) => {
             setError(error.message);
         }
     };
+
+    const updatePhotoHandler = (e) => {
+        e.preventDefault();
+        return;
+    };
     const appUrl = process.env.MIX_APP_URL;
     return (
-        <Container className="my-5">
-            <Row className="d-flex justify-content-center">
+        <div className="my-5">
+            {/* <Row className="d-flex justify-content-center">
                 <Col className="col-md-8">
                     {loading && (
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
@@ -190,8 +196,21 @@ const Test = withRouter((props) => {
                         </Formik>{" "}
                     </div>
                 </Col>
-            </Row>
-        </Container>
+            </Row> */}
+
+            <form
+                className="pt-5"
+                encType="multipart/form-data"
+                onSubmit={updatePhotoHandler}
+            >
+                <input
+                    type="file"
+                    id="form-input-no-underline"
+                    onClick={() => console.log("ran")}
+                    onChange={(e) => setSelectedFile(e.target.files[0])}
+                />
+            </form>
+        </div>
     );
 });
 

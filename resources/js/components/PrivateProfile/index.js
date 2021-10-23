@@ -126,6 +126,9 @@ const index = withRouter((props) => {
                                                         photoClickedHandler
                                                     }
                                                     photoClicked={photoClicked}
+                                                    fetchProfileHandler={
+                                                        fetchProfileHandler
+                                                    }
                                                 />
                                                 <div className="container mt-5 main-header">
                                                     {myProfileTab && (
