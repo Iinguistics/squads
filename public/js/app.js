@@ -7003,6 +7003,52 @@ var Head = function Head(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/Images.js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/Images.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var Images = function Images(_ref) {
+  var profileData = _ref.profileData;
+
+  var renderImages = function renderImages() {
+    if (profileData) {
+      if (profileData.images) {
+        return profileData.images.map(function (image) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "col-4 profile-img-container",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              src: image.image,
+              alt: "profile image",
+              className: "img-fluid profile-img"
+            })
+          });
+        });
+      }
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "d-flex flex-row flex-wrap justify-content-between align-items-center shadow-sm p-3 mb-5 bg-white rounded",
+    children: renderImages()
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Images);
+
+/***/ }),
+
 /***/ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js":
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js ***!
@@ -7239,7 +7285,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Head */ "./resources/js/components/PrivateProfile/MyProfilePreview/Head.js");
 /* harmony import */ var _InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InternetAndSquadInfo */ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Images__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Images */ "./resources/js/components/PrivateProfile/MyProfilePreview/Images.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -7253,15 +7301,17 @@ var index = function index(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchProfileHandler();
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
       className: "mb-5 text-center",
       children: "Profile Preview"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_1__["default"], {
       profileData: profileData,
       profileColor: profileColor
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      profileData: profileData
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Images__WEBPACK_IMPORTED_MODULE_3__["default"], {
       profileData: profileData
     })]
   });
@@ -8298,8 +8348,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
     } else {
       setUserInfo(userInfoData);
     }
-
-    console.log(userInfoData);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext.Consumer, {
@@ -11499,8 +11547,7 @@ var UploadImageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
               type: "file",
-              id: "form-input-no-underline" //value={selectedFile}
-              ,
+              id: "form-input-no-underline",
               onChange: function onChange(e) {
                 return setSelectedFile(e.target.files[0]);
               }

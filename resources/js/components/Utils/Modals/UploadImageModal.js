@@ -90,7 +90,6 @@ const UploadImageModal = withRouter((props) => {
                             <input
                                 type="file"
                                 id="form-input-no-underline"
-                                //value={selectedFile}
                                 onChange={(e) =>
                                     setSelectedFile(e.target.files[0])
                                 }

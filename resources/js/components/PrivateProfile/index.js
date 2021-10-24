@@ -21,8 +21,6 @@ const index = withRouter((props) => {
         } else {
             setUserInfo(userInfoData);
         }
-
-        console.log(userInfoData);
     }, []);
     return (
         <UserProvider>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "./Head";
 import InternetAndSquadInfo from "./InternetAndSquadInfo";
+import Images from "./Images";
 
 const index = ({ profileData, profileColor, fetchProfileHandler }) => {
     useEffect(() => {
@@ -11,6 +12,7 @@ const index = ({ profileData, profileColor, fetchProfileHandler }) => {
             <h2 className="mb-5 text-center">Profile Preview</h2>
             <Head profileData={profileData} profileColor={profileColor} />
             <InternetAndSquadInfo profileData={profileData} />
+            <Images profileData={profileData} />
         </div>
     );
 };

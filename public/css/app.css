@@ -10754,6 +10754,11 @@ form .player-search-select {
   border-radius: 50%;
 }
 
+.profile-img {
+  height: 293px;
+  width: 293px;
+}
+
 @media only screen and (max-width: 768px) {
   .private-profile-main-container {
     height: 100%;
