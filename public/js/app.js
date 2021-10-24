@@ -7027,7 +7027,7 @@ var Images = function Images(_ref) {
       if (profileData.images) {
         return profileData.images.map(function (image) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "col-4 profile-img-container",
+            className: "col-md-4 profile-img-container mb-2",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
               src: image.image,
               alt: "profile image",
@@ -7040,7 +7040,7 @@ var Images = function Images(_ref) {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "d-flex flex-row flex-wrap justify-content-between align-items-center shadow-sm p-3 mb-5 bg-white rounded",
+    className: "d-flex flex-col flex-md-row flex-wrap justify-content-between align-items-center shadow-sm p-3 mb-5 bg-white rounded text-center",
     children: renderImages()
   });
 };
