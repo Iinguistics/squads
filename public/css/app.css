@@ -10754,6 +10754,12 @@ form .player-search-select {
   border-radius: 50%;
 }
 
+.profile-img-container {
+  position: relative;
+  height: 293px;
+  width: 293px;
+}
+
 .profile-img {
   height: 293px;
   width: 293px;
@@ -10761,66 +10767,42 @@ form .player-search-select {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  position: relative;
 }
 
-.profile-img-test {
+.profile-img-comment-icon {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  color: red;
-}
-
-.doc {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0;
-}
-.doc:before {
-  content: "";
-  transition: 0.3s;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.doc .links {
+  top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: none;
   overflow: hidden;
-  opacity: 0;
-  transition: 0.2s;
+  z-index: 2;
 }
 
-.doc .links i {
-  font-size: 35px;
-  margin: 0 auto;
-  position: relative;
-  padding: 15px;
+.profile-img-overlay {
+  height: 293px;
+  width: 293px;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 1;
 }
 
-.doc a {
-  color: #fff;
-  position: relative;
-  text-decoration: none;
+.profile-img-container:hover {
+  cursor: pointer;
 }
-
-.doc span {
-  font-size: 16px;
+.profile-img-container:hover .profile-img-comment-icon {
+  transition: 0.3s;
+  display: block;
 }
-
-.doc:hover:before {
-  opacity: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.doc:hover .links {
-  opacity: 1;
+.profile-img-container:hover .profile-img-overlay {
+  transition: 0.3s;
+  display: block;
 }
 
 @media only screen and (max-width: 768px) {

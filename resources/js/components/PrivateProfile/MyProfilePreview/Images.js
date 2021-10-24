@@ -1,18 +1,25 @@
 import React from "react";
 
 const Images = ({ profileData }) => {
+    const appUrl = process.env.MIX_APP_URL;
+
     const renderImages = () => {
         if (profileData) {
             if (profileData.images) {
                 return profileData.images.map((image) => {
                     return (
-                        <div className="col-md-4 profile-img-container mb-2">
+                        <div className="profile-img-container mb-2">
                             <img
                                 src={image.image}
                                 alt="profile image"
                                 className="img-fluid profile-img"
                             />
-                            <div className="profile-img-test">test</div>
+                            <img
+                                src={`${appUrl}/images/comment-black.png`}
+                                alt="comment"
+                                className="profile-img-comment-icon"
+                            />
+                            <div className="profile-img-overlay"></div>
                         </div>
                     );
                 });

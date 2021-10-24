@@ -7022,20 +7022,24 @@ __webpack_require__.r(__webpack_exports__);
 
 var Images = function Images(_ref) {
   var profileData = _ref.profileData;
+  var appUrl = "http://127.0.0.1:8000";
 
   var renderImages = function renderImages() {
     if (profileData) {
       if (profileData.images) {
         return profileData.images.map(function (image) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "col-md-4 profile-img-container mb-2",
+            className: "profile-img-container mb-2",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
               src: image.image,
               alt: "profile image",
               className: "img-fluid profile-img"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              src: "".concat(appUrl, "/images/comment-black.png"),
+              alt: "comment",
+              className: "profile-img-comment-icon"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: "profile-img-test",
-              children: "test"
+              className: "profile-img-overlay"
             })]
           });
         });

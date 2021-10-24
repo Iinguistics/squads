@@ -58,3 +58,59 @@ body {
 .block:after {
     filter: blur(50px);
 }
+////////////////////////
+
+// for profile images using blend mode css
+// html
+// <div className="test-container container--blend">
+// <div
+//     className="test-img"
+//     style={{
+//         backgroundImage:
+//             "url(" +
+//             "https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.jpg" +
+//             ")",
+//         backgroundColor: profileData
+//             ? profileData.profile_color
+//             : "red",
+//     }}
+// ></div>
+// <div className="test-text">Example text</div>
+// </div>
+
+// css
+.test-container {
+    position: relative;
+    height: 293px;
+    width: 293px;
+}
+.test-container:hover {
+    .test-img {
+        background-blend-mode: screen;
+    }
+
+    .test-text {
+        display: block;
+    }
+}
+
+.test-img {
+    // background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.jpg");
+    height: 293px;
+    width: 293px;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+    //background-color: red;
+}
+.test-text {
+    display: none;
+    position: absolute;
+    left: 100px;
+    top: 50%;
+    color: $black;
+}
+
+.container--blend {
+    background-blend-mode: hard-light;
+}
