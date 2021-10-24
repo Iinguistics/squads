@@ -7035,7 +7035,7 @@ var Images = function Images(_ref) {
               alt: "profile image",
               className: "img-fluid profile-img"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-              src: "".concat(appUrl, "/images/comment-black.png"),
+              src: "".concat(appUrl, "/images/comment-gradient.png"),
               alt: "comment",
               className: "profile-img-comment-icon"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {

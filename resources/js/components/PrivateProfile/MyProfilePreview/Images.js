@@ -15,7 +15,7 @@ const Images = ({ profileData }) => {
                                 className="img-fluid profile-img"
                             />
                             <img
-                                src={`${appUrl}/images/comment-black.png`}
+                                src={`${appUrl}/images/comment-gradient.png`}
                                 alt="comment"
                                 className="profile-img-comment-icon"
                             />
