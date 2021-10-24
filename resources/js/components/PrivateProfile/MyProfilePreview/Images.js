@@ -12,6 +12,7 @@ const Images = ({ profileData }) => {
                                 alt="profile image"
                                 className="img-fluid profile-img"
                             />
+                            <div className="profile-img-test">test</div>
                         </div>
                     );
                 });

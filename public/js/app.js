@@ -7019,6 +7019,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Images = function Images(_ref) {
   var profileData = _ref.profileData;
 
@@ -7026,13 +7027,16 @@ var Images = function Images(_ref) {
     if (profileData) {
       if (profileData.images) {
         return profileData.images.map(function (image) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "col-md-4 profile-img-container mb-2",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
               src: image.image,
               alt: "profile image",
               className: "img-fluid profile-img"
-            })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "profile-img-test",
+              children: "test"
+            })]
           });
         });
       }
