@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Head from "../../ProfileComponents/Head";
-import InternetAndSquadInfo from "../../ProfileComponents/InternetAndSquadInfo";
-import Images from "../../ProfileComponents/Images";
+import Head from "../ProfileComponents/Head";
+import InternetAndSquadInfo from "../ProfileComponents/InternetAndSquadInfo";
+import Images from "../ProfileComponents/Images";
 
 const index = ({ profileData, profileColor, fetchProfileHandler }) => {
     useEffect(() => {

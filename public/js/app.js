@@ -6932,385 +6932,6 @@ var FontColor = function FontColor(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/Head.js":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/Head.js ***!
-  \*************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _SocialLinks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialLinks */ "./resources/js/components/PrivateProfile/MyProfilePreview/SocialLinks.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var Head = function Head(_ref) {
-  var profileData = _ref.profileData,
-      profileColor = _ref.profileColor;
-  var appUrl = "http://127.0.0.1:8000";
-  console.log(profileData, "profile data logged from MyProfilePreview/Head.js");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "item-1 mr-5",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-        src: profileData ? profileData.photo ? profileData.photo : "".concat(appUrl, "/images/default-photo-black-outline.png") : "".concat(appUrl, "/images/default-photo-black-outline.png"),
-        alt: "profile photo",
-        className: "profile-preview-photo appearance-profile-color-".concat(profileColor)
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "private-profile-preview-head-item-2 mt-2 mt-md-0",
-      children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-        className: "mr-3 fs-22",
-        children: profileData.user.gamertag
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
-          children: "Send Message"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: "bttn-material-flat bttn-sm update-account-modal-btn",
-          children: "Invite to squad"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "fs-16 mt-3 mt-md-0",
-        children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-            children: ["Username: ", profileData.user.username]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
-        }), profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-            children: ["Platform: ", profileData.user.platform]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          children: profileData ? profileData.bio : "No bio"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SocialLinks__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        profileData: profileData
-      })]
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Head);
-
-/***/ }),
-
-/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/Images.js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/Images.js ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Utils_Modals_ImageCommentModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Utils/Modals/ImageCommentModal */ "./resources/js/components/Utils/Modals/ImageCommentModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-var Images = function Images(_ref) {
-  var profileData = _ref.profileData,
-      preview = _ref.preview;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState2 = _slicedToArray(_useState, 2),
-      imageClicked = _useState2[0],
-      setImageClicked = _useState2[1];
-
-  var imageClickedHandler = function imageClickedHandler() {
-    setImageClicked(function (imageClicked) {
-      return imageClicked + 1;
-    });
-  };
-
-  var renderImages = function renderImages() {
-    if (profileData) {
-      if (profileData.images) {
-        return profileData.images.map(function (image) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "profile-img-container mb-2",
-            onClick: !preview ? imageClickedHandler : null,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-              src: image.image,
-              alt: "profile image",
-              className: "img-fluid profile-img"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-              src: "".concat(appUrl, "/images/comment-gradient.png"),
-              alt: "comment",
-              className: "profile-img-comment-icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "profile-img-overlay"
-            })]
-          });
-        });
-      }
-    }
-  };
-
-  var appUrl = "http://127.0.0.1:8000";
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "d-flex flex-col flex-md-row flex-wrap justify-content-between align-items-center shadow-sm p-3 mb-5 bg-white rounded text-center",
-    children: [renderImages(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Modals_ImageCommentModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      imageClicked: imageClicked
-    })]
-  });
-};
-
-Images.defaultProps = {
-  preview: false
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Images);
-
-/***/ }),
-
-/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js ***!
-  \*****************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _InternetInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InternetInfo */ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetInfo.js");
-/* harmony import */ var _SquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SquadInfo */ "./resources/js/components/PrivateProfile/MyProfilePreview/SquadInfo.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var InternetAndSquadInfo = function InternetAndSquadInfo(_ref) {
-  var profileData = _ref.profileData;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "d-flex flex-column flex-md-row justify-content-between align-items-center mb-5",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_InternetInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        profileData: profileData
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        profileData: profileData
-      })
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InternetAndSquadInfo);
-
-/***/ }),
-
-/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetInfo.js":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/InternetInfo.js ***!
-  \*********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-var InternetInfo = function InternetInfo(_ref) {
-  var profileData = _ref.profileData;
-  var appUrl = "http://127.0.0.1:8000";
-  var noInfo = "Not available";
-
-  var checkInternetInfo = function checkInternetInfo() {
-    if (profileData) {
-      if (!profileData.carrier && !profileData.ping && !profileData.download_speed && !profileData.upload_speed) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            children: "Info has not yet been provided"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-            src: "".concat(appUrl, "/images/empty.png"),
-            alt: "empty",
-            className: "profile-preview-photo"
-          })]
-        });
-      } else {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-            className: "col-6",
-            children: ["Carrier:", " ", profileData.carrier ? profileData.carrier : noInfo]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-            className: "col-6",
-            children: ["Ping: ", profileData.ping ? profileData.ping : noInfo]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-            className: "col-6",
-            children: ["Download speed:", " ", profileData.download_speed ? profileData.download_speed : noInfo]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
-            className: "col-6",
-            children: ["Upload speed:", " ", profileData.upload_speed ? profileData.upload_speed : noInfo]
-          })]
-        });
-      }
-    } else {
-      return null;
-    }
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
-      className: "text-center",
-      children: "Internet Info"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "d-flex flex-wrap justify-content-around align-items-center text-center",
-      children: checkInternetInfo()
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InternetInfo);
-
-/***/ }),
-
-/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/SocialLinks.js":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/SocialLinks.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-var SocialLinks = function SocialLinks(_ref) {
-  var profileData = _ref.profileData;
-  var appUrl = "http://127.0.0.1:8000";
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: profileData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "d-flex justify-content-between private-profile-preview-social-links-container",
-      children: [profileData.twitch && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-        href: "https://www.twitch.tv/".concat(profileData.twitch),
-        target: "_blank",
-        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: "".concat(appUrl, "/images/twitch.png"),
-          alt: "twitch link",
-          className: "privacy-icon mr-2"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-          children: "Twitch"
-        })]
-      }), " ", profileData.twitter && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-        href: "https://twitter.com/".concat(profileData.twitter),
-        target: "_blank",
-        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: "".concat(appUrl, "/images/twitter.png"),
-          alt: "twitter link",
-          className: "privacy-icon mr-2"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-          children: "Twitter"
-        })]
-      }), " ", profileData.instagram && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-        href: "https://www.instagram.com/".concat(profileData.instagram),
-        target: "_blank",
-        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: "".concat(appUrl, "/images/instagram.png"),
-          alt: "instagram link",
-          className: "privacy-icon mr-2"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-          children: "Instagram"
-        })]
-      }), " ", profileData.youtube && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-        href: "https://www.youtube.com/c/".concat(profileData.youtube),
-        target: "_blank",
-        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: "".concat(appUrl, "/images/youtube.png"),
-          alt: "youtube link",
-          className: "privacy-icon mr-2"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-          children: "Youtube"
-        })]
-      }), " "]
-    }) : null
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SocialLinks);
-
-/***/ }),
-
-/***/ "./resources/js/components/PrivateProfile/MyProfilePreview/SquadInfo.js":
-/*!******************************************************************************!*\
-  !*** ./resources/js/components/PrivateProfile/MyProfilePreview/SquadInfo.js ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-var SquadInfo = function SquadInfo(_ref) {
-  var profileData = _ref.profileData;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-      children: "test"
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SquadInfo);
-
-/***/ }),
-
 /***/ "./resources/js/components/PrivateProfile/MyProfilePreview/index.js":
 /*!**************************************************************************!*\
   !*** ./resources/js/components/PrivateProfile/MyProfilePreview/index.js ***!
@@ -7324,9 +6945,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Head */ "./resources/js/components/PrivateProfile/MyProfilePreview/Head.js");
-/* harmony import */ var _InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InternetAndSquadInfo */ "./resources/js/components/PrivateProfile/MyProfilePreview/InternetAndSquadInfo.js");
-/* harmony import */ var _Images__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Images */ "./resources/js/components/PrivateProfile/MyProfilePreview/Images.js");
+/* harmony import */ var _ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../ProfileComponents/Head */ "./resources/js/components/ProfileComponents/Head.js");
+/* harmony import */ var _ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ProfileComponents/InternetAndSquadInfo */ "./resources/js/components/ProfileComponents/InternetAndSquadInfo.js");
+/* harmony import */ var _ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../ProfileComponents/Images */ "./resources/js/components/ProfileComponents/Images.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -7358,12 +6979,12 @@ var index = function index(_ref) {
         className: "text-muted",
         children: "View my public profile"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_1__["default"], {
       profileData: profileData,
       profileColor: profileColor
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
       profileData: profileData
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Images__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_3__["default"], {
       profileData: profileData,
       preview: true
     })]
@@ -8512,6 +8133,385 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfileComponents/Head.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/ProfileComponents/Head.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _SocialLinks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialLinks */ "./resources/js/components/ProfileComponents/SocialLinks.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var Head = function Head(_ref) {
+  var profileData = _ref.profileData,
+      profileColor = _ref.profileColor;
+  var appUrl = "http://127.0.0.1:8000";
+  console.log(profileData, "profile data logged from MyProfilePreview/Head.js");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "item-1 mr-5",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+        src: profileData ? profileData.photo ? profileData.photo : "".concat(appUrl, "/images/default-photo-black-outline.png") : "".concat(appUrl, "/images/default-photo-black-outline.png"),
+        alt: "profile photo",
+        className: "profile-preview-photo appearance-profile-color-".concat(profileColor)
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "private-profile-preview-head-item-2 mt-2 mt-md-0",
+      children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+        className: "mr-3 fs-22",
+        children: profileData.user.gamertag
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
+          children: "Send Message"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "bttn-material-flat bttn-sm update-account-modal-btn",
+          children: "Invite to squad"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "fs-16 mt-3 mt-md-0",
+        children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+            children: ["Username: ", profileData.user.username]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
+        }), profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+            children: ["Platform: ", profileData.user.platform]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: profileData ? profileData.bio : "No bio"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SocialLinks__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        profileData: profileData
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Head);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfileComponents/Images.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/ProfileComponents/Images.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Utils_Modals_ImageCommentModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Utils/Modals/ImageCommentModal */ "./resources/js/components/Utils/Modals/ImageCommentModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var Images = function Images(_ref) {
+  var profileData = _ref.profileData,
+      preview = _ref.preview;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      imageClicked = _useState2[0],
+      setImageClicked = _useState2[1];
+
+  var imageClickedHandler = function imageClickedHandler() {
+    setImageClicked(function (imageClicked) {
+      return imageClicked + 1;
+    });
+  };
+
+  var renderImages = function renderImages() {
+    if (profileData) {
+      if (profileData.images) {
+        return profileData.images.map(function (image) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "profile-img-container mb-2",
+            onClick: !preview ? imageClickedHandler : null,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: image.image,
+              alt: "profile image",
+              className: "img-fluid profile-img"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: "".concat(appUrl, "/images/comment-gradient.png"),
+              alt: "comment",
+              className: "profile-img-comment-icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "profile-img-overlay"
+            })]
+          }, image.image_id);
+        });
+      }
+    }
+  };
+
+  var appUrl = "http://127.0.0.1:8000";
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "d-flex flex-col flex-md-row flex-wrap justify-content-between align-items-center shadow-sm p-3 mb-5 bg-white rounded text-center",
+    children: [renderImages(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Modals_ImageCommentModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      imageClicked: imageClicked
+    })]
+  });
+};
+
+Images.defaultProps = {
+  preview: false
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Images);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfileComponents/InternetAndSquadInfo.js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/ProfileComponents/InternetAndSquadInfo.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _InternetInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InternetInfo */ "./resources/js/components/ProfileComponents/InternetInfo.js");
+/* harmony import */ var _SquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SquadInfo */ "./resources/js/components/ProfileComponents/SquadInfo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var InternetAndSquadInfo = function InternetAndSquadInfo(_ref) {
+  var profileData = _ref.profileData;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "d-flex flex-column flex-md-row justify-content-between align-items-center mb-5",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_InternetInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        profileData: profileData
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "col-12 col-md-5 shadow-sm p-3 mb-5 bg-white rounded",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        profileData: profileData
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InternetAndSquadInfo);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfileComponents/InternetInfo.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/ProfileComponents/InternetInfo.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var InternetInfo = function InternetInfo(_ref) {
+  var profileData = _ref.profileData;
+  var appUrl = "http://127.0.0.1:8000";
+  var noInfo = "Not available";
+
+  var checkInternetInfo = function checkInternetInfo() {
+    if (profileData) {
+      if (!profileData.carrier && !profileData.ping && !profileData.download_speed && !profileData.upload_speed) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: "Info has not yet been provided"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            src: "".concat(appUrl, "/images/empty.png"),
+            alt: "empty",
+            className: "profile-preview-photo"
+          })]
+        });
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Carrier:", " ", profileData.carrier ? profileData.carrier : noInfo]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Ping: ", profileData.ping ? profileData.ping : noInfo]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Download speed:", " ", profileData.download_speed ? profileData.download_speed : noInfo]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("span", {
+            className: "col-6",
+            children: ["Upload speed:", " ", profileData.upload_speed ? profileData.upload_speed : noInfo]
+          })]
+        });
+      }
+    } else {
+      return null;
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+      className: "text-center",
+      children: "Internet Info"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "d-flex flex-wrap justify-content-around align-items-center text-center",
+      children: checkInternetInfo()
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InternetInfo);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfileComponents/SocialLinks.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/ProfileComponents/SocialLinks.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var SocialLinks = function SocialLinks(_ref) {
+  var profileData = _ref.profileData;
+  var appUrl = "http://127.0.0.1:8000";
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: profileData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "d-flex justify-content-between private-profile-preview-social-links-container",
+      children: [profileData.twitch && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        href: "https://www.twitch.tv/".concat(profileData.twitch),
+        target: "_blank",
+        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: "".concat(appUrl, "/images/twitch.png"),
+          alt: "twitch link",
+          className: "privacy-icon mr-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: "Twitch"
+        })]
+      }), " ", profileData.twitter && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        href: "https://twitter.com/".concat(profileData.twitter),
+        target: "_blank",
+        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: "".concat(appUrl, "/images/twitter.png"),
+          alt: "twitter link",
+          className: "privacy-icon mr-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: "Twitter"
+        })]
+      }), " ", profileData.instagram && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        href: "https://www.instagram.com/".concat(profileData.instagram),
+        target: "_blank",
+        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: "".concat(appUrl, "/images/instagram.png"),
+          alt: "instagram link",
+          className: "privacy-icon mr-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: "Instagram"
+        })]
+      }), " ", profileData.youtube && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        href: "https://www.youtube.com/c/".concat(profileData.youtube),
+        target: "_blank",
+        className: "private-profile-preview-social-links-".concat(profileData.profile_color),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: "".concat(appUrl, "/images/youtube.png"),
+          alt: "youtube link",
+          className: "privacy-icon mr-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: "Youtube"
+        })]
+      }), " "]
+    }) : null
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SocialLinks);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProfileComponents/SquadInfo.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/ProfileComponents/SquadInfo.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var SquadInfo = function SquadInfo(_ref) {
+  var profileData = _ref.profileData;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      children: "test"
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SquadInfo);
 
 /***/ }),
 

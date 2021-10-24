@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ImageCommentModal from "../../Utils/Modals/ImageCommentModal";
+import ImageCommentModal from "../Utils/Modals/ImageCommentModal";
 
 const Images = ({ profileData, preview }) => {
     const [imageClicked, setImageClicked] = useState(0);
@@ -14,6 +14,7 @@ const Images = ({ profileData, preview }) => {
                 return profileData.images.map((image) => {
                     return (
                         <div
+                            key={image.image_id}
                             className="profile-img-container mb-2"
                             onClick={!preview ? imageClickedHandler : null}
                         >
