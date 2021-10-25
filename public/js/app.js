@@ -8313,7 +8313,7 @@ var Images = function Images(_ref) {
 
   var renderImages = function renderImages() {
     if (profileData) {
-      if (profileData.images) {
+      if (profileData.images[0]) {
         return profileData.images.map(function (image) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "profile-img-container mb-2",
@@ -8330,6 +8330,18 @@ var Images = function Images(_ref) {
               className: "profile-img-overlay"
             })]
           }, image.image_id);
+        });
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "m-auto",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            src: "".concat(appUrl, "/images/empty-2.png"),
+            alt: "empty",
+            className: "profile-preview-photo mr-2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "text-muted",
+            children: "No images uploaded"
+          })]
         });
       }
     }
@@ -8422,6 +8434,7 @@ var InternetInfo = function InternetInfo(_ref) {
       if (!profileData.carrier && !profileData.ping && !profileData.download_speed && !profileData.upload_speed) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "text-muted",
             children: "Info has not yet been provided"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
             src: "".concat(appUrl, "/images/empty.png"),

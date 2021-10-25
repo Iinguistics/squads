@@ -14,7 +14,9 @@ const InternetInfo = ({ profileData }) => {
             ) {
                 return (
                     <div>
-                        <p>Info has not yet been provided</p>
+                        <p className="text-muted">
+                            Info has not yet been provided
+                        </p>
                         <img
                             src={`${appUrl}/images/empty.png`}
                             alt="empty"

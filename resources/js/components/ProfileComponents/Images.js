@@ -10,7 +10,7 @@ const Images = ({ profileData, preview }) => {
 
     const renderImages = () => {
         if (profileData) {
-            if (profileData.images) {
+            if (profileData.images[0]) {
                 return profileData.images.map((image) => {
                     return (
                         <div
@@ -32,6 +32,17 @@ const Images = ({ profileData, preview }) => {
                         </div>
                     );
                 });
+            } else {
+                return (
+                    <div className="m-auto">
+                        <img
+                            src={`${appUrl}/images/empty-2.png`}
+                            alt="empty"
+                            className="profile-preview-photo mr-2"
+                        />
+                        <span className="text-muted">No images uploaded</span>
+                    </div>
+                );
             }
         }
     };
