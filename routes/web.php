@@ -18,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::view('/{path?}', 'app')->name('web');
-// Route::view('/technician/{id?}', 'app')->name('web');
+Route::view('/profile/{id?}', 'app')->name('web');

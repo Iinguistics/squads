@@ -40,7 +40,7 @@ const Head = ({ profileData, profileColor, preview }) => {
             <div className="private-profile-preview-head-item-2 mt-2 mt-md-0">
                 {profileData && (
                     <span className="mr-3 fs-22">
-                        {profileData.user.gamertag}
+                        {profileData.user ? profileData.user.gamertag : ""}
                     </span>
                 )}
                 <div>
@@ -62,13 +62,23 @@ const Head = ({ profileData, profileColor, preview }) => {
                 <div className="fs-16 mt-3 mt-md-0">
                     {profileData && (
                         <>
-                            <span>Username: {profileData.user.username}</span>
+                            <span>
+                                Username:{" "}
+                                {profileData.user
+                                    ? profileData.user.username
+                                    : ""}
+                            </span>
                             <br />
                         </>
                     )}
                     {profileData && (
                         <>
-                            <span>Platform: {profileData.user.platform}</span>
+                            <span>
+                                Platform:{" "}
+                                {profileData.user
+                                    ? profileData.user.platform
+                                    : ""}
+                            </span>
                             <br />
                         </>
                     )}

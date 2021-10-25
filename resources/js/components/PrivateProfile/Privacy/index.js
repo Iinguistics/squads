@@ -4,23 +4,23 @@ import DirectMessaging from "./DirectMessaging";
 import ProfileView from "./ProfileView";
 import SquadInvite from "./SquadInvite";
 
-const Index = withRouter(({ fetchProfileHandler, profileData }) => {
+const Index = withRouter(({ fetchPrivateProfileHandler, profileData }) => {
     useEffect(() => {
-        fetchProfileHandler();
+        fetchPrivateProfileHandler();
     }, []);
     return (
         <div className="col-12 col-md-7">
             <h2 className="mb-5">Privacy</h2>
             <DirectMessaging
-                fetchProfileHandler={fetchProfileHandler}
+                fetchPrivateProfileHandler={fetchPrivateProfileHandler}
                 profileData={profileData}
             />
             <ProfileView
-                fetchProfileHandler={fetchProfileHandler}
+                fetchPrivateProfileHandler={fetchPrivateProfileHandler}
                 profileData={profileData}
             />
             <SquadInvite
-                fetchProfileHandler={fetchProfileHandler}
+                fetchPrivateProfileHandler={fetchPrivateProfileHandler}
                 profileData={profileData}
             />
         </div>

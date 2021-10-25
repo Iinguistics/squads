@@ -6,7 +6,7 @@ import ProfileColor from "./ProfileColor";
 
 const Appearance = withRouter(
     ({
-        fetchProfileHandler,
+        fetchPrivateProfileHandler,
         profileData,
         userInfo,
         fontColorHandler,
@@ -15,7 +15,7 @@ const Appearance = withRouter(
         profileColor,
     }) => {
         useEffect(() => {
-            fetchProfileHandler();
+            fetchPrivateProfileHandler();
         }, []);
 
         return (

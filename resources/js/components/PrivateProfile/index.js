@@ -168,8 +168,8 @@ const index = withRouter((props) => {
                                                             tabHandler={
                                                                 tabHandler
                                                             }
-                                                            fetchProfileHandler={
-                                                                fetchProfileHandler
+                                                            fetchPrivateProfileHandler={
+                                                                fetchPrivateProfileHandler
                                                             }
                                                             profileData={
                                                                 profileData
@@ -197,8 +197,8 @@ const index = withRouter((props) => {
                                                             tabHandler={
                                                                 tabHandler
                                                             }
-                                                            fetchProfileHandler={
-                                                                fetchProfileHandler
+                                                            fetchPrivateProfileHandler={
+                                                                fetchPrivateProfileHandler
                                                             }
                                                             profileData={
                                                                 profileData

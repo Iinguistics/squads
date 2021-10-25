@@ -48,6 +48,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $profile = Profile::where('id', $id)
+            ->with(['user'])
             ->get();
 
         $response = array(

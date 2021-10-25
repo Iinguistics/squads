@@ -22,7 +22,11 @@ const index = ({ profileData, profileColor, fetchPrivateProfileHandler }) => {
                     View my public profile
                 </Link>
             </div>
-            <Head profileData={profileData} profileColor={profileColor} />
+            <Head
+                profileData={profileData}
+                profileColor={profileColor}
+                preview={true}
+            />
             <InternetAndSquadInfo profileData={profileData} />
             <Images profileData={profileData} preview={true} />
         </div>

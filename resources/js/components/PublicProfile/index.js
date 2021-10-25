@@ -1,32 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Head from "../ProfileComponents/Head";
 import InternetAndSquadInfo from "../ProfileComponents/InternetAndSquadInfo";
 import Images from "../ProfileComponents/Images";
+import Api from "../Api";
 
-const index = ({ profileData, profileColor, fetchProfileHandler }) => {
+const index = withRouter((props) => {
+    const [userInfo, setUserInfo] = useState(null);
+    const [profileData, setProfileData] = useState(null);
+    const [profileColor, setProfileColor] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+
+    const fetchProfileHandler = async () => {
+        try {
+            const { data } = await Api.get(`/profile/${props.match.params.id}`);
+            if (data.success) {
+                setProfileData(data.data[0]);
+                setProfileColor(data.data[0].profile_color);
+                setError("");
+            } else {
+                setError("Profile does not exist");
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
     useEffect(() => {
+        let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
+        if (!userInfoData) {
+            props.history.push("/login");
+        } else {
+            setUserInfo(userInfoData);
+        }
+
         fetchProfileHandler();
     }, []);
+
+    console.log(profileData, "data from public");
     return (
-        <div className="container">
-            <h2 className="text-center">Profile Preview</h2>
-            <p className="text-center text-muted">
-                Some features are disabled in preview mode
-            </p>
-            <div className="text-center mb-5">
-                <Link
-                    to={profileData ? `/profile/${profileData.user.id}` : "/"}
-                    className="text-muted"
-                >
-                    View my public profile
-                </Link>
-            </div>
+        <div className="container main-header mt-5">
             <Head profileData={profileData} profileColor={profileColor} />
             <InternetAndSquadInfo profileData={profileData} />
-            <Images profileData={profileData} preview={true} />
+            <Images profileData={profileData} />
         </div>
     );
-};
+});
 
 export default index;

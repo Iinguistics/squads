@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Api from "../../Api";
 import { ALL, NONE } from "./Types";
 
-const SquadInvite = ({ fetchProfileHandler, profileData }) => {
+const SquadInvite = ({ fetchPrivateProfileHandler, profileData }) => {
     const [error, setError] = useState(null);
 
     const updateProfileHandler = async (tab) => {
@@ -14,7 +14,7 @@ const SquadInvite = ({ fetchProfileHandler, profileData }) => {
             );
 
             if (data.success) {
-                fetchProfileHandler();
+                fetchPrivateProfileHandler();
                 setError(false);
             } else {
                 setError(true);
