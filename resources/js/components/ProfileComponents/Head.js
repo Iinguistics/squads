@@ -1,7 +1,7 @@
 import React from "react";
 import SocialLinks from "./SocialLinks";
 
-const Head = ({ profileData, profileColor }) => {
+const Head = ({ profileData, profileColor, preview }) => {
     const appUrl = process.env.MIX_APP_URL;
     console.log(
         profileData,
@@ -57,6 +57,10 @@ const Head = ({ profileData, profileColor }) => {
             </div>
         </div>
     );
+};
+
+Head.defaultProps = {
+    preview: false,
 };
 
 export default Head;

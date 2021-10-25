@@ -5540,7 +5540,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState8 = _slicedToArray(_useState7, 2),
       profileData = _useState8[0],
-      setProfileData = _useState8[1];
+      setprofileData = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState10 = _slicedToArray(_useState9, 2),
@@ -5757,7 +5757,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
     setProfileColor(color);
   };
 
-  var fetchProfileHandler = /*#__PURE__*/function () {
+  var fetchPrivateProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _yield$Api$get, data;
 
@@ -5774,7 +5774,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
               data = _yield$Api$get.data;
 
               if (data.success) {
-                setProfileData(data.data[0]);
+                setprofileData(data.data[0]);
                 setError("");
                 setFontColor(data.data[0].font_color);
                 setProfileColor(data.data[0].profile_color);
@@ -5798,7 +5798,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       }, _callee, null, [[0, 8]]);
     }));
 
-    return function fetchProfileHandler() {
+    return function fetchPrivateProfileHandler() {
       return _ref.apply(this, arguments);
     };
   }();
@@ -5832,7 +5832,7 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
       activisionClickedHandler: activisionClickedHandler,
       passwordClickedHandler: passwordClickedHandler,
       photoClickedHandler: photoClickedHandler,
-      fetchProfileHandler: fetchProfileHandler,
+      fetchPrivateProfileHandler: fetchPrivateProfileHandler,
       fontColorHandler: fontColorHandler,
       profileColorHandler: profileColorHandler,
       usernameClickedHandler: usernameClickedHandler,
@@ -6509,7 +6509,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-moment */ "./node_modules/react-moment/dist/index.js");
 /* harmony import */ var react_moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home/index.js");
@@ -6517,10 +6517,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_LoginHelp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login/LoginHelp */ "./resources/js/components/Login/LoginHelp/index.js");
 /* harmony import */ var _Login_LoginHelp_PasswordReset__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Login/LoginHelp/PasswordReset */ "./resources/js/components/Login/LoginHelp/PasswordReset/index.js");
 /* harmony import */ var _PrivateProfile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PrivateProfile */ "./resources/js/components/PrivateProfile/index.js");
-/* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register/index.js");
-/* harmony import */ var _Test__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Test */ "./resources/js/components/Test.js");
-/* harmony import */ var _TestTwo__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./TestTwo */ "./resources/js/components/TestTwo.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _PublicProfile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PublicProfile */ "./resources/js/components/PublicProfile/index.js");
+/* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register/index.js");
+/* harmony import */ var _Test__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Test */ "./resources/js/components/Test.js");
+/* harmony import */ var _TestTwo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./TestTwo */ "./resources/js/components/TestTwo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -6536,42 +6538,46 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Main = function Main(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("main", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Switch, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("main", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Switch, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         exact: true,
         path: "/",
         component: _Home__WEBPACK_IMPORTED_MODULE_2__["default"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/login",
         component: function component() {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {
             loggedInToggleHandler: props.loggedInToggleHandler
           });
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/login-help",
         component: _Login_LoginHelp__WEBPACK_IMPORTED_MODULE_4__["default"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/password-reset",
         component: function component() {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Login_LoginHelp_PasswordReset__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Login_LoginHelp_PasswordReset__WEBPACK_IMPORTED_MODULE_5__["default"], {
             passwordResetPinVerified: props.passwordResetPinVerified,
             passwordResetPinVerifiedHandler: props.passwordResetPinVerifiedHandler,
             passwordResetEmail: props.passwordResetEmail,
             passwordResetEmailHandler: props.passwordResetEmailHandler
           });
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/profile",
         exact: true,
         component: _PrivateProfile__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+        path: "/profile/:id",
+        exact: true,
+        component: _PublicProfile__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/register",
-        component: _Register__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+        component: _Register__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/test",
-        component: _Test__WEBPACK_IMPORTED_MODULE_8__["default"]
+        component: _Test__WEBPACK_IMPORTED_MODULE_9__["default"]
       })]
     })
   });
@@ -6960,9 +6966,9 @@ __webpack_require__.r(__webpack_exports__);
 var index = function index(_ref) {
   var profileData = _ref.profileData,
       profileColor = _ref.profileColor,
-      fetchProfileHandler = _ref.fetchProfileHandler;
+      fetchPrivateProfileHandler = _ref.fetchPrivateProfileHandler;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchProfileHandler();
+    fetchPrivateProfileHandler();
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
@@ -7830,7 +7836,7 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
       passwordClicked = _ref.passwordClicked,
       photoClickedHandler = _ref.photoClickedHandler,
       photoClicked = _ref.photoClicked,
-      fetchProfileHandler = _ref.fetchProfileHandler,
+      fetchPrivateProfileHandler = _ref.fetchPrivateProfileHandler,
       imageClickedHandler = _ref.imageClickedHandler,
       imageClicked = _ref.imageClicked;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
@@ -7930,11 +7936,11 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UploadPhotoModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
       photoClicked: photoClicked,
       tabHandler: tabHandler,
-      fetchProfileHandler: fetchProfileHandler
+      fetchPrivateProfileHandler: fetchPrivateProfileHandler
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_UploadImageModal__WEBPACK_IMPORTED_MODULE_8__["default"], {
       imageClicked: imageClicked,
       tabHandler: tabHandler,
-      fetchProfileHandler: fetchProfileHandler
+      fetchPrivateProfileHandler: fetchPrivateProfileHandler
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Utils_Modals_DeleteAccountModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
       deleteAccountClicked: deleteAccountClicked,
       loggedInToggleHandler: loggedInToggleHandler
@@ -8056,7 +8062,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
                   passwordClicked = _ref2.passwordClicked,
                   photoClickedHandler = _ref2.photoClickedHandler,
                   photoClicked = _ref2.photoClicked,
-                  fetchProfileHandler = _ref2.fetchProfileHandler,
+                  fetchPrivateProfileHandler = _ref2.fetchPrivateProfileHandler,
                   profileData = _ref2.profileData,
                   fontColorHandler = _ref2.fontColorHandler,
                   fontColor = _ref2.fontColor,
@@ -8093,7 +8099,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
                     passwordClicked: passwordClicked,
                     photoClickedHandler: photoClickedHandler,
                     photoClicked: photoClicked,
-                    fetchProfileHandler: fetchProfileHandler,
+                    fetchPrivateProfileHandler: fetchPrivateProfileHandler,
                     imageClickedHandler: imageClickedHandler,
                     imageClicked: imageClicked
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -8102,7 +8108,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
                       userInfo: userInfo,
                       tabHandler: tabHandler,
                       tab: "myProfile",
-                      fetchProfileHandler: fetchProfileHandler,
+                      fetchPrivateProfileHandler: fetchPrivateProfileHandler,
                       profileData: profileData,
                       profileColor: profileColor
                     }), generalInfoTab && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_EditProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -8158,7 +8164,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var Head = function Head(_ref) {
   var profileData = _ref.profileData,
-      profileColor = _ref.profileColor;
+      profileColor = _ref.profileColor,
+      preview = _ref.preview;
   var appUrl = "http://127.0.0.1:8000";
   console.log(profileData, "profile data logged from MyProfilePreview/Head.js");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -8203,6 +8210,9 @@ var Head = function Head(_ref) {
   });
 };
 
+Head.defaultProps = {
+  preview: false
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Head);
 
 /***/ }),
@@ -8512,6 +8522,69 @@ var SquadInfo = function SquadInfo(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SquadInfo);
+
+/***/ }),
+
+/***/ "./resources/js/components/PublicProfile/index.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/PublicProfile/index.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ProfileComponents/Head */ "./resources/js/components/ProfileComponents/Head.js");
+/* harmony import */ var _ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ProfileComponents/InternetAndSquadInfo */ "./resources/js/components/ProfileComponents/InternetAndSquadInfo.js");
+/* harmony import */ var _ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ProfileComponents/Images */ "./resources/js/components/ProfileComponents/Images.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+var index = function index(_ref) {
+  var profileData = _ref.profileData,
+      profileColor = _ref.profileColor,
+      fetchProfileHandler = _ref.fetchProfileHandler;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchProfileHandler();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+      className: "text-center",
+      children: "Profile Preview"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      className: "text-center text-muted",
+      children: "Some features are disabled in preview mode"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "text-center mb-5",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        to: profileData ? "/profile/".concat(profileData.user.id) : "/",
+        className: "text-muted",
+        children: "View my public profile"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      profileData: profileData,
+      profileColor: profileColor
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      profileData: profileData
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      profileData: profileData,
+      preview: true
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
 
 /***/ }),
 
@@ -11666,7 +11739,7 @@ var UploadImageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
                 setError(false);
                 setShow(false);
                 setLoading(false);
-                props.fetchProfileHandler();
+                props.fetchPrivateProfileHandler();
               } else {
                 setSuccess(false);
                 setError(true);
@@ -11881,7 +11954,7 @@ var UploadPhotoModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
                 setError(false);
                 setShow(false);
                 setLoading(false);
-                props.fetchProfileHandler();
+                props.fetchPrivateProfileHandler();
               } else {
                 setSuccess(false);
                 setError(true);

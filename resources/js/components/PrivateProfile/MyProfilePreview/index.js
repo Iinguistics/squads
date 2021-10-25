@@ -4,9 +4,9 @@ import Head from "../../ProfileComponents/Head";
 import InternetAndSquadInfo from "../../ProfileComponents/InternetAndSquadInfo";
 import Images from "../../ProfileComponents/Images";
 
-const index = ({ profileData, profileColor, fetchProfileHandler }) => {
+const index = ({ profileData, profileColor, fetchPrivateProfileHandler }) => {
     useEffect(() => {
-        fetchProfileHandler();
+        fetchPrivateProfileHandler();
     }, []);
     return (
         <div className="container">

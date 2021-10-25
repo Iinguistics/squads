@@ -8,7 +8,7 @@ const PrivateProfileProvider = (props) => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const [profileData, setProfileData] = useState(null);
+    const [profileData, setprofileData] = useState(null);
 
     const [myProfileTab, setMyProfileTab] = useState(true);
     const [generalInfoTab, setGeneralInfoTab] = useState(false);
@@ -130,11 +130,11 @@ const PrivateProfileProvider = (props) => {
         setProfileColor(color);
     };
 
-    const fetchProfileHandler = async () => {
+    const fetchPrivateProfileHandler = async () => {
         try {
             const { data } = await Api.get("/show_current_user_profile");
             if (data.success) {
-                setProfileData(data.data[0]);
+                setprofileData(data.data[0]);
                 setError("");
                 setFontColor(data.data[0].font_color);
                 setProfileColor(data.data[0].profile_color);
@@ -176,7 +176,7 @@ const PrivateProfileProvider = (props) => {
                 activisionClickedHandler,
                 passwordClickedHandler,
                 photoClickedHandler,
-                fetchProfileHandler,
+                fetchPrivateProfileHandler,
                 fontColorHandler,
                 profileColorHandler,
                 usernameClickedHandler,

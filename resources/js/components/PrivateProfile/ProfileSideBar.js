@@ -35,7 +35,7 @@ const ProfileSideBar = ({
     passwordClicked,
     photoClickedHandler,
     photoClicked,
-    fetchProfileHandler,
+    fetchPrivateProfileHandler,
     imageClickedHandler,
     imageClicked,
 }) => {
@@ -139,12 +139,12 @@ const ProfileSideBar = ({
             <UploadPhotoModal
                 photoClicked={photoClicked}
                 tabHandler={tabHandler}
-                fetchProfileHandler={fetchProfileHandler}
+                fetchPrivateProfileHandler={fetchPrivateProfileHandler}
             />
             <UploadImageModal
                 imageClicked={imageClicked}
                 tabHandler={tabHandler}
-                fetchProfileHandler={fetchProfileHandler}
+                fetchPrivateProfileHandler={fetchPrivateProfileHandler}
             />
             <DeleteAccountModal
                 deleteAccountClicked={deleteAccountClicked}

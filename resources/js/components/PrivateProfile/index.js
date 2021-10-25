@@ -54,7 +54,7 @@ const index = withRouter((props) => {
                                     passwordClicked,
                                     photoClickedHandler,
                                     photoClicked,
-                                    fetchProfileHandler,
+                                    fetchPrivateProfileHandler,
                                     profileData,
                                     fontColorHandler,
                                     fontColor,
@@ -126,8 +126,8 @@ const index = withRouter((props) => {
                                                         photoClickedHandler
                                                     }
                                                     photoClicked={photoClicked}
-                                                    fetchProfileHandler={
-                                                        fetchProfileHandler
+                                                    fetchPrivateProfileHandler={
+                                                        fetchPrivateProfileHandler
                                                     }
                                                     imageClickedHandler={
                                                         imageClickedHandler
@@ -142,8 +142,8 @@ const index = withRouter((props) => {
                                                                 tabHandler
                                                             }
                                                             tab="myProfile"
-                                                            fetchProfileHandler={
-                                                                fetchProfileHandler
+                                                            fetchPrivateProfileHandler={
+                                                                fetchPrivateProfileHandler
                                                             }
                                                             profileData={
                                                                 profileData

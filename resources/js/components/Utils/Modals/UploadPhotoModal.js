@@ -39,7 +39,7 @@ const UploadPhotoModal = withRouter((props) => {
                 setError(false);
                 setShow(false);
                 setLoading(false);
-                props.fetchProfileHandler();
+                props.fetchPrivateProfileHandler();
             } else {
                 setSuccess(false);
                 setError(true);

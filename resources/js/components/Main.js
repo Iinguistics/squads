@@ -7,6 +7,7 @@ import Login from "./Login";
 import LoginHelp from "./Login/LoginHelp";
 import PasswordReset from "./Login/LoginHelp/PasswordReset";
 import PrivateProfile from "./PrivateProfile";
+import PublicProfile from "./PublicProfile";
 import Register from "./Register";
 
 import Test from "./Test";
@@ -44,6 +45,7 @@ const Main = (props) => {
                     )}
                 />
                 <Route path="/profile" exact component={PrivateProfile} />
+                <Route path="/profile/:id" exact component={PublicProfile} />
                 <Route path="/register" component={Register} />
                 <Route path="/test" component={Test} />
             </Switch>
