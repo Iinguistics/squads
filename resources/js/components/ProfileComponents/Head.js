@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import SocialLinks from "./SocialLinks";
+import Api from "../Api";
+import SendMessageModal from "../Utils/Modals/SendMessageModal";
+import SendSquadInviteModal from "../Utils/Modals/SendSquadInviteModal";
 
 const Head = ({ profileData, profileColor, preview }) => {
-    const appUrl = process.env.MIX_APP_URL;
-    console.log(
-        profileData,
-        "profile data logged from MyProfilePreview/Head.js"
-    );
+    const [sendMessageClicked, setSendMessageClicked] = useState(0);
+    const [sendSquadInviteClicked, setSendSquadInviteClicked] = useState(0);
 
+    console.log(profileData, "profile data logged from profile Head");
+
+    const sendMessageClickedHandler = () => {
+        setSendMessageClicked((sendMessageClicked) => sendMessageClicked + 1);
+    };
+
+    const sendSquadInviteClickedHandler = () => {
+        setSendSquadInviteClicked(
+            (sendSquadInviteClicked) => sendSquadInviteClicked + 1
+        );
+    };
+
+    const appUrl = process.env.MIX_APP_URL;
     return (
         <div className="d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded">
             <div className="item-1 mr-5">
@@ -31,10 +44,18 @@ const Head = ({ profileData, profileColor, preview }) => {
                     </span>
                 )}
                 <div>
-                    <button className="my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn">
+                    <button
+                        className="my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn"
+                        onClick={!preview ? sendMessageClickedHandler : null}
+                    >
                         Send Message
                     </button>
-                    <button className="bttn-material-flat bttn-sm update-account-modal-btn">
+                    <button
+                        className="bttn-material-flat bttn-sm update-account-modal-btn"
+                        onClick={
+                            !preview ? sendSquadInviteClickedHandler : null
+                        }
+                    >
                         Invite to squad
                     </button>
                 </div>
@@ -55,6 +76,10 @@ const Head = ({ profileData, profileColor, preview }) => {
                 </div>
                 <SocialLinks profileData={profileData} />
             </div>
+            <SendMessageModal sendMessageClicked={sendMessageClicked} />
+            <SendSquadInviteModal
+                sendSquadInviteClicked={sendSquadInviteClicked}
+            />
         </div>
     );
 };
