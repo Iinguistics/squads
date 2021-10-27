@@ -8264,7 +8264,9 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function
         profileData: profileData
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Utils_Modals_SendMessageModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      sendMessageClicked: sendMessageClicked
+      sendMessageClicked: sendMessageClicked,
+      userInfo: userInfo,
+      profileData: profileData
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Utils_Modals_SendSquadInviteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       sendSquadInviteClicked: sendSquadInviteClicked
     })]
@@ -11372,7 +11374,7 @@ var PlayerProfile = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)
 
               if (data.success) {
                 setError("");
-                props.history.push("profile/".concat(data.id));
+                props.history.push("/profile/".concat(data.id));
                 props.handleClose();
               } else {
                 setError(data.message);
@@ -11748,6 +11750,26 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRout
       show = _useState2[0],
       setShow = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      body = _useState4[0],
+      setBody = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      error = _useState6[0],
+      setError = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      loading = _useState8[0],
+      setLoading = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      success = _useState10[0],
+      setSuccess = _useState10[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.sendMessageClicked !== 0) {
       setShow(true);
@@ -11758,7 +11780,7 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRout
     return setShow(false);
   };
 
-  var logOutHandler = /*#__PURE__*/function () {
+  var sendMessageHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _yield$Api$get, data;
 
@@ -11788,7 +11810,7 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRout
       }, _callee);
     }));
 
-    return function logOutHandler() {
+    return function sendMessageHandler() {
       return _ref.apply(this, arguments);
     };
   }();
@@ -11804,17 +11826,36 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRout
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
-            children: "Sign Out"
+            children: "New Message"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
-          children: "Are you sure you want to sign out?"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
+          // encType="multipart/form-data"
+          onSubmit: sendMessageHandler,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+              children: ["To:", " ", props.profileData ? props.profileData.user.username : ""]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
+              className: "mt-2",
+              name: "body",
+              id: "body",
+              rows: "4",
+              cols: "33",
+              value: body,
+              onChange: function onChange(e) {
+                return setBody(e.target.value);
+              }
+            }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              className: "text-danger",
+              children: error
+            })]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: handleClose,
             className: "bttn-material-flat bttn-sm mr-2",
             children: "Cancel"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            onClick: logOutHandler,
+            onClick: sendMessageHandler,
             className: "bttn-material-flat bttn-sm update-account-modal-btn",
             children: "Sign Out"
           })]
@@ -12096,7 +12137,7 @@ var UploadImageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       error = _useState4[0],
       setError = _useState4[1];
@@ -12317,7 +12358,7 @@ var UploadPhotoModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       error = _useState4[0],
       setError = _useState4[1];

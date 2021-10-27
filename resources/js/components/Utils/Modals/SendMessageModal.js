@@ -5,6 +5,10 @@ import Api from "../../Api";
 
 const SendMessageModal = withRouter((props) => {
     const [show, setShow] = useState(false);
+    const [body, setBody] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         if (props.sendMessageClicked !== 0) {
@@ -14,7 +18,7 @@ const SendMessageModal = withRouter((props) => {
 
     const handleClose = () => setShow(false);
 
-    const logOutHandler = async () => {
+    const sendMessageHandler = async () => {
         const { data } = await Api.get("/logout");
 
         if (data.success) {
@@ -31,9 +35,34 @@ const SendMessageModal = withRouter((props) => {
             <Container>
                 <Modal show={show} onHide={handleClose} size="lg" centered>
                     <Modal.Header closeButton>
-                        <Modal.Title>Sign Out</Modal.Title>
+                        <Modal.Title>New Message</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Are you sure you want to sign out?</Modal.Body>
+                    <form
+                        // encType="multipart/form-data"
+                        onSubmit={sendMessageHandler}
+                    >
+                        <Modal.Body>
+                            <span>
+                                To:{" "}
+                                {props.profileData
+                                    ? props.profileData.user.username
+                                    : ""}
+                            </span>
+                            <br />
+                            <textarea
+                                className="mt-2"
+                                name="body"
+                                id="body"
+                                rows="4"
+                                cols="33"
+                                value={body}
+                                onChange={(e) => setBody(e.target.value)}
+                            />
+                            {error && (
+                                <span className="text-danger">{error}</span>
+                            )}
+                        </Modal.Body>
+                    </form>
                     <Modal.Footer>
                         <button
                             onClick={handleClose}
@@ -42,7 +71,7 @@ const SendMessageModal = withRouter((props) => {
                             Cancel
                         </button>
                         <button
-                            onClick={logOutHandler}
+                            onClick={sendMessageHandler}
                             className="bttn-material-flat bttn-sm update-account-modal-btn"
                         >
                             Sign Out

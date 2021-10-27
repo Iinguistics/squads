@@ -18,7 +18,7 @@ const PlayerProfile = withRouter((props) => {
 
             if (data.success) {
                 setError("");
-                props.history.push(`profile/${data.id}`);
+                props.history.push(`/profile/${data.id}`);
                 props.handleClose();
             } else {
                 setError(data.message);

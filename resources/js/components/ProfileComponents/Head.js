@@ -102,7 +102,11 @@ const Head = withRouter(
                     </div>
                     <SocialLinks profileData={profileData} />
                 </div>
-                <SendMessageModal sendMessageClicked={sendMessageClicked} />
+                <SendMessageModal
+                    sendMessageClicked={sendMessageClicked}
+                    userInfo={userInfo}
+                    profileData={profileData}
+                />
                 <SendSquadInviteModal
                     sendSquadInviteClicked={sendSquadInviteClicked}
                 />
