@@ -8154,6 +8154,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _SocialLinks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialLinks */ "./resources/js/components/ProfileComponents/SocialLinks.js");
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
 /* harmony import */ var _Utils_Modals_SendMessageModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Utils/Modals/SendMessageModal */ "./resources/js/components/Utils/Modals/SendMessageModal.js");
@@ -8180,10 +8181,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Head = function Head(_ref) {
+var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (_ref) {
   var profileData = _ref.profileData,
       profileColor = _ref.profileColor,
-      preview = _ref.preview;
+      preview = _ref.preview,
+      match = _ref.match,
+      userInfo = _ref.userInfo;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8196,6 +8199,26 @@ var Head = function Head(_ref) {
       setSendSquadInviteClicked = _useState4[1];
 
   console.log(profileData, "profile data logged from profile Head");
+
+  var renderButtons = function renderButtons() {
+    if (userInfo) {
+      if (preview === true || Number(match.params.id) === userInfo.id) {
+        return;
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
+            onClick: sendMessageClickedHandler,
+            children: "Send Message"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            className: "bttn-material-flat bttn-sm update-account-modal-btn",
+            onClick: sendSquadInviteClickedHandler,
+            children: "Invite to squad"
+          })]
+        });
+      }
+    }
+  };
 
   var sendMessageClickedHandler = function sendMessageClickedHandler() {
     setSendMessageClicked(function (sendMessageClicked) {
@@ -8224,17 +8247,7 @@ var Head = function Head(_ref) {
       children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
         className: "mr-3 fs-22",
         children: profileData.user ? profileData.user.gamertag : ""
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-          className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
-          onClick: !preview ? sendMessageClickedHandler : null,
-          children: "Send Message"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-          className: "bttn-material-flat bttn-sm update-account-modal-btn",
-          onClick: !preview ? sendSquadInviteClickedHandler : null,
-          children: "Invite to squad"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), renderButtons(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "fs-16 mt-3 mt-md-0",
         children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
@@ -8256,8 +8269,7 @@ var Head = function Head(_ref) {
       sendSquadInviteClicked: sendSquadInviteClicked
     })]
   });
-};
-
+});
 Head.defaultProps = {
   preview: false
 };
@@ -8725,7 +8737,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
     className: "container main-header mt-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_2__["default"], {
       profileData: profileData,
-      profileColor: profileColor
+      profileColor: profileColor,
+      userInfo: userInfo
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
       profileData: profileData
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_4__["default"], {

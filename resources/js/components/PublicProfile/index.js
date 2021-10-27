@@ -43,7 +43,11 @@ const index = withRouter((props) => {
     console.log(profileData, "data from public");
     return (
         <div className="container main-header mt-5">
-            <Head profileData={profileData} profileColor={profileColor} />
+            <Head
+                profileData={profileData}
+                profileColor={profileColor}
+                userInfo={userInfo}
+            />
             <InternetAndSquadInfo profileData={profileData} />
             <Images profileData={profileData} />
         </div>
