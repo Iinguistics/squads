@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 use App\User;
 use App\Profile;
-use App\Image;
 use App\Message;
 
 
