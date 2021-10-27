@@ -12,7 +12,7 @@ class Message extends Model
     protected $primaryKey = 'message_id';
 
     protected $fillable = [
-        'id', 'body', 'message_read', 'sent_from_id', 'created_at'
+        'id', 'body', 'message_read', 'sent_from_id', 'created_at, updated_at'
     ];
 
     public function user()

@@ -104,7 +104,6 @@ const Head = withRouter(
                 </div>
                 <SendMessageModal
                     sendMessageClicked={sendMessageClicked}
-                    userInfo={userInfo}
                     profileData={profileData}
                 />
                 <SendSquadInviteModal

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::post('password_reset_verify_pin', [UserAuthController::class, 'password_r
 Route::post('password_reset_update', [UserAuthController::class, 'password_reset_update']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Users / auth
+    // User / auth
     Route::get('current_user', [UserAuthController::class, 'current_user']);
     Route::get('logout', [UserAuthController::class, 'logout']);
     Route::put('account_destroy', [UserAuthController::class, 'account_destroy']);
@@ -51,4 +52,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::get('profile/{id}', [ProfileController::class, 'show']);
+
+
+    // Message
+
+    Route::post('send_user_message', [MessageController::class, 'send_user_message']);
 });
