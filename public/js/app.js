@@ -8326,8 +8326,8 @@ var Images = function Images(_ref) {
 
   var renderImages = function renderImages() {
     if (profileData) {
-      if (profileData.images[0]) {
-        return profileData.images.map(function (image) {
+      if (profileData.user.images[0]) {
+        return profileData.user.images.map(function (image) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "profile-img-container mb-2",
             onClick: !preview ? imageClickedHandler : null,

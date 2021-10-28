@@ -10,8 +10,8 @@ const Images = ({ profileData, preview }) => {
 
     const renderImages = () => {
         if (profileData) {
-            if (profileData.images[0]) {
-                return profileData.images.map((image) => {
+            if (profileData.user.images[0]) {
+                return profileData.user.images.map((image) => {
                     return (
                         <div
                             key={image.image_id}
