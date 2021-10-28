@@ -55,6 +55,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     // Message
-
+    Route::get('get_user_messages', [MessageController::class, 'get_user_messages']);
     Route::post('send_user_message', [MessageController::class, 'send_user_message']);
 });

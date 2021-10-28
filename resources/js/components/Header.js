@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Api from "./Api";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import LogoutModal from "./Utils/Modals/LogoutModal";
@@ -10,13 +11,34 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
     );
     const [signOutClicked, setSignOutClicked] = useState(0);
     const [searchClicked, setSearchClicked] = useState(0);
+    const [inbox, setInbox] = useState(null);
 
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem("userInfo"));
         if (userInfo !== user) {
             setUserInfo(user);
         }
+
+        setTimeout(() => {
+            fetchUserMessages();
+        }, 600);
     }, [loggedInToggle]);
+
+    const fetchUserMessages = async () => {
+        if (userInfo) {
+            try {
+                const { data } = await Api.get("/get_user_messages");
+                if (data.success) {
+                    setInbox(data.data);
+                } else {
+                    return;
+                }
+            } catch (error) {
+                return;
+            }
+        }
+    };
+    console.log(inbox, "where");
 
     const signOutClickedHandler = () => {
         setSignOutClicked((signOutClicked) => signOutClicked + 1);
