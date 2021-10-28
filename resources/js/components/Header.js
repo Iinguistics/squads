@@ -38,6 +38,16 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
             }
         }
     };
+
+    const renderUnreadMessages = () => {
+        if (inbox) {
+            for (let message of inbox) {
+                if (message.message_read === 0) {
+                    return <div className="inbox-notification-bubble"></div>;
+                }
+            }
+        }
+    };
     console.log(inbox, "where");
 
     const signOutClickedHandler = () => {
@@ -67,6 +77,19 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
                             Profile
                         </NavDropdown.Item>
                     </LinkContainer>
+                    <span className="inbox-container">
+                        <LinkContainer to="/inbox">
+                            <NavDropdown.Item className="dropdown-item">
+                                <img
+                                    className="search-img mr-1"
+                                    src={`${appUrl}/images/mail-inbox.png`}
+                                    alt="Inbox"
+                                />
+                                Inbox
+                                {renderUnreadMessages()}
+                            </NavDropdown.Item>
+                        </LinkContainer>
+                    </span>
                     <span onClick={signOutClickedHandler}>
                         <NavDropdown.Item className="dropdown-item">
                             Sign Out

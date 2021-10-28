@@ -5958,6 +5958,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Modals_LogoutModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Utils/Modals/LogoutModal */ "./resources/js/components/Utils/Modals/LogoutModal.js");
 /* harmony import */ var _Utils_Modals_Search__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Utils/Modals/Search */ "./resources/js/components/Utils/Modals/Search/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6077,6 +6079,29 @@ var Header = function Header(_ref) {
     };
   }();
 
+  var renderUnreadMessages = function renderUnreadMessages() {
+    if (inbox) {
+      var _iterator = _createForOfIteratorHelper(inbox),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var message = _step.value;
+
+          if (message.message_read === 0) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "inbox-notification-bubble"
+            });
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+  };
+
   console.log(inbox, "where");
 
   var signOutClickedHandler = function signOutClickedHandler() {
@@ -6109,6 +6134,19 @@ var Header = function Header(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
             className: "dropdown-item",
             children: "Profile"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+          className: "inbox-container",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_bootstrap__WEBPACK_IMPORTED_MODULE_3__.LinkContainer, {
+            to: "/inbox",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
+              className: "dropdown-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+                className: "search-img mr-1",
+                src: "".concat(appUrl, "/images/mail-inbox.png"),
+                alt: "Inbox"
+              }), "Inbox", renderUnreadMessages()]
+            })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
           onClick: signOutClickedHandler,

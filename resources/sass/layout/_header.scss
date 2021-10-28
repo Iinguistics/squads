@@ -30,6 +30,20 @@ nav {
     .dropdown-item {
         background: none !important;
     }
+
+    .inbox-container {
+        position: relative;
+    }
+
+    .inbox-notification-bubble {
+        position: absolute;
+        background: $green;
+        height: 7px;
+        width: 7px;
+        border-radius: 50%;
+        top: 7px;
+        left: 22px;
+    }
 }
 
 .main-header {

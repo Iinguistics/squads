@@ -10056,6 +10056,18 @@ nav .dropdown-item:focus {
 nav .dropdown-item {
   background: none !important;
 }
+nav .inbox-container {
+  position: relative;
+}
+nav .inbox-notification-bubble {
+  position: absolute;
+  background: #74cf74;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  top: 7px;
+  left: 22px;
+}
 
 .main-header {
   margin-top: 7rem !important;
