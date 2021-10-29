@@ -134,7 +134,7 @@ const index = withRouter((props) => {
                                                     }
                                                     imageClicked={imageClicked}
                                                 />
-                                                <div className="container mt-5 main-header">
+                                                <div className="container main-header">
                                                     {myProfileTab && (
                                                         <MyProfilePreview
                                                             userInfo={userInfo}

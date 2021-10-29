@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import Moment from "react-moment";
 
 import Home from "./Home";
+import Inbox from "./Inbox";
 import Login from "./Login";
 import LoginHelp from "./Login/LoginHelp";
 import PasswordReset from "./Login/LoginHelp/PasswordReset";
@@ -18,6 +19,7 @@ const Main = (props) => {
         <main>
             <Switch>
                 <Route exact path="/" component={Home} />
+                <Route path="/inbox" exact component={Inbox} />
                 <Route
                     path="/login"
                     component={() => (
