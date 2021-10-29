@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+import ConversationSideBar from "./ConversationSideBar";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -13,7 +14,11 @@ const index = withRouter((props) => {
         }
     }, []);
 
-    return <div className="d-flex flex-column flex-md-row"></div>;
+    return (
+        <div className="d-flex flex-column flex-md-row private-profile-main-container">
+            <ConversationSideBar />
+        </div>
+    );
 });
 
 export default index;
