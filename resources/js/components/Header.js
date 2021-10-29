@@ -11,7 +11,7 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
     );
     const [signOutClicked, setSignOutClicked] = useState(0);
     const [searchClicked, setSearchClicked] = useState(0);
-    const [inbox, setInbox] = useState(null);
+    const [unreadMessages, setUnreadMessages] = useState(null);
 
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem("userInfo"));
@@ -27,9 +27,9 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
     const fetchUserMessages = async () => {
         if (userInfo) {
             try {
-                const { data } = await Api.get("/get_user_messages");
+                const { data } = await Api.get("/get_user_unread_messages");
                 if (data.success) {
-                    setInbox(data.data);
+                    setUnreadMessages(data.data);
                 } else {
                     return;
                 }

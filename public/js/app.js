@@ -6009,8 +6009,8 @@ var Header = function Header(_ref) {
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState8 = _slicedToArray(_useState7, 2),
-      inbox = _useState8[0],
-      setInbox = _useState8[1];
+      unreadMessages = _useState8[0],
+      setUnreadMessages = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var user = JSON.parse(localStorage.getItem("userInfo"));
@@ -6039,7 +6039,7 @@ var Header = function Header(_ref) {
 
               _context.prev = 1;
               _context.next = 4;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_user_messages");
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_user_unread_messages");
 
             case 4:
               _yield$Api$get = _context.sent;
@@ -6050,7 +6050,7 @@ var Header = function Header(_ref) {
                 break;
               }
 
-              setInbox(data.data);
+              setUnreadMessages(data.data);
               _context.next = 11;
               break;
 
@@ -8554,7 +8554,7 @@ __webpack_require__.r(__webpack_exports__);
 var InternetInfo = function InternetInfo(_ref) {
   var profileData = _ref.profileData;
   var appUrl = "http://127.0.0.1:8000";
-  var noInfo = "Not available";
+  var noInfo = "No Info";
 
   var checkInternetInfo = function checkInternetInfo() {
     if (profileData) {

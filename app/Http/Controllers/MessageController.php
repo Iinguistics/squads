@@ -31,6 +31,19 @@ class MessageController extends Controller
         return response()->json($response, 200);
     }
 
+    public function get_user_unread_messages()
+    {
+        $user = Auth::user();
+
+        $results = Message::where('id', $user->id)->where('message_read', 0)->get();
+
+        $response = array(
+            'success' => $results ? true : false,
+            'data' => $results ? $results : null
+        );
+        return response()->json($response, 200);
+    }
+
 
     public function send_user_message(Request $request)
     {

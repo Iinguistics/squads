@@ -38,11 +38,12 @@ nav {
     .inbox-notification-bubble {
         position: absolute;
         background: $green;
-        height: 7px;
-        width: 7px;
+        height: 8px;
+        width: 8px;
         border-radius: 50%;
+        border: 1px solid #fff;
         top: 7px;
-        left: 22px;
+        left: 21px;
     }
 }
 

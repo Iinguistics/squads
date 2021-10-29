@@ -2,7 +2,7 @@ import React from "react";
 
 const InternetInfo = ({ profileData }) => {
     const appUrl = process.env.MIX_APP_URL;
-    const noInfo = "Not available";
+    const noInfo = "No Info";
 
     const checkInternetInfo = () => {
         if (profileData) {
