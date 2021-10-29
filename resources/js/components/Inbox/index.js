@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+import MessagingProvider, {
+    MessagingContext,
+} from "../Context/MessagingContext";
+
 import ConversationSideBar from "./ConversationSideBar";
 
 const index = withRouter((props) => {
@@ -15,9 +19,17 @@ const index = withRouter((props) => {
     }, []);
 
     return (
-        <div className="d-flex flex-column flex-md-row private-profile-main-container">
-            <ConversationSideBar />
-        </div>
+        <MessagingProvider>
+            <MessagingContext.Consumer>
+                {({ test }) => {
+                    return (
+                        <div className="d-flex flex-column flex-md-row private-profile-main-container">
+                            <ConversationSideBar />
+                        </div>
+                    );
+                }}
+            </MessagingContext.Consumer>
+        </MessagingProvider>
     );
 });
 
