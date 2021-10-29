@@ -11,7 +11,7 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
     );
     const [signOutClicked, setSignOutClicked] = useState(0);
     const [searchClicked, setSearchClicked] = useState(0);
-    const [unreadMessages, setUnreadMessages] = useState(null);
+    const [unreadMessages, setUnreadMessages] = useState(false);
 
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem("userInfo"));
@@ -20,16 +20,16 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
         }
 
         setTimeout(() => {
-            fetchUserMessages();
+            fetchUserUnreadMessages();
         }, 600);
     }, [loggedInToggle]);
 
-    const fetchUserMessages = async () => {
+    const fetchUserUnreadMessages = async () => {
         if (userInfo) {
             try {
                 const { data } = await Api.get("/get_user_unread_messages");
                 if (data.success) {
-                    setUnreadMessages(data.data);
+                    setUnreadMessages(true);
                 } else {
                     return;
                 }
@@ -40,15 +40,10 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
     };
 
     const renderUnreadMessages = () => {
-        if (inbox) {
-            for (let message of inbox) {
-                if (message.message_read === 0) {
-                    return <div className="inbox-notification-bubble"></div>;
-                }
-            }
+        if (unreadMessages) {
+            return <div className="inbox-notification-bubble"></div>;
         }
     };
-    console.log(inbox, "where");
 
     const signOutClickedHandler = () => {
         setSignOutClicked((signOutClicked) => signOutClicked + 1);
