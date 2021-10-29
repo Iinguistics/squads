@@ -6043,7 +6043,7 @@ var Header = function Header(_ref) {
               _yield$Api$get = _context.sent;
               data = _yield$Api$get.data;
 
-              if (!data.success) {
+              if (!data.data[0]) {
                 _context.next = 10;
                 break;
               }

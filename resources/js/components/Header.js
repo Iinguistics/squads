@@ -28,7 +28,7 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
         if (userInfo) {
             try {
                 const { data } = await Api.get("/get_user_unread_messages");
-                if (data.success) {
+                if (data.data[0]) {
                     setUnreadMessages(true);
                 } else {
                     return;
