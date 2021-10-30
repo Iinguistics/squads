@@ -4,11 +4,13 @@ const ConversationSideBar = ({
     fetchUserMessages,
     userMessages,
     inboxEmpty,
-    test,
+    fetchConversationMessages,
 }) => {
+    const [filteredUserMessages, setFilteredUserMessages] =
+        useState(userMessages);
+
     useEffect(() => {
-        //fetchUserMessages();
-        test();
+        fetchUserMessages();
     }, []);
 
     console.log("sidebar", inboxEmpty);
@@ -34,15 +36,17 @@ const ConversationSideBar = ({
             <div className="container main-header">
                 <div className="container mt-5 main-header">
                     <div className="d-flex flex-row flex-md-column justify-content-between text-center">
-                        <div className="item-1">
-                            <input
-                                type="text"
-                                placeholder="Search by username"
-                                // value={username}
-                                // onChange={(e) => setUsername(e.target.value)}
-                                className="shadow-none search-conversation-input"
-                            />
-                        </div>
+                        {!inboxEmpty && (
+                            <div className="item-1">
+                                <input
+                                    type="text"
+                                    placeholder="Search by username"
+                                    // value={username}
+                                    // onChange={(e) => setUsername(e.target.value)}
+                                    className="shadow-none search-conversation-input"
+                                />
+                            </div>
+                        )}
                         {checkInboxEmpty()}
                     </div>
                 </div>
