@@ -10835,3 +10835,7 @@ form .player-search-select {
     display: none;
   }
 }
+.search-conversation-input {
+  outline: 1px solid #4d89ff !important;
+  border: 1px solid #4d89ff !important;
+}

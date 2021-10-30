@@ -6,7 +6,15 @@ const ConversationSideBar = () => {
             <div className="container main-header">
                 <div className="container mt-5 main-header">
                     <div className="d-flex flex-row flex-md-column justify-content-between text-center">
-                        <div className="item-1">item 1</div>
+                        <div className="item-1">
+                            <input
+                                type="text"
+                                placeholder="Search by username"
+                                // value={username}
+                                // onChange={(e) => setUsername(e.target.value)}
+                                className="shadow-none search-conversation-input"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

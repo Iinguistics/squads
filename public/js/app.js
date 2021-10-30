@@ -6496,7 +6496,13 @@ var ConversationSideBar = function ConversationSideBar() {
           className: "d-flex flex-row flex-md-column justify-content-between text-center",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "item-1",
-            children: "item 1"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              placeholder: "Search by username" // value={username}
+              // onChange={(e) => setUsername(e.target.value)}
+              ,
+              className: "shadow-none search-conversation-input"
+            })
           })
         })
       })
