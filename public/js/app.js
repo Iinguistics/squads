@@ -6566,7 +6566,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ConversationSideBar = function ConversationSideBar() {
+var ConversationSideBar = function ConversationSideBar(_ref) {
+  var fetchUserMessages = _ref.fetchUserMessages,
+      userMessages = _ref.userMessages;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchUserMessages();
+  }, []);
+  console.log(userMessages, "sidebar");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "private-profile-sidebar-container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6646,10 +6652,14 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_MessagingContext__WEBPACK_IMPORTED_MODULE_1__["default"], {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_MessagingContext__WEBPACK_IMPORTED_MODULE_1__.MessagingContext.Consumer, {
       children: function children(_ref) {
-        var test = _ref.test;
+        var fetchUserMessages = _ref.fetchUserMessages,
+            userMessages = _ref.userMessages;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            fetchUserMessages: fetchUserMessages,
+            userMessages: userMessages
+          })
         });
       }
     })

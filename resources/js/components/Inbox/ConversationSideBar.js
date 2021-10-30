@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const ConversationSideBar = () => {
+const ConversationSideBar = ({ fetchUserMessages, userMessages }) => {
+    useEffect(() => {
+        fetchUserMessages();
+    }, []);
+
+    console.log(userMessages, "sidebar");
     return (
         <div className="private-profile-sidebar-container">
             <div className="container main-header">

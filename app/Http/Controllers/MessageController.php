@@ -69,7 +69,8 @@ class MessageController extends Controller
         $results = Message::create([
             "id" => $input['id'],
             "body" => $input['body'],
-            "sent_from_id" => $user->id
+            "sent_from_id" => $user->id,
+            "sent_from_username" => $user->username,
         ]);
 
         $response = array(

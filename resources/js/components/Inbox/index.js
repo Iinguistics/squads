@@ -21,10 +21,13 @@ const index = withRouter((props) => {
     return (
         <MessagingProvider>
             <MessagingContext.Consumer>
-                {({ test }) => {
+                {({ fetchUserMessages, userMessages }) => {
                     return (
                         <div className="d-flex flex-column flex-md-row private-profile-main-container">
-                            <ConversationSideBar />
+                            <ConversationSideBar
+                                fetchUserMessages={fetchUserMessages}
+                                userMessages={userMessages}
+                            />
                         </div>
                     );
                 }}
