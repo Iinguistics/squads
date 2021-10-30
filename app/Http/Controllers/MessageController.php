@@ -18,11 +18,11 @@ use App\Message;
 class MessageController extends Controller
 {
 
-    public function get_user_messages()
+    public function get_user_messages($id)
     {
         $user = Auth::user();
 
-        $results = Message::where('id', $user->id)->get();
+        $results = Message::where('id', $id)->get();
 
         $response = array(
             'success' => $results ? true : false,
