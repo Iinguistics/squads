@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react";
 import Api from "../Api";
 
-export const MessagingContext = createContext();
+export const InboxMessagingContext = createContext();
 
-const MessagingProvider = (props) => {
+const InboxMessagingProvider = (props) => {
     let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
 
     const [error, setError] = useState("");
@@ -30,15 +30,15 @@ const MessagingProvider = (props) => {
     };
 
     return (
-        <MessagingContext.Provider
+        <InboxMessagingContext.Provider
             value={{
                 userMessages: userMessages,
                 fetchUserMessages: fetchUserMessages,
             }}
         >
             {props.children}
-        </MessagingContext.Provider>
+        </InboxMessagingContext.Provider>
     );
 };
 
-export default MessagingProvider;
+export default InboxMessagingProvider;

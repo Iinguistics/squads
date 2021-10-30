@@ -5481,16 +5481,16 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Context/MessagingContext.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/Context/MessagingContext.js ***!
-  \*************************************************************/
+/***/ "./resources/js/components/Context/InboxMessagingContext.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Context/InboxMessagingContext.js ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MessagingContext": () => (/* binding */ MessagingContext),
+/* harmony export */   "InboxMessagingContext": () => (/* binding */ InboxMessagingContext),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
@@ -5519,9 +5519,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var MessagingContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)();
+var InboxMessagingContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)();
 
-var MessagingProvider = function MessagingProvider(props) {
+var InboxMessagingProvider = function InboxMessagingProvider(props) {
   var userInfoData = JSON.parse(localStorage.getItem("userInfo"));
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
@@ -5599,7 +5599,7 @@ var MessagingProvider = function MessagingProvider(props) {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(MessagingContext.Provider, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(InboxMessagingContext.Provider, {
     value: {
       userMessages: userMessages,
       fetchUserMessages: fetchUserMessages
@@ -5608,7 +5608,7 @@ var MessagingProvider = function MessagingProvider(props) {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MessagingProvider);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InboxMessagingProvider);
 
 /***/ }),
 
@@ -6614,7 +6614,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _Context_MessagingContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Context/MessagingContext */ "./resources/js/components/Context/MessagingContext.js");
+/* harmony import */ var _Context_InboxMessagingContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Context/InboxMessagingContext */ "./resources/js/components/Context/InboxMessagingContext.js");
 /* harmony import */ var _ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConversationSideBar */ "./resources/js/components/Inbox/ConversationSideBar.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -6649,8 +6649,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
       setUserInfo(userInfoData);
     }
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_MessagingContext__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_MessagingContext__WEBPACK_IMPORTED_MODULE_1__.MessagingContext.Consumer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_InboxMessagingContext__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_InboxMessagingContext__WEBPACK_IMPORTED_MODULE_1__.InboxMessagingContext.Consumer, {
       children: function children(_ref) {
         var fetchUserMessages = _ref.fetchUserMessages,
             userMessages = _ref.userMessages;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import MessagingProvider, {
-    MessagingContext,
-} from "../Context/MessagingContext";
+import InboxMessagingProvider, {
+    InboxMessagingContext,
+} from "../Context/InboxMessagingContext";
 
 import ConversationSideBar from "./ConversationSideBar";
 
@@ -19,8 +19,8 @@ const index = withRouter((props) => {
     }, []);
 
     return (
-        <MessagingProvider>
-            <MessagingContext.Consumer>
+        <InboxMessagingProvider>
+            <InboxMessagingContext.Consumer>
                 {({ fetchUserMessages, userMessages }) => {
                     return (
                         <div className="d-flex flex-column flex-md-row private-profile-main-container">
@@ -31,8 +31,8 @@ const index = withRouter((props) => {
                         </div>
                     );
                 }}
-            </MessagingContext.Consumer>
-        </MessagingProvider>
+            </InboxMessagingContext.Consumer>
+        </InboxMessagingProvider>
     );
 });
 
