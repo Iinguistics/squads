@@ -52,7 +52,6 @@ class MessageController extends Controller
         $response = array(
             'success' => $results ? true : false,
             'data' => $results ? $results : null,
-            'sent_from' => $id
         );
         return response()->json($response, 200);
     }

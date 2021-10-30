@@ -21,14 +21,22 @@ const index = withRouter((props) => {
     return (
         <InboxMessagingProvider>
             <InboxMessagingContext.Consumer>
-                {({ fetchUserMessages, userMessages, inboxEmpty, test }) => {
+                {({
+                    fetchUserMessages,
+                    userMessages,
+                    inboxEmpty,
+                    fetchConversationMessages,
+                    conversationMessages,
+                }) => {
                     return (
                         <div className="d-flex flex-column flex-md-row private-profile-main-container">
                             <ConversationSideBar
                                 fetchUserMessages={fetchUserMessages}
                                 userMessages={userMessages}
                                 inboxEmpty={inboxEmpty}
-                                test={test}
+                                fetchConversationMessages={
+                                    fetchConversationMessages
+                                }
                             />
                         </div>
                     );

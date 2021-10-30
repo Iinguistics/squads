@@ -5551,8 +5551,8 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
 
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState12 = _slicedToArray(_useState11, 2),
-      sentFromMessages = _useState12[0],
-      setSentFromMessages = _useState12[1];
+      conversationMessages = _useState12[0],
+      setConversationMessages = _useState12[1];
 
   var fetchUserMessages = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -5599,8 +5599,8 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
     };
   }();
 
-  var test = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+  var fetchConversationMessages = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
       var _yield$Api$get2, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -5609,18 +5609,15 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_converstaion_messages/12");
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_converstaion_messages/".concat(id));
 
             case 3:
               _yield$Api$get2 = _context2.sent;
               data = _yield$Api$get2.data;
 
-              if (data.success && !data.data[0]) {
-                setInboxEmpty(true);
+              if (data.success) {
                 setError("");
-              } else {
-                setUserMessages(data.data);
-                setError("");
+                setConversationMessages(data.data);
               }
 
               _context2.next = 11;
@@ -5639,7 +5636,7 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
       }, _callee2, null, [[0, 8]]);
     }));
 
-    return function test() {
+    return function fetchConversationMessages(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
@@ -5648,8 +5645,9 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
     value: {
       inboxEmpty: inboxEmpty,
       userMessages: userMessages,
+      conversationMessages: conversationMessages,
       fetchUserMessages: fetchUserMessages,
-      test: test
+      fetchConversationMessages: fetchConversationMessages
     },
     children: props.children
   });
@@ -6725,14 +6723,15 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
         var fetchUserMessages = _ref.fetchUserMessages,
             userMessages = _ref.userMessages,
             inboxEmpty = _ref.inboxEmpty,
-            test = _ref.test;
+            fetchConversationMessages = _ref.fetchConversationMessages,
+            conversationMessages = _ref.conversationMessages;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
             fetchUserMessages: fetchUserMessages,
             userMessages: userMessages,
             inboxEmpty: inboxEmpty,
-            test: test
+            fetchConversationMessages: fetchConversationMessages
           })
         });
       }

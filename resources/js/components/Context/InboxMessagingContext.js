@@ -12,7 +12,7 @@ const InboxMessagingProvider = (props) => {
 
     const [inboxEmpty, setInboxEmpty] = useState(false);
     const [userMessages, setUserMessages] = useState(null);
-    const [sentFromMessages, setSentFromMessages] = useState(null);
+    const [conversationMessages, setConversationMessages] = useState(null);
 
     const fetchUserMessages = async () => {
         try {
@@ -29,15 +29,12 @@ const InboxMessagingProvider = (props) => {
         }
     };
 
-    const test = async () => {
+    const fetchConversationMessages = async (id) => {
         try {
-            const { data } = await Api.get("/get_converstaion_messages/12");
-            if (data.success && !data.data[0]) {
-                setInboxEmpty(true);
+            const { data } = await Api.get(`/get_converstaion_messages/${id}`);
+            if (data.success) {
                 setError("");
-            } else {
-                setUserMessages(data.data);
-                setError("");
+                setConversationMessages(data.data);
             }
         } catch (error) {
             setError(error.message);
@@ -49,8 +46,9 @@ const InboxMessagingProvider = (props) => {
             value={{
                 inboxEmpty: inboxEmpty,
                 userMessages: userMessages,
+                conversationMessages: conversationMessages,
                 fetchUserMessages: fetchUserMessages,
-                test: test,
+                fetchConversationMessages: fetchConversationMessages,
             }}
         >
             {props.children}
