@@ -48,13 +48,9 @@ class ProfileController extends Controller
     public function show($id)
     {
 
-        $images = Image::where('id', $id)->get();
-
         $profile = Profile::where('id', $id)
-            ->with(['user'])
+            ->with(['user', 'user.images'])
             ->get();
-
-        $profile[0]['images'] = $images;
 
         $response = array(
             'success' => $profile ? true : false,
