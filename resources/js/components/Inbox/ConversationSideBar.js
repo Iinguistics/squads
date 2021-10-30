@@ -4,12 +4,15 @@ const ConversationSideBar = ({
     fetchUserMessages,
     userMessages,
     inboxEmpty,
+    test,
 }) => {
     useEffect(() => {
-        fetchUserMessages();
+        //fetchUserMessages();
+        test();
     }, []);
 
-    console.log(userMessages, "sidebar", inboxEmpty);
+    console.log("sidebar", inboxEmpty);
+    console.log(userMessages, "sidebar");
     const appUrl = process.env.MIX_APP_URL;
 
     const checkInboxEmpty = () => {

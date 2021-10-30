@@ -5599,11 +5599,57 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
     };
   }();
 
+  var test = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var _yield$Api$get2, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_converstaion_messages/12");
+
+            case 3:
+              _yield$Api$get2 = _context2.sent;
+              data = _yield$Api$get2.data;
+
+              if (data.success && !data.data[0]) {
+                setInboxEmpty(true);
+                setError("");
+              } else {
+                setUserMessages(data.data);
+                setError("");
+              }
+
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](0);
+              setError(_context2.t0.message);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 8]]);
+    }));
+
+    return function test() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(InboxMessagingContext.Provider, {
     value: {
       inboxEmpty: inboxEmpty,
       userMessages: userMessages,
-      fetchUserMessages: fetchUserMessages
+      fetchUserMessages: fetchUserMessages,
+      test: test
     },
     children: props.children
   });
@@ -6571,11 +6617,14 @@ __webpack_require__.r(__webpack_exports__);
 var ConversationSideBar = function ConversationSideBar(_ref) {
   var fetchUserMessages = _ref.fetchUserMessages,
       userMessages = _ref.userMessages,
-      inboxEmpty = _ref.inboxEmpty;
+      inboxEmpty = _ref.inboxEmpty,
+      test = _ref.test;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchUserMessages();
+    //fetchUserMessages();
+    test();
   }, []);
-  console.log(userMessages, "sidebar", inboxEmpty);
+  console.log("sidebar", inboxEmpty);
+  console.log(userMessages, "sidebar");
   var appUrl = "http://127.0.0.1:8000";
 
   var checkInboxEmpty = function checkInboxEmpty() {
@@ -6675,13 +6724,15 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
       children: function children(_ref) {
         var fetchUserMessages = _ref.fetchUserMessages,
             userMessages = _ref.userMessages,
-            inboxEmpty = _ref.inboxEmpty;
+            inboxEmpty = _ref.inboxEmpty,
+            test = _ref.test;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
             fetchUserMessages: fetchUserMessages,
             userMessages: userMessages,
-            inboxEmpty: inboxEmpty
+            inboxEmpty: inboxEmpty,
+            test: test
           })
         });
       }

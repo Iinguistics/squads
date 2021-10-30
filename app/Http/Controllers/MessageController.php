@@ -35,13 +35,24 @@ class MessageController extends Controller
     {
         $user = Auth::user();
 
-        $results = Message::where('id', $id)
+        $results = array();
+
+        //sent to
+        $sent_to = Message::where('id', $user->id)
+            ->where('sent_from_id', $id)
+            ->get();
+
+        //sent from
+        $sent_from = Message::where('id', $id)
             ->where('sent_from_id', $user->id)
             ->get();
 
+        array_push($results, $sent_to, $sent_from);
+
         $response = array(
             'success' => $results ? true : false,
-            'data' => $results ? $results : null
+            'data' => $results ? $results : null,
+            'sent_from' => $id
         );
         return response()->json($response, 200);
     }

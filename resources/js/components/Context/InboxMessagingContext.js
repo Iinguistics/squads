@@ -29,12 +29,28 @@ const InboxMessagingProvider = (props) => {
         }
     };
 
+    const test = async () => {
+        try {
+            const { data } = await Api.get("/get_converstaion_messages/12");
+            if (data.success && !data.data[0]) {
+                setInboxEmpty(true);
+                setError("");
+            } else {
+                setUserMessages(data.data);
+                setError("");
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
     return (
         <InboxMessagingContext.Provider
             value={{
                 inboxEmpty: inboxEmpty,
                 userMessages: userMessages,
                 fetchUserMessages: fetchUserMessages,
+                test: test,
             }}
         >
             {props.children}
