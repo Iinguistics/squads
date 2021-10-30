@@ -58,4 +58,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('get_user_messages', [MessageController::class, 'get_user_messages']);
     Route::get('get_user_unread_messages', [MessageController::class, 'get_user_unread_messages']);
     Route::post('send_user_message', [MessageController::class, 'send_user_message']);
+    Route::get('get_converstaion_messages/{id}', [MessageController::class, 'get_converstaion_messages']);
 });

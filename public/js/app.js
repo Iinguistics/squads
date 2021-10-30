@@ -5522,6 +5522,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var MessagingContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)();
 
 var MessagingProvider = function MessagingProvider(props) {
+  var userInfoData = JSON.parse(localStorage.getItem("userInfo"));
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       error = _useState2[0],
@@ -5537,15 +5539,20 @@ var MessagingProvider = function MessagingProvider(props) {
       loading = _useState6[0],
       setLoading = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      userMessages = _useState8[0],
-      setUserMessages = _useState8[1];
+      inboxEmpty = _useState8[0],
+      setInboxEmpty = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState10 = _slicedToArray(_useState9, 2),
-      sentFromMessages = _useState10[0],
-      setSentFromMessages = _useState10[1];
+      userMessages = _useState10[0],
+      setUserMessages = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState12 = _slicedToArray(_useState11, 2),
+      sentFromMessages = _useState12[0],
+      setSentFromMessages = _useState12[1];
 
   var fetchUserMessages = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -5563,33 +5570,28 @@ var MessagingProvider = function MessagingProvider(props) {
               _yield$Api$get = _context.sent;
               data = _yield$Api$get.data;
 
-              if (!data.data[0]) {
-                _context.next = 9;
-                break;
+              if (data.success && !data.data[0]) {
+                setInboxEmpty(true);
+                setError("");
+              } else {
+                setUserMessages(data.data[0]);
+                setError("");
               }
 
-              setUserMessages(data.data[0]);
-              _context.next = 10;
+              _context.next = 11;
               break;
 
-            case 9:
-              return _context.abrupt("return");
-
-            case 10:
-              _context.next = 15;
-              break;
-
-            case 12:
-              _context.prev = 12;
+            case 8:
+              _context.prev = 8;
               _context.t0 = _context["catch"](0);
-              return _context.abrupt("return");
+              setError(_context.t0.message);
 
-            case 15:
+            case 11:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 12]]);
+      }, _callee, null, [[0, 8]]);
     }));
 
     return function fetchUserMessages() {
@@ -5599,7 +5601,8 @@ var MessagingProvider = function MessagingProvider(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(MessagingContext.Provider, {
     value: {
-      test: test
+      userMessages: userMessages,
+      fetchUserMessages: fetchUserMessages
     },
     children: props.children
   });
@@ -12142,7 +12145,7 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
 
               if (data.success) {
                 setSuccess(true);
-                setError(false);
+                setError("");
                 setShow(false);
               } else {
                 setSuccess(false);
