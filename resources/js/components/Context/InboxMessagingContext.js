@@ -32,6 +32,7 @@ const InboxMessagingProvider = (props) => {
     return (
         <InboxMessagingContext.Provider
             value={{
+                inboxEmpty: inboxEmpty,
                 userMessages: userMessages,
                 fetchUserMessages: fetchUserMessages,
             }}

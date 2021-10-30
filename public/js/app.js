@@ -5601,6 +5601,7 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(InboxMessagingContext.Provider, {
     value: {
+      inboxEmpty: inboxEmpty,
       userMessages: userMessages,
       fetchUserMessages: fetchUserMessages
     },
@@ -6566,22 +6567,42 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var ConversationSideBar = function ConversationSideBar(_ref) {
   var fetchUserMessages = _ref.fetchUserMessages,
-      userMessages = _ref.userMessages;
+      userMessages = _ref.userMessages,
+      inboxEmpty = _ref.inboxEmpty;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchUserMessages();
   }, []);
-  console.log(userMessages, "sidebar");
+  console.log(userMessages, "sidebar", inboxEmpty);
+  var appUrl = "http://127.0.0.1:8000";
+
+  var checkInboxEmpty = function checkInboxEmpty() {
+    if (inboxEmpty) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "m-auto",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: "".concat(appUrl, "/images/empty-2.png"),
+          alt: "empty",
+          className: "profile-preview-photo mr-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "text-muted",
+          children: "No Messages"
+        })]
+      });
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "private-profile-sidebar-container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "container main-header",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "container mt-5 main-header",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "d-flex flex-row flex-md-column justify-content-between text-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "item-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
               type: "text",
@@ -6590,7 +6611,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
               ,
               className: "shadow-none search-conversation-input"
             })
-          })
+          }), checkInboxEmpty()]
         })
       })
     })
@@ -6653,12 +6674,14 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Context_InboxMessagingContext__WEBPACK_IMPORTED_MODULE_1__.InboxMessagingContext.Consumer, {
       children: function children(_ref) {
         var fetchUserMessages = _ref.fetchUserMessages,
-            userMessages = _ref.userMessages;
+            userMessages = _ref.userMessages,
+            inboxEmpty = _ref.inboxEmpty;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
             fetchUserMessages: fetchUserMessages,
-            userMessages: userMessages
+            userMessages: userMessages,
+            inboxEmpty: inboxEmpty
           })
         });
       }

@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from "react";
 
-const ConversationSideBar = ({ fetchUserMessages, userMessages }) => {
+const ConversationSideBar = ({
+    fetchUserMessages,
+    userMessages,
+    inboxEmpty,
+}) => {
     useEffect(() => {
         fetchUserMessages();
     }, []);
 
-    console.log(userMessages, "sidebar");
+    console.log(userMessages, "sidebar", inboxEmpty);
+    const appUrl = process.env.MIX_APP_URL;
+
+    const checkInboxEmpty = () => {
+        if (inboxEmpty) {
+            return (
+                <div className="m-auto">
+                    <img
+                        src={`${appUrl}/images/empty-2.png`}
+                        alt="empty"
+                        className="profile-preview-photo mr-2"
+                    />
+                    <span className="text-muted">No Messages</span>
+                </div>
+            );
+        }
+    };
     return (
         <div className="private-profile-sidebar-container">
             <div className="container main-header">
@@ -20,6 +40,7 @@ const ConversationSideBar = ({ fetchUserMessages, userMessages }) => {
                                 className="shadow-none search-conversation-input"
                             />
                         </div>
+                        {checkInboxEmpty()}
                     </div>
                 </div>
             </div>
