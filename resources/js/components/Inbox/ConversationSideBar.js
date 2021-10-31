@@ -70,6 +70,21 @@ const ConversationSideBar = ({
                     );
                 }
             });
+        } else {
+            if (userMessages) {
+                const userNames = {};
+
+                return userMessages.map((message) => {
+                    if (!(message.sent_from_username in userNames)) {
+                        userNames[message.sent_from_username] = true;
+                        return (
+                            <div key={message.message_id} className="mb-1">
+                                <h5>{message.sent_from_username}</h5>
+                            </div>
+                        );
+                    }
+                });
+            }
         }
     };
     return (

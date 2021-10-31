@@ -6705,6 +6705,21 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
           }, message.message_id);
         }
       });
+    } else {
+      if (userMessages) {
+        var _userNames = {};
+        return userMessages.map(function (message) {
+          if (!(message.sent_from_username in _userNames)) {
+            _userNames[message.sent_from_username] = true;
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "mb-1",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+                children: message.sent_from_username
+              })
+            }, message.message_id);
+          }
+        });
+      }
     }
   };
 
