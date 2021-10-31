@@ -5624,39 +5624,18 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
 
   var fetchConversationMessages = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
-      var _yield$Api$get2, data;
-
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_converstaion_messages/".concat(id));
+              return _context2.abrupt("return");
 
-            case 3:
-              _yield$Api$get2 = _context2.sent;
-              data = _yield$Api$get2.data;
-
-              if (data.success) {
-                setError("");
-                setConversationMessages(data.data);
-              }
-
-              _context2.next = 11;
-              break;
-
-            case 8:
-              _context2.prev = 8;
-              _context2.t0 = _context2["catch"](0);
-              setError(_context2.t0.message);
-
-            case 11:
+            case 1:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 8]]);
+      }, _callee2);
     }));
 
     return function fetchConversationMessages(_x) {
@@ -6636,6 +6615,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -6648,12 +6639,17 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       inboxEmpty = _ref.inboxEmpty,
       fetchConversationMessages = _ref.fetchConversationMessages,
       filteredUserMessages = _ref.filteredUserMessages;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Number),
+      _useState2 = _slicedToArray(_useState, 2),
+      usernameClicked = _useState2[0],
+      setUsernameClicked = _useState2[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchUserMessages();
   }, []);
   console.log("sidebar", inboxEmpty);
   console.log(userMessages, "sidebar");
-  var appUrl = "http://127.0.0.1:8000";
 
   var checkInboxEmpty = function checkInboxEmpty() {
     if (inboxEmpty) {
@@ -6671,6 +6667,11 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
     }
   };
 
+  var fetchConversationHandler = function fetchConversationHandler(sentFromId, messageId) {
+    setUsernameClicked(messageId);
+    fetchConversationMessages(sentFromId);
+  };
+
   var renderUserConversations = function renderUserConversations() {
     if (searchTerm && filteredUserMessages) {
       var userNames = {};
@@ -6678,9 +6679,9 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
         if (!(message.sent_from_username in userNames)) {
           userNames[message.sent_from_username] = true;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "mb-1",
+            className: "mb-1 ".concat(usernameClicked === message.message_id ? "content-active" : ""),
             onClick: function onClick() {
-              return fetchConversationMessages(message.sent_from_id);
+              return fetchConversationHandler(message.sent_from_id, message.message_id);
             },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
               children: message.sent_from_username
@@ -6695,9 +6696,9 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
           if (!(message.sent_from_username in _userNames)) {
             _userNames[message.sent_from_username] = true;
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: "mb-1",
+              className: "mb-1 ".concat(usernameClicked === message.message_id ? "content-active" : ""),
               onClick: function onClick() {
-                return fetchConversationMessages(message.sent_from_id);
+                return fetchConversationHandler(message.sent_from_id, message.message_id);
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
                 children: message.sent_from_username
@@ -6709,6 +6710,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
     }
   };
 
+  var appUrl = "http://127.0.0.1:8000";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "private-profile-sidebar-container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {

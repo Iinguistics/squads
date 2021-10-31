@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const ConversationSideBar = ({
     setSearchTermHandler,
@@ -9,13 +9,13 @@ const ConversationSideBar = ({
     fetchConversationMessages,
     filteredUserMessages,
 }) => {
+    const [usernameClicked, setUsernameClicked] = useState(Number);
     useEffect(() => {
         fetchUserMessages();
     }, []);
 
     console.log("sidebar", inboxEmpty);
     console.log(userMessages, "sidebar");
-    const appUrl = process.env.MIX_APP_URL;
 
     const checkInboxEmpty = () => {
         if (inboxEmpty) {
@@ -32,6 +32,11 @@ const ConversationSideBar = ({
         }
     };
 
+    const fetchConversationHandler = (sentFromId, messageId) => {
+        setUsernameClicked(messageId);
+        fetchConversationMessages(sentFromId);
+    };
+
     const renderUserConversations = () => {
         if (searchTerm && filteredUserMessages) {
             const userNames = {};
@@ -42,9 +47,16 @@ const ConversationSideBar = ({
                     return (
                         <div
                             key={message.message_id}
-                            className="mb-1"
+                            className={`mb-1 ${
+                                usernameClicked === message.message_id
+                                    ? "content-active"
+                                    : ""
+                            }`}
                             onClick={() =>
-                                fetchConversationMessages(message.sent_from_id)
+                                fetchConversationHandler(
+                                    message.sent_from_id,
+                                    message.message_id
+                                )
                             }
                         >
                             <h5>{message.sent_from_username}</h5>
@@ -62,10 +74,15 @@ const ConversationSideBar = ({
                         return (
                             <div
                                 key={message.message_id}
-                                className="mb-1"
+                                className={`mb-1 ${
+                                    usernameClicked === message.message_id
+                                        ? "content-active"
+                                        : ""
+                                }`}
                                 onClick={() =>
-                                    fetchConversationMessages(
-                                        message.sent_from_id
+                                    fetchConversationHandler(
+                                        message.sent_from_id,
+                                        message.message_id
                                     )
                                 }
                             >
@@ -77,6 +94,8 @@ const ConversationSideBar = ({
             }
         }
     };
+    const appUrl = process.env.MIX_APP_URL;
+
     return (
         <div className="private-profile-sidebar-container">
             <div className="container main-header">

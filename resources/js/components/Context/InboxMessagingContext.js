@@ -52,15 +52,16 @@ const InboxMessagingProvider = (props) => {
     };
 
     const fetchConversationMessages = async (id) => {
-        try {
-            const { data } = await Api.get(`/get_converstaion_messages/${id}`);
-            if (data.success) {
-                setError("");
-                setConversationMessages(data.data);
-            }
-        } catch (error) {
-            setError(error.message);
-        }
+        // try {
+        //     const { data } = await Api.get(`/get_converstaion_messages/${id}`);
+        //     if (data.success) {
+        //         setError("");
+        //         setConversationMessages(data.data);
+        //     }
+        // } catch (error) {
+        //     setError(error.message);
+        // }
+        return;
     };
 
     return (
