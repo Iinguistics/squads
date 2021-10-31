@@ -2,3 +2,11 @@
     outline: 1px solid $main-blue !important;
     border: 1px solid $main-blue !important;
 }
+
+.conversation-sidebar-photo {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}

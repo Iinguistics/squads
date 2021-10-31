@@ -33,4 +33,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Image', 'id', 'id');
     }
+
+    public function profile()
+    {
+        return $this->hasOne('App\Profile', 'id', 'id');
+    }
 }

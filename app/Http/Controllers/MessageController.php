@@ -24,6 +24,12 @@ class MessageController extends Controller
 
         $results = Message::where('id', $user->id)->get();
 
+        if ($results) {
+            foreach ($results as $item) {
+                $item['sent_from_profile'] = Profile::where('id', $item->sent_from_id)->get()->first();
+            }
+        }
+
         $response = array(
             'success' => $results ? true : false,
             'data' => $results ? $results : null

@@ -6678,14 +6678,18 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       return filteredUserMessages.map(function (message) {
         if (!(message.sent_from_username in userNames)) {
           userNames[message.sent_from_username] = true;
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "mb-1 ".concat(usernameClicked === message.message_id ? "content-active" : ""),
             onClick: function onClick() {
               return fetchConversationHandler(message.sent_from_id, message.message_id);
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              src: message.sent_from_profile.photo ? message.sent_from_profile.photo : "".concat(appUrl, "/images/default-photo-black-outline.png"),
+              alt: "empty",
+              className: "conversation-sidebar-photo mr-2"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
               children: message.sent_from_username
-            })
+            })]
           }, message.message_id);
         }
       });
@@ -6695,14 +6699,18 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
         return userMessages.map(function (message) {
           if (!(message.sent_from_username in _userNames)) {
             _userNames[message.sent_from_username] = true;
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: "mb-1 ".concat(usernameClicked === message.message_id ? "content-active" : ""),
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "mb-2 ".concat(usernameClicked === message.message_id ? "content-active" : ""),
               onClick: function onClick() {
                 return fetchConversationHandler(message.sent_from_id, message.message_id);
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                src: message.sent_from_profile.photo ? message.sent_from_profile.photo : "".concat(appUrl, "/images/default-photo-black-outline.png"),
+                alt: "empty",
+                className: "conversation-sidebar-photo mr-2"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
                 children: message.sent_from_username
-              })
+              })]
             }, message.message_id);
           }
         });

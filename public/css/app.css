@@ -10839,3 +10839,13 @@ form .player-search-select {
   outline: 1px solid #4d89ff !important;
   border: 1px solid #4d89ff !important;
 }
+
+.conversation-sidebar-photo {
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}

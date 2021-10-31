@@ -59,7 +59,16 @@ const ConversationSideBar = ({
                                 )
                             }
                         >
-                            <h5>{message.sent_from_username}</h5>
+                            <img
+                                src={
+                                    message.sent_from_profile.photo
+                                        ? message.sent_from_profile.photo
+                                        : `${appUrl}/images/default-photo-black-outline.png`
+                                }
+                                alt="empty"
+                                className="conversation-sidebar-photo mr-2"
+                            />
+                            <span>{message.sent_from_username}</span>
                         </div>
                     );
                 }
@@ -74,7 +83,7 @@ const ConversationSideBar = ({
                         return (
                             <div
                                 key={message.message_id}
-                                className={`mb-1 ${
+                                className={`mb-2 ${
                                     usernameClicked === message.message_id
                                         ? "content-active"
                                         : ""
@@ -86,7 +95,16 @@ const ConversationSideBar = ({
                                     )
                                 }
                             >
-                                <h5>{message.sent_from_username}</h5>
+                                <img
+                                    src={
+                                        message.sent_from_profile.photo
+                                            ? message.sent_from_profile.photo
+                                            : `${appUrl}/images/default-photo-black-outline.png`
+                                    }
+                                    alt="empty"
+                                    className="conversation-sidebar-photo mr-2"
+                                />
+                                <span>{message.sent_from_username}</span>
                             </div>
                         );
                     }
