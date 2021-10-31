@@ -5574,7 +5574,7 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
                 setInboxEmpty(true);
                 setError("");
               } else {
-                setUserMessages(data.data[0]);
+                setUserMessages(data.data);
                 setError("");
               }
 
@@ -6193,9 +6193,11 @@ var Header = function Header(_ref) {
       setUserInfo(user);
     }
 
-    setTimeout(function () {
-      fetchUserUnreadMessages();
-    }, 600);
+    if (userInfo) {
+      setTimeout(function () {
+        fetchUserUnreadMessages();
+      }, 600);
+    }
   }, [loggedInToggle]);
 
   var fetchUserUnreadMessages = /*#__PURE__*/function () {
@@ -6630,13 +6632,15 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       inboxEmpty = _ref.inboxEmpty,
       fetchConversationMessages = _ref.fetchConversationMessages;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(userMessages),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       filteredUserMessages = _useState2[0],
       setFilteredUserMessages = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchUserMessages();
+    fetchUserMessages(); // setTimeout(() => {
+    //     setFilteredUserMessages([...userMessages]);
+    // }, 600);
   }, []);
   console.log("sidebar", inboxEmpty);
   console.log(userMessages, "sidebar");
@@ -6658,6 +6662,23 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
     }
   };
 
+  var renderUserConversations = function renderUserConversations() {
+    if (userMessages) {
+      var userNames = {};
+      return userMessages.map(function (message) {
+        if (!(message.sent_from_username in userNames)) {
+          userNames[message.sent_from_username] = true;
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "mb-1",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+              children: message.sent_from_username
+            })
+          }, message.message_id);
+        }
+      });
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "private-profile-sidebar-container",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6665,7 +6686,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "container mt-5 main-header",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "d-flex flex-row flex-md-column justify-content-between text-center",
+          className: "d-flex flex-row flex-md-column justify-content-between text-center my-3",
           children: [!inboxEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "item-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
@@ -6673,9 +6694,9 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
               placeholder: "Search by username" // value={username}
               // onChange={(e) => setUsername(e.target.value)}
               ,
-              className: "shadow-none search-conversation-input"
+              className: "shadow-none search-conversation-input mb-4"
             })
-          }), checkInboxEmpty()]
+          }), checkInboxEmpty(), renderUserConversations()]
         })
       })
     })
@@ -6790,7 +6811,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
     }
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "container mt-5",
+    className: "container pt-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
       className: "text-center",
       children: "Reset Password"

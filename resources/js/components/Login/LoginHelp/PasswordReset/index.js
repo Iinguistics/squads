@@ -12,7 +12,7 @@ const index = withRouter((props) => {
     }, []);
 
     return (
-        <div className="container mt-5">
+        <div className="container pt-5">
             <h1 className="text-center">Reset Password</h1>
             {!props.passwordResetPinVerified ? (
                 <PasswordResetRequestForm

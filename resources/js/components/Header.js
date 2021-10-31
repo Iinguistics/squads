@@ -19,9 +19,11 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
             setUserInfo(user);
         }
 
-        setTimeout(() => {
-            fetchUserUnreadMessages();
-        }, 600);
+        if (userInfo) {
+            setTimeout(() => {
+                fetchUserUnreadMessages();
+            }, 600);
+        }
     }, [loggedInToggle]);
 
     const fetchUserUnreadMessages = async () => {

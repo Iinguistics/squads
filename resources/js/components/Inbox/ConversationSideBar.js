@@ -6,11 +6,14 @@ const ConversationSideBar = ({
     inboxEmpty,
     fetchConversationMessages,
 }) => {
-    const [filteredUserMessages, setFilteredUserMessages] =
-        useState(userMessages);
+    const [filteredUserMessages, setFilteredUserMessages] = useState([]);
 
     useEffect(() => {
         fetchUserMessages();
+
+        // setTimeout(() => {
+        //     setFilteredUserMessages([...userMessages]);
+        // }, 600);
     }, []);
 
     console.log("sidebar", inboxEmpty);
@@ -31,11 +34,28 @@ const ConversationSideBar = ({
             );
         }
     };
+
+    const renderUserConversations = () => {
+        if (userMessages) {
+            const userNames = {};
+
+            return userMessages.map((message) => {
+                if (!(message.sent_from_username in userNames)) {
+                    userNames[message.sent_from_username] = true;
+                    return (
+                        <div key={message.message_id} className="mb-1">
+                            <h5>{message.sent_from_username}</h5>
+                        </div>
+                    );
+                }
+            });
+        }
+    };
     return (
         <div className="private-profile-sidebar-container">
             <div className="container main-header">
                 <div className="container mt-5 main-header">
-                    <div className="d-flex flex-row flex-md-column justify-content-between text-center">
+                    <div className="d-flex flex-row flex-md-column justify-content-between text-center my-3">
                         {!inboxEmpty && (
                             <div className="item-1">
                                 <input
@@ -43,11 +63,12 @@ const ConversationSideBar = ({
                                     placeholder="Search by username"
                                     // value={username}
                                     // onChange={(e) => setUsername(e.target.value)}
-                                    className="shadow-none search-conversation-input"
+                                    className="shadow-none search-conversation-input mb-4"
                                 />
                             </div>
                         )}
                         {checkInboxEmpty()}
+                        {renderUserConversations()}
                     </div>
                 </div>
             </div>

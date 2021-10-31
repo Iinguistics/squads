@@ -21,7 +21,7 @@ const InboxMessagingProvider = (props) => {
                 setInboxEmpty(true);
                 setError("");
             } else {
-                setUserMessages(data.data[0]);
+                setUserMessages(data.data);
                 setError("");
             }
         } catch (error) {
