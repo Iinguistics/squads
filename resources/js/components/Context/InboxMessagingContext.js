@@ -74,7 +74,6 @@ const InboxMessagingProvider = (props) => {
                 setSearchTermHandler: setSearchTermHandler,
                 fetchUserMessages: fetchUserMessages,
                 fetchConversationMessages: fetchConversationMessages,
-                filterUserMessagesHandler: filterUserMessagesHandler,
             }}
         >
             {props.children}

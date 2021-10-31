@@ -5673,8 +5673,7 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
       filteredUserMessages: filteredUserMessages,
       setSearchTermHandler: setSearchTermHandler,
       fetchUserMessages: fetchUserMessages,
-      fetchConversationMessages: fetchConversationMessages,
-      filterUserMessagesHandler: filterUserMessagesHandler
+      fetchConversationMessages: fetchConversationMessages
     },
     children: props.children
   });
@@ -6648,13 +6647,9 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       userMessages = _ref.userMessages,
       inboxEmpty = _ref.inboxEmpty,
       fetchConversationMessages = _ref.fetchConversationMessages,
-      filterUserMessagesHandler = _ref.filterUserMessagesHandler,
       filteredUserMessages = _ref.filteredUserMessages;
-  // const [filteredUserMessages, setFilteredUserMessages] = useState([]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchUserMessages(); // setTimeout(() => {
-    //     setFilteredUserMessages([...userMessages]);
-    // }, 600);
+    fetchUserMessages();
   }, []);
   console.log("sidebar", inboxEmpty);
   console.log(userMessages, "sidebar");
@@ -6674,22 +6669,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
         })]
       });
     }
-  }; // const renderUserConversations = () => {
-  //     if (userMessages) {
-  //         const userNames = {};
-  //         return userMessages.map((message) => {
-  //             if (!(message.sent_from_username in userNames)) {
-  //                 userNames[message.sent_from_username] = true;
-  //                 return (
-  //                     <div key={message.message_id} className="mb-1">
-  //                         <h5>{message.sent_from_username}</h5>
-  //                     </div>
-  //                 );
-  //             }
-  //         });
-  //     }
-  // };
-
+  };
 
   var renderUserConversations = function renderUserConversations() {
     if (searchTerm && filteredUserMessages) {
@@ -6699,6 +6679,9 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
           userNames[message.sent_from_username] = true;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "mb-1",
+            onClick: function onClick() {
+              return fetchConversationMessages(message.sent_from_id);
+            },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
               children: message.sent_from_username
             })
@@ -6713,6 +6696,9 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
             _userNames[message.sent_from_username] = true;
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               className: "mb-1",
+              onClick: function onClick() {
+                return fetchConversationMessages(message.sent_from_id);
+              },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
                 children: message.sent_from_username
               })
@@ -6808,9 +6794,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
             userMessages = _ref.userMessages,
             inboxEmpty = _ref.inboxEmpty,
             fetchConversationMessages = _ref.fetchConversationMessages,
-            conversationMessages = _ref.conversationMessages,
-            filterUserMessagesHandler = _ref.filterUserMessagesHandler,
-            filteredUserMessages = _ref.filteredUserMessages;
+            filteredUserMessages = _ref.filteredUserMessages,
+            conversationMessages = _ref.conversationMessages;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -6818,7 +6803,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
             userMessages: userMessages,
             inboxEmpty: inboxEmpty,
             fetchConversationMessages: fetchConversationMessages,
-            filterUserMessagesHandler: filterUserMessagesHandler,
             filteredUserMessages: filteredUserMessages,
             setSearchTermHandler: setSearchTermHandler,
             searchTerm: searchTerm

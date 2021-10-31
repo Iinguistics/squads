@@ -28,9 +28,8 @@ const index = withRouter((props) => {
                     userMessages,
                     inboxEmpty,
                     fetchConversationMessages,
-                    conversationMessages,
-                    filterUserMessagesHandler,
                     filteredUserMessages,
+                    conversationMessages,
                 }) => {
                     return (
                         <div className="d-flex flex-column flex-md-row private-profile-main-container">
@@ -40,9 +39,6 @@ const index = withRouter((props) => {
                                 inboxEmpty={inboxEmpty}
                                 fetchConversationMessages={
                                     fetchConversationMessages
-                                }
-                                filterUserMessagesHandler={
-                                    filterUserMessagesHandler
                                 }
                                 filteredUserMessages={filteredUserMessages}
                                 setSearchTermHandler={setSearchTermHandler}

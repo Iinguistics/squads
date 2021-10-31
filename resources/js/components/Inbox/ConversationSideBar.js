@@ -7,17 +7,10 @@ const ConversationSideBar = ({
     userMessages,
     inboxEmpty,
     fetchConversationMessages,
-    filterUserMessagesHandler,
     filteredUserMessages,
 }) => {
-    // const [filteredUserMessages, setFilteredUserMessages] = useState([]);
-
     useEffect(() => {
         fetchUserMessages();
-
-        // setTimeout(() => {
-        //     setFilteredUserMessages([...userMessages]);
-        // }, 600);
     }, []);
 
     console.log("sidebar", inboxEmpty);
@@ -39,23 +32,6 @@ const ConversationSideBar = ({
         }
     };
 
-    // const renderUserConversations = () => {
-    //     if (userMessages) {
-    //         const userNames = {};
-
-    //         return userMessages.map((message) => {
-    //             if (!(message.sent_from_username in userNames)) {
-    //                 userNames[message.sent_from_username] = true;
-    //                 return (
-    //                     <div key={message.message_id} className="mb-1">
-    //                         <h5>{message.sent_from_username}</h5>
-    //                     </div>
-    //                 );
-    //             }
-    //         });
-    //     }
-    // };
-
     const renderUserConversations = () => {
         if (searchTerm && filteredUserMessages) {
             const userNames = {};
@@ -64,7 +40,13 @@ const ConversationSideBar = ({
                 if (!(message.sent_from_username in userNames)) {
                     userNames[message.sent_from_username] = true;
                     return (
-                        <div key={message.message_id} className="mb-1">
+                        <div
+                            key={message.message_id}
+                            className="mb-1"
+                            onClick={() =>
+                                fetchConversationMessages(message.sent_from_id)
+                            }
+                        >
                             <h5>{message.sent_from_username}</h5>
                         </div>
                     );
@@ -78,7 +60,15 @@ const ConversationSideBar = ({
                     if (!(message.sent_from_username in userNames)) {
                         userNames[message.sent_from_username] = true;
                         return (
-                            <div key={message.message_id} className="mb-1">
+                            <div
+                                key={message.message_id}
+                                className="mb-1"
+                                onClick={() =>
+                                    fetchConversationMessages(
+                                        message.sent_from_id
+                                    )
+                                }
+                            >
                                 <h5>{message.sent_from_username}</h5>
                             </div>
                         );
