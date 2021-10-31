@@ -22,11 +22,15 @@ const index = withRouter((props) => {
         <InboxMessagingProvider>
             <InboxMessagingContext.Consumer>
                 {({
+                    setSearchTermHandler,
+                    searchTerm,
                     fetchUserMessages,
                     userMessages,
                     inboxEmpty,
                     fetchConversationMessages,
                     conversationMessages,
+                    filterUserMessagesHandler,
+                    filteredUserMessages,
                 }) => {
                     return (
                         <div className="d-flex flex-column flex-md-row private-profile-main-container">
@@ -37,6 +41,12 @@ const index = withRouter((props) => {
                                 fetchConversationMessages={
                                     fetchConversationMessages
                                 }
+                                filterUserMessagesHandler={
+                                    filterUserMessagesHandler
+                                }
+                                filteredUserMessages={filteredUserMessages}
+                                setSearchTermHandler={setSearchTermHandler}
+                                searchTerm={searchTerm}
                             />
                         </div>
                     );

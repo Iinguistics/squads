@@ -14,6 +14,14 @@ const InboxMessagingProvider = (props) => {
     const [userMessages, setUserMessages] = useState(null);
     const [conversationMessages, setConversationMessages] = useState(null);
 
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredUserMessages, setFilteredUserMessages] = useState(null);
+
+    const setSearchTermHandler = (e) => {
+        setSearchTerm(e.target.value);
+        filterUserMessagesHandler();
+    };
+
     const fetchUserMessages = async () => {
         try {
             const { data } = await Api.get("/get_user_messages");
@@ -27,6 +35,20 @@ const InboxMessagingProvider = (props) => {
         } catch (error) {
             setError(error.message);
         }
+    };
+
+    const filterUserMessagesHandler = () => {
+        let filteredMessages = userMessages;
+
+        filteredMessages = filteredMessages.filter((item) => {
+            return (
+                item.sent_from_username
+                    .toLowerCase()
+                    .search(searchTerm.toLowerCase()) !== -1
+            );
+        });
+
+        setFilteredUserMessages(filteredMessages);
     };
 
     const fetchConversationMessages = async (id) => {
@@ -44,11 +66,15 @@ const InboxMessagingProvider = (props) => {
     return (
         <InboxMessagingContext.Provider
             value={{
+                searchTerm: searchTerm,
                 inboxEmpty: inboxEmpty,
                 userMessages: userMessages,
                 conversationMessages: conversationMessages,
+                filteredUserMessages: filteredUserMessages,
+                setSearchTermHandler: setSearchTermHandler,
                 fetchUserMessages: fetchUserMessages,
                 fetchConversationMessages: fetchConversationMessages,
+                filterUserMessagesHandler: filterUserMessagesHandler,
             }}
         >
             {props.children}

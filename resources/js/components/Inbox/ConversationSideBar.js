@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 const ConversationSideBar = ({
+    setSearchTermHandler,
+    searchTerm,
     fetchUserMessages,
     userMessages,
     inboxEmpty,
     fetchConversationMessages,
+    filterUserMessagesHandler,
+    filteredUserMessages,
 }) => {
-    const [filteredUserMessages, setFilteredUserMessages] = useState([]);
+    // const [filteredUserMessages, setFilteredUserMessages] = useState([]);
 
     useEffect(() => {
         fetchUserMessages();
@@ -35,11 +39,28 @@ const ConversationSideBar = ({
         }
     };
 
+    // const renderUserConversations = () => {
+    //     if (userMessages) {
+    //         const userNames = {};
+
+    //         return userMessages.map((message) => {
+    //             if (!(message.sent_from_username in userNames)) {
+    //                 userNames[message.sent_from_username] = true;
+    //                 return (
+    //                     <div key={message.message_id} className="mb-1">
+    //                         <h5>{message.sent_from_username}</h5>
+    //                     </div>
+    //                 );
+    //             }
+    //         });
+    //     }
+    // };
+
     const renderUserConversations = () => {
-        if (userMessages) {
+        if (searchTerm && filteredUserMessages) {
             const userNames = {};
 
-            return userMessages.map((message) => {
+            return filteredUserMessages.map((message) => {
                 if (!(message.sent_from_username in userNames)) {
                     userNames[message.sent_from_username] = true;
                     return (
@@ -61,8 +82,8 @@ const ConversationSideBar = ({
                                 <input
                                     type="text"
                                     placeholder="Search by username"
-                                    // value={username}
-                                    // onChange={(e) => setUsername(e.target.value)}
+                                    value={searchTerm}
+                                    onChange={setSearchTermHandler}
                                     className="shadow-none search-conversation-input mb-4"
                                 />
                             </div>
