@@ -29,6 +29,7 @@ const Header = ({
         //         fetchUserUnreadMessages();
         //     }, 600);
         // }
+        fetchUserUnreadMessages();
     }, [loggedInToggle]);
 
     const fetchUserUnreadMessages = async () => {
@@ -37,7 +38,6 @@ const Header = ({
             if (data.data[0]) {
                 setUnreadMessages(true);
             } else {
-                console.log("ran???");
                 setUnreadMessages(false);
             }
         } catch (error) {
@@ -46,8 +46,9 @@ const Header = ({
     };
 
     useEffect(() => {
-        fetchUserUnreadMessages();
-        console.log(messageReadClicked);
+        if (messageReadClicked !== 0) {
+            fetchUserUnreadMessages();
+        }
     }, [messageSentClicked, messageReadClicked]);
 
     const renderUnreadMessages = () => {

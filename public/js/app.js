@@ -6262,6 +6262,8 @@ var Header = function Header(_ref) {
     //     }, 600);
     // }
 
+
+    fetchUserUnreadMessages();
   }, [loggedInToggle]);
 
   var fetchUserUnreadMessages = /*#__PURE__*/function () {
@@ -6283,7 +6285,6 @@ var Header = function Header(_ref) {
               if (data.data[0]) {
                 setUnreadMessages(true);
               } else {
-                console.log("ran???");
                 setUnreadMessages(false);
               }
 
@@ -6309,8 +6310,9 @@ var Header = function Header(_ref) {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    fetchUserUnreadMessages();
-    console.log(messageReadClicked);
+    if (messageReadClicked !== 0) {
+      fetchUserUnreadMessages();
+    }
   }, [messageSentClicked, messageReadClicked]);
 
   var renderUnreadMessages = function renderUnreadMessages() {
