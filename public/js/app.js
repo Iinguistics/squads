@@ -5593,8 +5593,11 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
   };
 
   var messageReadClickedHandler = function messageReadClickedHandler() {
-    // setMessageReadClicked((messageReadClicked) => messageReadClicked + 1);
-    setMessageReadClicked(messageReadClicked + 1);
+    setMessageReadClicked(function (messageReadClicked) {
+      return messageReadClicked + 1;
+    }); //setMessageReadClicked(messageReadClicked + 1);
+
+    console.log("ran from context");
   };
 
   var setSearchTermHandler = function setSearchTermHandler(e) {
@@ -6251,6 +6254,11 @@ var Header = function Header(_ref) {
       unreadMessages = _useState8[0],
       setUnreadMessages = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(messageReadClicked),
+      _useState10 = _slicedToArray(_useState9, 2),
+      test = _useState10[0],
+      setTest = _useState10[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -6311,9 +6319,11 @@ var Header = function Header(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (messageReadClicked !== 0) {
+      setTest(messageReadClicked);
+      console.log("ran from header useEffect", messageReadClicked);
       fetchUserUnreadMessages();
     }
-  }, [messageSentClicked, messageReadClicked]);
+  }, [messageSentClicked, messageReadClicked, test]);
 
   var renderUnreadMessages = function renderUnreadMessages() {
     if (unreadMessages) {
@@ -6726,7 +6736,10 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
   var fetchConversationHandler = function fetchConversationHandler(sentFromId, messageId) {
     setUsernameClicked(messageId);
     fetchConversationMessages(sentFromId);
-    messageReadClickedHandler();
+    setTimeout(function () {
+      messageReadClickedHandler();
+      console.log("ran from sidebar");
+    }, 700);
   };
 
   var renderUserConversations = function renderUserConversations() {

@@ -36,7 +36,11 @@ const ConversationSideBar = ({
     const fetchConversationHandler = (sentFromId, messageId) => {
         setUsernameClicked(messageId);
         fetchConversationMessages(sentFromId);
-        messageReadClickedHandler();
+
+        setTimeout(() => {
+            messageReadClickedHandler();
+            console.log("ran from sidebar");
+        }, 700);
     };
 
     const renderUserConversations = () => {

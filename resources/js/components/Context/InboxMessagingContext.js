@@ -25,8 +25,9 @@ const InboxMessagingProvider = (props) => {
     };
 
     const messageReadClickedHandler = () => {
-        // setMessageReadClicked((messageReadClicked) => messageReadClicked + 1);
-        setMessageReadClicked(messageReadClicked + 1);
+        setMessageReadClicked((messageReadClicked) => messageReadClicked + 1);
+        //setMessageReadClicked(messageReadClicked + 1);
+        console.log("ran from context");
     };
 
     const setSearchTermHandler = (e) => {

@@ -18,6 +18,8 @@ const Header = ({
     const [searchClicked, setSearchClicked] = useState(0);
     const [unreadMessages, setUnreadMessages] = useState(false);
 
+    const [test, setTest] = useState(messageReadClicked);
+
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem("userInfo"));
         if (userInfo !== user) {
@@ -47,9 +49,11 @@ const Header = ({
 
     useEffect(() => {
         if (messageReadClicked !== 0) {
+            setTest(messageReadClicked);
+            console.log("ran from header useEffect", messageReadClicked);
             fetchUserUnreadMessages();
         }
-    }, [messageSentClicked, messageReadClicked]);
+    }, [messageSentClicked, messageReadClicked, test]);
 
     const renderUnreadMessages = () => {
         if (unreadMessages) {
