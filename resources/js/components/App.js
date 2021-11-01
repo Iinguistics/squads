@@ -3,6 +3,9 @@ import Main from "./Main";
 import Header from "./Header";
 
 import UserProvider, { UserContext } from "./Context/UserContext";
+import InboxMessagingProvider, {
+    InboxMessagingContext,
+} from "./Context/InboxMessagingContext";
 
 const App = () => {
     return (
