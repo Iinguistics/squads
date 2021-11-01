@@ -20,29 +20,50 @@ const App = () => {
                     passwordResetEmailHandler,
                 }) => {
                     return (
-                        <>
-                            <Header
-                                loggedInToggle={loggedInToggle}
-                                loggedInToggleHandler={loggedInToggleHandler}
-                            />
-                            <main>
-                                <Main
-                                    loggedInToggleHandler={
-                                        loggedInToggleHandler
-                                    }
-                                    passwordResetPinVerified={
-                                        passwordResetPinVerified
-                                    }
-                                    passwordResetPinVerifiedHandler={
-                                        passwordResetPinVerifiedHandler
-                                    }
-                                    passwordResetEmail={passwordResetEmail}
-                                    passwordResetEmailHandler={
-                                        passwordResetEmailHandler
-                                    }
-                                />
-                            </main>
-                        </>
+                        <InboxMessagingProvider>
+                            <InboxMessagingContext.Consumer>
+                                {({
+                                    messageSentClicked,
+                                    messageReadClicked,
+                                }) => {
+                                    return (
+                                        <>
+                                            <Header
+                                                loggedInToggle={loggedInToggle}
+                                                loggedInToggleHandler={
+                                                    loggedInToggleHandler
+                                                }
+                                                messageReadClicked={
+                                                    messageReadClicked
+                                                }
+                                                messageSentClicked={
+                                                    messageSentClicked
+                                                }
+                                            />
+                                            <main>
+                                                <Main
+                                                    loggedInToggleHandler={
+                                                        loggedInToggleHandler
+                                                    }
+                                                    passwordResetPinVerified={
+                                                        passwordResetPinVerified
+                                                    }
+                                                    passwordResetPinVerifiedHandler={
+                                                        passwordResetPinVerifiedHandler
+                                                    }
+                                                    passwordResetEmail={
+                                                        passwordResetEmail
+                                                    }
+                                                    passwordResetEmailHandler={
+                                                        passwordResetEmailHandler
+                                                    }
+                                                />
+                                            </main>
+                                        </>
+                                    );
+                                }}
+                            </InboxMessagingContext.Consumer>
+                        </InboxMessagingProvider>
                     );
                 }}
             </UserContext.Consumer>

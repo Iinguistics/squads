@@ -25,7 +25,8 @@ const InboxMessagingProvider = (props) => {
     };
 
     const messageReadClickedHandler = () => {
-        setMessageReadClicked((messageReadClicked) => messageReadClicked + 1);
+        // setMessageReadClicked((messageReadClicked) => messageReadClicked + 1);
+        setMessageReadClicked(messageReadClicked + 1);
     };
 
     const setSearchTermHandler = (e) => {

@@ -5,7 +5,12 @@ import { LinkContainer } from "react-router-bootstrap";
 import LogoutModal from "./Utils/Modals/LogoutModal";
 import SearchModal from "./Utils/Modals/Search";
 
-const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
+const Header = ({
+    loggedInToggle,
+    loggedInToggleHandler,
+    messageSentClicked,
+    messageReadClicked,
+}) => {
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("userInfo"))
     );
@@ -19,27 +24,31 @@ const Header = ({ loggedInToggle, loggedInToggleHandler }) => {
             setUserInfo(user);
         }
 
-        if (userInfo) {
-            setTimeout(() => {
-                fetchUserUnreadMessages();
-            }, 600);
-        }
+        // if (userInfo) {
+        //     setTimeout(() => {
+        //         fetchUserUnreadMessages();
+        //     }, 600);
+        // }
     }, [loggedInToggle]);
 
     const fetchUserUnreadMessages = async () => {
-        if (userInfo) {
-            try {
-                const { data } = await Api.get("/get_user_unread_messages");
-                if (data.data[0]) {
-                    setUnreadMessages(true);
-                } else {
-                    return;
-                }
-            } catch (error) {
-                return;
+        try {
+            const { data } = await Api.get("/get_user_unread_messages");
+            if (data.data[0]) {
+                setUnreadMessages(true);
+            } else {
+                console.log("ran???");
+                setUnreadMessages(false);
             }
+        } catch (error) {
+            return;
         }
     };
+
+    useEffect(() => {
+        fetchUserUnreadMessages();
+        console.log(messageReadClicked);
+    }, [messageSentClicked, messageReadClicked]);
 
     const renderUnreadMessages = () => {
         if (unreadMessages) {

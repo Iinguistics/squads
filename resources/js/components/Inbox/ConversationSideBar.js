@@ -8,6 +8,7 @@ const ConversationSideBar = ({
     inboxEmpty,
     fetchConversationMessages,
     filteredUserMessages,
+    messageReadClickedHandler,
 }) => {
     const [usernameClicked, setUsernameClicked] = useState(Number);
     useEffect(() => {
@@ -35,6 +36,7 @@ const ConversationSideBar = ({
     const fetchConversationHandler = (sentFromId, messageId) => {
         setUsernameClicked(messageId);
         fetchConversationMessages(sentFromId);
+        messageReadClickedHandler();
     };
 
     const renderUserConversations = () => {

@@ -5460,19 +5460,29 @@ var App = function App() {
             passwordResetPinVerifiedHandler = _ref.passwordResetPinVerifiedHandler,
             passwordResetEmail = _ref.passwordResetEmail,
             passwordResetEmailHandler = _ref.passwordResetEmailHandler;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            loggedInToggle: loggedInToggle,
-            loggedInToggleHandler: loggedInToggleHandler
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("main", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Main__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              loggedInToggleHandler: loggedInToggleHandler,
-              passwordResetPinVerified: passwordResetPinVerified,
-              passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler,
-              passwordResetEmail: passwordResetEmail,
-              passwordResetEmailHandler: passwordResetEmailHandler
-            })
-          })]
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_InboxMessagingContext__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Context_InboxMessagingContext__WEBPACK_IMPORTED_MODULE_4__.InboxMessagingContext.Consumer, {
+            children: function children(_ref2) {
+              var messageSentClicked = _ref2.messageSentClicked,
+                  messageReadClicked = _ref2.messageReadClicked;
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                  loggedInToggle: loggedInToggle,
+                  loggedInToggleHandler: loggedInToggleHandler,
+                  messageReadClicked: messageReadClicked,
+                  messageSentClicked: messageSentClicked
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("main", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Main__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                    loggedInToggleHandler: loggedInToggleHandler,
+                    passwordResetPinVerified: passwordResetPinVerified,
+                    passwordResetPinVerifiedHandler: passwordResetPinVerifiedHandler,
+                    passwordResetEmail: passwordResetEmail,
+                    passwordResetEmailHandler: passwordResetEmailHandler
+                  })
+                })]
+              });
+            }
+          })
         });
       }
     })
@@ -5583,9 +5593,8 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
   };
 
   var messageReadClickedHandler = function messageReadClickedHandler() {
-    setMessageReadClicked(function (messageReadClicked) {
-      return messageReadClicked + 1;
-    });
+    // setMessageReadClicked((messageReadClicked) => messageReadClicked + 1);
+    setMessageReadClicked(messageReadClicked + 1);
   };
 
   var setSearchTermHandler = function setSearchTermHandler(e) {
@@ -6218,7 +6227,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Header = function Header(_ref) {
   var loggedInToggle = _ref.loggedInToggle,
-      loggedInToggleHandler = _ref.loggedInToggleHandler;
+      loggedInToggleHandler = _ref.loggedInToggleHandler,
+      messageSentClicked = _ref.messageSentClicked,
+      messageReadClicked = _ref.messageReadClicked;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(JSON.parse(localStorage.getItem("userInfo"))),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6245,13 +6256,12 @@ var Header = function Header(_ref) {
 
     if (userInfo !== user) {
       setUserInfo(user);
-    }
+    } // if (userInfo) {
+    //     setTimeout(() => {
+    //         fetchUserUnreadMessages();
+    //     }, 600);
+    // }
 
-    if (userInfo) {
-      setTimeout(function () {
-        fetchUserUnreadMessages();
-      }, 600);
-    }
   }, [loggedInToggle]);
 
   var fetchUserUnreadMessages = /*#__PURE__*/function () {
@@ -6262,52 +6272,46 @@ var Header = function Header(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!userInfo) {
-                _context.next = 16;
-                break;
-              }
-
-              _context.prev = 1;
-              _context.next = 4;
+              _context.prev = 0;
+              _context.next = 3;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_user_unread_messages");
 
-            case 4:
+            case 3:
               _yield$Api$get = _context.sent;
               data = _yield$Api$get.data;
 
-              if (!data.data[0]) {
-                _context.next = 10;
-                break;
+              if (data.data[0]) {
+                setUnreadMessages(true);
+              } else {
+                console.log("ran???");
+                setUnreadMessages(false);
               }
 
-              setUnreadMessages(true);
               _context.next = 11;
               break;
 
-            case 10:
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
               return _context.abrupt("return");
 
             case 11:
-              _context.next = 16;
-              break;
-
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](1);
-              return _context.abrupt("return");
-
-            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 13]]);
+      }, _callee, null, [[0, 8]]);
     }));
 
     return function fetchUserUnreadMessages() {
       return _ref2.apply(this, arguments);
     };
   }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    fetchUserUnreadMessages();
+    console.log(messageReadClicked);
+  }, [messageSentClicked, messageReadClicked]);
 
   var renderUnreadMessages = function renderUnreadMessages() {
     if (unreadMessages) {
@@ -6687,7 +6691,8 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       userMessages = _ref.userMessages,
       inboxEmpty = _ref.inboxEmpty,
       fetchConversationMessages = _ref.fetchConversationMessages,
-      filteredUserMessages = _ref.filteredUserMessages;
+      filteredUserMessages = _ref.filteredUserMessages,
+      messageReadClickedHandler = _ref.messageReadClickedHandler;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Number),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6719,6 +6724,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
   var fetchConversationHandler = function fetchConversationHandler(sentFromId, messageId) {
     setUsernameClicked(messageId);
     fetchConversationMessages(sentFromId);
+    messageReadClickedHandler();
   };
 
   var renderUserConversations = function renderUserConversations() {
@@ -6854,7 +6860,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
             inboxEmpty = _ref.inboxEmpty,
             fetchConversationMessages = _ref.fetchConversationMessages,
             filteredUserMessages = _ref.filteredUserMessages,
-            conversationMessages = _ref.conversationMessages;
+            conversationMessages = _ref.conversationMessages,
+            messageSentClickedHandler = _ref.messageSentClickedHandler,
+            messageReadClickedHandler = _ref.messageReadClickedHandler;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -6864,7 +6872,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
             fetchConversationMessages: fetchConversationMessages,
             filteredUserMessages: filteredUserMessages,
             setSearchTermHandler: setSearchTermHandler,
-            searchTerm: searchTerm
+            searchTerm: searchTerm,
+            messageReadClickedHandler: messageReadClickedHandler
           })
         });
       }
