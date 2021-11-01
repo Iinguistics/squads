@@ -17,6 +17,17 @@ const InboxMessagingProvider = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredUserMessages, setFilteredUserMessages] = useState(null);
 
+    const [messageSentClicked, setMessageSentClicked] = useState(0);
+    const [messageReadClicked, setMessageReadClicked] = useState(0);
+
+    const messageSentClickedHandler = () => {
+        setMessageSentClicked((messageSentClicked) => messageSentClicked + 1);
+    };
+
+    const messageReadClickedHandler = () => {
+        setMessageReadClicked((messageReadClicked) => messageReadClicked + 1);
+    };
+
     const setSearchTermHandler = (e) => {
         setSearchTerm(e.target.value);
         filterUserMessagesHandler();
@@ -52,16 +63,15 @@ const InboxMessagingProvider = (props) => {
     };
 
     const fetchConversationMessages = async (id) => {
-        // try {
-        //     const { data } = await Api.get(`/get_converstaion_messages/${id}`);
-        //     if (data.success) {
-        //         setError("");
-        //         setConversationMessages(data.data);
-        //     }
-        // } catch (error) {
-        //     setError(error.message);
-        // }
-        return;
+        try {
+            const { data } = await Api.get(`/get_converstaion_messages/${id}`);
+            if (data.success) {
+                setError("");
+                setConversationMessages(data.data);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
     };
 
     return (
@@ -72,9 +82,13 @@ const InboxMessagingProvider = (props) => {
                 userMessages: userMessages,
                 conversationMessages: conversationMessages,
                 filteredUserMessages: filteredUserMessages,
+                messageSentClicked: messageSentClicked,
+                messageReadClicked: messageReadClicked,
                 setSearchTermHandler: setSearchTermHandler,
                 fetchUserMessages: fetchUserMessages,
                 fetchConversationMessages: fetchConversationMessages,
+                messageSentClickedHandler: messageSentClickedHandler,
+                messageReadClickedHandler: messageReadClickedHandler,
             }}
         >
             {props.children}

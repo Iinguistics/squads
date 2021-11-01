@@ -47,7 +47,7 @@ const ConversationSideBar = ({
                     return (
                         <div
                             key={message.message_id}
-                            className={`mb-1 ${
+                            className={`mb-2 conversation-sidebar-username ${
                                 usernameClicked === message.message_id
                                     ? "content-active"
                                     : ""
@@ -83,7 +83,7 @@ const ConversationSideBar = ({
                         return (
                             <div
                                 key={message.message_id}
-                                className={`mb-2 ${
+                                className={`mb-2 conversation-sidebar-username ${
                                     usernameClicked === message.message_id
                                         ? "content-active"
                                         : ""
@@ -126,7 +126,7 @@ const ConversationSideBar = ({
                                     placeholder="Search by username"
                                     value={searchTerm}
                                     onChange={setSearchTermHandler}
-                                    className="shadow-none search-conversation-input mb-4"
+                                    className="mb-4 shadow-none search-conversation-input"
                                 />
                             </div>
                         )}

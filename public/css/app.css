@@ -10840,6 +10840,10 @@ form .player-search-select {
   border: 1px solid #4d89ff !important;
 }
 
+.conversation-sidebar-username:hover {
+  cursor: pointer;
+}
+
 .conversation-sidebar-photo {
   height: 42px;
   width: 42px;

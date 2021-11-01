@@ -3,6 +3,10 @@
     border: 1px solid $main-blue !important;
 }
 
+.conversation-sidebar-username:hover {
+    cursor: pointer;
+}
+
 .conversation-sidebar-photo {
     height: 42px;
     width: 42px;

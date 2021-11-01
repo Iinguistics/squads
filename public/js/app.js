@@ -5564,6 +5564,28 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
       filteredUserMessages = _useState16[0],
       setFilteredUserMessages = _useState16[1];
 
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState18 = _slicedToArray(_useState17, 2),
+      messageSentClicked = _useState18[0],
+      setMessageSentClicked = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState20 = _slicedToArray(_useState19, 2),
+      messageReadClicked = _useState20[0],
+      setMessageReadClicked = _useState20[1];
+
+  var messageSentClickedHandler = function messageSentClickedHandler() {
+    setMessageSentClicked(function (messageSentClicked) {
+      return messageSentClicked + 1;
+    });
+  };
+
+  var messageReadClickedHandler = function messageReadClickedHandler() {
+    setMessageReadClicked(function (messageReadClicked) {
+      return messageReadClicked + 1;
+    });
+  };
+
   var setSearchTermHandler = function setSearchTermHandler(e) {
     setSearchTerm(e.target.value);
     filterUserMessagesHandler();
@@ -5624,18 +5646,39 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
 
   var fetchConversationMessages = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
+      var _yield$Api$get2, data;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              return _context2.abrupt("return");
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_converstaion_messages/".concat(id));
 
-            case 1:
+            case 3:
+              _yield$Api$get2 = _context2.sent;
+              data = _yield$Api$get2.data;
+
+              if (data.success) {
+                setError("");
+                setConversationMessages(data.data);
+              }
+
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](0);
+              setError(_context2.t0.message);
+
+            case 11:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, null, [[0, 8]]);
     }));
 
     return function fetchConversationMessages(_x) {
@@ -5650,9 +5693,13 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
       userMessages: userMessages,
       conversationMessages: conversationMessages,
       filteredUserMessages: filteredUserMessages,
+      messageSentClicked: messageSentClicked,
+      messageReadClicked: messageReadClicked,
       setSearchTermHandler: setSearchTermHandler,
       fetchUserMessages: fetchUserMessages,
-      fetchConversationMessages: fetchConversationMessages
+      fetchConversationMessages: fetchConversationMessages,
+      messageSentClickedHandler: messageSentClickedHandler,
+      messageReadClickedHandler: messageReadClickedHandler
     },
     children: props.children
   });
@@ -6679,7 +6726,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
         if (!(message.sent_from_username in userNames)) {
           userNames[message.sent_from_username] = true;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "mb-1 ".concat(usernameClicked === message.message_id ? "content-active" : ""),
+            className: "mb-2 conversation-sidebar-username ".concat(usernameClicked === message.message_id ? "content-active" : ""),
             onClick: function onClick() {
               return fetchConversationHandler(message.sent_from_id, message.message_id);
             },
@@ -6700,7 +6747,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
           if (!(message.sent_from_username in _userNames)) {
             _userNames[message.sent_from_username] = true;
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "mb-2 ".concat(usernameClicked === message.message_id ? "content-active" : ""),
+              className: "mb-2 conversation-sidebar-username ".concat(usernameClicked === message.message_id ? "content-active" : ""),
               onClick: function onClick() {
                 return fetchConversationHandler(message.sent_from_id, message.message_id);
               },
@@ -6734,7 +6781,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
               placeholder: "Search by username",
               value: searchTerm,
               onChange: setSearchTermHandler,
-              className: "shadow-none search-conversation-input mb-4"
+              className: "mb-4 shadow-none search-conversation-input"
             })
           }), checkInboxEmpty(), renderUserConversations()]
         })

@@ -41,6 +41,9 @@ class MessageController extends Controller
     {
         $user = Auth::user();
 
+        $update_message_read = Message::where('sent_from_id', $id)
+            ->update(['message_read' => 1]);
+
         $results = array();
 
         //sent to
