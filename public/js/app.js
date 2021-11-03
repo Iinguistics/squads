@@ -5596,8 +5596,6 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
     setMessageReadClicked(function (messageReadClicked) {
       return messageReadClicked + 1;
     }); //setMessageReadClicked(messageReadClicked + 1);
-
-    console.log("ran from context");
   };
 
   var setSearchTermHandler = function setSearchTermHandler(e) {
