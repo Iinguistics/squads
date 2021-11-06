@@ -59,7 +59,6 @@ const InboxMessagingProvider = (props) => {
                     .search(searchTerm.toLowerCase()) !== -1
             );
         });
-
         setFilteredUserMessages(filteredMessages);
     };
 
