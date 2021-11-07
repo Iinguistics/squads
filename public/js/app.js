@@ -5566,25 +5566,30 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
       conversationMessages = _useState12[0],
       setConversationMessages = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState14 = _slicedToArray(_useState13, 2),
-      searchTerm = _useState14[0],
-      setSearchTerm = _useState14[1];
+      sentFromProfile = _useState14[0],
+      setSentFromProfile = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState16 = _slicedToArray(_useState15, 2),
-      filteredUserMessages = _useState16[0],
-      setFilteredUserMessages = _useState16[1];
+      searchTerm = _useState16[0],
+      setSearchTerm = _useState16[1];
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState18 = _slicedToArray(_useState17, 2),
-      messageSentClicked = _useState18[0],
-      setMessageSentClicked = _useState18[1];
+      filteredUserMessages = _useState18[0],
+      setFilteredUserMessages = _useState18[1];
 
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState20 = _slicedToArray(_useState19, 2),
-      messageReadClicked = _useState20[0],
-      setMessageReadClicked = _useState20[1];
+      messageSentClicked = _useState20[0],
+      setMessageSentClicked = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState22 = _slicedToArray(_useState21, 2),
+      messageReadClicked = _useState22[0],
+      setMessageReadClicked = _useState22[1];
 
   var messageSentClickedHandler = function messageSentClickedHandler() {
     setMessageSentClicked(function (messageSentClicked) {
@@ -5601,6 +5606,10 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
   var setSearchTermHandler = function setSearchTermHandler(e) {
     setSearchTerm(e.target.value);
     filterUserMessagesHandler();
+  };
+
+  var setSentFromProfileHandler = function setSentFromProfileHandler(profile) {
+    setSentFromProfile(profile);
   };
 
   var fetchUserMessages = /*#__PURE__*/function () {
@@ -5707,11 +5716,13 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
       filteredUserMessages: filteredUserMessages,
       messageSentClicked: messageSentClicked,
       messageReadClicked: messageReadClicked,
+      sentFromProfile: sentFromProfile,
       setSearchTermHandler: setSearchTermHandler,
       fetchUserMessages: fetchUserMessages,
       fetchConversationMessages: fetchConversationMessages,
       messageSentClickedHandler: messageSentClickedHandler,
-      messageReadClickedHandler: messageReadClickedHandler
+      messageReadClickedHandler: messageReadClickedHandler,
+      setSentFromProfileHandler: setSentFromProfileHandler
     },
     children: props.children
   });
@@ -6675,7 +6686,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Conversation = function Conversation() {
+var Conversation = function Conversation(_ref) {
+  var conversationMessages = _ref.conversationMessages,
+      sentFromProfile = _ref.sentFromProfile;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {}, []);
+  console.log(conversationMessages, "convo");
+  console.log(sentFromProfile, "sent from profile");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
@@ -6726,7 +6742,8 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       inboxEmpty = _ref.inboxEmpty,
       fetchConversationMessages = _ref.fetchConversationMessages,
       filteredUserMessages = _ref.filteredUserMessages,
-      messageReadClickedHandler = _ref.messageReadClickedHandler;
+      messageReadClickedHandler = _ref.messageReadClickedHandler,
+      setSentFromProfileHandler = _ref.setSentFromProfileHandler;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Number),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6755,9 +6772,10 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
     }
   };
 
-  var fetchConversationHandler = function fetchConversationHandler(sentFromId, messageId) {
+  var fetchConversationHandler = function fetchConversationHandler(sentFromId, messageId, sentFromProfile) {
     setUsernameClicked(messageId);
     fetchConversationMessages(sentFromId);
+    setSentFromProfileHandler(sentFromProfile);
     setTimeout(function () {
       messageReadClickedHandler();
       console.log("ran from sidebar");
@@ -6773,7 +6791,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "mb-2 conversation-sidebar-username ".concat(usernameClicked === message.message_id ? "content-active" : ""),
             onClick: function onClick() {
-              return fetchConversationHandler(message.sent_from_id, message.message_id);
+              return fetchConversationHandler(message.sent_from_id, message.message_id, message.sent_from_profile);
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
               src: message.sent_from_profile.photo ? message.sent_from_profile.photo : "".concat(appUrl, "/images/default-photo-black-outline.png"),
@@ -6794,7 +6812,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "mb-2 conversation-sidebar-username ".concat(usernameClicked === message.message_id ? "content-active" : ""),
               onClick: function onClick() {
-                return fetchConversationHandler(message.sent_from_id, message.message_id);
+                return fetchConversationHandler(message.sent_from_id, message.message_id, message.sent_from_profile);
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
                 src: message.sent_from_profile.photo ? message.sent_from_profile.photo : "".concat(appUrl, "/images/default-photo-black-outline.png"),
@@ -6902,7 +6920,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(functio
             filteredUserMessages = _ref.filteredUserMessages,
             conversationMessages = _ref.conversationMessages,
             messageSentClickedHandler = _ref.messageSentClickedHandler,
-            messageReadClickedHandler = _ref.messageReadClickedHandler;
+            messageReadClickedHandler = _ref.messageReadClickedHandler,
+            setSentFromProfileHandler = _ref.setSentFromProfileHandler,
+            sentFromProfile = _ref.sentFromProfile;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -6913,10 +6933,15 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(functio
             filteredUserMessages: filteredUserMessages,
             setSearchTermHandler: setSearchTermHandler,
             searchTerm: searchTerm,
-            messageReadClickedHandler: messageReadClickedHandler
+            messageReadClickedHandler: messageReadClickedHandler,
+            setSentFromProfileHandler: setSentFromProfileHandler
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "container main-header",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Conversation__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Conversation__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              conversationMessages: conversationMessages,
+              messageSentClickedHandler: messageSentClickedHandler,
+              sentFromProfile: sentFromProfile
+            })
           })]
         });
       }
@@ -12414,6 +12439,7 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
               if (data.success) {
                 setSuccess(true);
                 setError("");
+                setBody("");
                 setShow(false);
               } else {
                 setSuccess(false);

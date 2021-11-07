@@ -13,6 +13,7 @@ const InboxMessagingProvider = (props) => {
     const [inboxEmpty, setInboxEmpty] = useState(false);
     const [userMessages, setUserMessages] = useState(null);
     const [conversationMessages, setConversationMessages] = useState(null);
+    const [sentFromProfile, setSentFromProfile] = useState({});
 
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredUserMessages, setFilteredUserMessages] = useState(null);
@@ -32,6 +33,10 @@ const InboxMessagingProvider = (props) => {
     const setSearchTermHandler = (e) => {
         setSearchTerm(e.target.value);
         filterUserMessagesHandler();
+    };
+
+    const setSentFromProfileHandler = (profile) => {
+        setSentFromProfile(profile);
     };
 
     const fetchUserMessages = async () => {
@@ -84,11 +89,13 @@ const InboxMessagingProvider = (props) => {
                 filteredUserMessages: filteredUserMessages,
                 messageSentClicked: messageSentClicked,
                 messageReadClicked: messageReadClicked,
+                sentFromProfile: sentFromProfile,
                 setSearchTermHandler: setSearchTermHandler,
                 fetchUserMessages: fetchUserMessages,
                 fetchConversationMessages: fetchConversationMessages,
                 messageSentClickedHandler: messageSentClickedHandler,
                 messageReadClickedHandler: messageReadClickedHandler,
+                setSentFromProfileHandler: setSentFromProfileHandler,
             }}
         >
             {props.children}

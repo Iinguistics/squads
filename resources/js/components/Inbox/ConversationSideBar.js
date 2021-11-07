@@ -9,6 +9,7 @@ const ConversationSideBar = ({
     fetchConversationMessages,
     filteredUserMessages,
     messageReadClickedHandler,
+    setSentFromProfileHandler,
 }) => {
     const [usernameClicked, setUsernameClicked] = useState(Number);
     useEffect(() => {
@@ -33,9 +34,14 @@ const ConversationSideBar = ({
         }
     };
 
-    const fetchConversationHandler = (sentFromId, messageId) => {
+    const fetchConversationHandler = (
+        sentFromId,
+        messageId,
+        sentFromProfile
+    ) => {
         setUsernameClicked(messageId);
         fetchConversationMessages(sentFromId);
+        setSentFromProfileHandler(sentFromProfile);
 
         setTimeout(() => {
             messageReadClickedHandler();
@@ -61,7 +67,8 @@ const ConversationSideBar = ({
                             onClick={() =>
                                 fetchConversationHandler(
                                     message.sent_from_id,
-                                    message.message_id
+                                    message.message_id,
+                                    message.sent_from_profile
                                 )
                             }
                         >
@@ -82,10 +89,10 @@ const ConversationSideBar = ({
         } else {
             if (userMessages) {
                 const userNames = {};
-
                 return userMessages.map((message) => {
                     if (!(message.sent_from_username in userNames)) {
                         userNames[message.sent_from_username] = true;
+
                         return (
                             <div
                                 key={message.message_id}
@@ -97,7 +104,8 @@ const ConversationSideBar = ({
                                 onClick={() =>
                                     fetchConversationHandler(
                                         message.sent_from_id,
-                                        message.message_id
+                                        message.message_id,
+                                        message.sent_from_profile
                                     )
                                 }
                             >

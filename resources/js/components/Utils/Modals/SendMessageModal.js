@@ -30,6 +30,7 @@ const SendMessageModal = withRouter((props) => {
             if (data.success) {
                 setSuccess(true);
                 setError("");
+                setBody("");
                 setShow(false);
             } else {
                 setSuccess(false);
