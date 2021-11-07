@@ -5,6 +5,7 @@ import InboxMessagingProvider, {
 } from "../Context/InboxMessagingContext";
 
 import ConversationSideBar from "./ConversationSideBar";
+import Conversation from "./Conversation";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -49,6 +50,9 @@ const index = withRouter((props) => {
                                     messageReadClickedHandler
                                 }
                             />
+                            <div className="container main-header">
+                                <Conversation />
+                            </div>
                         </div>
                     );
                 }}
