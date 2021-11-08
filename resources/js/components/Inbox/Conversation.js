@@ -5,6 +5,7 @@ const Conversation = ({
     conversationMessages,
     sentFromProfile,
     profileData,
+    sentFromUsername,
 }) => {
     const appUrl = process.env.MIX_APP_URL;
 
@@ -82,12 +83,17 @@ const Conversation = ({
             });
         }
     };
+    console.log(sentFromUsername);
 
     return (
         <div className="">
             {renderMessages()}
             <div className="conversation-input">
-                <input className="" type="text" placeholder="Send Message" />
+                <input
+                    className=""
+                    type="text"
+                    placeholder={`Message @${sentFromUsername}`}
+                />
             </div>
         </div>
     );

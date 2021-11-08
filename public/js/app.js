@@ -6718,7 +6718,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Conversation = function Conversation(_ref) {
   var conversationMessages = _ref.conversationMessages,
       sentFromProfile = _ref.sentFromProfile,
-      profileData = _ref.profileData;
+      profileData = _ref.profileData,
+      sentFromUsername = _ref.sentFromUsername;
   var appUrl = "http://127.0.0.1:8000";
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
@@ -6822,6 +6823,7 @@ var Conversation = function Conversation(_ref) {
     }
   };
 
+  console.log(sentFromUsername);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "",
     children: [renderMessages(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -6829,7 +6831,7 @@ var Conversation = function Conversation(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         className: "",
         type: "text",
-        placeholder: "Send Message"
+        placeholder: "Message @".concat(sentFromUsername)
       })
     })]
   });
@@ -6947,7 +6949,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "mb-2 conversation-sidebar-username ".concat(usernameClicked === message.message_id ? "content-active" : ""),
               onClick: function onClick() {
-                return fetchConversationHandler(message.sent_from_id, message.message_id, message.sent_from_profile);
+                return fetchConversationHandler(message.sent_from_id, message.message_id, message.sent_from_profile, message.sent_from_username);
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
                 src: message.sent_from_profile.photo ? message.sent_from_profile.photo : "".concat(appUrl, "/images/default-photo-black-outline.png"),

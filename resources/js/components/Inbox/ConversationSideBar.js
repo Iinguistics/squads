@@ -108,7 +108,8 @@ const ConversationSideBar = ({
                                     fetchConversationHandler(
                                         message.sent_from_id,
                                         message.message_id,
-                                        message.sent_from_profile
+                                        message.sent_from_profile,
+                                        message.sent_from_username
                                     )
                                 }
                             >
