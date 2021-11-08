@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
+import Moment from "react-moment";
 
-const Conversation = ({ conversationMessages, sentFromProfile }) => {
+const Conversation = ({
+    conversationMessages,
+    sentFromProfile,
+    profileData,
+}) => {
+    const appUrl = process.env.MIX_APP_URL;
+
     const [messages, setMessages] = useState([]);
 
     const sortMessages = () => {
@@ -16,13 +23,9 @@ const Conversation = ({ conversationMessages, sentFromProfile }) => {
                     temp.push(message);
                 }
             }
-            temp.sort(function (a, b) {
-                var keyA = new Date(a.updated_at),
-                    keyB = new Date(b.updated_at);
-                // Compare the 2 dates
-                if (keyA < keyB) return 1;
-                if (keyA > keyB) return -1;
-                return 0;
+
+            temp.sort((a, b) => {
+                return new Date(a.created_at) - new Date(b.created_at);
             });
 
             setMessages(temp);
@@ -32,13 +35,57 @@ const Conversation = ({ conversationMessages, sentFromProfile }) => {
         sortMessages();
     }, [conversationMessages]);
 
-    console.log(conversationMessages, "convo");
-    console.log(sentFromProfile, "sent from profile");
+    const renderMessagePhoto = (message) => {
+        const defaultPhoto = `${appUrl}/images/default-photo-black-outline.png`;
+        if (message.sent_from_id === profileData.id) {
+            if (profileData.photo) {
+                return profileData.photo;
+            } else {
+                return defaultPhoto;
+            }
+        } else {
+            if (sentFromProfile.photo) {
+                return sentFromProfile.photo;
+            } else {
+                return defaultPhoto;
+            }
+        }
+    };
+
+    const renderMessages = () => {
+        if (messages) {
+            return messages.map((message) => {
+                return (
+                    <div className="d-flex flex-row" key={message.message_id}>
+                        <div className="item-1">
+                            <img
+                                src={renderMessagePhoto(message)}
+                                alt="empty"
+                                className="conversation-sidebar-photo mr-2"
+                            />
+                        </div>
+                        <div className="item-2">
+                            <span>{message.sent_from_username}</span>{" "}
+                            <span className="text-muted">
+                                <Moment
+                                    date={message.created_at}
+                                    format="MM/DD/YYYY hh:mm:a"
+                                />
+                            </span>
+                            <p>{message.body}</p>
+                        </div>
+                    </div>
+                );
+            });
+        }
+    };
+
     console.log(messages, "messages");
 
     return (
         <div className="">
             <h2 className="text-center">Profile Preview</h2>
+            {renderMessages()}
         </div>
     );
 };

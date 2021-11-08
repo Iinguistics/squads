@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+import Api from "../Api";
 import InboxMessagingProvider, {
     InboxMessagingContext,
 } from "../Context/InboxMessagingContext";
@@ -9,6 +10,12 @@ import Conversation from "./Conversation";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
+    const [profileData, setProfileData] = useState(null);
+
+    const fetchProfileData = async () => {
+        const { data } = await Api.get("/show_current_user_profile");
+        setProfileData(data.data[0]);
+    };
 
     useEffect(() => {
         let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
@@ -17,6 +24,8 @@ const index = withRouter((props) => {
         } else {
             setUserInfo(userInfoData);
         }
+
+        fetchProfileData();
     }, []);
 
     return (
@@ -62,6 +71,7 @@ const index = withRouter((props) => {
                                         messageSentClickedHandler
                                     }
                                     sentFromProfile={sentFromProfile}
+                                    profileData={profileData}
                                 />
                             </div>
                         </div>
