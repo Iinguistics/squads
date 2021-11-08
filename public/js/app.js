@@ -5573,23 +5573,28 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
 
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState16 = _slicedToArray(_useState15, 2),
-      searchTerm = _useState16[0],
-      setSearchTerm = _useState16[1];
+      sentFromUsername = _useState16[0],
+      setSentFromUsername = _useState16[1];
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState18 = _slicedToArray(_useState17, 2),
-      filteredUserMessages = _useState18[0],
-      setFilteredUserMessages = _useState18[1];
+      searchTerm = _useState18[0],
+      setSearchTerm = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState20 = _slicedToArray(_useState19, 2),
-      messageSentClicked = _useState20[0],
-      setMessageSentClicked = _useState20[1];
+      filteredUserMessages = _useState20[0],
+      setFilteredUserMessages = _useState20[1];
 
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState22 = _slicedToArray(_useState21, 2),
-      messageReadClicked = _useState22[0],
-      setMessageReadClicked = _useState22[1];
+      messageSentClicked = _useState22[0],
+      setMessageSentClicked = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState24 = _slicedToArray(_useState23, 2),
+      messageReadClicked = _useState24[0],
+      setMessageReadClicked = _useState24[1];
 
   var messageSentClickedHandler = function messageSentClickedHandler() {
     setMessageSentClicked(function (messageSentClicked) {
@@ -5610,6 +5615,10 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
 
   var setSentFromProfileHandler = function setSentFromProfileHandler(profile) {
     setSentFromProfile(profile);
+  };
+
+  var setSentFromUsernameHandler = function setSentFromUsernameHandler(username) {
+    setSentFromUsername(username);
   };
 
   var fetchUserMessages = /*#__PURE__*/function () {
@@ -5717,12 +5726,14 @@ var InboxMessagingProvider = function InboxMessagingProvider(props) {
       messageSentClicked: messageSentClicked,
       messageReadClicked: messageReadClicked,
       sentFromProfile: sentFromProfile,
+      sentFromUsername: sentFromUsername,
       setSearchTermHandler: setSearchTermHandler,
       fetchUserMessages: fetchUserMessages,
       fetchConversationMessages: fetchConversationMessages,
       messageSentClickedHandler: messageSentClickedHandler,
       messageReadClickedHandler: messageReadClickedHandler,
-      setSentFromProfileHandler: setSentFromProfileHandler
+      setSentFromProfileHandler: setSentFromProfileHandler,
+      setSentFromUsernameHandler: setSentFromUsernameHandler
     },
     children: props.children
   });
@@ -6784,7 +6795,7 @@ var Conversation = function Conversation(_ref) {
     if (messages) {
       return messages.map(function (message) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "d-flex flex-row",
+          className: "d-flex flex-row ml-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "item-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
@@ -6797,7 +6808,7 @@ var Conversation = function Conversation(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               children: message.sent_from_username
             }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              className: "text-muted",
+              className: "text-muted conversation-message-time",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)((react_moment__WEBPACK_IMPORTED_MODULE_1___default()), {
                 date: message.created_at,
                 format: "MM/DD/YYYY hh:mm:a"
@@ -6811,13 +6822,16 @@ var Conversation = function Conversation(_ref) {
     }
   };
 
-  console.log(messages, "messages");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-      className: "text-center",
-      children: "Profile Preview"
-    }), renderMessages()]
+    children: [renderMessages(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "conversation-input",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "",
+        type: "text",
+        placeholder: "Send Message"
+      })
+    })]
   });
 };
 
@@ -6863,7 +6877,8 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       fetchConversationMessages = _ref.fetchConversationMessages,
       filteredUserMessages = _ref.filteredUserMessages,
       messageReadClickedHandler = _ref.messageReadClickedHandler,
-      setSentFromProfileHandler = _ref.setSentFromProfileHandler;
+      setSentFromProfileHandler = _ref.setSentFromProfileHandler,
+      setSentFromUsernameHandler = _ref.setSentFromUsernameHandler;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Number),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6873,7 +6888,6 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchUserMessages();
   }, []);
-  console.log("sidebar", inboxEmpty);
   console.log(userMessages, "sidebar");
 
   var checkInboxEmpty = function checkInboxEmpty() {
@@ -6892,10 +6906,11 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
     }
   };
 
-  var fetchConversationHandler = function fetchConversationHandler(sentFromId, messageId, sentFromProfile) {
+  var fetchConversationHandler = function fetchConversationHandler(sentFromId, messageId, sentFromProfile, sentFromUsername) {
     setUsernameClicked(messageId);
     fetchConversationMessages(sentFromId);
     setSentFromProfileHandler(sentFromProfile);
+    setSentFromUsernameHandler(sentFromUsername);
     setTimeout(function () {
       messageReadClickedHandler();
       console.log("ran from sidebar");
@@ -6911,7 +6926,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "mb-2 conversation-sidebar-username ".concat(usernameClicked === message.message_id ? "content-active" : ""),
             onClick: function onClick() {
-              return fetchConversationHandler(message.sent_from_id, message.message_id, message.sent_from_profile);
+              return fetchConversationHandler(message.sent_from_id, message.message_id, message.sent_from_profile, message.sent_from_username);
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
               src: message.sent_from_profile.photo ? message.sent_from_profile.photo : "".concat(appUrl, "/images/default-photo-black-outline.png"),
@@ -6956,7 +6971,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "container mt-5 main-header",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "d-flex flex-row flex-md-column justify-content-between text-center my-3",
+          className: "d-flex flex-column justify-content-between text-center my-3",
           children: [!inboxEmpty && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "item-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
@@ -7088,7 +7103,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
             messageSentClickedHandler = _ref2.messageSentClickedHandler,
             messageReadClickedHandler = _ref2.messageReadClickedHandler,
             setSentFromProfileHandler = _ref2.setSentFromProfileHandler,
-            sentFromProfile = _ref2.sentFromProfile;
+            sentFromProfile = _ref2.sentFromProfile,
+            setSentFromUsernameHandler = _ref2.setSentFromUsernameHandler,
+            sentFromUsername = _ref2.sentFromUsername;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "d-flex flex-column flex-md-row private-profile-main-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -7100,14 +7117,16 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
             setSearchTermHandler: setSearchTermHandler,
             searchTerm: searchTerm,
             messageReadClickedHandler: messageReadClickedHandler,
-            setSentFromProfileHandler: setSentFromProfileHandler
+            setSentFromProfileHandler: setSentFromProfileHandler,
+            setSentFromUsernameHandler: setSentFromUsernameHandler
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-            className: "container main-header",
+            className: "main-header",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Conversation__WEBPACK_IMPORTED_MODULE_5__["default"], {
               conversationMessages: conversationMessages,
               messageSentClickedHandler: messageSentClickedHandler,
               sentFromProfile: sentFromProfile,
-              profileData: profileData
+              profileData: profileData,
+              sentFromUsername: sentFromUsername
             })
           })]
         });

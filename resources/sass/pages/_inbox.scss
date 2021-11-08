@@ -14,3 +14,22 @@
     object-fit: cover;
     object-position: center;
 }
+
+.conversation-message-time {
+    font-size: 0.8rem;
+}
+
+.conversation-input input {
+    width: 73%;
+    position: fixed;
+    border-radius: 8px;
+    padding: 0.4rem;
+    bottom: 1rem;
+    margin: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .conversation-input input {
+        width: 95%;
+    }
+}

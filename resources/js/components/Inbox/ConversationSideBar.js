@@ -10,13 +10,13 @@ const ConversationSideBar = ({
     filteredUserMessages,
     messageReadClickedHandler,
     setSentFromProfileHandler,
+    setSentFromUsernameHandler,
 }) => {
     const [usernameClicked, setUsernameClicked] = useState(Number);
     useEffect(() => {
         fetchUserMessages();
     }, []);
 
-    console.log("sidebar", inboxEmpty);
     console.log(userMessages, "sidebar");
 
     const checkInboxEmpty = () => {
@@ -37,11 +37,13 @@ const ConversationSideBar = ({
     const fetchConversationHandler = (
         sentFromId,
         messageId,
-        sentFromProfile
+        sentFromProfile,
+        sentFromUsername
     ) => {
         setUsernameClicked(messageId);
         fetchConversationMessages(sentFromId);
         setSentFromProfileHandler(sentFromProfile);
+        setSentFromUsernameHandler(sentFromUsername);
 
         setTimeout(() => {
             messageReadClickedHandler();
@@ -68,7 +70,8 @@ const ConversationSideBar = ({
                                 fetchConversationHandler(
                                     message.sent_from_id,
                                     message.message_id,
-                                    message.sent_from_profile
+                                    message.sent_from_profile,
+                                    message.sent_from_username
                                 )
                             }
                         >
@@ -132,7 +135,7 @@ const ConversationSideBar = ({
         <div className="private-profile-sidebar-container">
             <div className="container main-header">
                 <div className="container mt-5 main-header">
-                    <div className="d-flex flex-row flex-md-column justify-content-between text-center my-3">
+                    <div className="d-flex flex-column justify-content-between text-center my-3">
                         {!inboxEmpty && (
                             <div className="item-1">
                                 <input

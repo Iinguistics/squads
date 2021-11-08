@@ -56,7 +56,10 @@ const Conversation = ({
         if (messages) {
             return messages.map((message) => {
                 return (
-                    <div className="d-flex flex-row" key={message.message_id}>
+                    <div
+                        className="d-flex flex-row ml-1"
+                        key={message.message_id}
+                    >
                         <div className="item-1">
                             <img
                                 src={renderMessagePhoto(message)}
@@ -66,7 +69,7 @@ const Conversation = ({
                         </div>
                         <div className="item-2">
                             <span>{message.sent_from_username}</span>{" "}
-                            <span className="text-muted">
+                            <span className="text-muted conversation-message-time">
                                 <Moment
                                     date={message.created_at}
                                     format="MM/DD/YYYY hh:mm:a"
@@ -80,12 +83,12 @@ const Conversation = ({
         }
     };
 
-    console.log(messages, "messages");
-
     return (
         <div className="">
-            <h2 className="text-center">Profile Preview</h2>
             {renderMessages()}
+            <div className="conversation-input">
+                <input className="" type="text" placeholder="Send Message" />
+            </div>
         </div>
     );
 };

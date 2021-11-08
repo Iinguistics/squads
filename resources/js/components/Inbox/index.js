@@ -44,6 +44,8 @@ const index = withRouter((props) => {
                     messageReadClickedHandler,
                     setSentFromProfileHandler,
                     sentFromProfile,
+                    setSentFromUsernameHandler,
+                    sentFromUsername,
                 }) => {
                     return (
                         <div className="d-flex flex-column flex-md-row private-profile-main-container">
@@ -63,8 +65,11 @@ const index = withRouter((props) => {
                                 setSentFromProfileHandler={
                                     setSentFromProfileHandler
                                 }
+                                setSentFromUsernameHandler={
+                                    setSentFromUsernameHandler
+                                }
                             />
-                            <div className="container main-header">
+                            <div className="main-header">
                                 <Conversation
                                     conversationMessages={conversationMessages}
                                     messageSentClickedHandler={
@@ -72,6 +77,7 @@ const index = withRouter((props) => {
                                     }
                                     sentFromProfile={sentFromProfile}
                                     profileData={profileData}
+                                    sentFromUsername={sentFromUsername}
                                 />
                             </div>
                         </div>
