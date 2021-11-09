@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Api from "../Api";
 import Moment from "react-moment";
 
 const Conversation = ({
@@ -8,8 +9,11 @@ const Conversation = ({
     sentFromUsername,
 }) => {
     const appUrl = process.env.MIX_APP_URL;
+    console.log(sentFromProfile.id);
 
     const [messages, setMessages] = useState([]);
+    const [body, setBody] = useState("");
+    const [error, setError] = useState("");
 
     const sortMessages = () => {
         let temp = [];
@@ -83,17 +87,41 @@ const Conversation = ({
             });
         }
     };
-    console.log(sentFromUsername);
+
+    const sendMessageHandler = async () => {
+        try {
+            let values = {
+                id: sentFromProfile.id,
+                body: body,
+            };
+            const { data } = await Api.post("/send_user_message", values);
+
+            if (data.success) {
+                setBody("");
+                setError("");
+            } else {
+                setError(data.error);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     return (
         <div className="">
             {renderMessages()}
             <div className="conversation-input">
-                <input
-                    className=""
-                    type="text"
-                    placeholder={`Message @${sentFromUsername}`}
-                />
+                {error && <span className="text-danger">{error}</span>}
+                <form onSubmit={sendMessageHandler}>
+                    <input
+                        className=""
+                        type="text"
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
+                        placeholder={`Message @${sentFromUsername}`}
+                        disabled={!conversationMessages}
+                    />
+                </form>
             </div>
         </div>
     );
