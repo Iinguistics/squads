@@ -6818,7 +6818,7 @@ var Conversation = function Conversation(_ref) {
     if (messages) {
       return messages.map(function (message) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "d-flex flex-row ml-1",
+          className: "d-flex flex-row ml-1 mr-2",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "item-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
@@ -6854,15 +6854,25 @@ var Conversation = function Conversation(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               e.preventDefault();
-              _context.prev = 1;
+
+              if (!(body.length > 455)) {
+                _context.next = 4;
+                break;
+              }
+
+              setError("Message must be less than 455 characters.");
+              return _context.abrupt("return");
+
+            case 4:
+              _context.prev = 4;
               values = {
                 id: sentFromProfile.id,
                 body: body
               };
-              _context.next = 5;
+              _context.next = 8;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/send_user_message", values);
 
-            case 5:
+            case 8:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
@@ -6874,20 +6884,20 @@ var Conversation = function Conversation(_ref) {
                 setError(data.error);
               }
 
-              _context.next = 13;
+              _context.next = 16;
               break;
 
-            case 10:
-              _context.prev = 10;
-              _context.t0 = _context["catch"](1);
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context["catch"](4);
               setError(_context.t0.message);
 
-            case 13:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 10]]);
+      }, _callee, null, [[4, 13]]);
     }));
 
     return function sendMessageHandler(_x) {
@@ -6905,7 +6915,7 @@ var Conversation = function Conversation(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
         onSubmit: sendMessageHandler,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          className: "",
+          className: "mt-5",
           type: "text",
           value: body,
           onChange: function onChange(e) {
@@ -7191,7 +7201,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
             setSentFromUsernameHandler = _ref2.setSentFromUsernameHandler,
             sentFromUsername = _ref2.sentFromUsername;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-          className: "d-flex flex-column flex-md-row private-profile-main-container",
+          className: "d-flex flex-column flex-md-row conversation-sidebar",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ConversationSideBar__WEBPACK_IMPORTED_MODULE_4__["default"], {
             fetchUserMessages: fetchUserMessages,
             userMessages: userMessages,

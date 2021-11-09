@@ -48,7 +48,7 @@ const index = withRouter((props) => {
                     sentFromUsername,
                 }) => {
                     return (
-                        <div className="d-flex flex-column flex-md-row private-profile-main-container">
+                        <div className="d-flex flex-column flex-md-row conversation-sidebar">
                             <ConversationSideBar
                                 fetchUserMessages={fetchUserMessages}
                                 userMessages={userMessages}

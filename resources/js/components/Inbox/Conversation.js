@@ -63,7 +63,7 @@ const Conversation = ({
             return messages.map((message) => {
                 return (
                     <div
-                        className="d-flex flex-row ml-1"
+                        className="d-flex flex-row ml-1 mr-2"
                         key={message.message_id}
                     >
                         <div className="item-1">
@@ -92,6 +92,11 @@ const Conversation = ({
     const sendMessageHandler = async (e) => {
         e.preventDefault();
 
+        if (body.length > 455) {
+            setError("Message must be less than 455 characters.");
+            return;
+        }
+
         try {
             let values = {
                 id: sentFromProfile.id,
@@ -118,7 +123,7 @@ const Conversation = ({
                 {error && <span className="text-danger">{error}</span>}
                 <form onSubmit={sendMessageHandler}>
                     <input
-                        className=""
+                        className="mt-5"
                         type="text"
                         value={body}
                         onChange={(e) => setBody(e.target.value)}

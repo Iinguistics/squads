@@ -10835,6 +10835,10 @@ form .player-search-select {
     display: none;
   }
 }
+.conversation-sidebar {
+  min-height: calc(100vh - 56px);
+}
+
 .search-conversation-input {
   outline: 1px solid #4d89ff !important;
   border: 1px solid #4d89ff !important;
