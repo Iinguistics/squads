@@ -6729,7 +6729,8 @@ var Conversation = function Conversation(_ref) {
   var conversationMessages = _ref.conversationMessages,
       sentFromProfile = _ref.sentFromProfile,
       profileData = _ref.profileData,
-      sentFromUsername = _ref.sentFromUsername;
+      sentFromUsername = _ref.sentFromUsername,
+      fetchConversationMessages = _ref.fetchConversationMessages;
   var appUrl = "http://127.0.0.1:8000";
   console.log(sentFromProfile.id);
 
@@ -6845,49 +6846,51 @@ var Conversation = function Conversation(_ref) {
   };
 
   var sendMessageHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
       var values, _yield$Api$post, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
+              e.preventDefault();
+              _context.prev = 1;
               values = {
                 id: sentFromProfile.id,
                 body: body
               };
-              _context.next = 4;
+              _context.next = 5;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/send_user_message", values);
 
-            case 4:
+            case 5:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
               if (data.success) {
                 setBody("");
                 setError("");
+                fetchConversationMessages(sentFromProfile.id);
               } else {
                 setError(data.error);
               }
 
-              _context.next = 12;
+              _context.next = 13;
               break;
 
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](0);
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](1);
               setError(_context.t0.message);
 
-            case 12:
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[1, 10]]);
     }));
 
-    return function sendMessageHandler() {
+    return function sendMessageHandler(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
@@ -7207,7 +7210,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
               messageSentClickedHandler: messageSentClickedHandler,
               sentFromProfile: sentFromProfile,
               profileData: profileData,
-              sentFromUsername: sentFromUsername
+              sentFromUsername: sentFromUsername,
+              fetchConversationMessages: fetchConversationMessages
             })
           })]
         });

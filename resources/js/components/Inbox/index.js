@@ -78,6 +78,9 @@ const index = withRouter((props) => {
                                     sentFromProfile={sentFromProfile}
                                     profileData={profileData}
                                     sentFromUsername={sentFromUsername}
+                                    fetchConversationMessages={
+                                        fetchConversationMessages
+                                    }
                                 />
                             </div>
                         </div>

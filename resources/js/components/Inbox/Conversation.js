@@ -7,6 +7,7 @@ const Conversation = ({
     sentFromProfile,
     profileData,
     sentFromUsername,
+    fetchConversationMessages,
 }) => {
     const appUrl = process.env.MIX_APP_URL;
     console.log(sentFromProfile.id);
@@ -88,7 +89,9 @@ const Conversation = ({
         }
     };
 
-    const sendMessageHandler = async () => {
+    const sendMessageHandler = async (e) => {
+        e.preventDefault();
+
         try {
             let values = {
                 id: sentFromProfile.id,
@@ -99,6 +102,7 @@ const Conversation = ({
             if (data.success) {
                 setBody("");
                 setError("");
+                fetchConversationMessages(sentFromProfile.id);
             } else {
                 setError(data.error);
             }
