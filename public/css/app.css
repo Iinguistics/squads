@@ -10771,6 +10771,7 @@ form .player-search-select {
   position: relative;
   height: 293px;
   width: 293px;
+  transition: 0.5s ease !important;
 }
 
 .profile-img {
@@ -10793,6 +10794,7 @@ form .player-search-select {
   display: none;
   overflow: hidden;
   z-index: 2;
+  transition: 0.3s ease;
 }
 
 .profile-img-overlay {
@@ -10804,17 +10806,16 @@ form .player-search-select {
   left: 0;
   display: none;
   z-index: 1;
+  transition: 0.3s ease;
 }
 
 .profile-img-container:hover {
   cursor: pointer;
 }
 .profile-img-container:hover .profile-img-comment-icon {
-  transition: 0.3s;
   display: block;
 }
 .profile-img-container:hover .profile-img-overlay {
-  transition: 0.3s;
   display: block;
 }
 

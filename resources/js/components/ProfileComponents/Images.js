@@ -52,7 +52,10 @@ const Images = ({ profileData, preview }) => {
     return (
         <div className="d-flex flex-col flex-md-row flex-wrap justify-content-center justify-content-md-between align-items-center shadow-sm p-3 mb-5 bg-white rounded text-center">
             {renderImages()}
-            <ImageCommentModal imageClicked={imageClicked} />
+            <ImageCommentModal
+                imageClicked={imageClicked}
+                profileData={profileData}
+            />
         </div>
     );
 };

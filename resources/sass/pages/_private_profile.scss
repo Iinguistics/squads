@@ -189,6 +189,7 @@
     position: relative;
     height: 293px;
     width: 293px;
+    transition: 0.5s ease !important;
 }
 
 .profile-img {
@@ -209,6 +210,7 @@
     display: none;
     overflow: hidden;
     z-index: 2;
+    transition: 0.3s ease;
 }
 
 .profile-img-overlay {
@@ -220,16 +222,15 @@
     left: 0;
     display: none;
     z-index: 1;
+    transition: 0.3s ease;
 }
 
 .profile-img-container:hover {
     cursor: pointer;
     .profile-img-comment-icon {
-        transition: 0.3s;
         display: block;
     }
     .profile-img-overlay {
-        transition: 0.3s;
         display: block;
     }
 }
