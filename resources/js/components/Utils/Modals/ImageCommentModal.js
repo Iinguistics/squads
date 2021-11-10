@@ -6,24 +6,62 @@ import Api from "../../Api";
 const ImageCommentModal = withRouter((props) => {
     const [show, setShow] = useState(false);
     const [comments, setComments] = useState(null);
+    const [error, setError] = useState("");
+    const [body, setBody] = useState("");
+
+    const fetchComments = async () => {
+        try {
+            const { data } = await Api.get(
+                `/get_image_comments/${props.imageDetails.image_id}`
+            );
+            setComments(data);
+            setError("");
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     useEffect(() => {
         if (props.imageClicked !== 0) {
             setShow(true);
         }
+        fetchComments();
     }, [props.imageClicked]);
 
     const handleClose = () => setShow(false);
 
-    const logOutHandler = async () => {
-        const { data } = await Api.get("/logout");
+    const renderComments = () => {
+        if (comments) {
+            return comments.map((comment) => {
+                return "";
+            });
+        }
+    };
 
-        if (data.success) {
-            localStorage.removeItem("userInfo");
+    const sendCommentHandler = async (e) => {
+        e.preventDefault();
 
-            props.loggedInToggleHandler();
-            handleClose();
-            props.history.push("/");
+        if (body.length > 455) {
+            setError("Message must be less than 455 characters.");
+            return;
+        }
+
+        try {
+            let values = {
+                id: sentFromProfile.id,
+                body: body,
+            };
+            const { data } = await Api.post("/send_user_message", values);
+
+            if (data.success) {
+                setBody("");
+                setError("");
+                fetchComments();
+            } else {
+                setError(data.error);
+            }
+        } catch (error) {
+            setError(error.message);
         }
     };
 
@@ -53,18 +91,24 @@ const ImageCommentModal = withRouter((props) => {
                         <span>No comments</span>
                     </Modal.Body>
                     <Modal.Footer>
-                        <button
-                            onClick={handleClose}
-                            className="bttn-material-flat bttn-sm mr-2"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={logOutHandler}
-                            className="bttn-material-flat bttn-sm update-account-modal-btn"
-                        >
-                            Sign Out
-                        </button>
+                        <div className="mr-auto">
+                            {error && (
+                                <span className="text-danger">{error}</span>
+                            )}
+                            <form onSubmit={sendCommentHandler}>
+                                <input
+                                    className="mt-3 mr-3"
+                                    type="text"
+                                    value={body}
+                                    onChange={(e) => setBody(e.target.value)}
+                                    placeholder="Leave a comment"
+                                />
+                                <input
+                                    type="submit"
+                                    className="bttn-material-flat bttn-sm update-account-modal-btn"
+                                />
+                            </form>
+                        </div>
                     </Modal.Footer>
                 </Modal>
             </Container>

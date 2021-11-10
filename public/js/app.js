@@ -11809,17 +11809,17 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRou
       comments = _useState4[0],
       setComments = _useState4[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (props.imageClicked !== 0) {
-      setShow(true);
-    }
-  }, [props.imageClicked]);
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      error = _useState6[0],
+      setError = _useState6[1];
 
-  var handleClose = function handleClose() {
-    return setShow(false);
-  };
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      body = _useState8[0],
+      setBody = _useState8[1];
 
-  var logOutHandler = /*#__PURE__*/function () {
+  var fetchComments = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _yield$Api$get, data;
 
@@ -11827,30 +11827,113 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRou
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/logout");
+              _context.prev = 0;
+              _context.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_image_comments/".concat(props.imageDetails.image_id));
 
-            case 2:
+            case 3:
               _yield$Api$get = _context.sent;
               data = _yield$Api$get.data;
+              setComments(data);
+              setError("");
+              _context.next = 12;
+              break;
 
-              if (data.success) {
-                localStorage.removeItem("userInfo");
-                props.loggedInToggleHandler();
-                handleClose();
-                props.history.push("/");
-              }
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](0);
+              setError(_context.t0.message);
 
-            case 5:
+            case 12:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[0, 9]]);
     }));
 
-    return function logOutHandler() {
+    return function fetchComments() {
       return _ref.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (props.imageClicked !== 0) {
+      setShow(true);
+    }
+
+    fetchComments();
+  }, [props.imageClicked]);
+
+  var handleClose = function handleClose() {
+    return setShow(false);
+  };
+
+  var renderComments = function renderComments() {
+    if (comments) {
+      return comments.map(function (comment) {
+        return "";
+      });
+    }
+  };
+
+  var sendCommentHandler = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
+      var values, _yield$Api$post, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              e.preventDefault();
+
+              if (!(body.length > 455)) {
+                _context2.next = 4;
+                break;
+              }
+
+              setError("Message must be less than 455 characters.");
+              return _context2.abrupt("return");
+
+            case 4:
+              _context2.prev = 4;
+              values = {
+                id: sentFromProfile.id,
+                body: body
+              };
+              _context2.next = 8;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/send_user_message", values);
+
+            case 8:
+              _yield$Api$post = _context2.sent;
+              data = _yield$Api$post.data;
+
+              if (data.success) {
+                setBody("");
+                setError("");
+                fetchComments();
+              } else {
+                setError(data.error);
+              }
+
+              _context2.next = 16;
+              break;
+
+            case 13:
+              _context2.prev = 13;
+              _context2.t0 = _context2["catch"](4);
+              setError(_context2.t0.message);
+
+            case 16:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[4, 13]]);
+    }));
+
+    return function sendCommentHandler(_x) {
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -11876,16 +11959,28 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRou
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             children: "No comments"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            onClick: handleClose,
-            className: "bttn-material-flat bttn-sm mr-2",
-            children: "Cancel"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            onClick: logOutHandler,
-            className: "bttn-material-flat bttn-sm update-account-modal-btn",
-            children: "Sign Out"
-          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "mr-auto",
+            children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              className: "text-danger",
+              children: error
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+              onSubmit: sendCommentHandler,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                className: "mt-3 mr-3",
+                type: "text",
+                value: body,
+                onChange: function onChange(e) {
+                  return setBody(e.target.value);
+                },
+                placeholder: "Leave a comment"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                type: "submit",
+                className: "bttn-material-flat bttn-sm update-account-modal-btn"
+              })]
+            })]
+          })
         })]
       })
     })

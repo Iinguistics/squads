@@ -25,6 +25,19 @@ class ImageController extends Controller
     {
     }
 
+    public function get_image_comments($id)
+    {
+        $comments = ImageComment::where('image_id', $id)->with('user')->get();
+
+        $response = array(
+            'success' => $comments ? true : false,
+            'data' => $comments
+        );
+
+        return response()->json($response, 200);
+    }
+
+
     public function upload_current_user_image(Request $request)
     {
         $user = Auth::user();

@@ -56,6 +56,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Image
     Route::post('upload_current_user_image', [ImageController::class, 'upload_current_user_image']);
+    Route::get('get_image_comments/{id}', [ImageController::class, 'get_image_comments']);
 
 
     // Message
