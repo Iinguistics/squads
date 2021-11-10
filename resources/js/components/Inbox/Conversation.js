@@ -124,7 +124,9 @@ const Conversation = ({
 
     return (
         <div className="">
-            <div className="convo-test">{renderMessages()}</div>
+            <div className="conversation-messages-container">
+                {renderMessages()}
+            </div>
             <div className="conversation-input">
                 {error && <span className="text-danger">{error}</span>}
                 <form onSubmit={sendMessageHandler}>
