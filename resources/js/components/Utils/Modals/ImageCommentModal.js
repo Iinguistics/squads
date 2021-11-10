@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Container } from "react-bootstrap";
+import Moment from "react-moment";
+import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import Api from "../../Api";
 
 const ImageCommentModal = withRouter((props) => {
+    const appUrl = process.env.MIX_APP_URL;
+
     const [show, setShow] = useState(false);
     const [comments, setComments] = useState(null);
     const [error, setError] = useState("");
@@ -14,7 +17,7 @@ const ImageCommentModal = withRouter((props) => {
             const { data } = await Api.get(
                 `/get_image_comments/${props.imageDetails.image_id}`
             );
-            setComments(data);
+            setComments(data.data);
             setError("");
         } catch (error) {
             setError(error.message);
@@ -30,10 +33,44 @@ const ImageCommentModal = withRouter((props) => {
 
     const handleClose = () => setShow(false);
 
+    const renderCommentPhoto = (comment) => {
+        const defaultPhoto = `${appUrl}/images/default-photo-black-outline.png`;
+        if (comment.user[0]) {
+            if (comment.user[0].profile.photo) {
+                return comment.user[0].profile.photo;
+            } else {
+                return defaultPhoto;
+            }
+        }
+    };
+
     const renderComments = () => {
         if (comments) {
             return comments.map((comment) => {
-                return "";
+                return (
+                    <div
+                        className="d-flex flex-row ml-1 mr-2"
+                        key={comment.image_comment_id}
+                    >
+                        <div className="item-1">
+                            <img
+                                src={renderCommentPhoto(comment)}
+                                alt="photo"
+                                className="conversation-sidebar-photo mr-2"
+                            />
+                        </div>
+                        <div className="item-2">
+                            <span>{comment.user[0].username}</span>{" "}
+                            <span className="text-muted conversation-message-time">
+                                <Moment
+                                    date={comment.created_at}
+                                    format="MM/DD/YYYY hh:mm:a"
+                                />
+                            </span>
+                            <p>{comment.body}</p>
+                        </div>
+                    </div>
+                );
             });
         }
     };
@@ -42,16 +79,16 @@ const ImageCommentModal = withRouter((props) => {
         e.preventDefault();
 
         if (body.length > 455) {
-            setError("Message must be less than 455 characters.");
+            setError("Comment must be less than 455 characters.");
             return;
         }
 
         try {
             let values = {
-                id: sentFromProfile.id,
+                image_id: props.imageDetails.image_id,
                 body: body,
             };
-            const { data } = await Api.post("/send_user_message", values);
+            const { data } = await Api.post("/send_image_comment", values);
 
             if (data.success) {
                 setBody("");
@@ -66,6 +103,17 @@ const ImageCommentModal = withRouter((props) => {
     };
 
     console.log(props.imageDetails);
+    console.log(comments, "comments");
+
+    if (comments) {
+        if (comments[0]) {
+            if (comments[0].user[0]) {
+                if (comments[0].user[0].profile.photo) {
+                    console.log(comments[0].user[0].profile.photo, "comments");
+                }
+            }
+        }
+    }
 
     return (
         <div className="mt-5 text-center">
@@ -78,7 +126,7 @@ const ImageCommentModal = withRouter((props) => {
                                 : ""}
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body className="d-flex flex-row">
                         <img
                             src={props.imageDetails.image}
                             alt={
@@ -86,9 +134,13 @@ const ImageCommentModal = withRouter((props) => {
                                     ? props.imageDetails.description
                                     : "image"
                             }
-                            className="img-fluid profile-img"
+                            className="img-fluid profile-img mr-5"
                         />
-                        <span>No comments</span>
+                        <div>
+                            <div className="d-flex flex-row">
+                                {renderComments()}
+                            </div>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="mr-auto">

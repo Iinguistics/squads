@@ -74,7 +74,7 @@ const Conversation = ({
                         <div className="item-1">
                             <img
                                 src={renderMessagePhoto(message)}
-                                alt="empty"
+                                alt="photo"
                                 className="conversation-sidebar-photo mr-2"
                             />
                         </div>

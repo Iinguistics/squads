@@ -27,7 +27,7 @@ class ImageController extends Controller
 
     public function get_image_comments($id)
     {
-        $comments = ImageComment::where('image_id', $id)->with('user')->get();
+        $comments = ImageComment::where('image_id', $id)->with('user.profile')->get();
 
         $response = array(
             'success' => $comments ? true : false,
@@ -64,28 +64,22 @@ class ImageController extends Controller
         return response()->json($response, 200);
     }
 
-
-
-
-
-
-    public function update_profile_privacy_messaging(Request $request)
+    public function send_image_comment(Request $request)
     {
         $user = Auth::user();
 
-        $profile = Profile::where('id', $user->id)->get()->first();
+        $input = $request->all();
 
-        if ($profile->photo) {
-            $response = array(
-                'success' => true,
-                'data' => $profile->photo
-            );
-            return response()->json($response, 200);
-        } else {
-            $response = array(
-                'success' => false
-            );
-            return response()->json($response, 200);
-        }
+        $results = ImageComment::create([
+            "image_id" => $input['image_id'],
+            "id" => $user->id,
+            "body" => $input['body'],
+        ]);
+
+        $response = array(
+            'success' => $results ? true : false,
+            'error' => $results ? false : 'failed to send comment'
+        );
+        return response()->json($response, 200);
     }
 }
