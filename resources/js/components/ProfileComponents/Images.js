@@ -3,9 +3,11 @@ import ImageCommentModal from "../Utils/Modals/ImageCommentModal";
 
 const Images = ({ profileData, preview }) => {
     const [imageClicked, setImageClicked] = useState(0);
+    const [imageDetails, setImageDetails] = useState({});
 
-    const imageClickedHandler = () => {
+    const imageClickedHandler = (image) => {
         setImageClicked((imageClicked) => imageClicked + 1);
+        setImageDetails(image);
     };
 
     const renderImages = () => {
@@ -16,7 +18,11 @@ const Images = ({ profileData, preview }) => {
                         <div
                             key={image.image_id}
                             className="profile-img-container mb-2"
-                            onClick={!preview ? imageClickedHandler : null}
+                            onClick={
+                                !preview
+                                    ? () => imageClickedHandler(image)
+                                    : null
+                            }
                         >
                             <img
                                 src={image.image}

@@ -9242,10 +9242,16 @@ var Images = function Images(_ref) {
       imageClicked = _useState2[0],
       setImageClicked = _useState2[1];
 
-  var imageClickedHandler = function imageClickedHandler() {
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+      _useState4 = _slicedToArray(_useState3, 2),
+      imageDetails = _useState4[0],
+      setImageDetails = _useState4[1];
+
+  var imageClickedHandler = function imageClickedHandler(image) {
     setImageClicked(function (imageClicked) {
       return imageClicked + 1;
     });
+    setImageDetails(image);
   };
 
   var renderImages = function renderImages() {
@@ -9254,7 +9260,9 @@ var Images = function Images(_ref) {
         return profileData.user.images.map(function (image) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "profile-img-container mb-2",
-            onClick: !preview ? imageClickedHandler : null,
+            onClick: !preview ? function () {
+              return imageClickedHandler(image);
+            } : null,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
               src: image.image,
               alt: "profile image",
