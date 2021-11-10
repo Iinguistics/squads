@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Api from "../Api";
 import Moment from "react-moment";
 
@@ -10,7 +10,12 @@ const Conversation = ({
     fetchConversationMessages,
 }) => {
     const appUrl = process.env.MIX_APP_URL;
-    console.log(sentFromProfile.id);
+
+    const ScrollToBottom = () => {
+        const elementRef = useRef();
+        useEffect(() => elementRef.current.scrollIntoView());
+        return <div ref={elementRef} />;
+    };
 
     const [messages, setMessages] = useState([]);
     const [body, setBody] = useState("");
@@ -83,6 +88,7 @@ const Conversation = ({
                             </span>
                             <p>{message.body}</p>
                         </div>
+                        <ScrollToBottom />
                     </div>
                 );
             });
@@ -118,7 +124,7 @@ const Conversation = ({
 
     return (
         <div className="">
-            {renderMessages()}
+            <div className="convo-test">{renderMessages()}</div>
             <div className="conversation-input">
                 {error && <span className="text-danger">{error}</span>}
                 <form onSubmit={sendMessageHandler}>

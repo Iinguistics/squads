@@ -6732,7 +6732,16 @@ var Conversation = function Conversation(_ref) {
       sentFromUsername = _ref.sentFromUsername,
       fetchConversationMessages = _ref.fetchConversationMessages;
   var appUrl = "http://127.0.0.1:8000";
-  console.log(sentFromProfile.id);
+
+  var ScrollToBottom = function ScrollToBottom() {
+    var elementRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+      return elementRef.current.scrollIntoView();
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      ref: elementRef
+    });
+  };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6839,7 +6848,7 @@ var Conversation = function Conversation(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
               children: message.body
             })]
-          })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(ScrollToBottom, {})]
         }, message.message_id);
       });
     }
@@ -6907,7 +6916,10 @@ var Conversation = function Conversation(_ref) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "",
-    children: [renderMessages(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "convo-test",
+      children: renderMessages()
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "conversation-input",
       children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
         className: "text-danger",

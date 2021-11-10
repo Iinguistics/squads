@@ -10871,6 +10871,12 @@ form .player-search-select {
   margin: 1rem;
 }
 
+.convo-test {
+  overflow: scroll;
+  max-height: 82vh;
+  margin-bottom: 5rem;
+}
+
 @media only screen and (max-width: 768px) {
   .conversation-input input {
     width: 95%;
