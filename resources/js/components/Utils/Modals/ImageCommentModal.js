@@ -3,6 +3,7 @@ import Moment from "react-moment";
 import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import Api from "../../Api";
+import { comment } from "postcss";
 
 const ImageCommentModal = withRouter((props) => {
     const appUrl = process.env.MIX_APP_URL;
@@ -46,32 +47,40 @@ const ImageCommentModal = withRouter((props) => {
 
     const renderComments = () => {
         if (comments) {
-            return comments.map((comment) => {
-                return (
-                    <div
-                        className="d-flex flex-row ml-1 mr-2"
-                        key={comment.image_comment_id}
-                    >
-                        <div className="item-1">
-                            <img
-                                src={renderCommentPhoto(comment)}
-                                alt="photo"
-                                className="conversation-sidebar-photo mr-2"
-                            />
-                        </div>
-                        <div className="item-2">
-                            <span>{comment.user[0].username}</span>{" "}
-                            <span className="text-muted conversation-message-time">
-                                <Moment
-                                    date={comment.created_at}
-                                    format="MM/DD/YYYY hh:mm:a"
+            if (comments[0]) {
+                return comments.map((comment) => {
+                    return (
+                        <div
+                            className="d-flex flex-row ml-1 mr-2"
+                            key={comment.image_comment_id}
+                        >
+                            <div className="item-1">
+                                <img
+                                    src={renderCommentPhoto(comment)}
+                                    alt="photo"
+                                    className="conversation-sidebar-photo mr-2"
                                 />
-                            </span>
-                            <p>{comment.body}</p>
+                            </div>
+                            <div className="item-2">
+                                <span>{comment.user[0].username}</span>{" "}
+                                <span className="text-muted conversation-message-time">
+                                    <Moment
+                                        date={comment.created_at}
+                                        format="MM/DD/YYYY hh:mm:a"
+                                    />
+                                </span>
+                                <p>{comment.body}</p>
+                            </div>
                         </div>
+                    );
+                });
+            } else {
+                return (
+                    <div>
+                        <span className="text-muted">No Comments</span>
                     </div>
                 );
-            });
+            }
         }
     };
 
@@ -121,7 +130,7 @@ const ImageCommentModal = withRouter((props) => {
                                 : ""}
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="d-flex flex-wrap flex-col flex-md-row">
+                    <Modal.Body className="d-flex flex-wrap flex-column flex-md-row">
                         <img
                             src={props.imageDetails.image}
                             alt={
