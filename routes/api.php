@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ImageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +50,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('update_current_user_profile_photo', [ProfileController::class, 'update_current_user_profile_photo']);
     Route::put('update_profile_privacy_messaging', [ProfileController::class, 'update_profile_privacy_messaging']);
     Route::post('search_player_profile', [ProfileController::class, 'search_player_profile']);
-    Route::post('upload_current_user_profile_image', [ProfileController::class, 'upload_current_user_profile_image']);
 
 
     Route::get('profile/{id}', [ProfileController::class, 'show']);
+
+    // Image
+    Route::post('upload_current_user_image', [ImageController::class, 'upload_current_user_image']);
 
 
     // Message

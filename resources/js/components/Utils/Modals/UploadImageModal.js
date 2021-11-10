@@ -32,7 +32,7 @@ const UploadImageModal = withRouter((props) => {
             fData.append("image", selectedFile);
             fData.append("description", description);
             const { data } = await Api.post(
-                "/upload_current_user_profile_image",
+                "/upload_current_user_image",
                 fData
             );
 

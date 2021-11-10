@@ -5,6 +5,7 @@ import Api from "../../Api";
 
 const ImageCommentModal = withRouter((props) => {
     const [show, setShow] = useState(false);
+    const [comments, setComments] = useState(null);
 
     useEffect(() => {
         if (props.imageClicked !== 0) {
@@ -26,14 +27,31 @@ const ImageCommentModal = withRouter((props) => {
         }
     };
 
+    console.log(props.imageDetails);
+
     return (
         <div className="mt-5 text-center">
             <Container>
                 <Modal show={show} onHide={handleClose} size="lg" centered>
                     <Modal.Header closeButton>
-                        <Modal.Title>Sign Out</Modal.Title>
+                        <Modal.Title>
+                            {props.imageDetails.description
+                                ? props.imageDetails.description
+                                : ""}
+                        </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Are you sure you want to sign out?</Modal.Body>
+                    <Modal.Body>
+                        <img
+                            src={props.imageDetails.image}
+                            alt={
+                                props.imageDetails.description
+                                    ? props.imageDetails.description
+                                    : "image"
+                            }
+                            className="img-fluid profile-img"
+                        />
+                        <span>No comments</span>
+                    </Modal.Body>
                     <Modal.Footer>
                         <button
                             onClick={handleClose}

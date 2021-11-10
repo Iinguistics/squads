@@ -9265,7 +9265,7 @@ var Images = function Images(_ref) {
             } : null,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
               src: image.image,
-              alt: "profile image",
+              alt: image.description ? image.description : "image",
               className: "img-fluid profile-img"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
               src: "".concat(appUrl, "/images/comment-gradient.png"),
@@ -9298,7 +9298,7 @@ var Images = function Images(_ref) {
     className: "d-flex flex-col flex-md-row flex-wrap justify-content-center justify-content-md-between align-items-center shadow-sm p-3 mb-5 bg-white rounded text-center",
     children: [renderImages(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Modals_ImageCommentModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
       imageClicked: imageClicked,
-      profileData: profileData
+      imageDetails: imageDetails
     })]
   });
 };
@@ -11804,6 +11804,11 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRou
       show = _useState2[0],
       setShow = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      comments = _useState4[0],
+      setComments = _useState4[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.imageClicked !== 0) {
       setShow(true);
@@ -11849,6 +11854,7 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRou
     };
   }();
 
+  console.log(props.imageDetails);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "mt-5 text-center",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -11860,10 +11866,16 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRou
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
-            children: "Sign Out"
+            children: props.imageDetails.description ? props.imageDetails.description : ""
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
-          children: "Are you sure you want to sign out?"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+            src: props.imageDetails.image,
+            alt: props.imageDetails.description ? props.imageDetails.description : "image",
+            className: "img-fluid profile-img"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: "No comments"
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: handleClose,
@@ -13147,7 +13159,7 @@ var UploadImageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
               fData.append("image", selectedFile);
               fData.append("description", description);
               _context.next = 8;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/upload_current_user_profile_image", fData);
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/upload_current_user_image", fData);
 
             case 8:
               _yield$Api$post = _context.sent;

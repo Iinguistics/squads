@@ -26,7 +26,11 @@ const Images = ({ profileData, preview }) => {
                         >
                             <img
                                 src={image.image}
-                                alt="profile image"
+                                alt={
+                                    image.description
+                                        ? image.description
+                                        : "image"
+                                }
                                 className="img-fluid profile-img"
                             />
                             <img
@@ -60,7 +64,7 @@ const Images = ({ profileData, preview }) => {
             {renderImages()}
             <ImageCommentModal
                 imageClicked={imageClicked}
-                profileData={profileData}
+                imageDetails={imageDetails}
             />
         </div>
     );
