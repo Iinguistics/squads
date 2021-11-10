@@ -108,18 +108,7 @@ const ImageCommentModal = withRouter((props) => {
         }
     };
 
-    console.log(props.profileData, "data");
     console.log(comments, "comments");
-
-    if (comments) {
-        if (comments[0]) {
-            if (comments[0].user[0]) {
-                if (comments[0].user[0].profile.photo) {
-                    console.log(comments[0].user[0].profile.photo, "comments");
-                }
-            }
-        }
-    }
 
     return (
         <div className="mt-5 text-center">
@@ -132,7 +121,7 @@ const ImageCommentModal = withRouter((props) => {
                                 : ""}
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="d-flex flex-row">
+                    <Modal.Body className="d-flex flex-wrap flex-col flex-md-row">
                         <img
                             src={props.imageDetails.image}
                             alt={
@@ -143,7 +132,9 @@ const ImageCommentModal = withRouter((props) => {
                             className="img-fluid profile-img mr-5"
                         />
                         <div>
-                            <div className="">{renderComments()}</div>
+                            <div className="mt-3 mt-md-0">
+                                {renderComments()}
+                            </div>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>

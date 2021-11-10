@@ -11988,19 +11988,7 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
     };
   }();
 
-  console.log(props.profileData, "data");
   console.log(comments, "comments");
-
-  if (comments) {
-    if (comments[0]) {
-      if (comments[0].user[0]) {
-        if (comments[0].user[0].profile.photo) {
-          console.log(comments[0].user[0].profile.photo, "comments");
-        }
-      }
-    }
-  }
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "mt-5 text-center",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -12015,14 +12003,14 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
             children: props.imageDetails.description ? props.imageDetails.description : ""
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
-          className: "d-flex flex-row",
+          className: "d-flex flex-wrap flex-col flex-md-row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
             src: props.imageDetails.image,
             alt: props.imageDetails.description ? props.imageDetails.description : "image",
             className: "img-fluid profile-img mr-5"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "",
+              className: "mt-3 mt-md-0",
               children: renderComments()
             })
           })]
