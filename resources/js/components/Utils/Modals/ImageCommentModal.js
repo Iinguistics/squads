@@ -78,8 +78,14 @@ const ImageCommentModal = withRouter((props) => {
     const sendCommentHandler = async (e) => {
         e.preventDefault();
 
-        if (body.length > 455) {
-            setError("Comment must be less than 455 characters.");
+        if (body.length > 400) {
+            setError("Comment must be less than 400 characters.");
+            return;
+        }
+
+        if (props.profileData.id === Number(props.match.params.id)) {
+            setError("Cannot comment on your own photo");
+            setBody("");
             return;
         }
 
@@ -102,7 +108,7 @@ const ImageCommentModal = withRouter((props) => {
         }
     };
 
-    console.log(props.imageDetails);
+    console.log(props.profileData, "data");
     console.log(comments, "comments");
 
     if (comments) {
@@ -137,9 +143,7 @@ const ImageCommentModal = withRouter((props) => {
                             className="img-fluid profile-img mr-5"
                         />
                         <div>
-                            <div className="d-flex flex-row">
-                                {renderComments()}
-                            </div>
+                            <div className="">{renderComments()}</div>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>

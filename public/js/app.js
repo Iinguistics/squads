@@ -9298,7 +9298,8 @@ var Images = function Images(_ref) {
     className: "d-flex flex-col flex-md-row flex-wrap justify-content-center justify-content-md-between align-items-center shadow-sm p-3 mb-5 bg-white rounded text-center",
     children: [renderImages(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Utils_Modals_ImageCommentModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
       imageClicked: imageClicked,
-      imageDetails: imageDetails
+      imageDetails: imageDetails,
+      profileData: profileData
     })]
   });
 };
@@ -11927,24 +11928,34 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
             case 0:
               e.preventDefault();
 
-              if (!(body.length > 455)) {
+              if (!(body.length > 400)) {
                 _context2.next = 4;
                 break;
               }
 
-              setError("Comment must be less than 455 characters.");
+              setError("Comment must be less than 400 characters.");
               return _context2.abrupt("return");
 
             case 4:
-              _context2.prev = 4;
+              if (!(props.profileData.id === Number(props.match.params.id))) {
+                _context2.next = 8;
+                break;
+              }
+
+              setError("Cannot comment on your own photo");
+              setBody("");
+              return _context2.abrupt("return");
+
+            case 8:
+              _context2.prev = 8;
               values = {
                 image_id: props.imageDetails.image_id,
                 body: body
               };
-              _context2.next = 8;
+              _context2.next = 12;
               return _Api__WEBPACK_IMPORTED_MODULE_3__["default"].post("/send_image_comment", values);
 
-            case 8:
+            case 12:
               _yield$Api$post = _context2.sent;
               data = _yield$Api$post.data;
 
@@ -11956,20 +11967,20 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
                 setError(data.error);
               }
 
-              _context2.next = 16;
+              _context2.next = 20;
               break;
 
-            case 13:
-              _context2.prev = 13;
-              _context2.t0 = _context2["catch"](4);
+            case 17:
+              _context2.prev = 17;
+              _context2.t0 = _context2["catch"](8);
               setError(_context2.t0.message);
 
-            case 16:
+            case 20:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[4, 13]]);
+      }, _callee2, null, [[8, 17]]);
     }));
 
     return function sendCommentHandler(_x) {
@@ -11977,7 +11988,7 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
     };
   }();
 
-  console.log(props.imageDetails);
+  console.log(props.profileData, "data");
   console.log(comments, "comments");
 
   if (comments) {
@@ -12011,7 +12022,7 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRou
             className: "img-fluid profile-img mr-5"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "d-flex flex-row",
+              className: "",
               children: renderComments()
             })
           })]

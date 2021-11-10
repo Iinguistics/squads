@@ -65,6 +65,7 @@ const Images = ({ profileData, preview }) => {
             <ImageCommentModal
                 imageClicked={imageClicked}
                 imageDetails={imageDetails}
+                profileData={profileData}
             />
         </div>
     );
