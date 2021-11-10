@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
-import Moment from "react-moment";
 
 import Home from "./Home";
 import Inbox from "./Inbox";

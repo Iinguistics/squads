@@ -40,7 +40,6 @@ const index = withRouter((props) => {
         fetchProfileHandler();
     }, []);
 
-    console.log(profileData, "data from public");
     return (
         <div className="container main-header mt-5">
             <Head
