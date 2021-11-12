@@ -12048,7 +12048,7 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
             className: "img-fluid profile-img mr-5"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "mt-3 mt-md-0 image-comment-container",
+              className: comments ? comments.length >= 4 ? "mt-3 mt-md-0 image-comment-container" : "mt-3 mt-md-0" : "mt-3 mt-md-0",
               children: renderComments()
             })
           })]

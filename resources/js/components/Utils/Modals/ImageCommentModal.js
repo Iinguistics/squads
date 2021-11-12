@@ -154,7 +154,15 @@ const ImageCommentModal = withRouter((props) => {
                             className="img-fluid profile-img mr-5"
                         />
                         <div>
-                            <div className="mt-3 mt-md-0 image-comment-container">
+                            <div
+                                className={
+                                    comments
+                                        ? comments.length >= 4
+                                            ? "mt-3 mt-md-0 image-comment-container"
+                                            : "mt-3 mt-md-0"
+                                        : "mt-3 mt-md-0"
+                                }
+                            >
                                 {renderComments()}
                             </div>
                         </div>
