@@ -38,7 +38,7 @@ const index = withRouter((props) => {
         }
 
         fetchProfileHandler();
-    }, []);
+    }, [props.match.params.id]);
 
     return (
         <div className="container main-header mt-5">
@@ -48,7 +48,7 @@ const index = withRouter((props) => {
                 userInfo={userInfo}
             />
             <InternetAndSquadInfo profileData={profileData} />
-            <Images profileData={profileData} />
+            <Images profileData={profileData} userInfo={userInfo} />
         </div>
     );
 });

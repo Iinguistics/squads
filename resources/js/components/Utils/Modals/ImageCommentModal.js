@@ -45,6 +45,11 @@ const ImageCommentModal = withRouter((props) => {
         }
     };
 
+    const pushToCommenterProfile = (id) => {
+        setShow(false);
+        props.history.push(`/profile/${id}`);
+    };
+
     const renderComments = () => {
         if (comments) {
             if (comments[0]) {
@@ -55,21 +60,19 @@ const ImageCommentModal = withRouter((props) => {
                             key={comment.image_comment_id}
                         >
                             <div className="item-1">
-                                <Link to={`/profile/${comment.user[0].id}`}>
-                                    <img
-                                        src={renderCommentPhoto(comment)}
-                                        alt="photo"
-                                        className="conversation-sidebar-photo mr-2"
-                                    />
-                                </Link>
+                                <img
+                                    src={renderCommentPhoto(comment)}
+                                    alt="photo"
+                                    className="conversation-sidebar-photo mr-2 image-comment-photo"
+                                    onClick={() =>
+                                        pushToCommenterProfile(
+                                            comment.user[0].id
+                                        )
+                                    }
+                                />
                             </div>
                             <div className="item-2">
-                                <Link
-                                    to={`/profile/${comment.user[0].id}`}
-                                    className="image-comment-link"
-                                >
-                                    <span>{comment.user[0].username}</span>{" "}
-                                </Link>
+                                <span>{comment.user[0].username}</span>{" "}
                                 <span className="text-muted conversation-message-time">
                                     <Moment
                                         date={comment.created_at}
@@ -99,8 +102,8 @@ const ImageCommentModal = withRouter((props) => {
             return;
         }
 
-        if (props.profileData.id === Number(props.match.params.id)) {
-            setError("Cannot comment on your own photo");
+        if (props.userInfo.id === Number(props.match.params.id)) {
+            setError("Cannot comment on your own post");
             setBody("");
             return;
         }
@@ -125,6 +128,7 @@ const ImageCommentModal = withRouter((props) => {
     };
 
     console.log(comments, "comments");
+    console.log(props.userInfo, "userInfo");
 
     return (
         <div className="mt-5 text-center">
