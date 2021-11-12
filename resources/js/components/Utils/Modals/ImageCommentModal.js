@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Moment from "react-moment";
 import { Modal, Container } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Api from "../../Api";
 import { comment } from "postcss";
 
@@ -48,31 +48,41 @@ const ImageCommentModal = withRouter((props) => {
     const renderComments = () => {
         if (comments) {
             if (comments[0]) {
-                return comments.map((comment) => {
-                    return (
-                        <div
-                            className="d-flex flex-row ml-1 mr-2"
-                            key={comment.image_comment_id}
-                        >
-                            <div className="item-1">
-                                <img
-                                    src={renderCommentPhoto(comment)}
-                                    alt="photo"
-                                    className="conversation-sidebar-photo mr-2"
-                                />
-                            </div>
-                            <div className="item-2">
-                                <span>{comment.user[0].username}</span>{" "}
-                                <span className="text-muted conversation-message-time">
-                                    <Moment
-                                        date={comment.created_at}
-                                        format="MM/DD/YYYY hh:mm:a"
+                return comments.map((comment, idx) => {
+                    if (idx <= 4) {
+                        return (
+                            <div
+                                className="d-flex flex-row ml-1 mr-2"
+                                key={comment.image_comment_id}
+                            >
+                                <div className="item-1">
+                                    <img
+                                        src={renderCommentPhoto(comment)}
+                                        alt="photo"
+                                        className="conversation-sidebar-photo mr-2"
                                     />
-                                </span>
-                                <p>{comment.body}</p>
+                                </div>
+                                <div className="item-2">
+                                    <span>{comment.user[0].username}</span>{" "}
+                                    <span className="text-muted conversation-message-time">
+                                        <Moment
+                                            date={comment.created_at}
+                                            format="MM/DD/YYYY hh:mm:a"
+                                        />
+                                    </span>
+                                    <p>{comment.body}</p>
+                                </div>
                             </div>
-                        </div>
-                    );
+                        );
+                    } else {
+                        return (
+                            <div key={comment.image_comment_id}>
+                                <Link to="/">
+                                    <span>show more</span>
+                                </Link>
+                            </div>
+                        );
+                    }
                 });
             } else {
                 return (
