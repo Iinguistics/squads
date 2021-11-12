@@ -10409,6 +10409,11 @@ form .player-search-select {
   color: #f6f7f9 !important;
 }
 
+.image-comment-container {
+  overflow: scroll;
+  max-height: 293px;
+}
+
 .section-1 {
   background: #5409c8;
   height: 650px;

@@ -15,3 +15,8 @@
     background: $main-blue !important;
     color: $main-white !important;
 }
+
+.image-comment-container {
+    overflow: scroll;
+    max-height: 293px;
+}
