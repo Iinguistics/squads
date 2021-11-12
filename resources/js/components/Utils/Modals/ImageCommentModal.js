@@ -55,14 +55,21 @@ const ImageCommentModal = withRouter((props) => {
                             key={comment.image_comment_id}
                         >
                             <div className="item-1">
-                                <img
-                                    src={renderCommentPhoto(comment)}
-                                    alt="photo"
-                                    className="conversation-sidebar-photo mr-2"
-                                />
+                                <Link to={`/profile/${comment.user[0].id}`}>
+                                    <img
+                                        src={renderCommentPhoto(comment)}
+                                        alt="photo"
+                                        className="conversation-sidebar-photo mr-2"
+                                    />
+                                </Link>
                             </div>
                             <div className="item-2">
-                                <span>{comment.user[0].username}</span>{" "}
+                                <Link
+                                    to={`/profile/${comment.user[0].id}`}
+                                    className="image-comment-link"
+                                >
+                                    <span>{comment.user[0].username}</span>{" "}
+                                </Link>
                                 <span className="text-muted conversation-message-time">
                                     <Moment
                                         date={comment.created_at}
