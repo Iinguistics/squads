@@ -98,6 +98,11 @@ const Conversation = ({
     const sendMessageHandler = async (e) => {
         e.preventDefault();
 
+        if (!body) {
+            setError("Message required.");
+            return;
+        }
+
         if (body.length > 455) {
             setError("Message must be less than 455 characters.");
             return;

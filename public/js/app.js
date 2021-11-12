@@ -6864,24 +6864,33 @@ var Conversation = function Conversation(_ref) {
             case 0:
               e.preventDefault();
 
-              if (!(body.length > 455)) {
+              if (body) {
                 _context.next = 4;
+                break;
+              }
+
+              setError("Message required.");
+              return _context.abrupt("return");
+
+            case 4:
+              if (!(body.length > 455)) {
+                _context.next = 7;
                 break;
               }
 
               setError("Message must be less than 455 characters.");
               return _context.abrupt("return");
 
-            case 4:
-              _context.prev = 4;
+            case 7:
+              _context.prev = 7;
               values = {
                 id: sentFromProfile.id,
                 body: body
               };
-              _context.next = 8;
+              _context.next = 11;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/send_user_message", values);
 
-            case 8:
+            case 11:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
@@ -6893,20 +6902,20 @@ var Conversation = function Conversation(_ref) {
                 setError(data.error);
               }
 
-              _context.next = 16;
+              _context.next = 19;
               break;
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](4);
+            case 16:
+              _context.prev = 16;
+              _context.t0 = _context["catch"](7);
               setError(_context.t0.message);
 
-            case 16:
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[4, 13]]);
+      }, _callee, null, [[7, 16]]);
     }));
 
     return function sendMessageHandler(_x) {
