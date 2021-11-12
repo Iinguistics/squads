@@ -97,13 +97,18 @@ const ImageCommentModal = withRouter((props) => {
     const sendCommentHandler = async (e) => {
         e.preventDefault();
 
+        if (!body) {
+            setError("Comment required.");
+            return;
+        }
+
         if (body.length > 400) {
             setError("Comment must be less than 400 characters.");
             return;
         }
 
         if (props.userInfo.id === Number(props.match.params.id)) {
-            setError("Cannot comment on your own post");
+            setError("Cannot comment on your own post.");
             setBody("");
             return;
         }

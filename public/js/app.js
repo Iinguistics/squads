@@ -11949,34 +11949,43 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
             case 0:
               e.preventDefault();
 
-              if (!(body.length > 400)) {
+              if (body) {
                 _context2.next = 4;
+                break;
+              }
+
+              setError("Comment required.");
+              return _context2.abrupt("return");
+
+            case 4:
+              if (!(body.length > 400)) {
+                _context2.next = 7;
                 break;
               }
 
               setError("Comment must be less than 400 characters.");
               return _context2.abrupt("return");
 
-            case 4:
+            case 7:
               if (!(props.userInfo.id === Number(props.match.params.id))) {
-                _context2.next = 8;
+                _context2.next = 11;
                 break;
               }
 
-              setError("Cannot comment on your own post");
+              setError("Cannot comment on your own post.");
               setBody("");
               return _context2.abrupt("return");
 
-            case 8:
-              _context2.prev = 8;
+            case 11:
+              _context2.prev = 11;
               values = {
                 image_id: props.imageDetails.image_id,
                 body: body
               };
-              _context2.next = 12;
+              _context2.next = 15;
               return _Api__WEBPACK_IMPORTED_MODULE_3__["default"].post("/send_image_comment", values);
 
-            case 12:
+            case 15:
               _yield$Api$post = _context2.sent;
               data = _yield$Api$post.data;
 
@@ -11988,20 +11997,20 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
                 setError(data.error);
               }
 
-              _context2.next = 20;
+              _context2.next = 23;
               break;
 
-            case 17:
-              _context2.prev = 17;
-              _context2.t0 = _context2["catch"](8);
+            case 20:
+              _context2.prev = 20;
+              _context2.t0 = _context2["catch"](11);
               setError(_context2.t0.message);
 
-            case 20:
+            case 23:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[8, 17]]);
+      }, _callee2, null, [[11, 20]]);
     }));
 
     return function sendCommentHandler(_x) {
