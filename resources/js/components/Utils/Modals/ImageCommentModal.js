@@ -127,9 +127,6 @@ const ImageCommentModal = withRouter((props) => {
         }
     };
 
-    console.log(comments, "comments");
-    console.log(props.userInfo, "userInfo");
-
     return (
         <div className="mt-5 text-center">
             <Container>

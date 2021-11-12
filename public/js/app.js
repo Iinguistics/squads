@@ -12009,8 +12009,6 @@ var ImageCommentModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRou
     };
   }();
 
-  console.log(comments, "comments");
-  console.log(props.userInfo, "userInfo");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "mt-5 text-center",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
