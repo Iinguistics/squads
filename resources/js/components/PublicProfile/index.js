@@ -5,6 +5,8 @@ import Head from "../ProfileComponents/Head";
 import InternetAndSquadInfo from "../ProfileComponents/InternetAndSquadInfo";
 import Images from "../ProfileComponents/Images";
 import Api from "../Api";
+import { ALL, TEAMMATES, NONE } from "../PrivateProfile/Privacy/Types";
+import PrivacyModal from "../Utils/Modals/PrivacyModal";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -13,6 +15,8 @@ const index = withRouter((props) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [profileViewing, setProfileViewing] = useState("");
+    const [profileViewable, setprofileViewable] = useState(true);
 
     const fetchProfileHandler = async () => {
         try {
@@ -39,17 +43,44 @@ const index = withRouter((props) => {
 
         fetchProfileHandler();
     }, [props.match.params.id]);
-    console.log(profileData);
+    console.log(profileData, "profile Data");
+    console.log(userInfo, "user info");
+
+    useEffect(() => {
+        // to do...put another if statement right below the first
+        // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
+        if (profileData) {
+            if (
+                profileData.privacy_profile_viewing === NONE &&
+                profileData.id !== userInfo.id
+            ) {
+                setprofileViewable(false);
+            }
+        }
+    }, [profileData]);
+
+    const renderProfile = () => {
+        if (profileData) {
+            if (profileData.privacy_profile_viewing === ALL) {
+                return (
+                    <>
+                        <Head
+                            profileData={profileData}
+                            profileColor={profileColor}
+                            userInfo={userInfo}
+                        />
+                        <InternetAndSquadInfo profileData={profileData} />
+                        <Images profileData={profileData} userInfo={userInfo} />
+                    </>
+                );
+            }
+        }
+    };
 
     return (
         <div className="container main-header mt-5">
-            <Head
-                profileData={profileData}
-                profileColor={profileColor}
-                userInfo={userInfo}
-            />
-            <InternetAndSquadInfo profileData={profileData} />
-            <Images profileData={profileData} userInfo={userInfo} />
+            {renderProfile()}
+            <PrivacyModal profileViewable={profileViewable} />
         </div>
     );
 });

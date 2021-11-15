@@ -7,10 +7,10 @@ const PrivacyModal = withRouter((props) => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        if (props.signOutClicked !== 0) {
+        if (!props.profileViewable) {
             setShow(true);
         }
-    }, [props.signOutClicked]);
+    }, [props.profileViewable]);
 
     const handleClose = () => setShow(false);
 
