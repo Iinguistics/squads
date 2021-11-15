@@ -39,6 +39,7 @@ const index = withRouter((props) => {
 
         fetchProfileHandler();
     }, [props.match.params.id]);
+    console.log(profileData);
 
     return (
         <div className="container main-header mt-5">

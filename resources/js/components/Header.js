@@ -23,13 +23,6 @@ const Header = ({
         if (userInfo !== user) {
             setUserInfo(user);
         }
-
-        // if (userInfo) {
-        //     setTimeout(() => {
-        //         fetchUserUnreadMessages();
-        //     }, 600);
-        // }
-        fetchUserUnreadMessages();
     }, [loggedInToggle]);
 
     const fetchUserUnreadMessages = async () => {

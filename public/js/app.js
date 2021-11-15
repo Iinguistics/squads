@@ -6279,14 +6279,7 @@ var Header = function Header(_ref) {
 
     if (userInfo !== user) {
       setUserInfo(user);
-    } // if (userInfo) {
-    //     setTimeout(() => {
-    //         fetchUserUnreadMessages();
-    //     }, 600);
-    // }
-
-
-    fetchUserUnreadMessages();
+    }
   }, [loggedInToggle]);
 
   var fetchUserUnreadMessages = /*#__PURE__*/function () {
@@ -9678,6 +9671,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
 
     fetchProfileHandler();
   }, [props.match.params.id]);
+  console.log(profileData);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "container main-header mt-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_2__["default"], {
