@@ -11763,7 +11763,7 @@ var CreateSquadModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
       name = _useState8[0],
       setName = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("cod"),
       _useState10 = _slicedToArray(_useState9, 2),
       game = _useState10[0],
       setGame = _useState10[1];
@@ -11775,8 +11775,8 @@ var CreateSquadModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
 
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState14 = _slicedToArray(_useState13, 2),
-      photo = _useState14[0],
-      setPhoto = _useState14[1];
+      selectedFile = _useState14[0],
+      setSelectedFile = _useState14[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.createSquadClicked !== 0) {
@@ -11844,20 +11844,66 @@ var CreateSquadModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Title, {
-            children: "Create Squad"
+            children: "Create a Squad"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
             onSubmit: createSquadHandler,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-              htmlFor: "username",
+              htmlFor: "name",
               children: "Enter squad name"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
               type: "text",
-              className: "form-control block shadow-none" //value={username}
-              //onChange={(e) => setUsername(e.target.value)}
-              ,
-              name: "username"
+              className: "form-control block shadow-none mb-3",
+              value: name,
+              onChange: function onChange(e) {
+                return setName(e.target.value);
+              },
+              name: "name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              htmlFor: "game",
+              children: "Choose game"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
+              name: "game",
+              value: game,
+              onChange: function onChange(e) {
+                return setGame(e.target.value);
+              },
+              className: "mr-4 p-1 player-search-select mb-3",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "cod",
+                children: "Call of Duty: Vanguard"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              htmlFor: "game",
+              children: "Squad photo"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "text-muted",
+              children: "(optional)"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "file",
+              className: "mb-3",
+              id: "form-input-no-underline",
+              onChange: function onChange(e) {
+                return setSelectedFile(e.target.files[0]);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              htmlFor: "recruiting",
+              children: "Actively Recruiting?"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+              name: "recruiting",
+              value: activelyRecruiting,
+              onChange: function onChange(e) {
+                return setActivelyRecruiting(e.target.value);
+              },
+              className: "mr-4 p-1 player-search-select mb-3",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "1",
+                children: "Yes"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "0",
+                children: "No"
+              })]
             })]
           }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "text-danger",

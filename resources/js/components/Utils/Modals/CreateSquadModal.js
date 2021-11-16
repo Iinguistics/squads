@@ -10,9 +10,9 @@ const CreateSquadModal = withRouter((props) => {
     const [error, setError] = useState("");
 
     const [name, setName] = useState("");
-    const [game, setGame] = useState("");
+    const [game, setGame] = useState("cod");
     const [activelyRecruiting, setActivelyRecruiting] = useState(1);
-    const [photo, setPhoto] = useState(null);
+    const [selectedFile, setSelectedFile] = useState(null);
 
     useEffect(() => {
         if (props.createSquadClicked !== 0) {
@@ -56,18 +56,58 @@ const CreateSquadModal = withRouter((props) => {
                     className="account-modal"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Create Squad</Modal.Title>
+                        <Modal.Title>Create a Squad</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <form onSubmit={createSquadHandler}>
-                            <label htmlFor="username">Enter squad name</label>
+                            <label htmlFor="name">Enter squad name</label>
                             <input
                                 type="text"
-                                className="form-control block shadow-none"
-                                //value={username}
-                                //onChange={(e) => setUsername(e.target.value)}
-                                name="username"
+                                className="form-control block shadow-none mb-3"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                name="name"
                             />
+                            <label htmlFor="game">Choose game</label>
+                            <br />
+                            <select
+                                name="game"
+                                value={game}
+                                onChange={(e) => setGame(e.target.value)}
+                                className="mr-4 p-1 player-search-select mb-3"
+                            >
+                                <option value="cod">
+                                    Call of Duty: Vanguard
+                                </option>
+                            </select>
+                            <br />
+                            <label htmlFor="game">Squad photo</label>
+                            <span className="text-muted">(optional)</span>
+                            <br />
+                            <input
+                                type="file"
+                                className="mb-3"
+                                id="form-input-no-underline"
+                                onChange={(e) =>
+                                    setSelectedFile(e.target.files[0])
+                                }
+                            />
+                            <br />
+                            <label htmlFor="recruiting">
+                                Actively Recruiting?
+                            </label>
+                            <br />
+                            <select
+                                name="recruiting"
+                                value={activelyRecruiting}
+                                onChange={(e) =>
+                                    setActivelyRecruiting(e.target.value)
+                                }
+                                className="mr-4 p-1 player-search-select mb-3"
+                            >
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
                         </form>
                         {error && <span className="text-danger">{error}</span>}
                     </Modal.Body>
