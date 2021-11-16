@@ -10,8 +10,6 @@ const Head = withRouter(
         const [sendMessageClicked, setSendMessageClicked] = useState(0);
         const [sendSquadInviteClicked, setSendSquadInviteClicked] = useState(0);
 
-        console.log(profileData, "profile data logged from profile Head");
-
         const renderButtons = () => {
             if (userInfo) {
                 if (

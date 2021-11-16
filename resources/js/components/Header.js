@@ -78,6 +78,11 @@ const Header = ({
                             Profile
                         </NavDropdown.Item>
                     </LinkContainer>
+                    <LinkContainer to="/squads">
+                        <NavDropdown.Item className="dropdown-item">
+                            Squads
+                        </NavDropdown.Item>
+                    </LinkContainer>
                     <span className="inbox-container">
                         <LinkContainer to="/inbox">
                             <NavDropdown.Item className="dropdown-item">

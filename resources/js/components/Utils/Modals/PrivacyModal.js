@@ -46,7 +46,7 @@ const PrivacyModal = withRouter((props) => {
                             Cancel
                         </button>
                         <button
-                            onClick={logOutHandler}
+                            // onClick={logOutHandler}
                             className="bttn-material-flat bttn-sm update-account-modal-btn"
                         >
                             Sign Out

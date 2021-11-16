@@ -9,6 +9,7 @@ import PasswordReset from "./Login/LoginHelp/PasswordReset";
 import PrivateProfile from "./PrivateProfile";
 import PublicProfile from "./PublicProfile";
 import Register from "./Register";
+import MySquads from "./MySquads";
 
 import Test from "./Test";
 import TestTwo from "./TestTwo";
@@ -28,6 +29,7 @@ const Main = (props) => {
                     )}
                 />
                 <Route path="/login-help" component={LoginHelp} />
+                <Route path="/squads" exact component={MySquads} />
                 <Route
                     path="/password-reset"
                     component={() => (
