@@ -16,7 +16,7 @@ const index = withRouter((props) => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [profileViewing, setProfileViewing] = useState("");
-    const [profileViewable, setprofileViewable] = useState(true);
+    const [profileViewable, setProfileViewable] = useState(true);
 
     const fetchProfileHandler = async () => {
         try {
@@ -54,7 +54,7 @@ const index = withRouter((props) => {
                 profileData.privacy_profile_viewing === NONE &&
                 profileData.id !== userInfo.id
             ) {
-                setprofileViewable(false);
+                setProfileViewable(false);
             }
         }
     }, [profileData]);
@@ -80,7 +80,10 @@ const index = withRouter((props) => {
     return (
         <div className="container main-header mt-5">
             {renderProfile()}
-            <PrivacyModal profileViewable={profileViewable} />
+            <PrivacyModal
+                profileViewable={profileViewable}
+                profileData={profileData}
+            />
         </div>
     );
 });

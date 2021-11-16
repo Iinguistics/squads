@@ -5,6 +5,7 @@ import Api from "../../Api";
 
 const PrivacyModal = withRouter((props) => {
     const [show, setShow] = useState(false);
+    const [sendMessageButton, setSendMessageButton] = useState(false);
 
     useEffect(() => {
         if (!props.profileViewable) {
@@ -14,15 +15,18 @@ const PrivacyModal = withRouter((props) => {
 
     const handleClose = () => setShow(false);
 
-    const logOutHandler = async () => {
-        const { data } = await Api.get("/logout");
+    const renderSendMessageButton = () => {
+        if (props.profileData) {
+            if (props.profileData.privacy_messaging === NONE) {
+                setSendMessageButton(false);
+            }
 
-        if (data.success) {
-            localStorage.removeItem("userInfo");
-
-            props.loggedInToggleHandler();
-            handleClose();
-            props.history.push("/");
+            if (
+                props.profileData.privacy_messaging === NONE &&
+                props.profileData.id !== userInfo.id
+            ) {
+                setprofileViewable(false);
+            }
         }
     };
 
