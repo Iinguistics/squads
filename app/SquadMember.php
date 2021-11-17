@@ -12,7 +12,7 @@ class SquadMember extends Model
     protected $primaryKey = 'squad_member_id';
 
     protected $fillable = [
-        'squad_id', 'id', 'created_at', 'updated_at'
+        'squad_id', 'id', 'squad_admin', 'created_at', 'updated_at'
     ];
 
     public function user()

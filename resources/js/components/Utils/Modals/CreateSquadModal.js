@@ -8,6 +8,7 @@ const CreateSquadModal = withRouter((props) => {
     const [show, setShow] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const [name, setName] = useState("");
     const [game, setGame] = useState("cod");
@@ -25,13 +26,31 @@ const CreateSquadModal = withRouter((props) => {
     const createSquadHandler = async (e) => {
         e.preventDefault();
 
-        const { data } = await Api.get("/logout");
+        try {
+            setLoading(true);
 
-        if (data.success) {
-            localStorage.removeItem("userInfo");
+            const fData = new FormData();
+            fData.append("photo", selectedFile);
+            const { data } = await Api.post(
+                "/update_current_user_profile_photo",
+                fData
+            );
 
-            handleClose();
-            props.history.push("/");
+            if (data.success) {
+                setSuccess(true);
+                setError(false);
+                setShow(false);
+                setLoading(false);
+                props.fetchMySquadsHandler();
+            } else {
+                setSuccess(false);
+                setError(true);
+                setLoading(false);
+            }
+        } catch (error) {
+            setError(error.message);
+            setSuccess(false);
+            setLoading(false);
         }
     };
 
