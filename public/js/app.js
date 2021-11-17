@@ -7535,11 +7535,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
-/* harmony import */ var _Utils_Modals_CreateSquadModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils/Modals/CreateSquadModal */ "./resources/js/components/Utils/Modals/CreateSquadModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var _Utils_Modals_CreateSquadModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Utils/Modals/CreateSquadModal */ "./resources/js/components/Utils/Modals/CreateSquadModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7558,11 +7566,49 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function () {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function () {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       createSquadClicked = _useState2[0],
       setCreateSquadClicked = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      mySquads = _useState4[0],
+      setMySquads = _useState4[1];
+
+  var fetchMySquadsHandler = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _yield$Api$get, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/fetch_my_squads");
+
+            case 2:
+              _yield$Api$get = _context.sent;
+              data = _yield$Api$get.data;
+              setMySquads(data.data);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function fetchMySquadsHandler() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    fetchMySquadsHandler();
+  }, []);
 
   var createSquadClickedHandler = function createSquadClickedHandler() {
     setCreateSquadClicked(function (createSquadClicked) {
@@ -7570,23 +7616,25 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  console.log(mySquads);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container main-header",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "item-1 mr-5",
         children: "search squad input"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "item-2",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
           className: "bttn-material-flat bttn-sm update-account-modal-btn",
           onClick: createSquadClickedHandler,
           children: "Create Squad"
         })
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Utils_Modals_CreateSquadModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      createSquadClicked: createSquadClicked
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Utils_Modals_CreateSquadModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      createSquadClicked: createSquadClicked,
+      fetchMySquadsHandler: fetchMySquadsHandler
     })]
   });
 });
@@ -11758,25 +11806,30 @@ var CreateSquadModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
       error = _useState6[0],
       setError = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      name = _useState8[0],
-      setName = _useState8[1];
+      loading = _useState8[0],
+      setLoading = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("cod"),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
-      game = _useState10[0],
-      setGame = _useState10[1];
+      name = _useState10[0],
+      setName = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("vanguard"),
       _useState12 = _slicedToArray(_useState11, 2),
-      activelyRecruiting = _useState12[0],
-      setActivelyRecruiting = _useState12[1];
+      game = _useState12[0],
+      setGame = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1),
       _useState14 = _slicedToArray(_useState13, 2),
-      selectedFile = _useState14[0],
-      setSelectedFile = _useState14[1];
+      recruiting = _useState14[0],
+      setRecruiting = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState16 = _slicedToArray(_useState15, 2),
+      selectedFile = _useState16[0],
+      setSelectedFile = _useState16[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.createSquadClicked !== 0) {
@@ -11790,32 +11843,65 @@ var CreateSquadModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
 
   var createSquadHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      var _yield$Api$get, data;
+      var values, _yield$Api$post, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               e.preventDefault();
-              _context.next = 3;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/logout");
 
-            case 3:
-              _yield$Api$get = _context.sent;
-              data = _yield$Api$get.data;
-
-              if (data.success) {
-                localStorage.removeItem("userInfo");
-                handleClose();
-                props.history.push("/");
+              if (!(!name || !game)) {
+                _context.next = 4;
+                break;
               }
 
-            case 6:
+              setError("All Fields Required");
+              return _context.abrupt("return");
+
+            case 4:
+              _context.prev = 4;
+              setLoading(true);
+              values = {
+                squad_name: name,
+                game: game,
+                recruiting: recruiting
+              };
+              _context.next = 9;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/create_squad", values);
+
+            case 9:
+              _yield$Api$post = _context.sent;
+              data = _yield$Api$post.data;
+
+              if (data.success) {
+                setSuccess(true);
+                setError(false);
+                setShow(false);
+                setLoading(false);
+                props.fetchMySquadsHandler();
+              } else {
+                setSuccess(false);
+                setError(data.error);
+                setLoading(false);
+              }
+
+              _context.next = 19;
+              break;
+
+            case 14:
+              _context.prev = 14;
+              _context.t0 = _context["catch"](4);
+              setError(_context.t0.message);
+              setSuccess(false);
+              setLoading(false);
+
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[4, 14]]);
     }));
 
     return function createSquadHandler(_x) {
@@ -11835,7 +11921,6 @@ var CreateSquadModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
         titleText: "Success",
         bodyText: "Squad successfully created",
         buttonText: "Got it",
-        tab: "myProfile",
         successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
@@ -11871,30 +11956,17 @@ var CreateSquadModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
               },
               className: "mr-4 p-1 player-search-select mb-3",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "cod",
+                value: "vanguard",
                 children: "Call of Duty: Vanguard"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-              htmlFor: "game",
-              children: "Squad photo"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              className: "text-muted",
-              children: "(optional)"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "file",
-              className: "mb-3",
-              id: "form-input-no-underline",
-              onChange: function onChange(e) {
-                return setSelectedFile(e.target.files[0]);
-              }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
               htmlFor: "recruiting",
               children: "Actively Recruiting?"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
               name: "recruiting",
-              value: activelyRecruiting,
+              value: recruiting,
               onChange: function onChange(e) {
-                return setActivelyRecruiting(e.target.value);
+                return setRecruiting(e.target.value);
               },
               className: "mr-4 p-1 player-search-select mb-3",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {

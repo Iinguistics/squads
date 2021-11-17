@@ -11,8 +11,8 @@ const CreateSquadModal = withRouter((props) => {
     const [loading, setLoading] = useState(false);
 
     const [name, setName] = useState("");
-    const [game, setGame] = useState("cod");
-    const [activelyRecruiting, setActivelyRecruiting] = useState(1);
+    const [game, setGame] = useState("vanguard");
+    const [recruiting, setRecruiting] = useState(1);
     const [selectedFile, setSelectedFile] = useState(null);
 
     useEffect(() => {
@@ -26,15 +26,19 @@ const CreateSquadModal = withRouter((props) => {
     const createSquadHandler = async (e) => {
         e.preventDefault();
 
+        if (!name || !game) {
+            setError("All Fields Required");
+            return;
+        }
+
         try {
             setLoading(true);
-
-            const fData = new FormData();
-            fData.append("photo", selectedFile);
-            const { data } = await Api.post(
-                "/update_current_user_profile_photo",
-                fData
-            );
+            let values = {
+                squad_name: name,
+                game: game,
+                recruiting: recruiting,
+            };
+            const { data } = await Api.post("/create_squad", values);
 
             if (data.success) {
                 setSuccess(true);
@@ -44,7 +48,7 @@ const CreateSquadModal = withRouter((props) => {
                 props.fetchMySquadsHandler();
             } else {
                 setSuccess(false);
-                setError(true);
+                setError(data.error);
                 setLoading(false);
             }
         } catch (error) {
@@ -66,7 +70,6 @@ const CreateSquadModal = withRouter((props) => {
                     titleText="Success"
                     bodyText="Squad successfully created"
                     buttonText="Got it"
-                    tab="myProfile"
                     successReset={successReset}
                 />
                 <Modal
@@ -95,22 +98,10 @@ const CreateSquadModal = withRouter((props) => {
                                 onChange={(e) => setGame(e.target.value)}
                                 className="mr-4 p-1 player-search-select mb-3"
                             >
-                                <option value="cod">
+                                <option value="vanguard">
                                     Call of Duty: Vanguard
                                 </option>
                             </select>
-                            <br />
-                            <label htmlFor="game">Squad photo</label>
-                            <span className="text-muted">(optional)</span>
-                            <br />
-                            <input
-                                type="file"
-                                className="mb-3"
-                                id="form-input-no-underline"
-                                onChange={(e) =>
-                                    setSelectedFile(e.target.files[0])
-                                }
-                            />
                             <br />
                             <label htmlFor="recruiting">
                                 Actively Recruiting?
@@ -118,10 +109,8 @@ const CreateSquadModal = withRouter((props) => {
                             <br />
                             <select
                                 name="recruiting"
-                                value={activelyRecruiting}
-                                onChange={(e) =>
-                                    setActivelyRecruiting(e.target.value)
-                                }
+                                value={recruiting}
+                                onChange={(e) => setRecruiting(e.target.value)}
                                 className="mr-4 p-1 player-search-select mb-3"
                             >
                                 <option value="1">Yes</option>

@@ -7,6 +7,8 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\SquadController;
+
 
 
 /*
@@ -64,4 +66,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('get_user_unread_messages', [MessageController::class, 'get_user_unread_messages']);
     Route::post('send_user_message', [MessageController::class, 'send_user_message']);
     Route::get('get_converstaion_messages/{id}', [MessageController::class, 'get_converstaion_messages']);
+
+
+    // Squads
+    Route::get('fetch_my_squads', [SquadController::class, 'fetch_my_squads']);
+    Route::post('create_squad', [SquadController::class, 'create_squad']);
 });

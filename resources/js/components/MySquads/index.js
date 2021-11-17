@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Api from "../Api";
 import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
 
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
+    const [mySquads, setMySquads] = useState(null);
+
+    const fetchMySquadsHandler = async () => {
+        const { data } = await Api.get("/fetch_my_squads");
+        setMySquads(data.data);
+    };
+
+    useEffect(() => {
+        fetchMySquadsHandler();
+    }, []);
 
     const createSquadClickedHandler = () => {
         setCreateSquadClicked((createSquadClicked) => createSquadClicked + 1);
     };
+
+    console.log(mySquads);
 
     return (
         <div className="container main-header">
@@ -23,7 +35,10 @@ const index = withRouter(() => {
                     </button>
                 </div>
             </div>
-            <CreateSquadModal createSquadClicked={createSquadClicked} />
+            <CreateSquadModal
+                createSquadClicked={createSquadClicked}
+                fetchMySquadsHandler={fetchMySquadsHandler}
+            />
         </div>
     );
 });
