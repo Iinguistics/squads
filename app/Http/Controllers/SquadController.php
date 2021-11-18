@@ -74,4 +74,35 @@ class SquadController extends Controller
             return response()->json($response, 200);
         }
     }
+
+    public function check_squad_teammate($id)
+    {
+        $user = Auth::user();
+
+        $current_user = SquadMember::where('id', $user->id)->get();
+        $current_user_length = count($current_user);
+
+        $potential_teammate = SquadMember::where('id', $id)->get();
+        $potential_teammate_length = count($current_user);
+
+        $match = false;
+
+
+        for ($i = 0; $i < $current_user_length; $i++) {
+            for ($j = 0; $j < $potential_teammate_length; $j++) {
+                if ($current_user[$i]->squad_id == $potential_teammate[$j]->squad_id) {
+                    $match = true;
+                    break;
+                }
+            }
+        }
+
+        $response = array(
+            //'success' => $squads ? true : false,
+            'data' => $match,
+            //'error' => $squads ? false : "failed to retrieve squads"
+        );
+
+        return response()->json($response, 200);
+    }
 }

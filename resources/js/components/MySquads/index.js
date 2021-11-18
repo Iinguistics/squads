@@ -6,6 +6,7 @@ import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
     const [mySquads, setMySquads] = useState(null);
+    const [test, setTest] = useState(null);
 
     const fetchMySquadsHandler = async () => {
         const { data } = await Api.get("/fetch_my_squads");
@@ -21,6 +22,16 @@ const index = withRouter(() => {
     };
 
     console.log(mySquads);
+
+    const testing = async () => {
+        const { data } = await Api.get(`/check_squad_teammate/12`);
+        setTest(data.data);
+    };
+
+    useEffect(() => {
+        testing();
+    }, []);
+    console.log(test, "check teammate");
 
     return (
         <div className="container main-header">
