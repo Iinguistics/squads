@@ -87,7 +87,6 @@ class SquadController extends Controller
 
         $match = false;
 
-
         for ($i = 0; $i < $current_user_length; $i++) {
             for ($j = 0; $j < $potential_teammate_length; $j++) {
                 if ($current_user[$i]->squad_id == $potential_teammate[$j]->squad_id) {

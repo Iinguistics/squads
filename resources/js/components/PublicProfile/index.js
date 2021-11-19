@@ -15,8 +15,9 @@ const index = withRouter((props) => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [profileViewing, setProfileViewing] = useState("");
+    const [isTeammate, setIsTeammate] = useState(null);
     const [profileViewable, setProfileViewable] = useState(true);
+    const [privacySetting, setPrivacySetting] = useState("");
 
     const fetchProfileHandler = async () => {
         try {
@@ -46,34 +47,63 @@ const index = withRouter((props) => {
     console.log(profileData, "profile Data");
     console.log(userInfo, "user info");
 
+    const checkIfTeammate = async () => {
+        const { data } = await Api.get(`/check_squad_teammate/12`);
+        setIsTeammate(data.data);
+    };
+    console.log(isTeammate);
+
     useEffect(() => {
-        // to do...put another if statement right below the first
-        // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
-        if (profileData) {
-            if (
-                profileData.privacy_profile_viewing === NONE &&
-                profileData.id !== userInfo.id
-            ) {
-                setProfileViewable(false);
+        checkIfTeammate();
+
+        setTimeout(() => {
+            // to do...put another if statement right below the first
+            // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
+            if (profileData) {
+                if (
+                    profileData.privacy_profile_viewing === NONE &&
+                    profileData.id !== userInfo.id
+                ) {
+                    setPrivacySetting("Private");
+                    setProfileViewable(false);
+                }
+
+                if (
+                    profileData.privacy_profile_viewing === TEAMMATES &&
+                    profileData.id !== userInfo.id &&
+                    isTeammate === false
+                ) {
+                    setPrivacySetting("Teammates only");
+                    setProfileViewable(false);
+                }
             }
-        }
-    }, [profileData]);
+        });
+    }, [profileData, isTeammate]);
 
     const renderProfile = () => {
-        if (profileData) {
-            if (profileData.privacy_profile_viewing === ALL) {
-                return (
-                    <>
-                        <Head
-                            profileData={profileData}
-                            profileColor={profileColor}
-                            userInfo={userInfo}
-                        />
-                        <InternetAndSquadInfo profileData={profileData} />
-                        <Images profileData={profileData} userInfo={userInfo} />
-                    </>
-                );
-            }
+        if (profileViewable) {
+            return (
+                <>
+                    <Head
+                        profileData={profileData}
+                        profileColor={profileColor}
+                        userInfo={userInfo}
+                    />
+                    <InternetAndSquadInfo profileData={profileData} />
+                    <Images profileData={profileData} userInfo={userInfo} />
+                </>
+            );
+        } else {
+            return (
+                <>
+                    <Head
+                        profileData={profileData}
+                        profileColor={profileColor}
+                        userInfo={userInfo}
+                    />
+                    This is set to private
+                </>
+            );
         }
     };
 
