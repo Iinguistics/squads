@@ -9898,12 +9898,12 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
       // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
       if (profileData) {
         if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
-          setPrivacySetting("Private");
+          setPrivacySetting("This profile is set to private");
           setProfileViewable(false);
         }
 
         if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
-          setPrivacySetting("Teammates only");
+          setPrivacySetting("Only teammates of ".concat(profileData.user.username, " can view their profile"));
           setProfileViewable(false);
         }
       }
@@ -9930,7 +9930,10 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
           profileData: profileData,
           profileColor: profileColor,
           userInfo: userInfo
-        }), "This is set to private"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+          className: "text-muted d-flex justify-content-center",
+          children: privacySetting
+        })]
       });
     }
   };

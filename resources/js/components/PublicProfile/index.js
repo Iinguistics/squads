@@ -64,7 +64,7 @@ const index = withRouter((props) => {
                     profileData.privacy_profile_viewing === NONE &&
                     profileData.id !== userInfo.id
                 ) {
-                    setPrivacySetting("Private");
+                    setPrivacySetting("This profile is set to private");
                     setProfileViewable(false);
                 }
 
@@ -73,7 +73,9 @@ const index = withRouter((props) => {
                     profileData.id !== userInfo.id &&
                     isTeammate === false
                 ) {
-                    setPrivacySetting("Teammates only");
+                    setPrivacySetting(
+                        `Only teammates of ${profileData.user.username} can view their profile`
+                    );
                     setProfileViewable(false);
                 }
             }
@@ -101,7 +103,9 @@ const index = withRouter((props) => {
                         profileColor={profileColor}
                         userInfo={userInfo}
                     />
-                    This is set to private
+                    <span className="text-muted d-flex justify-content-center">
+                        {privacySetting}
+                    </span>
                 </>
             );
         }
