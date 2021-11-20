@@ -17,8 +17,8 @@ const index = withRouter((props) => {
     const [isTeammate, setIsTeammate] = useState(null);
     const [profileViewable, setProfileViewable] = useState(true);
     const [privacyViewableString, setPrivacyViewableString] = useState("");
-    const [profileMessagable, setProfileMessageable] = useState(true);
-    const [privacyMessagableString, setPrivacyMessagableString] = useState("");
+    const [profileMessagable, setProfileMessagable] = useState(true);
+    const [privacyNone, setPrivacyNone] = useState(false);
 
     const fetchProfileHandler = async () => {
         try {
@@ -83,24 +83,19 @@ const index = withRouter((props) => {
 
                 //profile messaging
                 if (
-                    profileData.privacy_profile_messaging === NONE &&
+                    profileData.privacy_messaging === NONE &&
                     profileData.id !== userInfo.id
                 ) {
-                    setProfileMessageable(false);
-                    setPrivacyMessagableString(
-                        `${profileData.user.username} is not accepting messages at this time`
-                    );
+                    setProfileMessagable(false);
+                    setPrivacyNone(true);
                 }
 
                 if (
-                    profileData.privacy_profile_messaging === TEAMMATES &&
+                    profileData.privacy_messaging === TEAMMATES &&
                     profileData.id !== userInfo.id &&
                     isTeammate === false
                 ) {
-                    setProfileMessageable(false);
-                    setPrivacyMessagableString(
-                        `Only teammates of ${profileData.user.username} can send them messages`
-                    );
+                    setProfileMessagable(false);
                 }
             }
         });
@@ -115,6 +110,7 @@ const index = withRouter((props) => {
                         profileColor={profileColor}
                         userInfo={userInfo}
                         profileMessagable={profileMessagable}
+                        privacyNone={privacyNone}
                     />
                     <InternetAndSquadInfo profileData={profileData} />
                     <Images profileData={profileData} userInfo={userInfo} />
@@ -128,6 +124,7 @@ const index = withRouter((props) => {
                         profileColor={profileColor}
                         userInfo={userInfo}
                         profileMessagable={profileMessagable}
+                        privacyNone={privacyNone}
                     />
                     <span className="text-muted d-flex justify-content-center">
                         {privacyViewableString}

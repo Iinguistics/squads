@@ -9284,7 +9284,9 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function
       preview = _ref.preview,
       match = _ref.match,
       userInfo = _ref.userInfo,
-      profileMessagable = _ref.profileMessagable;
+      profileMessagable = _ref.profileMessagable,
+      privacyNone = _ref.privacyNone,
+      privacyTeammates = _ref.privacyTeammates;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -9295,6 +9297,21 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function
       _useState4 = _slicedToArray(_useState3, 2),
       sendSquadInviteClicked = _useState4[0],
       setSendSquadInviteClicked = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      activatePrivacyModal = _useState6[0],
+      setActivatePrivacyModal = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      privacyModalTitle = _useState8[0],
+      setPrivacyModalTitle = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState10 = _slicedToArray(_useState9, 2),
+      privacyModalBody = _useState10[0],
+      setPrivacyModalBody = _useState10[1];
 
   var renderButtons = function renderButtons() {
     if (userInfo) {
@@ -9317,9 +9334,19 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function
   };
 
   var sendMessageClickedHandler = function sendMessageClickedHandler() {
-    setSendMessageClicked(function (sendMessageClicked) {
-      return sendMessageClicked + 1;
-    });
+    if (profileMessagable) {
+      console.log(profileMessagable);
+      setSendMessageClicked(function (sendMessageClicked) {
+        return sendMessageClicked + 1;
+      });
+    } else {
+      console.log(privacyNone, "privacyNone");
+      setPrivacyModalBody(privacyNone ? "".concat(profileData.user.username, " is not accepting messages at this time") : "Only teammates of ".concat(profileData.user.username, " can send them messages"));
+      setPrivacyModalTitle("Message");
+      setActivatePrivacyModal(function (activatePrivacyModal) {
+        return activatePrivacyModal + 1;
+      });
+    }
   };
 
   var sendSquadInviteClickedHandler = function sendSquadInviteClickedHandler() {
@@ -9364,7 +9391,11 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function
       profileData: profileData
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_SendSquadInviteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       sendSquadInviteClicked: sendSquadInviteClicked
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_PrivacyModal__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_PrivacyModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      activatePrivacyModal: activatePrivacyModal,
+      privacyModalTitle: privacyModalTitle,
+      privacyModalBody: privacyModalBody
+    })]
   });
 });
 Head.defaultProps = {
@@ -9806,12 +9837,12 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState20 = _slicedToArray(_useState19, 2),
       profileMessagable = _useState20[0],
-      setProfileMessageable = _useState20[1];
+      setProfileMessagable = _useState20[1];
 
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState22 = _slicedToArray(_useState21, 2),
-      privacyMessagableString = _useState22[0],
-      setPrivacyMessagableString = _useState22[1];
+      privacyNone = _useState22[0],
+      setPrivacyNone = _useState22[1];
 
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -9920,14 +9951,13 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
         } //profile messaging
 
 
-        if (profileData.privacy_profile_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
-          setProfileMessageable(false);
-          setPrivacyMessagableString("".concat(profileData.user.username, " is not accepting messages at this time"));
+        if (profileData.privacy_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
+          setProfileMessagable(false);
+          setPrivacyNone(true);
         }
 
-        if (profileData.privacy_profile_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
-          setProfileMessageable(false);
-          setPrivacyMessagableString("Only teammates of ".concat(profileData.user.username, " can send them messages"));
+        if (profileData.privacy_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
+          setProfileMessagable(false);
         }
       }
     });
@@ -9940,7 +9970,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
           profileData: profileData,
           profileColor: profileColor,
           userInfo: userInfo,
-          profileMessagable: profileMessagable
+          profileMessagable: profileMessagable,
+          privacyNone: privacyNone
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
           profileData: profileData
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -9954,7 +9985,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
           profileData: profileData,
           profileColor: profileColor,
           userInfo: userInfo,
-          profileMessagable: profileMessagable
+          profileMessagable: profileMessagable,
+          privacyNone: privacyNone
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
           className: "text-muted d-flex justify-content-center",
           children: privacyViewableString
@@ -13000,16 +13032,11 @@ var PrivacyModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(
       show = _useState2[0],
       setShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      sendMessageButton = _useState4[0],
-      setSendMessageButton = _useState4[1];
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!props.profileMessagable) {
+    if (props.activatePrivacyModal !== 0) {
       setShow(true);
     }
-  }, [props.profileMessagable]);
+  }, [props.activatePrivacyModal]);
 
   var handleClose = function handleClose() {
     return setShow(false);
@@ -13024,20 +13051,16 @@ var PrivacyModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Title, {
-            children: "Message"
+            children: props.privacyModalTitle
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Body, {
-          children: "Are you sure you want to sign out?"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Footer, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: props.privacyModalBody
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Footer, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             onClick: handleClose,
-            className: "bttn-material-flat bttn-sm mr-2",
-            children: "Cancel"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-            // onClick={logOutHandler}
             className: "bttn-material-flat bttn-sm update-account-modal-btn",
-            children: "Sign Out"
-          })]
+            children: "Got it"
+          })
         })]
       })
     })

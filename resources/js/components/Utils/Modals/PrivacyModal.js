@@ -5,13 +5,12 @@ import Api from "../../Api";
 
 const PrivacyModal = withRouter((props) => {
     const [show, setShow] = useState(false);
-    const [sendMessageButton, setSendMessageButton] = useState(false);
 
     useEffect(() => {
-        if (!props.profileMessagable) {
+        if (props.activatePrivacyModal !== 0) {
             setShow(true);
         }
-    }, [props.profileMessagable]);
+    }, [props.activatePrivacyModal]);
 
     const handleClose = () => setShow(false);
 
@@ -20,21 +19,15 @@ const PrivacyModal = withRouter((props) => {
             <Container>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Message</Modal.Title>
+                        <Modal.Title>{props.privacyModalTitle}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Are you sure you want to sign out?</Modal.Body>
+                    <Modal.Body>{props.privacyModalBody}</Modal.Body>
                     <Modal.Footer>
                         <button
                             onClick={handleClose}
-                            className="bttn-material-flat bttn-sm mr-2"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            // onClick={logOutHandler}
                             className="bttn-material-flat bttn-sm update-account-modal-btn"
                         >
-                            Sign Out
+                            Got it
                         </button>
                     </Modal.Footer>
                 </Modal>

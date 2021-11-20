@@ -14,9 +14,14 @@ const Head = withRouter(
         match,
         userInfo,
         profileMessagable,
+        privacyNone,
+        privacyTeammates,
     }) => {
         const [sendMessageClicked, setSendMessageClicked] = useState(0);
         const [sendSquadInviteClicked, setSendSquadInviteClicked] = useState(0);
+        const [activatePrivacyModal, setActivatePrivacyModal] = useState(0);
+        const [privacyModalTitle, setPrivacyModalTitle] = useState("");
+        const [privacyModalBody, setPrivacyModalBody] = useState("");
 
         const renderButtons = () => {
             if (userInfo) {
@@ -47,9 +52,23 @@ const Head = withRouter(
         };
 
         const sendMessageClickedHandler = () => {
-            setSendMessageClicked(
-                (sendMessageClicked) => sendMessageClicked + 1
-            );
+            if (profileMessagable) {
+                console.log(profileMessagable);
+                setSendMessageClicked(
+                    (sendMessageClicked) => sendMessageClicked + 1
+                );
+            } else {
+                console.log(privacyNone, "privacyNone");
+                setPrivacyModalBody(
+                    privacyNone
+                        ? `${profileData.user.username} is not accepting messages at this time`
+                        : `Only teammates of ${profileData.user.username} can send them messages`
+                );
+                setPrivacyModalTitle("Message");
+                setActivatePrivacyModal(
+                    (activatePrivacyModal) => activatePrivacyModal + 1
+                );
+            }
         };
 
         const sendSquadInviteClickedHandler = () => {
@@ -115,7 +134,11 @@ const Head = withRouter(
                 <SendSquadInviteModal
                     sendSquadInviteClicked={sendSquadInviteClicked}
                 />
-                <PrivacyModal />
+                <PrivacyModal
+                    activatePrivacyModal={activatePrivacyModal}
+                    privacyModalTitle={privacyModalTitle}
+                    privacyModalBody={privacyModalBody}
+                />
             </div>
         );
     }
