@@ -9784,62 +9784,56 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function (props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      userInfo = _useState2[0],
-      setUserInfo = _useState2[1];
+      error = _useState2[0],
+      setError = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      profileData = _useState4[0],
-      setProfileData = _useState4[1];
+      loading = _useState4[0],
+      setLoading = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState6 = _slicedToArray(_useState5, 2),
-      profileColor = _useState6[0],
-      setProfileColor = _useState6[1];
+      userInfo = _useState6[0],
+      setUserInfo = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState8 = _slicedToArray(_useState7, 2),
-      error = _useState8[0],
-      setError = _useState8[1];
+      profileData = _useState8[0],
+      setProfileData = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
-      loading = _useState10[0],
-      setLoading = _useState10[1];
+      profileColor = _useState10[0],
+      setProfileColor = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState12 = _slicedToArray(_useState11, 2),
-      success = _useState12[0],
-      setSuccess = _useState12[1];
+      isTeammate = _useState12[0],
+      setIsTeammate = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState14 = _slicedToArray(_useState13, 2),
-      isTeammate = _useState14[0],
-      setIsTeammate = _useState14[1];
+      profileViewable = _useState14[0],
+      setProfileViewable = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState16 = _slicedToArray(_useState15, 2),
-      profileViewable = _useState16[0],
-      setProfileViewable = _useState16[1];
+      privacyViewableString = _useState16[0],
+      setPrivacyViewableString = _useState16[1];
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState18 = _slicedToArray(_useState17, 2),
-      privacyViewableString = _useState18[0],
-      setPrivacyViewableString = _useState18[1];
+      profileMessagable = _useState18[0],
+      setProfileMessagable = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState20 = _slicedToArray(_useState19, 2),
-      profileMessagable = _useState20[0],
-      setProfileMessagable = _useState20[1];
-
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState22 = _slicedToArray(_useState21, 2),
-      privacyNone = _useState22[0],
-      setPrivacyNone = _useState22[1];
+      privacyNone = _useState20[0],
+      setPrivacyNone = _useState20[1];
 
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -9909,7 +9903,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return _Api__WEBPACK_IMPORTED_MODULE_5__["default"].get("/check_squad_teammate/12");
+              return _Api__WEBPACK_IMPORTED_MODULE_5__["default"].get("/check_squad_teammate/".concat(props.match.params.id));
 
             case 2:
               _yield$Api$get2 = _context2.sent;
@@ -9929,31 +9923,37 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
     };
   }();
 
-  console.log(isTeammate);
+  var checkProfileViewing = function checkProfileViewing() {
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
+      setPrivacyViewableString("This profile is set to private");
+      setProfileViewable(false);
+    }
+
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
+      setPrivacyViewableString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
+      setProfileViewable(false);
+    }
+  };
+
+  var checkProfileMessaging = function checkProfileMessaging() {
+    if (profileData.privacy_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
+      setProfileMessagable(false);
+      setPrivacyNone(true);
+    }
+
+    if (profileData.privacy_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
+      setProfileMessagable(false);
+    }
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     checkIfTeammate();
     setTimeout(function () {
       if (profileData) {
         //profile viewing
-        if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
-          setPrivacyViewableString("This profile is set to private");
-          setProfileViewable(false);
-        }
+        checkProfileViewing(); //profile messaging
 
-        if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
-          setPrivacyViewableString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
-          setProfileViewable(false);
-        } //profile messaging
-
-
-        if (profileData.privacy_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
-          setProfileMessagable(false);
-          setPrivacyNone(true);
-        }
-
-        if (profileData.privacy_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
-          setProfileMessagable(false);
-        }
+        checkProfileMessaging();
       }
     });
   }, [profileData, isTeammate]);
@@ -13557,15 +13557,24 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
+              if (body) {
+                _context.next = 3;
+                break;
+              }
+
+              setError("message required");
+              return _context.abrupt("return");
+
+            case 3:
+              _context.prev = 3;
               values = {
                 id: props.profileData.id,
                 body: body
               };
-              _context.next = 4;
+              _context.next = 7;
               return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].post("/send_user_message", values);
 
-            case 4:
+            case 7:
               _yield$Api$post = _context.sent;
               data = _yield$Api$post.data;
 
@@ -13579,20 +13588,20 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
                 setError(data.error);
               }
 
-              _context.next = 12;
+              _context.next = 15;
               break;
 
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](0);
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](3);
               setError(_context.t0.message);
 
-            case 12:
+            case 15:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[3, 12]]);
     }));
 
     return function sendMessageHandler() {
@@ -13638,9 +13647,10 @@ var SendMessageModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRout
               value: body,
               onChange: function onChange(e) {
                 return setBody(e.target.value);
-              }
+              },
+              placeholder: "message"
             }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              className: "text-danger",
+              className: "text-danger ml-2",
               children: error
             })]
           })

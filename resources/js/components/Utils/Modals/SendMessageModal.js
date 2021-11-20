@@ -20,6 +20,10 @@ const SendMessageModal = withRouter((props) => {
     const handleClose = () => setShow(false);
 
     const sendMessageHandler = async () => {
+        if (!body) {
+            setError("message required");
+            return;
+        }
         try {
             let values = {
                 id: props.profileData.id,
@@ -79,9 +83,12 @@ const SendMessageModal = withRouter((props) => {
                                 cols="33"
                                 value={body}
                                 onChange={(e) => setBody(e.target.value)}
+                                placeholder="message"
                             />
                             {error && (
-                                <span className="text-danger">{error}</span>
+                                <span className="text-danger ml-2">
+                                    {error}
+                                </span>
                             )}
                         </Modal.Body>
                     </form>

@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Head from "../ProfileComponents/Head";
 import InternetAndSquadInfo from "../ProfileComponents/InternetAndSquadInfo";
 import Images from "../ProfileComponents/Images";
 import Api from "../Api";
-import { ALL, TEAMMATES, NONE } from "../PrivateProfile/Privacy/Types";
+import { TEAMMATES, NONE } from "../PrivateProfile/Privacy/Types";
 
 const index = withRouter((props) => {
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
     const [userInfo, setUserInfo] = useState(null);
     const [profileData, setProfileData] = useState(null);
     const [profileColor, setProfileColor] = useState("");
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
     const [isTeammate, setIsTeammate] = useState(null);
     const [profileViewable, setProfileViewable] = useState(true);
     const [privacyViewableString, setPrivacyViewableString] = useState("");
@@ -49,10 +48,50 @@ const index = withRouter((props) => {
     console.log(userInfo, "user info");
 
     const checkIfTeammate = async () => {
-        const { data } = await Api.get(`/check_squad_teammate/12`);
+        const { data } = await Api.get(
+            `/check_squad_teammate/${props.match.params.id}`
+        );
         setIsTeammate(data.data);
     };
-    console.log(isTeammate);
+
+    const checkProfileViewing = () => {
+        if (
+            profileData.privacy_profile_viewing === NONE &&
+            profileData.id !== userInfo.id
+        ) {
+            setPrivacyViewableString("This profile is set to private");
+            setProfileViewable(false);
+        }
+
+        if (
+            profileData.privacy_profile_viewing === TEAMMATES &&
+            profileData.id !== userInfo.id &&
+            isTeammate === false
+        ) {
+            setPrivacyViewableString(
+                `Only teammates of ${profileData.user.username} can view their profile`
+            );
+            setProfileViewable(false);
+        }
+    };
+
+    const checkProfileMessaging = () => {
+        if (
+            profileData.privacy_messaging === NONE &&
+            profileData.id !== userInfo.id
+        ) {
+            setProfileMessagable(false);
+            setPrivacyNone(true);
+        }
+
+        if (
+            profileData.privacy_messaging === TEAMMATES &&
+            profileData.id !== userInfo.id &&
+            isTeammate === false
+        ) {
+            setProfileMessagable(false);
+        }
+    };
 
     useEffect(() => {
         checkIfTeammate();
@@ -60,41 +99,10 @@ const index = withRouter((props) => {
         setTimeout(() => {
             if (profileData) {
                 //profile viewing
-                if (
-                    profileData.privacy_profile_viewing === NONE &&
-                    profileData.id !== userInfo.id
-                ) {
-                    setPrivacyViewableString("This profile is set to private");
-                    setProfileViewable(false);
-                }
-
-                if (
-                    profileData.privacy_profile_viewing === TEAMMATES &&
-                    profileData.id !== userInfo.id &&
-                    isTeammate === false
-                ) {
-                    setPrivacyViewableString(
-                        `Only teammates of ${profileData.user.username} can view their profile`
-                    );
-                    setProfileViewable(false);
-                }
+                checkProfileViewing();
 
                 //profile messaging
-                if (
-                    profileData.privacy_messaging === NONE &&
-                    profileData.id !== userInfo.id
-                ) {
-                    setProfileMessagable(false);
-                    setPrivacyNone(true);
-                }
-
-                if (
-                    profileData.privacy_messaging === TEAMMATES &&
-                    profileData.id !== userInfo.id &&
-                    isTeammate === false
-                ) {
-                    setProfileMessagable(false);
-                }
+                checkProfileMessaging();
             }
         });
     }, [profileData, isTeammate]);
