@@ -15,7 +15,6 @@ const Head = withRouter(
         userInfo,
         profileMessagable,
         privacyNone,
-        privacyTeammates,
     }) => {
         const [sendMessageClicked, setSendMessageClicked] = useState(0);
         const [sendSquadInviteClicked, setSendSquadInviteClicked] = useState(0);
@@ -53,12 +52,10 @@ const Head = withRouter(
 
         const sendMessageClickedHandler = () => {
             if (profileMessagable) {
-                console.log(profileMessagable);
                 setSendMessageClicked(
                     (sendMessageClicked) => sendMessageClicked + 1
                 );
             } else {
-                console.log(privacyNone, "privacyNone");
                 setPrivacyModalBody(
                     privacyNone
                         ? `${profileData.user.username} is not accepting messages at this time`

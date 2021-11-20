@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-import Api from "../../Api";
 
 const PrivacyModal = withRouter((props) => {
     const [show, setShow] = useState(false);

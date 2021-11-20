@@ -58,8 +58,6 @@ const index = withRouter((props) => {
         checkIfTeammate();
 
         setTimeout(() => {
-            // to do...put another if statement right below the first
-            // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
             if (profileData) {
                 //profile viewing
                 if (
