@@ -9799,8 +9799,13 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
 
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState18 = _slicedToArray(_useState17, 2),
-      privacySetting = _useState18[0],
-      setPrivacySetting = _useState18[1];
+      privacyViewingString = _useState18[0],
+      setPrivacyViewingString = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState20 = _slicedToArray(_useState19, 2),
+      profileMessagable = _useState20[0],
+      setProfileMessageable = _useState20[1];
 
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -9898,12 +9903,12 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
       // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
       if (profileData) {
         if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
-          setPrivacySetting("This profile is set to private");
+          setPrivacyViewingString("This profile is set to private");
           setProfileViewable(false);
         }
 
         if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
-          setPrivacySetting("Only teammates of ".concat(profileData.user.username, " can view their profile"));
+          setPrivacyViewingString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
           setProfileViewable(false);
         }
       }
@@ -9932,7 +9937,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
           userInfo: userInfo
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
           className: "text-muted d-flex justify-content-center",
-          children: privacySetting
+          children: privacyViewingString
         })]
       });
     }

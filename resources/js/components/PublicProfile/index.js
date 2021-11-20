@@ -17,7 +17,8 @@ const index = withRouter((props) => {
     const [success, setSuccess] = useState(false);
     const [isTeammate, setIsTeammate] = useState(null);
     const [profileViewable, setProfileViewable] = useState(true);
-    const [privacySetting, setPrivacySetting] = useState("");
+    const [privacyViewingString, setPrivacyViewingString] = useState("");
+    const [profileMessagable, setProfileMessageable] = useState(true);
 
     const fetchProfileHandler = async () => {
         try {
@@ -64,7 +65,7 @@ const index = withRouter((props) => {
                     profileData.privacy_profile_viewing === NONE &&
                     profileData.id !== userInfo.id
                 ) {
-                    setPrivacySetting("This profile is set to private");
+                    setPrivacyViewingString("This profile is set to private");
                     setProfileViewable(false);
                 }
 
@@ -73,7 +74,7 @@ const index = withRouter((props) => {
                     profileData.id !== userInfo.id &&
                     isTeammate === false
                 ) {
-                    setPrivacySetting(
+                    setPrivacyViewingString(
                         `Only teammates of ${profileData.user.username} can view their profile`
                     );
                     setProfileViewable(false);
@@ -104,7 +105,7 @@ const index = withRouter((props) => {
                         userInfo={userInfo}
                     />
                     <span className="text-muted d-flex justify-content-center">
-                        {privacySetting}
+                        {privacyViewingString}
                     </span>
                 </>
             );
