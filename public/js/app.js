@@ -9249,12 +9249,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _SocialLinks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialLinks */ "./resources/js/components/ProfileComponents/SocialLinks.js");
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
 /* harmony import */ var _Utils_Modals_SendMessageModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Utils/Modals/SendMessageModal */ "./resources/js/components/Utils/Modals/SendMessageModal.js");
 /* harmony import */ var _Utils_Modals_SendSquadInviteModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Utils/Modals/SendSquadInviteModal */ "./resources/js/components/Utils/Modals/SendSquadInviteModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Utils_Modals_PrivacyModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Utils/Modals/PrivacyModal */ "./resources/js/components/Utils/Modals/PrivacyModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -9276,12 +9277,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function (_ref) {
+
+var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function (_ref) {
   var profileData = _ref.profileData,
       profileColor = _ref.profileColor,
       preview = _ref.preview,
       match = _ref.match,
-      userInfo = _ref.userInfo;
+      userInfo = _ref.userInfo,
+      profileMessagable = _ref.profileMessagable;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -9298,12 +9301,12 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function
       if (preview === true || Number(match.params.id) === userInfo.id) {
         return;
       } else {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             className: "my-3 mr-md-2 bttn-material-flat bttn-sm update-account-modal-btn",
             onClick: sendMessageClickedHandler,
             children: "Send Message"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             className: "bttn-material-flat bttn-sm update-account-modal-btn",
             onClick: sendSquadInviteClickedHandler,
             children: "Invite to squad"
@@ -9326,42 +9329,42 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(function
   };
 
   var appUrl = "http://127.0.0.1:8000";
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "item-1 mr-5",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
         src: profileData ? profileData.photo ? profileData.photo : "".concat(appUrl, "/images/default-photo-black-outline.png") : "".concat(appUrl, "/images/default-photo-black-outline.png"),
         alt: "profile photo",
         className: "profile-preview-photo appearance-profile-color-".concat(profileColor)
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "private-profile-preview-head-item-2 mt-2 mt-md-0",
-      children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+      children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
         className: "mr-3 fs-22",
         children: profileData.user ? profileData.user.gamertag : ""
-      }), renderButtons(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      }), renderButtons(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "fs-16 mt-3 mt-md-0",
-        children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        children: [profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
             children: ["Username:", " ", profileData.user ? profileData.user.username : ""]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {})]
-        }), profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {})]
+        }), profileData && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
             children: ["Platform:", " ", profileData.user ? profileData.user.platform : ""]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {})]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
           children: profileData ? profileData.bio : "No bio"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_SocialLinks__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SocialLinks__WEBPACK_IMPORTED_MODULE_1__["default"], {
         profileData: profileData
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Utils_Modals_SendMessageModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_SendMessageModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
       sendMessageClicked: sendMessageClicked,
       profileData: profileData
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Utils_Modals_SendSquadInviteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_SendSquadInviteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       sendSquadInviteClicked: sendSquadInviteClicked
-    })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_PrivacyModal__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
   });
 });
 Head.defaultProps = {
@@ -9718,14 +9721,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ProfileComponents/Head */ "./resources/js/components/ProfileComponents/Head.js");
 /* harmony import */ var _ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ProfileComponents/InternetAndSquadInfo */ "./resources/js/components/ProfileComponents/InternetAndSquadInfo.js");
 /* harmony import */ var _ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ProfileComponents/Images */ "./resources/js/components/ProfileComponents/Images.js");
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
 /* harmony import */ var _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../PrivateProfile/Privacy/Types */ "./resources/js/components/PrivateProfile/Privacy/Types.js");
-/* harmony import */ var _Utils_Modals_PrivacyModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Utils/Modals/PrivacyModal */ "./resources/js/components/Utils/Modals/PrivacyModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -9755,8 +9757,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(function (props) {
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       userInfo = _useState2[0],
@@ -9799,13 +9800,18 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
 
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState18 = _slicedToArray(_useState17, 2),
-      privacyViewingString = _useState18[0],
-      setPrivacyViewingString = _useState18[1];
+      privacyViewableString = _useState18[0],
+      setPrivacyViewableString = _useState18[1];
 
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState20 = _slicedToArray(_useState19, 2),
       profileMessagable = _useState20[0],
       setProfileMessageable = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState22 = _slicedToArray(_useState21, 2),
+      privacyMessagableString = _useState22[0],
+      setPrivacyMessagableString = _useState22[1];
 
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -9902,14 +9908,26 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
       // to do...put another if statement right below the first
       // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
       if (profileData) {
+        //profile viewing
         if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
-          setPrivacyViewingString("This profile is set to private");
+          setPrivacyViewableString("This profile is set to private");
           setProfileViewable(false);
         }
 
         if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
-          setPrivacyViewingString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
+          setPrivacyViewableString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
           setProfileViewable(false);
+        } //profile messaging
+
+
+        if (profileData.privacy_profile_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
+          setProfileMessageable(false);
+          setPrivacyMessagableString("".concat(profileData.user.username, " is not accepting messages at this time"));
+        }
+
+        if (profileData.privacy_profile_messaging === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
+          setProfileMessageable(false);
+          setPrivacyMessagableString("Only teammates of ".concat(profileData.user.username, " can send them messages"));
         }
       }
     });
@@ -9917,38 +9935,37 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(functio
 
   var renderProfile = function renderProfile() {
     if (profileViewable) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_2__["default"], {
           profileData: profileData,
           profileColor: profileColor,
-          userInfo: userInfo
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          userInfo: userInfo,
+          profileMessagable: profileMessagable
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
           profileData: profileData
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileComponents_Images__WEBPACK_IMPORTED_MODULE_4__["default"], {
           profileData: profileData,
           userInfo: userInfo
         })]
       });
     } else {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileComponents_Head__WEBPACK_IMPORTED_MODULE_2__["default"], {
           profileData: profileData,
           profileColor: profileColor,
-          userInfo: userInfo
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+          userInfo: userInfo,
+          profileMessagable: profileMessagable
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
           className: "text-muted d-flex justify-content-center",
-          children: privacyViewingString
+          children: privacyViewableString
         })]
       });
     }
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "container main-header mt-5",
-    children: [renderProfile(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Utils_Modals_PrivacyModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      profileViewable: profileViewable,
-      profileData: profileData
-    })]
+    children: renderProfile()
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
@@ -12989,25 +13006,13 @@ var PrivacyModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(
       setSendMessageButton = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!props.profileViewable) {
+    if (!props.profileMessagable) {
       setShow(true);
     }
-  }, [props.profileViewable]);
+  }, [props.profileMessagable]);
 
   var handleClose = function handleClose() {
     return setShow(false);
-  };
-
-  var renderSendMessageButton = function renderSendMessageButton() {
-    if (props.profileData) {
-      if (props.profileData.privacy_messaging === NONE) {
-        setSendMessageButton(false);
-      }
-
-      if (props.profileData.privacy_messaging === NONE && props.profileData.id !== userInfo.id) {
-        setprofileViewable(false);
-      }
-    }
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -13019,7 +13024,7 @@ var PrivacyModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Title, {
-            children: "Sign Out"
+            children: "Message"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Body, {
           children: "Are you sure you want to sign out?"

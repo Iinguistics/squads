@@ -6,7 +6,6 @@ import InternetAndSquadInfo from "../ProfileComponents/InternetAndSquadInfo";
 import Images from "../ProfileComponents/Images";
 import Api from "../Api";
 import { ALL, TEAMMATES, NONE } from "../PrivateProfile/Privacy/Types";
-import PrivacyModal from "../Utils/Modals/PrivacyModal";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -17,8 +16,9 @@ const index = withRouter((props) => {
     const [success, setSuccess] = useState(false);
     const [isTeammate, setIsTeammate] = useState(null);
     const [profileViewable, setProfileViewable] = useState(true);
-    const [privacyViewingString, setPrivacyViewingString] = useState("");
+    const [privacyViewableString, setPrivacyViewableString] = useState("");
     const [profileMessagable, setProfileMessageable] = useState(true);
+    const [privacyMessagableString, setPrivacyMessagableString] = useState("");
 
     const fetchProfileHandler = async () => {
         try {
@@ -61,11 +61,12 @@ const index = withRouter((props) => {
             // to do...put another if statement right below the first
             // check if set to teammates only & if the userInfo.id is part of the same squd if not set to false
             if (profileData) {
+                //profile viewing
                 if (
                     profileData.privacy_profile_viewing === NONE &&
                     profileData.id !== userInfo.id
                 ) {
-                    setPrivacyViewingString("This profile is set to private");
+                    setPrivacyViewableString("This profile is set to private");
                     setProfileViewable(false);
                 }
 
@@ -74,10 +75,32 @@ const index = withRouter((props) => {
                     profileData.id !== userInfo.id &&
                     isTeammate === false
                 ) {
-                    setPrivacyViewingString(
+                    setPrivacyViewableString(
                         `Only teammates of ${profileData.user.username} can view their profile`
                     );
                     setProfileViewable(false);
+                }
+
+                //profile messaging
+                if (
+                    profileData.privacy_profile_messaging === NONE &&
+                    profileData.id !== userInfo.id
+                ) {
+                    setProfileMessageable(false);
+                    setPrivacyMessagableString(
+                        `${profileData.user.username} is not accepting messages at this time`
+                    );
+                }
+
+                if (
+                    profileData.privacy_profile_messaging === TEAMMATES &&
+                    profileData.id !== userInfo.id &&
+                    isTeammate === false
+                ) {
+                    setProfileMessageable(false);
+                    setPrivacyMessagableString(
+                        `Only teammates of ${profileData.user.username} can send them messages`
+                    );
                 }
             }
         });
@@ -91,6 +114,7 @@ const index = withRouter((props) => {
                         profileData={profileData}
                         profileColor={profileColor}
                         userInfo={userInfo}
+                        profileMessagable={profileMessagable}
                     />
                     <InternetAndSquadInfo profileData={profileData} />
                     <Images profileData={profileData} userInfo={userInfo} />
@@ -103,24 +127,17 @@ const index = withRouter((props) => {
                         profileData={profileData}
                         profileColor={profileColor}
                         userInfo={userInfo}
+                        profileMessagable={profileMessagable}
                     />
                     <span className="text-muted d-flex justify-content-center">
-                        {privacyViewingString}
+                        {privacyViewableString}
                     </span>
                 </>
             );
         }
     };
 
-    return (
-        <div className="container main-header mt-5">
-            {renderProfile()}
-            <PrivacyModal
-                profileViewable={profileViewable}
-                profileData={profileData}
-            />
-        </div>
-    );
+    return <div className="container main-header mt-5">{renderProfile()}</div>;
 });
 
 export default index;

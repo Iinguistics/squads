@@ -4,9 +4,17 @@ import SocialLinks from "./SocialLinks";
 import Api from "../Api";
 import SendMessageModal from "../Utils/Modals/SendMessageModal";
 import SendSquadInviteModal from "../Utils/Modals/SendSquadInviteModal";
+import PrivacyModal from "../Utils/Modals/PrivacyModal";
 
 const Head = withRouter(
-    ({ profileData, profileColor, preview, match, userInfo }) => {
+    ({
+        profileData,
+        profileColor,
+        preview,
+        match,
+        userInfo,
+        profileMessagable,
+    }) => {
         const [sendMessageClicked, setSendMessageClicked] = useState(0);
         const [sendSquadInviteClicked, setSendSquadInviteClicked] = useState(0);
 
@@ -107,6 +115,7 @@ const Head = withRouter(
                 <SendSquadInviteModal
                     sendSquadInviteClicked={sendSquadInviteClicked}
                 />
+                <PrivacyModal />
             </div>
         );
     }

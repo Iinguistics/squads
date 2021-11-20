@@ -8,34 +8,19 @@ const PrivacyModal = withRouter((props) => {
     const [sendMessageButton, setSendMessageButton] = useState(false);
 
     useEffect(() => {
-        if (!props.profileViewable) {
+        if (!props.profileMessagable) {
             setShow(true);
         }
-    }, [props.profileViewable]);
+    }, [props.profileMessagable]);
 
     const handleClose = () => setShow(false);
-
-    const renderSendMessageButton = () => {
-        if (props.profileData) {
-            if (props.profileData.privacy_messaging === NONE) {
-                setSendMessageButton(false);
-            }
-
-            if (
-                props.profileData.privacy_messaging === NONE &&
-                props.profileData.id !== userInfo.id
-            ) {
-                setprofileViewable(false);
-            }
-        }
-    };
 
     return (
         <div className="mt-5 text-center">
             <Container>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Sign Out</Modal.Title>
+                        <Modal.Title>Message</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Are you sure you want to sign out?</Modal.Body>
                     <Modal.Footer>
