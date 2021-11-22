@@ -41,7 +41,10 @@ const SendSquadInviteModal = withRouter((props) => {
         if (mySquads) {
             return mySquads.map((squad) => {
                 return (
-                    <div key={squad.squad_id}>
+                    <div
+                        key={squad.squad_id}
+                        className="send-squad-invite-squad"
+                    >
                         <h5>{squad.squad.squad_name}</h5>
                         <div className="light-divider"></div>
                     </div>

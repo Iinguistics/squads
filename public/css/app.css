@@ -10418,6 +10418,12 @@ form .player-search-select {
   cursor: pointer;
 }
 
+.send-squad-invite-squad:hover {
+  cursor: pointer;
+  color: #4d89ff;
+  background-color: #f6f7f9;
+}
+
 .section-1 {
   background: #5409c8;
   height: 650px;
