@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import { number } from "yup";
 import Api from "../../Api";
 
 const SendSquadInviteModal = withRouter((props) => {
     const [show, setShow] = useState(false);
     const [mySquads, setMySquads] = useState(null);
+    const [selectedSquad, setSelectedSquad] = useState(0);
+    const [note, setNote] = useState("");
 
     const fetchMySquadsHandler = async () => {
         const { data } = await Api.get("/fetch_my_squads");
@@ -39,15 +42,11 @@ const SendSquadInviteModal = withRouter((props) => {
 
     const renderSquads = () => {
         if (mySquads) {
-            return mySquads.map((squad) => {
+            return mySquads.map((squad, idx) => {
                 return (
-                    <div
-                        key={squad.squad_id}
-                        className="send-squad-invite-squad"
-                    >
-                        <h5>{squad.squad.squad_name}</h5>
-                        <div className="light-divider"></div>
-                    </div>
+                    <option key={idx} value={squad.squad_id}>
+                        {squad.squad.squad_name}
+                    </option>
                 );
             });
         }
@@ -85,7 +84,30 @@ const SendSquadInviteModal = withRouter((props) => {
                             {renderNumberOfSquads()}
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>{renderSquads()}</Modal.Body>
+                    <Modal.Body>
+                        <select
+                            value={selectedSquad}
+                            onChange={(e) =>
+                                setSelectedSquad(Number(e.target.value))
+                            }
+                            className="mb-2"
+                        >
+                            <option value="">--Select a squad--</option>
+                            {renderSquads()}
+                        </select>
+                        <br />
+                        <label htmlFor="note">Leave a note</label>{" "}
+                        <span className="text-muted">(optional)</span>
+                        <br />
+                        <textarea
+                            id="note"
+                            rows="4"
+                            cols="33"
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
+                            placeholder="Hey, you should join our squad, we are looking for a fast paced smg player like yourself!"
+                        />
+                    </Modal.Body>
                     <Modal.Footer>
                         <button
                             onClick={handleClose}
