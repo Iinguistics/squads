@@ -130,6 +130,7 @@ const Head = withRouter(
                 />
                 <SendSquadInviteModal
                     sendSquadInviteClicked={sendSquadInviteClicked}
+                    profileData={profileData}
                 />
                 <PrivacyModal
                     activatePrivacyModal={activatePrivacyModal}

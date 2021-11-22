@@ -9352,7 +9352,8 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function
       sendMessageClicked: sendMessageClicked,
       profileData: profileData
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_SendSquadInviteModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      sendSquadInviteClicked: sendSquadInviteClicked
+      sendSquadInviteClicked: sendSquadInviteClicked,
+      profileData: profileData
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Utils_Modals_PrivacyModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
       activatePrivacyModal: activatePrivacyModal,
       privacyModalTitle: privacyModalTitle,
@@ -13724,6 +13725,7 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.with
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchMySquadsHandler();
   }, []);
+  console.log(mySquads, "mySquads");
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.sendSquadInviteClicked !== 0) {
       setShow(true);
@@ -13769,6 +13771,20 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.with
     };
   }();
 
+  var renderSquads = function renderSquads() {
+    if (mySquads) {
+      return mySquads.map(function (squad) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+            children: squad.squad.squad_name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "light-divider"
+          })]
+        }, squad.squad_id);
+      });
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "mt-5 text-center",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -13779,21 +13795,17 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.with
         centered: true,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Header, {
           closeButton: true,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
-            children: "Sign Out"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
+            children: ["Choose the squad you wish to invite", " ", props.profileData ? props.profileData.user.username : "", " ", "to"]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
-          children: "Are you sure you want to sign out?"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          children: renderSquads()
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: handleClose,
             className: "bttn-material-flat bttn-sm mr-2",
             children: "Cancel"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            onClick: logOutHandler,
-            className: "bttn-material-flat bttn-sm update-account-modal-btn",
-            children: "Sign Out"
-          })]
+          })
         })]
       })
     })

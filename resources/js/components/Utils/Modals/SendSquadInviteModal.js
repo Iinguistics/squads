@@ -15,6 +15,7 @@ const SendSquadInviteModal = withRouter((props) => {
     useEffect(() => {
         fetchMySquadsHandler();
     }, []);
+    console.log(mySquads, "mySquads");
 
     useEffect(() => {
         if (props.sendSquadInviteClicked !== 0) {
@@ -36,26 +37,39 @@ const SendSquadInviteModal = withRouter((props) => {
         }
     };
 
+    const renderSquads = () => {
+        if (mySquads) {
+            return mySquads.map((squad) => {
+                return (
+                    <div key={squad.squad_id}>
+                        <h5>{squad.squad.squad_name}</h5>
+                        <div className="light-divider"></div>
+                    </div>
+                );
+            });
+        }
+    };
+
     return (
         <div className="mt-5 text-center">
             <Container>
                 <Modal show={show} onHide={handleClose} size="lg" centered>
                     <Modal.Header closeButton>
-                        <Modal.Title>Sign Out</Modal.Title>
+                        <Modal.Title>
+                            Choose the squad you wish to invite{" "}
+                            {props.profileData
+                                ? props.profileData.user.username
+                                : ""}{" "}
+                            to
+                        </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Are you sure you want to sign out?</Modal.Body>
+                    <Modal.Body>{renderSquads()}</Modal.Body>
                     <Modal.Footer>
                         <button
                             onClick={handleClose}
                             className="bttn-material-flat bttn-sm mr-2"
                         >
                             Cancel
-                        </button>
-                        <button
-                            onClick={logOutHandler}
-                            className="bttn-material-flat bttn-sm update-account-modal-btn"
-                        >
-                            Sign Out
                         </button>
                     </Modal.Footer>
                 </Modal>
