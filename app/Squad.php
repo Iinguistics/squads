@@ -14,4 +14,9 @@ class Squad extends Model
     protected $fillable = [
         'squad_name', 'game', 'founder', 'recruiting', 'photo', 'created_at', 'updated_at'
     ];
+
+    public function squadInvites()
+    {
+        return $this->hasMany('App\SquadInvite', 'squad_id', 'squad_id');
+    }
 }
