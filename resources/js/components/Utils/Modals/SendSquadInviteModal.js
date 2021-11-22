@@ -53,8 +53,26 @@ const SendSquadInviteModal = withRouter((props) => {
         }
     };
 
+    const renderNumberOfSquads = () => {
+        if (mySquads) {
+            if (mySquads.length === 1) {
+                return (
+                    <p className="text-muted number-of-squads">
+                        You are a member of 1 squad
+                    </p>
+                );
+            } else {
+                return (
+                    <p className="text-muted">
+                        You are a member of {mySquads.length} squad's
+                    </p>
+                );
+            }
+        }
+    };
+
     return (
-        <div className="mt-5 text-center">
+        <div className="mt-5 text-center number-of-squads">
             <Container>
                 <Modal show={show} onHide={handleClose} size="lg" centered>
                     <Modal.Header closeButton>
@@ -64,6 +82,7 @@ const SendSquadInviteModal = withRouter((props) => {
                                 ? props.profileData.user.username
                                 : ""}{" "}
                             to
+                            {renderNumberOfSquads()}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>{renderSquads()}</Modal.Body>

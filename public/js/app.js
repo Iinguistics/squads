@@ -13786,8 +13786,24 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.with
     }
   };
 
+  var renderNumberOfSquads = function renderNumberOfSquads() {
+    if (mySquads) {
+      if (mySquads.length === 1) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          className: "text-muted number-of-squads",
+          children: "You are a member of 1 squad"
+        });
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+          className: "text-muted",
+          children: ["You are a member of ", mySquads.length, " squad's"]
+        });
+      }
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "mt-5 text-center",
+    className: "mt-5 text-center number-of-squads",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
         show: show,
@@ -13797,7 +13813,7 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.with
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
-            children: ["Choose the squad you wish to invite", " ", props.profileData ? props.profileData.user.username : "", " ", "to"]
+            children: ["Choose the squad you wish to invite", " ", props.profileData ? props.profileData.user.username : "", " ", "to", renderNumberOfSquads()]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
           children: renderSquads()

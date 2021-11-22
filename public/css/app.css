@@ -10424,6 +10424,10 @@ form .player-search-select {
   background-color: #f6f7f9;
 }
 
+.number-of-squads {
+  font-size: 1rem;
+}
+
 .section-1 {
   background: #5409c8;
   height: 650px;
