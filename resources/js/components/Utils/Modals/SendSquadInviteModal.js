@@ -5,6 +5,16 @@ import Api from "../../Api";
 
 const SendSquadInviteModal = withRouter((props) => {
     const [show, setShow] = useState(false);
+    const [mySquads, setMySquads] = useState(null);
+
+    const fetchMySquadsHandler = async () => {
+        const { data } = await Api.get("/fetch_my_squads");
+        setMySquads(data.data);
+    };
+
+    useEffect(() => {
+        fetchMySquadsHandler();
+    }, []);
 
     useEffect(() => {
         if (props.sendSquadInviteClicked !== 0) {

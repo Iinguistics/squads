@@ -21,18 +21,6 @@ const index = withRouter(() => {
         setCreateSquadClicked((createSquadClicked) => createSquadClicked + 1);
     };
 
-    console.log(mySquads);
-
-    const testing = async () => {
-        const { data } = await Api.get(`/check_squad_teammate/12`);
-        setTest(data.data);
-    };
-
-    useEffect(() => {
-        testing();
-    }, []);
-    console.log(test, "check teammate");
-
     return (
         <div className="container main-header">
             <div className="d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded">
