@@ -83,8 +83,8 @@ class SquadController extends Controller
 
         $squad_invite = SquadInvite::create([
             "squad_id" => $input['squad_id'],
-            "id" => $$input['sent_to_id'],
-            "sent_from_id" => $user->id,
+            "id" => $input['sent_to_id'],
+            "sent_from_user_id" => $user->id,
             "note" => $input['note']
         ]);
 

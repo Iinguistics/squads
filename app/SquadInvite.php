@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SquadInvite extends Model
 {
 
-    protected $table = "squad_invites";
+    protected $table = "squads_invites";
     protected $primaryKey = 'squad_invite_id';
 
     protected $fillable = [

@@ -77,6 +77,28 @@ const SendSquadInviteModal = withRouter((props) => {
 
         if (selectedSquad === 0) {
             setError("You must choose a squad");
+            return;
+        }
+
+        try {
+            let values = {
+                squad_id: selectedSquad,
+                sent_to_id: props.profileData.id,
+                note: note,
+            };
+            const { data } = await Api.post("/create_squad_invite", values);
+
+            if (data.success) {
+                setSuccess(true);
+                setError("");
+                setNote("");
+                setShow(false);
+            } else {
+                setSuccess(false);
+                setError(data.error);
+            }
+        } catch (error) {
+            setError(error.message);
         }
     };
 

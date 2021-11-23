@@ -13822,22 +13822,60 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.with
 
   var sendInviteHandler = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(e) {
+      var values, _yield$Api$post, data;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               e.preventDefault();
 
-              if (selectedSquad === 0) {
-                setError("You must choose a squad");
+              if (!(selectedSquad === 0)) {
+                _context3.next = 4;
+                break;
               }
 
-            case 2:
+              setError("You must choose a squad");
+              return _context3.abrupt("return");
+
+            case 4:
+              _context3.prev = 4;
+              values = {
+                squad_id: selectedSquad,
+                sent_to_id: props.profileData.id,
+                note: note
+              };
+              _context3.next = 8;
+              return _Api__WEBPACK_IMPORTED_MODULE_3__["default"].post("/create_squad_invite", values);
+
+            case 8:
+              _yield$Api$post = _context3.sent;
+              data = _yield$Api$post.data;
+
+              if (data.success) {
+                setSuccess(true);
+                setError("");
+                setNote("");
+                setShow(false);
+              } else {
+                setSuccess(false);
+                setError(data.error);
+              }
+
+              _context3.next = 16;
+              break;
+
+            case 13:
+              _context3.prev = 13;
+              _context3.t0 = _context3["catch"](4);
+              setError(_context3.t0.message);
+
+            case 16:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3);
+      }, _callee3, null, [[4, 13]]);
     }));
 
     return function sendInviteHandler(_x) {
