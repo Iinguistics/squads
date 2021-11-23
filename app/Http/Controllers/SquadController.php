@@ -13,6 +13,7 @@ use App\User;
 use App\Profile;
 use App\Squad;
 use App\SquadMember;
+use App\SquadInvite;
 
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
@@ -74,6 +75,28 @@ class SquadController extends Controller
             return response()->json($response, 200);
         }
     }
+
+    public function create_squad_invite(Request $request)
+    {
+        $user = Auth::user();
+        $input = $request->all();
+
+        $squad_invite = SquadInvite::create([
+            "squad_id" => $input['squad_id'],
+            "id" => $$input['sent_to_id'],
+            "sent_from_id" => $user->id,
+            "note" => $input['note']
+        ]);
+
+        $response = array(
+            'success' => $squad_invite ? true : false,
+            'data' => $squad_invite,
+            'error' => $squad_invite ? false : "failed to create invite"
+        );
+
+        return response()->json($response, 200);
+    }
+
 
     public function check_squad_teammate($id)
     {

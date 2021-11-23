@@ -6,6 +6,8 @@ import Api from "../../Api";
 
 const SendSquadInviteModal = withRouter((props) => {
     const [show, setShow] = useState(false);
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState(false);
     const [mySquads, setMySquads] = useState(null);
     const [selectedSquad, setSelectedSquad] = useState(0);
     const [note, setNote] = useState("");
@@ -70,6 +72,14 @@ const SendSquadInviteModal = withRouter((props) => {
         }
     };
 
+    const sendInviteHandler = async (e) => {
+        e.preventDefault();
+
+        if (selectedSquad === 0) {
+            setError("You must choose a squad");
+        }
+    };
+
     return (
         <div className="mt-5 text-center number-of-squads">
             <Container>
@@ -85,28 +95,35 @@ const SendSquadInviteModal = withRouter((props) => {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <select
-                            value={selectedSquad}
-                            onChange={(e) =>
-                                setSelectedSquad(Number(e.target.value))
-                            }
-                            className="mb-2"
-                        >
-                            <option value="">--Select a squad--</option>
-                            {renderSquads()}
-                        </select>
-                        <br />
-                        <label htmlFor="note">Leave a note</label>{" "}
-                        <span className="text-muted">(optional)</span>
-                        <br />
-                        <textarea
-                            id="note"
-                            rows="4"
-                            cols="33"
-                            value={note}
-                            onChange={(e) => setNote(e.target.value)}
-                            placeholder="Hey, you should join our squad, we are looking for a fast paced smg player like yourself!"
-                        />
+                        <form onSubmit={sendInviteHandler}>
+                            <select
+                                value={selectedSquad}
+                                onChange={(e) =>
+                                    setSelectedSquad(Number(e.target.value))
+                                }
+                                className="mb-2"
+                            >
+                                <option value="">--Select a squad--</option>
+                                {renderSquads()}
+                            </select>
+                            {error && (
+                                <span className="text-danger ml-2">
+                                    {error}
+                                </span>
+                            )}
+                            <br />
+                            <label htmlFor="note">Leave a note</label>{" "}
+                            <span className="text-muted">(optional)</span>
+                            <br />
+                            <textarea
+                                id="note"
+                                rows="4"
+                                cols="33"
+                                value={note}
+                                onChange={(e) => setNote(e.target.value)}
+                                placeholder="Hey, you should join our squad, we are looking for a fast paced smg player like yourself!"
+                            />
+                        </form>
                     </Modal.Body>
                     <Modal.Footer>
                         <button
@@ -114,6 +131,12 @@ const SendSquadInviteModal = withRouter((props) => {
                             className="bttn-material-flat bttn-sm mr-2"
                         >
                             Cancel
+                        </button>
+                        <button
+                            onClick={sendInviteHandler}
+                            className="bttn-material-flat bttn-sm update-account-modal-btn"
+                        >
+                            Send Invite
                         </button>
                     </Modal.Footer>
                 </Modal>
