@@ -6,7 +6,6 @@ import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
     const [mySquads, setMySquads] = useState(null);
-    const [test, setTest] = useState(null);
 
     const fetchMySquadsHandler = async () => {
         const { data } = await Api.get("/fetch_my_squads");

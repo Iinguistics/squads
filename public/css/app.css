@@ -10575,10 +10575,6 @@ form .player-search-select {
   text-decoration: none !important;
 }
 
-.private-profile-main-container {
-  height: calc(100vh - 56px);
-}
-
 .private-profile-sidebar-container {
   width: 25%;
   background: #f4f5f7;

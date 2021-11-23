@@ -7577,11 +7577,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(functio
       mySquads = _useState4[0],
       setMySquads = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState6 = _slicedToArray(_useState5, 2),
-      test = _useState6[0],
-      setTest = _useState6[1];
-
   var fetchMySquadsHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _yield$Api$get, data;
