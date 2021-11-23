@@ -4,9 +4,17 @@ import ImageCommentModal from "../Utils/Modals/ImageCommentModal";
 const Images = ({ profileData, preview, userInfo }) => {
     const [imageClicked, setImageClicked] = useState(0);
     const [imageDetails, setImageDetails] = useState({});
+    const [previewImageClicked, setPreviewImageClicked] = useState(0);
 
     const imageClickedHandler = (image) => {
         setImageClicked((imageClicked) => imageClicked + 1);
+        setImageDetails(image);
+    };
+
+    const previewImageClickedHandler = (image) => {
+        setPreviewImageClicked(
+            (previewImageClicked) => previewImageClicked + 1
+        );
         setImageDetails(image);
     };
 
@@ -21,7 +29,7 @@ const Images = ({ profileData, preview, userInfo }) => {
                             onClick={
                                 !preview
                                     ? () => imageClickedHandler(image)
-                                    : null
+                                    : () => previewImageClickedHandler(image)
                             }
                         >
                             <img

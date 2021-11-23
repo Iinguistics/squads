@@ -9418,9 +9418,21 @@ var Images = function Images(_ref) {
       imageDetails = _useState4[0],
       setImageDetails = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      previewImageClicked = _useState6[0],
+      setPreviewImageClicked = _useState6[1];
+
   var imageClickedHandler = function imageClickedHandler(image) {
     setImageClicked(function (imageClicked) {
       return imageClicked + 1;
+    });
+    setImageDetails(image);
+  };
+
+  var previewImageClickedHandler = function previewImageClickedHandler(image) {
+    setPreviewImageClicked(function (previewImageClicked) {
+      return previewImageClicked + 1;
     });
     setImageDetails(image);
   };
@@ -9433,7 +9445,9 @@ var Images = function Images(_ref) {
             className: "profile-img-container mb-2",
             onClick: !preview ? function () {
               return imageClickedHandler(image);
-            } : null,
+            } : function () {
+              return previewImageClickedHandler(image);
+            },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
               src: image.image,
               alt: image.description ? image.description : "image",
