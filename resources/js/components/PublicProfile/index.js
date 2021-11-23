@@ -17,6 +17,7 @@ const index = withRouter((props) => {
     const [profileViewable, setProfileViewable] = useState(true);
     const [privacyViewableString, setPrivacyViewableString] = useState("");
     const [profileMessagable, setProfileMessagable] = useState(true);
+    const [profileInvite, setProfileInvite] = useState(true);
     const [privacyNone, setPrivacyNone] = useState(false);
 
     const fetchProfileHandler = async () => {
@@ -93,6 +94,16 @@ const index = withRouter((props) => {
         }
     };
 
+    const checkProfileInvite = () => {
+        if (
+            profileData.privacy_squad_invite === NONE &&
+            profileData.id !== userInfo.id
+        ) {
+            setProfileInvite(false);
+            setPrivacyNone(true);
+        }
+    };
+
     useEffect(() => {
         checkIfTeammate();
 
@@ -103,6 +114,9 @@ const index = withRouter((props) => {
 
                 //profile messaging
                 checkProfileMessaging();
+
+                //profile invites
+                checkProfileInvite();
             }
         });
     }, [profileData, isTeammate]);
@@ -116,6 +130,7 @@ const index = withRouter((props) => {
                         profileColor={profileColor}
                         userInfo={userInfo}
                         profileMessagable={profileMessagable}
+                        profileInvite={profileInvite}
                         privacyNone={privacyNone}
                     />
                     <InternetAndSquadInfo profileData={profileData} />
@@ -130,6 +145,7 @@ const index = withRouter((props) => {
                         profileColor={profileColor}
                         userInfo={userInfo}
                         profileMessagable={profileMessagable}
+                        profileInvite={profileInvite}
                         privacyNone={privacyNone}
                     />
                     <span className="text-muted d-flex justify-content-center">

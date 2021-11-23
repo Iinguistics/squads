@@ -20,7 +20,6 @@ const SendSquadInviteModal = withRouter((props) => {
     useEffect(() => {
         fetchMySquadsHandler();
     }, []);
-    console.log(mySquads, "mySquads");
 
     useEffect(() => {
         if (props.sendSquadInviteClicked !== 0) {
@@ -29,18 +28,6 @@ const SendSquadInviteModal = withRouter((props) => {
     }, [props.sendSquadInviteClicked]);
 
     const handleClose = () => setShow(false);
-
-    const logOutHandler = async () => {
-        const { data } = await Api.get("/logout");
-
-        if (data.success) {
-            localStorage.removeItem("userInfo");
-
-            props.loggedInToggleHandler();
-            handleClose();
-            props.history.push("/");
-        }
-    };
 
     const renderSquads = () => {
         if (mySquads) {

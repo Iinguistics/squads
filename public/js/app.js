@@ -9250,6 +9250,7 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function
       match = _ref.match,
       userInfo = _ref.userInfo,
       profileMessagable = _ref.profileMessagable,
+      profileInvite = _ref.profileInvite,
       privacyNone = _ref.privacyNone;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
@@ -9312,9 +9313,17 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function
   };
 
   var sendSquadInviteClickedHandler = function sendSquadInviteClickedHandler() {
-    setSendSquadInviteClicked(function (sendSquadInviteClicked) {
-      return sendSquadInviteClicked + 1;
-    });
+    if (profileInvite) {
+      setSendSquadInviteClicked(function (sendSquadInviteClicked) {
+        return sendSquadInviteClicked + 1;
+      });
+    } else {
+      setPrivacyModalBody("".concat(profileData.user.username, " is not accepting invites at this time"));
+      setPrivacyModalTitle("Message");
+      setActivatePrivacyModal(function (activatePrivacyModal) {
+        return activatePrivacyModal + 1;
+      });
+    }
   };
 
   var appUrl = "http://127.0.0.1:8000";
@@ -9796,10 +9805,15 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
       profileMessagable = _useState18[0],
       setProfileMessagable = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState20 = _slicedToArray(_useState19, 2),
-      privacyNone = _useState20[0],
-      setPrivacyNone = _useState20[1];
+      profileInvite = _useState20[0],
+      setProfileInvite = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState22 = _slicedToArray(_useState21, 2),
+      privacyNone = _useState22[0],
+      setPrivacyNone = _useState22[1];
 
   var fetchProfileHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -9912,6 +9926,13 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
     }
   };
 
+  var checkProfileInvite = function checkProfileInvite() {
+    if (profileData.privacy_squad_invite === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
+      setProfileInvite(false);
+      setPrivacyNone(true);
+    }
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     checkIfTeammate();
     setTimeout(function () {
@@ -9919,7 +9940,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
         //profile viewing
         checkProfileViewing(); //profile messaging
 
-        checkProfileMessaging();
+        checkProfileMessaging(); //profile invites
+
+        checkProfileInvite();
       }
     });
   }, [profileData, isTeammate]);
@@ -9932,6 +9955,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
           profileColor: profileColor,
           userInfo: userInfo,
           profileMessagable: profileMessagable,
+          profileInvite: profileInvite,
           privacyNone: privacyNone
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ProfileComponents_InternetAndSquadInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
           profileData: profileData
@@ -9947,6 +9971,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
           profileColor: profileColor,
           userInfo: userInfo,
           profileMessagable: profileMessagable,
+          profileInvite: profileInvite,
           privacyNone: privacyNone
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
           className: "text-muted d-flex justify-content-center",
@@ -13747,7 +13772,6 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.with
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchMySquadsHandler();
   }, []);
-  console.log(mySquads, "mySquads");
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.sendSquadInviteClicked !== 0) {
       setShow(true);
@@ -13757,41 +13781,6 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.with
   var handleClose = function handleClose() {
     return setShow(false);
   };
-
-  var logOutHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var _yield$Api$get2, data;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return _Api__WEBPACK_IMPORTED_MODULE_3__["default"].get("/logout");
-
-            case 2:
-              _yield$Api$get2 = _context2.sent;
-              data = _yield$Api$get2.data;
-
-              if (data.success) {
-                localStorage.removeItem("userInfo");
-                props.loggedInToggleHandler();
-                handleClose();
-                props.history.push("/");
-              }
-
-            case 5:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function logOutHandler() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
 
   var renderSquads = function renderSquads() {
     if (mySquads) {
@@ -13821,35 +13810,35 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.with
   };
 
   var sendInviteHandler = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(e) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
       var values, _yield$Api$post, data;
 
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               e.preventDefault();
 
               if (!(selectedSquad === 0)) {
-                _context3.next = 4;
+                _context2.next = 4;
                 break;
               }
 
               setError("You must choose a squad");
-              return _context3.abrupt("return");
+              return _context2.abrupt("return");
 
             case 4:
-              _context3.prev = 4;
+              _context2.prev = 4;
               values = {
                 squad_id: selectedSquad,
                 sent_to_id: props.profileData.id,
                 note: note
               };
-              _context3.next = 8;
+              _context2.next = 8;
               return _Api__WEBPACK_IMPORTED_MODULE_3__["default"].post("/create_squad_invite", values);
 
             case 8:
-              _yield$Api$post = _context3.sent;
+              _yield$Api$post = _context2.sent;
               data = _yield$Api$post.data;
 
               if (data.success) {
@@ -13862,24 +13851,24 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.with
                 setError(data.error);
               }
 
-              _context3.next = 16;
+              _context2.next = 16;
               break;
 
             case 13:
-              _context3.prev = 13;
-              _context3.t0 = _context3["catch"](4);
-              setError(_context3.t0.message);
+              _context2.prev = 13;
+              _context2.t0 = _context2["catch"](4);
+              setError(_context2.t0.message);
 
             case 16:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
         }
-      }, _callee3, null, [[4, 13]]);
+      }, _callee2, null, [[4, 13]]);
     }));
 
     return function sendInviteHandler(_x) {
-      return _ref3.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 

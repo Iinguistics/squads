@@ -14,6 +14,7 @@ const Head = withRouter(
         match,
         userInfo,
         profileMessagable,
+        profileInvite,
         privacyNone,
     }) => {
         const [sendMessageClicked, setSendMessageClicked] = useState(0);
@@ -69,9 +70,19 @@ const Head = withRouter(
         };
 
         const sendSquadInviteClickedHandler = () => {
-            setSendSquadInviteClicked(
-                (sendSquadInviteClicked) => sendSquadInviteClicked + 1
-            );
+            if (profileInvite) {
+                setSendSquadInviteClicked(
+                    (sendSquadInviteClicked) => sendSquadInviteClicked + 1
+                );
+            } else {
+                setPrivacyModalBody(
+                    `${profileData.user.username} is not accepting invites at this time`
+                );
+                setPrivacyModalTitle("Message");
+                setActivatePrivacyModal(
+                    (activatePrivacyModal) => activatePrivacyModal + 1
+                );
+            }
         };
 
         const appUrl = process.env.MIX_APP_URL;
