@@ -9790,7 +9790,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
       isTeammate = _useState12[0],
       setIsTeammate = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState14 = _slicedToArray(_useState13, 2),
       profileViewable = _useState14[0],
       setProfileViewable = _useState14[1];
@@ -9901,17 +9901,36 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
     return function checkIfTeammate() {
       return _ref2.apply(this, arguments);
     };
-  }();
+  }(); // const checkProfileViewing = () => {
+  //     if (
+  //         profileData.privacy_profile_viewing === NONE &&
+  //         profileData.id !== userInfo.id
+  //     ) {
+  //         setPrivacyViewableString("This profile is set to private");
+  //         setProfileViewable(false);
+  //     }
+  //     if (
+  //         profileData.privacy_profile_viewing === TEAMMATES &&
+  //         profileData.id !== userInfo.id &&
+  //         isTeammate === false
+  //     ) {
+  //         setPrivacyViewableString(
+  //             `Only teammates of ${profileData.user.username} can view their profile`
+  //         );
+  //         setProfileViewable(false);
+  //     }
+  // };
+
 
   var checkProfileViewing = function checkProfileViewing() {
-    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE && profileData.id !== userInfo.id) {
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.ALL && profileData.id !== userInfo.id) {
       setPrivacyViewableString("This profile is set to private");
-      setProfileViewable(false);
+      setProfileViewable(true);
     }
 
-    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === false) {
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === true) {
       setPrivacyViewableString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
-      setProfileViewable(false);
+      setProfileViewable(true);
     }
   };
 

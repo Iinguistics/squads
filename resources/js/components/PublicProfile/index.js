@@ -4,7 +4,7 @@ import Head from "../ProfileComponents/Head";
 import InternetAndSquadInfo from "../ProfileComponents/InternetAndSquadInfo";
 import Images from "../ProfileComponents/Images";
 import Api from "../Api";
-import { TEAMMATES, NONE } from "../PrivateProfile/Privacy/Types";
+import { ALL, TEAMMATES, NONE } from "../PrivateProfile/Privacy/Types";
 
 const index = withRouter((props) => {
     const [error, setError] = useState("");
@@ -14,7 +14,7 @@ const index = withRouter((props) => {
     const [profileData, setProfileData] = useState(null);
     const [profileColor, setProfileColor] = useState("");
     const [isTeammate, setIsTeammate] = useState(null);
-    const [profileViewable, setProfileViewable] = useState(true);
+    const [profileViewable, setProfileViewable] = useState(false);
     const [privacyViewableString, setPrivacyViewableString] = useState("");
     const [profileMessagable, setProfileMessagable] = useState(true);
     const [profileInvite, setProfileInvite] = useState(true);
@@ -55,24 +55,45 @@ const index = withRouter((props) => {
         setIsTeammate(data.data);
     };
 
+    // const checkProfileViewing = () => {
+    //     if (
+    //         profileData.privacy_profile_viewing === NONE &&
+    //         profileData.id !== userInfo.id
+    //     ) {
+    //         setPrivacyViewableString("This profile is set to private");
+    //         setProfileViewable(false);
+    //     }
+
+    //     if (
+    //         profileData.privacy_profile_viewing === TEAMMATES &&
+    //         profileData.id !== userInfo.id &&
+    //         isTeammate === false
+    //     ) {
+    //         setPrivacyViewableString(
+    //             `Only teammates of ${profileData.user.username} can view their profile`
+    //         );
+    //         setProfileViewable(false);
+    //     }
+    // };
+
     const checkProfileViewing = () => {
         if (
-            profileData.privacy_profile_viewing === NONE &&
+            profileData.privacy_profile_viewing === ALL &&
             profileData.id !== userInfo.id
         ) {
             setPrivacyViewableString("This profile is set to private");
-            setProfileViewable(false);
+            setProfileViewable(true);
         }
 
         if (
             profileData.privacy_profile_viewing === TEAMMATES &&
             profileData.id !== userInfo.id &&
-            isTeammate === false
+            isTeammate === true
         ) {
             setPrivacyViewableString(
                 `Only teammates of ${profileData.user.username} can view their profile`
             );
-            setProfileViewable(false);
+            setProfileViewable(true);
         }
     };
 
