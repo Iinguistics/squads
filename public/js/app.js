@@ -9901,36 +9901,32 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.withRouter)(functio
     return function checkIfTeammate() {
       return _ref2.apply(this, arguments);
     };
-  }(); // const checkProfileViewing = () => {
-  //     if (
-  //         profileData.privacy_profile_viewing === NONE &&
-  //         profileData.id !== userInfo.id
-  //     ) {
-  //         setPrivacyViewableString("This profile is set to private");
-  //         setProfileViewable(false);
-  //     }
-  //     if (
-  //         profileData.privacy_profile_viewing === TEAMMATES &&
-  //         profileData.id !== userInfo.id &&
-  //         isTeammate === false
-  //     ) {
-  //         setPrivacyViewableString(
-  //             `Only teammates of ${profileData.user.username} can view their profile`
-  //         );
-  //         setProfileViewable(false);
-  //     }
-  // };
-
+  }();
 
   var checkProfileViewing = function checkProfileViewing() {
-    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.ALL && profileData.id !== userInfo.id) {
-      setPrivacyViewableString("This profile is set to private");
+    if (profileData.id === userInfo.id) {
       setProfileViewable(true);
+      return;
     }
 
-    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && profileData.id !== userInfo.id && isTeammate === true) {
-      setPrivacyViewableString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.ALL) {
       setProfileViewable(true);
+      return;
+    }
+
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && isTeammate === true) {
+      setProfileViewable(true);
+      return;
+    }
+
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.NONE) {
+      setPrivacyViewableString("This profile is set to private");
+      return;
+    }
+
+    if (profileData.privacy_profile_viewing === _PrivateProfile_Privacy_Types__WEBPACK_IMPORTED_MODULE_6__.TEAMMATES && isTeammate === false) {
+      setPrivacyViewableString("Only teammates of ".concat(profileData.user.username, " can view their profile"));
+      return;
     }
   };
 

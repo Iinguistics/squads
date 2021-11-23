@@ -55,45 +55,38 @@ const index = withRouter((props) => {
         setIsTeammate(data.data);
     };
 
-    // const checkProfileViewing = () => {
-    //     if (
-    //         profileData.privacy_profile_viewing === NONE &&
-    //         profileData.id !== userInfo.id
-    //     ) {
-    //         setPrivacyViewableString("This profile is set to private");
-    //         setProfileViewable(false);
-    //     }
-
-    //     if (
-    //         profileData.privacy_profile_viewing === TEAMMATES &&
-    //         profileData.id !== userInfo.id &&
-    //         isTeammate === false
-    //     ) {
-    //         setPrivacyViewableString(
-    //             `Only teammates of ${profileData.user.username} can view their profile`
-    //         );
-    //         setProfileViewable(false);
-    //     }
-    // };
-
     const checkProfileViewing = () => {
-        if (
-            profileData.privacy_profile_viewing === ALL &&
-            profileData.id !== userInfo.id
-        ) {
-            setPrivacyViewableString("This profile is set to private");
+        if (profileData.id === userInfo.id) {
             setProfileViewable(true);
+            return;
+        }
+
+        if (profileData.privacy_profile_viewing === ALL) {
+            setProfileViewable(true);
+            return;
         }
 
         if (
             profileData.privacy_profile_viewing === TEAMMATES &&
-            profileData.id !== userInfo.id &&
             isTeammate === true
+        ) {
+            setProfileViewable(true);
+            return;
+        }
+
+        if (profileData.privacy_profile_viewing === NONE) {
+            setPrivacyViewableString("This profile is set to private");
+            return;
+        }
+
+        if (
+            profileData.privacy_profile_viewing === TEAMMATES &&
+            isTeammate === false
         ) {
             setPrivacyViewableString(
                 `Only teammates of ${profileData.user.username} can view their profile`
             );
-            setProfileViewable(true);
+            return;
         }
     };
 
