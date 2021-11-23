@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-import { number } from "yup";
+import SuccessModal from "./SuccessModal";
 import Api from "../../Api";
 
 const SendSquadInviteModal = withRouter((props) => {
@@ -102,9 +102,20 @@ const SendSquadInviteModal = withRouter((props) => {
         }
     };
 
+    const successReset = () => {
+        setSuccess(false);
+    };
+
     return (
         <div className="mt-5 text-center number-of-squads">
             <Container>
+                <SuccessModal
+                    success={success}
+                    titleText="Success"
+                    bodyText="Invite sent."
+                    buttonText="Got it"
+                    successReset={successReset}
+                />
                 <Modal show={show} onHide={handleClose} size="lg" centered>
                     <Modal.Header closeButton>
                         <Modal.Title>

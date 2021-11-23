@@ -81,6 +81,34 @@ class SquadController extends Controller
         $user = Auth::user();
         $input = $request->all();
 
+        $check_already_invited = SquadInvite::where('squad_id', $input['squad_id'])
+            ->where('id', $input['sent_to_id'])
+            ->where('pending', 1)
+            ->get()->first();
+
+        if ($check_already_invited) {
+            $response = array(
+                'success' => false,
+                'error' => "This user already has a pending invite to join this squad."
+            );
+
+            return response()->json($response, 200);
+        }
+
+        $check_already_member = SquadMember::where('squad_id', $input['squad_id'])
+            ->where('id', $input['sent_to_id'])
+            ->get()->first();
+
+        if ($check_already_member) {
+            $response = array(
+                'success' => false,
+                'error' => "This user is already a member of this squad."
+            );
+
+            return response()->json($response, 200);
+        }
+
+
         $squad_invite = SquadInvite::create([
             "squad_id" => $input['squad_id'],
             "id" => $input['sent_to_id'],

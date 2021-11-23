@@ -13656,7 +13656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _SuccessModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SuccessModal */ "./resources/js/components/Utils/Modals/SuccessModal.js");
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Api */ "./resources/js/components/Api.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -13883,10 +13883,20 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.with
     };
   }();
 
+  var successReset = function successReset() {
+    setSuccess(false);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "mt-5 text-center number-of-squads",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SuccessModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        success: success,
+        titleText: "Success",
+        bodyText: "Invite sent.",
+        buttonText: "Got it",
+        successReset: successReset
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         show: show,
         onHide: handleClose,
         size: "lg",
@@ -13940,7 +13950,7 @@ var SendSquadInviteModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.with
             children: "Send Invite"
           })]
         })]
-      })
+      })]
     })
   });
 });
