@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ImageCommentModal from "../Utils/Modals/ImageCommentModal";
+import EditImageModal from "../Utils/Modals/EditImageModal";
 
 const Images = ({ profileData, preview, userInfo }) => {
     const [imageClicked, setImageClicked] = useState(0);
@@ -72,6 +73,11 @@ const Images = ({ profileData, preview, userInfo }) => {
             {renderImages()}
             <ImageCommentModal
                 imageClicked={imageClicked}
+                imageDetails={imageDetails}
+                userInfo={userInfo}
+            />
+            <EditImageModal
+                previewImageClicked={previewImageClicked}
                 imageDetails={imageDetails}
                 userInfo={userInfo}
             />
