@@ -8,7 +8,6 @@ const EditImageModal = withRouter((props) => {
     const appUrl = process.env.MIX_APP_URL;
 
     const [show, setShow] = useState(false);
-    const [comments, setComments] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -28,8 +27,6 @@ const EditImageModal = withRouter((props) => {
     }, [props.imageDetails]);
 
     const handleClose = () => setShow(false);
-
-    console.log(props.imageDetails);
 
     const updateImageDescriptionHandler = async () => {
         if (!description) {
