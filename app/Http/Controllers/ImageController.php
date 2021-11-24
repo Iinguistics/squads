@@ -87,11 +87,28 @@ class ImageController extends Controller
     {
         $input = $request->all();
 
-        $updatedImage = Image::find($input['image_id'])->update(['description' => $input['description']]);
+        $updatedImage = Image::find($input['image_id']);
+        $updatedImage->update(['description' => $input['description']]);
 
         $response = array(
             'success' => $updatedImage ? true : false,
             'error' => $updatedImage ? false : 'failed to update image'
+        );
+        return response()->json($response, 200);
+    }
+
+    public function destroy_image(Request $request)
+    {
+        // delete from s3 bucket?
+        // Storage::disk('s3')->delete(filepath);
+        $input = $request->all();
+
+        $imageDestroyed = Image::find($input['image_id']);
+        $imageDestroyed->delete();
+
+        $response = array(
+            'success' => $imageDestroyed ? true : false,
+            'error' => $imageDestroyed ? false : 'failed to delete image'
         );
         return response()->json($response, 200);
     }

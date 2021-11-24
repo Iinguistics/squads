@@ -47,10 +47,7 @@ const EditImageModal = withRouter((props) => {
                 image_id: props.imageDetails.image_id,
                 description: description,
             };
-            const { data } = await Api.post(
-                "/update_image_description",
-                values
-            );
+            const { data } = await Api.put("/update_image_description", values);
 
             if (data.success) {
                 props.fetchPrivateProfileHandler();
@@ -65,6 +62,34 @@ const EditImageModal = withRouter((props) => {
             }
         } catch (error) {
             setError(error.message);
+        }
+    };
+
+    const deleteImageHandler = async () => {
+        try {
+            setLoading(true);
+
+            let value = {
+                image_id: props.imageDetails.image_id,
+            };
+            const { data } = await Api.post("/destroy_image", value);
+
+            if (data.success) {
+                props.fetchPrivateProfileHandler();
+                setSuccess(true);
+                setLoading(false);
+                setDescription("");
+                setModalBodyText("Image has been deleted");
+                setError("");
+                setShow(false);
+            } else {
+                setSuccess(false);
+                setError(data.error);
+                setLoading(false);
+            }
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
         }
     };
 
@@ -83,6 +108,10 @@ const EditImageModal = withRouter((props) => {
                     successReset={successReset}
                 />
                 <Modal show={show} onHide={handleClose} size="lg" centered>
+                    {loading && (
+                        <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
+                    )}
+
                     <Modal.Header closeButton>
                         <Modal.Title>{description}</Modal.Title>
                     </Modal.Header>
@@ -130,6 +159,7 @@ const EditImageModal = withRouter((props) => {
                             type="submit"
                             value="Delete Image"
                             className="bttn-material-flat bttn-sm bttn-danger"
+                            onClick={deleteImageHandler}
                         />
                     </Modal.Footer>
                 </Modal>

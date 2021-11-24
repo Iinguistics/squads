@@ -60,7 +60,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('upload_current_user_image', [ImageController::class, 'upload_current_user_image']);
     Route::get('get_image_comments/{id}', [ImageController::class, 'get_image_comments']);
     Route::post('send_image_comment', [ImageController::class, 'send_image_comment']);
-    Route::post('update_image_description', [ImageController::class, 'update_image_description']);
+    Route::put('update_image_description', [ImageController::class, 'update_image_description']);
+    Route::post('destroy_image', [ImageController::class, 'destroy_image']);
 
     // Message
     Route::get('get_user_messages', [MessageController::class, 'get_user_messages']);
