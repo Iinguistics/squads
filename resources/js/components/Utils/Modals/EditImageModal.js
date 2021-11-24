@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Moment from "react-moment";
 import { Modal, Container } from "react-bootstrap";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Api from "../../Api";
-import { comment } from "postcss";
+import SuccessModal from "./SuccessModal";
 
 const EditImageModal = withRouter((props) => {
     const appUrl = process.env.MIX_APP_URL;
@@ -11,9 +10,12 @@ const EditImageModal = withRouter((props) => {
     const [show, setShow] = useState(false);
     const [comments, setComments] = useState(null);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [description, setDescription] = useState(
         props.imageDetails.description ? props.imageDetails.description : ""
     );
+    const [modalBodyText, setModalBodyText] = useState("");
 
     useEffect(() => {
         if (props.previewImageClicked !== 0) {
@@ -29,37 +31,36 @@ const EditImageModal = withRouter((props) => {
 
     console.log(props.imageDetails);
 
-    const sendCommentHandler = async (e) => {
-        e.preventDefault();
-
-        if (!body) {
+    const updateImageDescriptionHandler = async () => {
+        if (!description) {
             setError("Comment required.");
             return;
         }
 
-        if (body.length > 400) {
-            setError("Comment must be less than 400 characters.");
-            return;
-        }
-
-        if (props.userInfo.id === Number(props.match.params.id)) {
-            setError("Cannot comment on your own post.");
-            setBody("");
+        if (description.length > 299) {
+            setError("Description must be less than 300 characters.");
             return;
         }
 
         try {
             let values = {
                 image_id: props.imageDetails.image_id,
-                body: body,
+                description: description,
             };
-            const { data } = await Api.post("/send_image_comment", values);
+            const { data } = await Api.post(
+                "/update_image_description",
+                values
+            );
 
             if (data.success) {
-                setBody("");
+                props.fetchPrivateProfileHandler();
+                setSuccess(true);
+                setDescription("");
+                setModalBodyText("Image description has been updated");
                 setError("");
-                fetchComments();
+                setShow(false);
             } else {
+                setSuccess(false);
                 setError(data.error);
             }
         } catch (error) {
@@ -67,9 +68,20 @@ const EditImageModal = withRouter((props) => {
         }
     };
 
+    const successReset = () => {
+        setSuccess(false);
+    };
+
     return (
         <div className="mt-5 text-center">
             <Container>
+                <SuccessModal
+                    success={success}
+                    titleText="Success"
+                    bodyText={modalBodyText}
+                    buttonText="Got it"
+                    successReset={successReset}
+                />
                 <Modal show={show} onHide={handleClose} size="lg" centered>
                     <Modal.Header closeButton>
                         <Modal.Title>{description}</Modal.Title>
@@ -98,6 +110,7 @@ const EditImageModal = withRouter((props) => {
                                 type="submit"
                                 value="Update Description"
                                 className="bttn-material-flat bttn-sm update-account-modal-btn"
+                                onClick={updateImageDescriptionHandler}
                             />
                         </div>
                     </Modal.Body>

@@ -28,7 +28,11 @@ const index = ({ profileData, profileColor, fetchPrivateProfileHandler }) => {
                 preview={true}
             />
             <InternetAndSquadInfo profileData={profileData} />
-            <Images profileData={profileData} preview={true} />
+            <Images
+                profileData={profileData}
+                preview={true}
+                fetchPrivateProfileHandler={fetchPrivateProfileHandler}
+            />
         </div>
     );
 };

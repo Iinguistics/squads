@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import ImageCommentModal from "../Utils/Modals/ImageCommentModal";
 import EditImageModal from "../Utils/Modals/EditImageModal";
 
-const Images = ({ profileData, preview, userInfo }) => {
+const Images = ({
+    profileData,
+    preview,
+    userInfo,
+    fetchPrivateProfileHandler,
+}) => {
     const [imageClicked, setImageClicked] = useState(0);
     const [imageDetails, setImageDetails] = useState({});
     const [previewImageClicked, setPreviewImageClicked] = useState(0);
@@ -80,6 +85,7 @@ const Images = ({ profileData, preview, userInfo }) => {
                 previewImageClicked={previewImageClicked}
                 imageDetails={imageDetails}
                 userInfo={userInfo}
+                fetchPrivateProfileHandler={fetchPrivateProfileHandler}
             />
         </div>
     );

@@ -82,4 +82,17 @@ class ImageController extends Controller
         );
         return response()->json($response, 200);
     }
+
+    public function update_image_description(Request $request)
+    {
+        $input = $request->all();
+
+        $updatedImage = Image::find($input['image_id'])->update(['description' => $input['description']]);
+
+        $response = array(
+            'success' => $updatedImage ? true : false,
+            'error' => $updatedImage ? false : 'failed to update image'
+        );
+        return response()->json($response, 200);
+    }
 }
