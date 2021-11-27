@@ -5,8 +5,6 @@ import Api from "../../Api";
 import SuccessModal from "./SuccessModal";
 
 const EditImageModal = withRouter((props) => {
-    const appUrl = process.env.MIX_APP_URL;
-
     const [show, setShow] = useState(false);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
