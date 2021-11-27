@@ -13,6 +13,8 @@ import MyProfilePreview from "./MyProfilePreview";
 
 const index = withRouter((props) => {
     const [userInfo, setUserInfo] = useState(null);
+    // chrome does not store cookies in local host env?
+    //console.log(document.cookie.indexOf("jwt="), "cookie");
 
     useEffect(() => {
         let userInfoData = JSON.parse(localStorage.getItem("userInfo"));
