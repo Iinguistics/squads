@@ -155,4 +155,21 @@ class SquadController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function fetch_squad_invites()
+    {
+        $user = Auth::user();
+
+        $invites = SquadInvite::where('id', $user->id)
+            ->with(['squad'])
+            ->get();
+
+        $response = array(
+            'success' => $invites ? true : false,
+            'data' => $invites,
+            'error' => $invites ? false : "failed to retrieve squad invites"
+        );
+
+        return response()->json($response, 200);
+    }
 }

@@ -6,19 +6,28 @@ import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
     const [mySquads, setMySquads] = useState(null);
+    const [squadInvites, setSquadInvites] = useState(null);
 
     const fetchMySquadsHandler = async () => {
         const { data } = await Api.get("/fetch_my_squads");
         setMySquads(data.data);
     };
 
+    const fetchSquadInvitesHandler = async () => {
+        const { data } = await Api.get("/fetch_squad_invites");
+        setSquadInvites(data.data);
+    };
+
     useEffect(() => {
         fetchMySquadsHandler();
+        fetchSquadInvitesHandler();
     }, []);
 
     const createSquadClickedHandler = () => {
         setCreateSquadClicked((createSquadClicked) => createSquadClicked + 1);
     };
+
+    console.log(squadInvites);
 
     return (
         <div className="container main-header">
@@ -34,7 +43,7 @@ const index = withRouter(() => {
                         Create Squad
                     </button>
                 </div>
-                <div className="item-3 mb-5 mb-md-0">squad invites</div>
+                <div className="item-3 mb-5 mb-md-0">Squad Invites</div>
             </div>
             <CreateSquadModal
                 createSquadClicked={createSquadClicked}
