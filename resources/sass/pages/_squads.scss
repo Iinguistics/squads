@@ -1,0 +1,14 @@
+.squad-invites-container {
+    position: relative;
+}
+
+.pending-squad-invite-notification-bubble {
+    position: absolute;
+    background: $green;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    top: 0px;
+    right: -5px;
+}
