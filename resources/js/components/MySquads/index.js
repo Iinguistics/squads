@@ -22,9 +22,11 @@ const index = withRouter(() => {
 
     return (
         <div className="container main-header">
-            <div className="d-flex flex-column flex-md-row justify-content-center align-items-center shadow-sm p-3 mb-5 bg-white rounded">
-                <div className="item-1 mr-5">search squad input</div>
-                <div className="item-2">
+            <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center shadow-sm p-3 mb-5 bg-white rounded">
+                <div className="item-1 mr-md-5 mb-5 mb-md-0">
+                    search squad input
+                </div>
+                <div className="item-2 mb-5 mb-md-0">
                     <button
                         className="bttn-material-flat bttn-sm update-account-modal-btn"
                         onClick={createSquadClickedHandler}
@@ -32,6 +34,7 @@ const index = withRouter(() => {
                         Create Squad
                     </button>
                 </div>
+                <div className="item-3 mb-5 mb-md-0">squad invites</div>
             </div>
             <CreateSquadModal
                 createSquadClicked={createSquadClicked}
