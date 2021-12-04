@@ -4,32 +4,10 @@ import { Modal, Container } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 import Api from "../../Api";
 
-const ImageCommentModal = withRouter((props) => {
+const ShowSquadInvitesModal = withRouter((props) => {
     const appUrl = process.env.MIX_APP_URL;
 
     const [show, setShow] = useState(false);
-    const [comments, setComments] = useState(null);
-    const [error, setError] = useState("");
-    const [body, setBody] = useState("");
-
-    const fetchComments = async () => {
-        try {
-            const { data } = await Api.get(
-                `/get_image_comments/${props.imageDetails.image_id}`
-            );
-            setComments(data.data);
-            setError("");
-        } catch (error) {
-            setError(error.message);
-        }
-    };
-
-    useEffect(() => {
-        if (props.imageClicked !== 0) {
-            setShow(true);
-        }
-        fetchComments();
-    }, [props.imageClicked]);
 
     const handleClose = () => setShow(false);
 
@@ -93,65 +71,14 @@ const ImageCommentModal = withRouter((props) => {
         }
     };
 
-    const sendCommentHandler = async (e) => {
-        e.preventDefault();
-
-        if (!body) {
-            setError("Comment required.");
-            return;
-        }
-
-        if (body.length > 400) {
-            setError("Comment must be less than 400 characters.");
-            return;
-        }
-
-        if (props.userInfo.id === Number(props.match.params.id)) {
-            setError("Cannot comment on your own post.");
-            setBody("");
-            return;
-        }
-
-        try {
-            let values = {
-                image_id: props.imageDetails.image_id,
-                body: body,
-            };
-            const { data } = await Api.post("/send_image_comment", values);
-
-            if (data.success) {
-                setBody("");
-                setError("");
-                fetchComments();
-            } else {
-                setError(data.error);
-            }
-        } catch (error) {
-            setError(error.message);
-        }
-    };
-
     return (
         <div className="mt-5 text-center">
             <Container>
-                <Modal show={show} onHide={handleClose} size="lg" centered>
+                <Modal show={show} onHide={handleClose} size="md">
                     <Modal.Header closeButton>
-                        <Modal.Title>
-                            {props.imageDetails.description
-                                ? props.imageDetails.description
-                                : ""}
-                        </Modal.Title>
+                        <Modal.Title>My Squads</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="d-flex flex-wrap flex-column flex-md-row">
-                        <img
-                            src={props.imageDetails.image}
-                            alt={
-                                props.imageDetails.description
-                                    ? props.imageDetails.description
-                                    : "image"
-                            }
-                            className="img-fluid profile-img mr-5"
-                        />
+                    <Modal.Body>
                         <div>
                             <div
                                 className={
@@ -192,4 +119,4 @@ const ImageCommentModal = withRouter((props) => {
     );
 });
 
-export default ImageCommentModal;
+export default ShowSquadInvitesModal;

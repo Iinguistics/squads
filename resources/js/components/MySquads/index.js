@@ -5,6 +5,7 @@ import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
 
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
+    const [showSquadInvitesClicked, setshowSquadInvitesClicked] = useState(0);
     const [mySquads, setMySquads] = useState(null);
     const [squadInvites, setSquadInvites] = useState(null);
     const [pendingInvites, setPendingInvites] = useState(false);

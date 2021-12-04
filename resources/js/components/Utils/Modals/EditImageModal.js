@@ -12,6 +12,7 @@ const EditImageModal = withRouter((props) => {
     const [description, setDescription] = useState(
         props.imageDetails.description ? props.imageDetails.description : ""
     );
+
     const [modalBodyText, setModalBodyText] = useState("");
 
     useEffect(() => {
@@ -128,7 +129,7 @@ const EditImageModal = withRouter((props) => {
                                 type="text"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                placeholder="Leave a comment"
+                                placeholder="Leave a description"
                             />
                             <input
                                 type="submit"
