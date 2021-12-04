@@ -12,6 +12,7 @@ const CreateSquadModal = withRouter((props) => {
 
     const [name, setName] = useState("");
     const [game, setGame] = useState("vanguard");
+    const [bio, setBio] = useState("");
     const [recruiting, setRecruiting] = useState(1);
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -36,6 +37,7 @@ const CreateSquadModal = withRouter((props) => {
             let values = {
                 squad_name: name,
                 game: game,
+                bio: bio,
                 recruiting: recruiting,
             };
             const { data } = await Api.post("/create_squad", values);
@@ -102,6 +104,18 @@ const CreateSquadModal = withRouter((props) => {
                                     Call of Duty: Vanguard
                                 </option>
                             </select>
+                            <br />
+                            <label htmlFor="bio">Squad Bio</label>{" "}
+                            <span className="text-muted">(optional)</span>
+                            <br />
+                            <textarea
+                                name="bio"
+                                id="bio"
+                                rows="4"
+                                cols="33"
+                                value={bio}
+                                onChange={(e) => setBio(e.target.value)}
+                            />
                             <br />
                             <label htmlFor="recruiting">
                                 Actively Recruiting?

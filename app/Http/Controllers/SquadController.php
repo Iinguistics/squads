@@ -56,6 +56,7 @@ class SquadController extends Controller
             $squad = Squad::create([
                 "squad_name" => $input['squad_name'],
                 "game" => $input['game'],
+                "bio" => $input['bio'],
                 "founder" => $user->username,
                 "recruiting" => $input['recruiting']
             ]);

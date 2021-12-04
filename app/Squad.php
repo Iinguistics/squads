@@ -12,7 +12,7 @@ class Squad extends Model
     protected $primaryKey = 'squad_id';
 
     protected $fillable = [
-        'squad_name', 'game', 'founder', 'recruiting', 'photo', 'created_at', 'updated_at'
+        'squad_name', 'game', 'bio', 'founder', 'recruiting', 'photo', 'created_at', 'updated_at'
     ];
 
     public function squadInvites()
