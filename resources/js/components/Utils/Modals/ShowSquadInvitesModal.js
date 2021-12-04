@@ -11,6 +11,12 @@ const ShowSquadInvitesModal = withRouter((props) => {
 
     const handleClose = () => setShow(false);
 
+    useEffect(() => {
+        if (props.showSquadInvitesClicked !== 0) {
+            setShow(true);
+        }
+    }, [props.showSquadInvitesClicked]);
+
     const renderCommentPhoto = (comment) => {
         const defaultPhoto = `${appUrl}/images/default-photo-black-outline.png`;
         if (comment.user[0]) {

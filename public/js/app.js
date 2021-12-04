@@ -14441,6 +14441,12 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.wit
     return setShow(false);
   };
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (props.showSquadInvitesClicked !== 0) {
+      setShow(true);
+    }
+  }, [props.showSquadInvitesClicked]);
+
   var renderCommentPhoto = function renderCommentPhoto(comment) {
     var defaultPhoto = "".concat(appUrl, "/images/default-photo-black-outline.png");
 
