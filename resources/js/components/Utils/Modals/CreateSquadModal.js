@@ -32,6 +32,11 @@ const CreateSquadModal = withRouter((props) => {
             return;
         }
 
+        if (bio.length > 299) {
+            setError("Bio cannot be more than 300 characters");
+            return;
+        }
+
         try {
             setLoading(true);
             let values = {
