@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Api from "../Api";
 import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
+import ShowSquadInvitesModal from "../Utils/Modals/ShowSquadInvitesModal";
 
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
@@ -76,6 +77,10 @@ const index = withRouter(() => {
             <CreateSquadModal
                 createSquadClicked={createSquadClicked}
                 fetchMySquadsHandler={fetchMySquadsHandler}
+            />
+            <ShowSquadInvitesModal
+                showSquadInvitesClicked={showSquadInvitesClicked}
+                squadInvites={squadInvites}
             />
         </div>
     );
