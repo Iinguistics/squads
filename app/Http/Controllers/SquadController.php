@@ -39,6 +39,34 @@ class SquadController extends Controller
         return response()->json($response, 200);
     }
 
+    public function fetch_squad($id)
+    {
+        $squad = Squad::where('squad_id', $id)
+            ->with(['members'])
+            ->get()->first();
+
+        $members = array();
+
+        if ($squad) {
+            foreach ($squad['members'] as $member) {
+                $user = User::find($member->id);
+                array_push($members, $user);
+            }
+        }
+
+        $squad['squad_members'] = $members;
+
+
+        $response = array(
+            'success' => $squad ? true : false,
+            'data' => $squad,
+            'error' => $squad ? false : "failed to retrieve squad"
+        );
+
+        return response()->json($response, 200);
+    }
+
+
     public function create_squad(Request $request)
     {
         $user = Auth::user();

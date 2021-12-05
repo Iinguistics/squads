@@ -15,8 +15,13 @@ class Squad extends Model
         'squad_name', 'game', 'bio', 'founder', 'recruiting', 'photo', 'created_at', 'updated_at'
     ];
 
-    public function squadInvites()
+    public function invites()
     {
         return $this->hasMany('App\SquadInvite', 'squad_id', 'squad_id');
+    }
+
+    public function members()
+    {
+        return $this->hasMany('App\SquadMember', 'squad_id', 'squad_id');
     }
 }
