@@ -36,7 +36,7 @@ const ShowSquadInvitesModal = withRouter((props) => {
             return props.squadInvites.map((invite) => {
                 return (
                     <div
-                        className="d-flex flex-row "
+                        className="d-flex flex-row"
                         key={invite.squad_invite_id}
                     >
                         <div className="item-1">

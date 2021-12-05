@@ -14473,7 +14473,7 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.wit
     if (props.squadInvites) {
       return props.squadInvites.map(function (invite) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "d-flex flex-row ",
+          className: "d-flex flex-row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "item-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
