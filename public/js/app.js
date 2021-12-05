@@ -7579,7 +7579,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
       showSquadInvitesClicked = _useState4[0],
-      setshowSquadInvitesClicked = _useState4[1];
+      setShowSquadInvitesClicked = _useState4[1];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState6 = _slicedToArray(_useState5, 2),
@@ -7700,6 +7700,12 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
     });
   };
 
+  var showSquadInvitesClickedHandler = function showSquadInvitesClickedHandler() {
+    setShowSquadInvitesClicked(function (showSquadInvitesClicked) {
+      return showSquadInvitesClicked + 1;
+    });
+  };
+
   console.log(squadInvites);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "container main-header",
@@ -7717,6 +7723,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "item-3 mb-5 mb-md-0 squad-invites-container",
+        onClick: showSquadInvitesClickedHandler,
         children: ["Squad Invites ", renderPendingInvitesNotification()]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Utils_Modals_CreateSquadModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -14447,63 +14454,59 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.wit
     }
   }, [props.showSquadInvitesClicked]);
 
-  var renderCommentPhoto = function renderCommentPhoto(comment) {
+  var renderSquadPhoto = function renderSquadPhoto(squad) {
     var defaultPhoto = "".concat(appUrl, "/images/default-photo-black-outline.png");
 
-    if (comment.user[0]) {
-      if (comment.user[0].profile.photo) {
-        return comment.user[0].profile.photo;
-      } else {
-        return defaultPhoto;
-      }
+    if (squad.squad.photo) {
+      return squad.squad.photo;
+    } else {
+      return defaultPhoto;
     }
   };
 
-  var pushToCommenterProfile = function pushToCommenterProfile(id) {
+  var pushToSquadPreview = function pushToSquadPreview(id) {
     setShow(false);
-    props.history.push("/profile/".concat(id));
+    props.history.push("/squad/preview/".concat(id));
   };
 
-  var renderComments = function renderComments() {
-    if (comments) {
-      if (comments[0]) {
-        return comments.map(function (comment) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "d-flex flex-row ml-1 mr-2",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "item-1",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-                src: renderCommentPhoto(comment),
-                alt: "photo",
-                className: "conversation-sidebar-photo mr-2 image-comment-photo",
-                onClick: function onClick() {
-                  return pushToCommenterProfile(comment.user[0].id);
-                }
+  var renderSquadInvites = function renderSquadInvites() {
+    if (props.squadInvites) {
+      return props.squadInvites.map(function (invite) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "d-flex flex-row ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "item-1",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+              src: renderSquadPhoto(invite),
+              alt: "photo",
+              className: "conversation-sidebar-photo mr-2 image-comment-photo",
+              onClick: function onClick() {
+                return pushToSquadPreview(invite.squad.squad_id);
+              }
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "item-2",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              children: invite.squad.squad_name
+            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              className: "text-muted conversation-message-time",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)((react_moment__WEBPACK_IMPORTED_MODULE_1___default()), {
+                date: invite.created_at,
+                format: "MM/DD/YYYY hh:mm:a"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "item-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-                children: comment.user[0].username
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-                className: "text-muted conversation-message-time",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)((react_moment__WEBPACK_IMPORTED_MODULE_1___default()), {
-                  date: comment.created_at,
-                  format: "MM/DD/YYYY hh:mm:a"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                children: comment.body
-              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              children: invite.note ? invite.note : ""
             })]
-          }, comment.image_comment_id);
-        });
-      } else {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            className: "text-muted",
-            children: "No Comments"
-          })
-        });
-      }
+          })]
+        }, invite.squad_invite_id);
+      });
+    } else {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "text-muted",
+          children: "No Invites"
+        })
+      });
     }
   };
 
@@ -14517,36 +14520,17 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.wit
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Header, {
           closeButton: true,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Title, {
-            children: "My Squads"
+            children: "My Invites"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: comments ? comments.length >= 4 ? "mt-3 mt-md-0 image-comment-container" : "mt-3 mt-md-0" : "mt-3 mt-md-0",
-              children: renderComments()
-            })
+            children: renderSquadInvites()
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "mr-auto",
-            children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              className: "text-danger",
-              children: error
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
-              onSubmit: sendCommentHandler,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                className: "mt-3 mr-3",
-                type: "text",
-                value: body,
-                onChange: function onChange(e) {
-                  return setBody(e.target.value);
-                },
-                placeholder: "Leave a comment"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                type: "submit",
-                className: "bttn-material-flat bttn-sm update-account-modal-btn"
-              })]
-            })]
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            onClick: handleClose,
+            className: "bttn-material-flat bttn-sm mr-2",
+            children: "Close"
           })
         })]
       })

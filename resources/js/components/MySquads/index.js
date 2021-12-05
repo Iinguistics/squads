@@ -6,7 +6,7 @@ import ShowSquadInvitesModal from "../Utils/Modals/ShowSquadInvitesModal";
 
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
-    const [showSquadInvitesClicked, setshowSquadInvitesClicked] = useState(0);
+    const [showSquadInvitesClicked, setShowSquadInvitesClicked] = useState(0);
     const [mySquads, setMySquads] = useState(null);
     const [squadInvites, setSquadInvites] = useState(null);
     const [pendingInvites, setPendingInvites] = useState(false);
@@ -54,6 +54,12 @@ const index = withRouter(() => {
         setCreateSquadClicked((createSquadClicked) => createSquadClicked + 1);
     };
 
+    const showSquadInvitesClickedHandler = () => {
+        setShowSquadInvitesClicked(
+            (showSquadInvitesClicked) => showSquadInvitesClicked + 1
+        );
+    };
+
     console.log(squadInvites);
 
     return (
@@ -70,7 +76,10 @@ const index = withRouter(() => {
                         Create Squad
                     </button>
                 </div>
-                <div className="item-3 mb-5 mb-md-0 squad-invites-container">
+                <div
+                    className="item-3 mb-5 mb-md-0 squad-invites-container"
+                    onClick={showSquadInvitesClickedHandler}
+                >
                     Squad Invites {renderPendingInvitesNotification()}
                 </div>
             </div>
