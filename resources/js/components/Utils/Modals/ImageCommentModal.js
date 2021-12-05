@@ -62,7 +62,7 @@ const ImageCommentModal = withRouter((props) => {
                                 <img
                                     src={renderCommentPhoto(comment)}
                                     alt="photo"
-                                    className="conversation-sidebar-photo mr-2 image-comment-photo"
+                                    className="conversation-sidebar-photo mr-2 cursor-pointer"
                                     onClick={() =>
                                         pushToCommenterProfile(
                                             comment.user[0].id
@@ -71,7 +71,16 @@ const ImageCommentModal = withRouter((props) => {
                                 />
                             </div>
                             <div className="item-2">
-                                <span>{comment.user[0].username}</span>{" "}
+                                <span
+                                    className="cursor-pointer"
+                                    onClick={() =>
+                                        pushToCommenterProfile(
+                                            comment.user[0].id
+                                        )
+                                    }
+                                >
+                                    {comment.user[0].username}
+                                </span>{" "}
                                 <span className="text-muted conversation-message-time">
                                     <Moment
                                         date={comment.created_at}

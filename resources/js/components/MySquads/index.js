@@ -90,6 +90,7 @@ const index = withRouter(() => {
             <ShowSquadInvitesModal
                 showSquadInvitesClicked={showSquadInvitesClicked}
                 squadInvites={squadInvites}
+                fetchSquadInvitesHandler={fetchSquadInvitesHandler}
             />
         </div>
     );

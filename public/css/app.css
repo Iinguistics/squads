@@ -26,6 +26,10 @@
   font-size: 24px;
 }
 
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10412,10 +10416,6 @@ form .player-search-select {
 .image-comment-container {
   overflow: scroll;
   max-height: 293px;
-}
-
-.image-comment-photo:hover {
-  cursor: pointer;
 }
 
 .send-squad-invite-squad:hover {

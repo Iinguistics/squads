@@ -77,4 +77,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('check_squad_teammate/{id}', [SquadController::class, 'check_squad_teammate']);
     Route::post('create_squad_invite', [SquadController::class, 'create_squad_invite']);
     Route::get('fetch_squad_invites', [SquadController::class, 'fetch_squad_invites']);
+    Route::post('reject_squad_invite', [SquadController::class, 'reject_squad_invite']);
 });

@@ -200,4 +200,19 @@ class SquadController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function reject_squad_invite(Request $request)
+    {
+        $input = $request->all();
+
+        $destroyed_invite = SquadInvite::find($input['squad_invite_id']);
+        $destroyed_invite->delete();
+
+        $response = array(
+            'success' => $destroyed_invite ? true : false,
+            'error' => $destroyed_invite ? false : "failed to delete invite"
+        );
+
+        return response()->json($response, 200);
+    }
 }
