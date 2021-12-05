@@ -56,7 +56,6 @@ class SquadController extends Controller
 
         $squad['squad_members'] = $members;
 
-
         $response = array(
             'success' => $squad ? true : false,
             'data' => $squad,
