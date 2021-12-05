@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Api from "../Api";
+import Head from "./Head";
 
 const index = withRouter((props) => {
     const [squad, setSquad] = useState(null);
@@ -18,9 +19,8 @@ const index = withRouter((props) => {
 
     return (
         <div className="container main-header">
-            <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center shadow-sm p-3 mb-5 bg-white rounded">
-                preview test
-            </div>
+            <h1 className="mb-5 text-center">Squad Preview</h1>
+            <Head squad={squad} />
         </div>
     );
 });
