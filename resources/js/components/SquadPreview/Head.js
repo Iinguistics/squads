@@ -12,6 +12,7 @@ const Head = withRouter(({ squad }) => {
                 for (let member of squad.squad_members) {
                     if (member.username === squad.founder) {
                         setFounderId(member.id);
+                        break;
                     }
                 }
             }
@@ -40,12 +41,10 @@ const Head = withRouter(({ squad }) => {
                         />
                     </div>
                     <div className="private-profile-preview-head-item-2 mt-2 mt-md-0">
-                        {squad && (
-                            <span className="mr-3 fs-22">
-                                {squad.squad_name}
-                            </span>
-                        )}
+                        <span className="mr-3 fs-22">{squad.squad_name}</span>
                         <div className="fs-16 mt-3 mt-md-0">
+                            <span>Members: {squad.members.length}</span>
+                            <br />
                             <span>Game: {squad.game}</span>
                             <br />
                             <span>
@@ -55,13 +54,22 @@ const Head = withRouter(({ squad }) => {
                                 </Link>
                             </span>
                             <br />
-                            <p>{squad.bio ? squad.bio : "No bio provided"}</p>
+                            <span>
+                                Currently Recruiting:{" "}
+                                {squad.recruiting === 1 ? "Yes" : "No"}
+                            </span>
+                            <br />
+                            <p>
+                                Bio: {squad.bio ? squad.bio : "No bio provided"}
+                            </p>
                         </div>
                     </div>
                 </div>
             );
         } else {
-            return <h1>Loading...</h1>;
+            return (
+                <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
+            );
         }
     };
     return <>{renderHead()}</>;

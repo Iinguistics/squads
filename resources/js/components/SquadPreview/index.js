@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Api from "../Api";
 import Head from "./Head";
+import { TiArrowBack } from "react-icons/ti";
 
 const index = withRouter((props) => {
     const [squad, setSquad] = useState(null);
@@ -19,6 +20,11 @@ const index = withRouter((props) => {
 
     return (
         <div className="container main-header">
+            <div className="login-help-header">
+                <Link to="/squads">
+                    <TiArrowBack />
+                </Link>
+            </div>
             <h1 className="mb-5 text-center">Squad Preview</h1>
             <Head squad={squad} />
         </div>
