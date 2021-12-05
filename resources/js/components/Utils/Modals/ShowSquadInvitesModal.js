@@ -36,17 +36,17 @@ const ShowSquadInvitesModal = withRouter((props) => {
             return props.squadInvites.map((invite) => {
                 return (
                     <div
-                        className="d-flex flex-row"
+                        className="d-flex flex-row conversation-sidebar-username"
                         key={invite.squad_invite_id}
+                        onClick={() =>
+                            pushToSquadPreview(invite.squad.squad_id)
+                        }
                     >
                         <div className="item-1">
                             <img
                                 src={renderSquadPhoto(invite)}
                                 alt="photo"
                                 className="conversation-sidebar-photo mr-2 image-comment-photo"
-                                onClick={() =>
-                                    pushToSquadPreview(invite.squad.squad_id)
-                                }
                             />
                         </div>
                         <div className="item-2">
@@ -78,9 +78,7 @@ const ShowSquadInvitesModal = withRouter((props) => {
                     <Modal.Header closeButton>
                         <Modal.Title>My Invites</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <div>{renderSquadInvites()}</div>
-                    </Modal.Body>
+                    <Modal.Body>{renderSquadInvites()}</Modal.Body>
                     <Modal.Footer>
                         <button
                             onClick={handleClose}

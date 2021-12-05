@@ -7721,8 +7721,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
           onClick: createSquadClickedHandler,
           children: "Create Squad"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "item-3 mb-5 mb-md-0 squad-invites-container",
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+        className: "item-3 mb-5 mb-md-0 squad-invites-container bttn-material-flat bttn-sm",
         onClick: showSquadInvitesClickedHandler,
         children: ["Squad Invites ", renderPendingInvitesNotification()]
       })]
@@ -14473,16 +14473,16 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.wit
     if (props.squadInvites) {
       return props.squadInvites.map(function (invite) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "d-flex flex-row",
+          className: "d-flex flex-row conversation-sidebar-username",
+          onClick: function onClick() {
+            return pushToSquadPreview(invite.squad.squad_id);
+          },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "item-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
               src: renderSquadPhoto(invite),
               alt: "photo",
-              className: "conversation-sidebar-photo mr-2 image-comment-photo",
-              onClick: function onClick() {
-                return pushToSquadPreview(invite.squad.squad_id);
-              }
+              className: "conversation-sidebar-photo mr-2 image-comment-photo"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "item-2",
@@ -14523,9 +14523,7 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.wit
             children: "My Invites"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Body, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            children: renderSquadInvites()
-          })
+          children: renderSquadInvites()
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Footer, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: handleClose,

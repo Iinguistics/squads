@@ -76,12 +76,12 @@ const index = withRouter(() => {
                         Create Squad
                     </button>
                 </div>
-                <div
-                    className="item-3 mb-5 mb-md-0 squad-invites-container"
+                <button
+                    className="item-3 mb-5 mb-md-0 squad-invites-container bttn-material-flat bttn-sm"
                     onClick={showSquadInvitesClickedHandler}
                 >
                     Squad Invites {renderPendingInvitesNotification()}
-                </div>
+                </button>
             </div>
             <CreateSquadModal
                 createSquadClicked={createSquadClicked}
