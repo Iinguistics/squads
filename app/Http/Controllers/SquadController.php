@@ -14,7 +14,7 @@ use App\Profile;
 use App\Squad;
 use App\SquadMember;
 use App\SquadInvite;
-
+use stdClass;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 
@@ -166,14 +166,27 @@ class SquadController extends Controller
 
         $match = false;
 
+        // for ($i = 0; $i < $current_user_length; $i++) {
+        //     for ($j = 0; $j < $potential_teammate_length; $j++) {
+        //         if ($current_user[$i]->squad_id == $potential_teammate[$j]->squad_id) {
+        //             $match = true;
+        //             break;
+        //         }
+        //     }
+        // }
+        $squad_id_store = new stdClass();
         for ($i = 0; $i < $current_user_length; $i++) {
-            for ($j = 0; $j < $potential_teammate_length; $j++) {
-                if ($current_user[$i]->squad_id == $potential_teammate[$j]->squad_id) {
-                    $match = true;
-                    break;
-                }
+            $squad_id_store->{$current_user[$i]->squad_id} = true;
+        }
+
+        for ($i = 0; $i < $potential_teammate_length; $i++) {
+            if (property_exists($squad_id_store, $potential_teammate[$i]->squad_id)) {
+                $match = true;
+                break;
             }
         }
+
+
 
         $response = array(
             //'success' => $squads ? true : false,
