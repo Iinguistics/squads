@@ -166,14 +166,6 @@ class SquadController extends Controller
 
         $match = false;
 
-        // for ($i = 0; $i < $current_user_length; $i++) {
-        //     for ($j = 0; $j < $potential_teammate_length; $j++) {
-        //         if ($current_user[$i]->squad_id == $potential_teammate[$j]->squad_id) {
-        //             $match = true;
-        //             break;
-        //         }
-        //     }
-        // }
         $squad_id_store = new stdClass();
         for ($i = 0; $i < $current_user_length; $i++) {
             $squad_id_store->{$current_user[$i]->squad_id} = true;
