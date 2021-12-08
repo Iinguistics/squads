@@ -136,6 +136,16 @@ class SquadController extends Controller
             return response()->json($response, 200);
         }
 
+        $is_admin = SquadMember::where('squad_id', $input['squad_id'])
+            ->where('id', $user->id)->get()->first();
+        if ($is_admin->squad_admin === 0) {
+            $response = array(
+                'success' => false,
+                'error' => "Only squad admin's can send out invites."
+            );
+            return response()->json($response, 200);
+        }
+
 
         $squad_invite = SquadInvite::create([
             "squad_id" => $input['squad_id'],
