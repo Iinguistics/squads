@@ -7671,6 +7671,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.withRouter)(functio
           if (invite.pending === 1) {
             setPendingInvites(true);
             return;
+          } else {
+            setPendingInvites(false);
+            return;
           }
         }
       } catch (err) {
@@ -14781,7 +14784,7 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.wit
     };
   }();
 
-  var accpetInvite = /*#__PURE__*/function () {
+  var acceptInvite = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(inviteId, squadId) {
       var values, _yield$Api$post2, data;
 
@@ -14834,7 +14837,7 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.wit
       }, _callee2, null, [[0, 10]]);
     }));
 
-    return function accpetInvite(_x2, _x3) {
+    return function acceptInvite(_x2, _x3) {
       return _ref2.apply(this, arguments);
     };
   }();

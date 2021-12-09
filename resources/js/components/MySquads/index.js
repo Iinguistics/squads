@@ -27,6 +27,9 @@ const index = withRouter(() => {
                 if (invite.pending === 1) {
                     setPendingInvites(true);
                     return;
+                } else {
+                    setPendingInvites(false);
+                    return;
                 }
             }
         }
