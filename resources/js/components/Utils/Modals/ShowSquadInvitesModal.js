@@ -51,7 +51,7 @@ const ShowSquadInvitesModal = withRouter((props) => {
         }
     };
 
-    const accpetInvite = async (inviteId, squadId) => {
+    const acceptInvite = async (inviteId, squadId) => {
         try {
             setLoading(true);
             let values = {
