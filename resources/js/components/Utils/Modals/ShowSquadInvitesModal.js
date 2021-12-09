@@ -51,6 +51,35 @@ const ShowSquadInvitesModal = withRouter((props) => {
         }
     };
 
+    const accpetInvite = async (inviteId, squadId) => {
+        try {
+            setLoading(true);
+            let values = {
+                squad_invite_id: inviteId,
+                squad_id: squadId,
+            };
+            const { data } = await Api.post("/accept_squad_invite", values);
+
+            if (data.success) {
+                setTitleText("Accepted");
+                setBodyText("Invite has been accepted");
+                setSuccess(true);
+                setError(false);
+                setShow(false);
+                setLoading(false);
+                props.fetchSquadInvitesHandler();
+            } else {
+                setSuccess(false);
+                setError(data.error);
+                setLoading(false);
+            }
+        } catch (error) {
+            setError(error.message);
+            setSuccess(false);
+            setLoading(false);
+        }
+    };
+
     const renderSquadPhoto = (squad) => {
         const defaultPhoto = `${appUrl}/images/default-photo-black-outline.png`;
         if (squad.squad.photo) {
@@ -106,7 +135,12 @@ const ShowSquadInvitesModal = withRouter((props) => {
                             </div>
                             <div className="item-3 ml-5">
                                 <button
-                                    onClick={handleClose}
+                                    onClick={() =>
+                                        acceptInvite(
+                                            invite.squad_invite_id,
+                                            invite.squad_id
+                                        )
+                                    }
                                     className="bttn-material-flat bttn-sm bttn-primary mr-3 mb-3 mb-md-0"
                                 >
                                     Accept

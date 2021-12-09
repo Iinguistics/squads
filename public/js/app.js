@@ -14781,6 +14781,64 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.wit
     };
   }();
 
+  var accpetInvite = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(inviteId, squadId) {
+      var values, _yield$Api$post2, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              setLoading(true);
+              values = {
+                squad_invite_id: inviteId,
+                squad_id: squadId
+              };
+              _context2.next = 5;
+              return _Api__WEBPACK_IMPORTED_MODULE_3__["default"].post("/accept_squad_invite", values);
+
+            case 5:
+              _yield$Api$post2 = _context2.sent;
+              data = _yield$Api$post2.data;
+
+              if (data.success) {
+                setTitleText("Accepted");
+                setBodyText("Invite has been accepted");
+                setSuccess(true);
+                setError(false);
+                setShow(false);
+                setLoading(false);
+                props.fetchSquadInvitesHandler();
+              } else {
+                setSuccess(false);
+                setError(data.error);
+                setLoading(false);
+              }
+
+              _context2.next = 15;
+              break;
+
+            case 10:
+              _context2.prev = 10;
+              _context2.t0 = _context2["catch"](0);
+              setError(_context2.t0.message);
+              setSuccess(false);
+              setLoading(false);
+
+            case 15:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 10]]);
+    }));
+
+    return function accpetInvite(_x2, _x3) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   var renderSquadPhoto = function renderSquadPhoto(squad) {
     var defaultPhoto = "".concat(appUrl, "/images/default-photo-black-outline.png");
 
@@ -14831,7 +14889,9 @@ var ShowSquadInvitesModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.wit
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "item-3 ml-5",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                onClick: handleClose,
+                onClick: function onClick() {
+                  return acceptInvite(invite.squad_invite_id, invite.squad_id);
+                },
                 className: "bttn-material-flat bttn-sm bttn-primary mr-3 mb-3 mb-md-0",
                 children: "Accept"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
