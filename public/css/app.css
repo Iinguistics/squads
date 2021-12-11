@@ -10912,3 +10912,7 @@ form .player-search-select {
   top: 0px;
   right: 3px;
 }
+
+.squad-card {
+  width: 20rem;
+}

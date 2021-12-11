@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import Api from "../Api";
 import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
 import ShowSquadInvitesModal from "../Utils/Modals/ShowSquadInvitesModal";
+import SquadCard from "./SquadCard";
 
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
@@ -34,7 +35,7 @@ const index = withRouter(() => {
             }
         }
     };
-    console.log(pendingInvites);
+    console.log(mySquads);
 
     const renderPendingInvitesNotification = () => {
         if (pendingInvites) {
@@ -61,6 +62,18 @@ const index = withRouter(() => {
         setShowSquadInvitesClicked(
             (showSquadInvitesClicked) => showSquadInvitesClicked + 1
         );
+    };
+
+    const renderSquadCards = () => {
+        if (mySquads) {
+            return mySquads.map((card, idx) => {
+                return (
+                    <div key={idx}>
+                        <SquadCard card={card} />
+                    </div>
+                );
+            });
+        }
     };
 
     console.log(squadInvites);
@@ -95,6 +108,9 @@ const index = withRouter(() => {
                 squadInvites={squadInvites}
                 fetchSquadInvitesHandler={fetchSquadInvitesHandler}
             />
+            <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center">
+                {renderSquadCards()}
+            </div>
         </div>
     );
 });
