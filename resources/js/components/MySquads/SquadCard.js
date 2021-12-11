@@ -1,5 +1,4 @@
 import React from "react";
-import { BsFillPeopleFill } from "react-icons/bs";
 
 const SquadCard = ({ card }) => {
     const appUrl = process.env.MIX_APP_URL;
@@ -27,13 +26,13 @@ const SquadCard = ({ card }) => {
         }
     };
     return (
-        <div className="card squad-card">
+        <div className="card squad-card cursor-pointer">
             {renderSquadImg()}
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
+                <h5 className="card-title">{card.squad.squad_name}</h5>
+                <p className="text-muted">{card.squad.game}</p>
                 <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    {card.squad.bio ? card.squad.bio : "No bio"}
                 </p>
             </div>
         </div>

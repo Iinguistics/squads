@@ -15,4 +15,9 @@
 
 .squad-card {
     width: 18rem;
+    // height: 32rem;
+}
+.squad-card:hover {
+    border: 1px solid $main-blue;
+    transition: 0.5s;
 }

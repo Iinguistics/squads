@@ -10916,3 +10916,8 @@ form .player-search-select {
 .squad-card {
   width: 18rem;
 }
+
+.squad-card:hover {
+  border: 1px solid #4d89ff;
+  transition: 0.5s;
+}

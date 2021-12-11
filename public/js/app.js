@@ -7546,7 +7546,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var SquadCard = function SquadCard(_ref) {
   var card = _ref.card;
   var appUrl = "http://127.0.0.1:8000";
@@ -7572,15 +7571,18 @@ var SquadCard = function SquadCard(_ref) {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "card squad-card",
+    className: "card squad-card cursor-pointer",
     children: [renderSquadImg(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "card-body",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
         className: "card-title",
-        children: "Card title"
+        children: card.squad.squad_name
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        className: "text-muted",
+        children: card.squad.game
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
         className: "card-text",
-        children: "Some quick example text to build on the card title and make up the bulk of the card's content."
+        children: card.squad.bio ? card.squad.bio : "No bio"
       })]
     })]
   });
