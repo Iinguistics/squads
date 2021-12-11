@@ -2,7 +2,10 @@ import React from "react";
 import { BsFillPeopleFill } from "react-icons/bs";
 
 const SquadCard = ({ card }) => {
+    const appUrl = process.env.MIX_APP_URL;
+
     const renderSquadImg = () => {
+        const defaultPhoto = `${appUrl}/images/group.png`;
         if (card.squad) {
             if (card.squad.photo) {
                 return (
@@ -13,7 +16,13 @@ const SquadCard = ({ card }) => {
                     />
                 );
             } else {
-                return <BsFillPeopleFill />;
+                return (
+                    <img
+                        src={defaultPhoto}
+                        className="card-img-top p-5"
+                        alt="squad"
+                    />
+                );
             }
         }
     };
