@@ -14,6 +14,7 @@ use App\Profile;
 use App\Squad;
 use App\SquadMember;
 use App\SquadInvite;
+use App\SquadRequest;
 use stdClass;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
@@ -162,6 +163,51 @@ class SquadController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function create_squad_request(Request $request)
+    {
+        $user = Auth::user();
+        $input = $request->all();
+
+        $check_already_requested = SquadRequest::where('squad_id', $input['squad_id'])
+            ->where('id', $user->id)
+            ->first();
+
+        if ($check_already_requested) {
+            $response = array(
+                'success' => false,
+                'error' => "A request to join this squad has already been sent."
+            );
+            return response()->json($response, 200);
+        }
+
+        $check_already_member = SquadMember::where('squad_id', $input['squad_id'])
+            ->where('id', $user->id)
+            ->get()->first();
+
+        if ($check_already_member) {
+            $response = array(
+                'success' => false,
+                'error' => "You are already a member of this squad."
+            );
+            return response()->json($response, 200);
+        }
+
+        $squad_request = SquadRequest::create([
+            "squad_id" => $input['squad_id'],
+            "id" => $user->id,
+            "note" => $input['note']
+        ]);
+
+        $response = array(
+            'success' => $squad_request ? true : false,
+            'data' => $squad_request,
+            'error' => $squad_request ? false : "failed to create request"
+        );
+
+        return response()->json($response, 200);
+    }
+
 
 
     public function check_squad_teammate($id)
