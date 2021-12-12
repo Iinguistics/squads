@@ -15,9 +15,15 @@
 
 .squad-card {
     width: 18rem;
-    // height: 32rem;
+    //height: 36rem;
+    box-shadow: 0 5px 10px rgba(79, 82, 177, 0.35);
 }
 .squad-card:hover {
     border: 1px solid $main-blue;
     transition: 0.5s;
+    box-shadow: none;
+}
+.squad-card a {
+    color: $black;
+    text-decoration: none;
 }

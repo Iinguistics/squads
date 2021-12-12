@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter, Link } from "react-router-dom";
 
-const SquadCard = ({ card }) => {
+const SquadCard = withRouter(({ card }) => {
     const appUrl = process.env.MIX_APP_URL;
 
     const renderSquadImg = () => {
@@ -26,17 +27,19 @@ const SquadCard = ({ card }) => {
         }
     };
     return (
-        <div className="card squad-card cursor-pointer">
-            {renderSquadImg()}
-            <div className="card-body">
-                <h5 className="card-title">{card.squad.squad_name}</h5>
-                <p className="text-muted">{card.squad.game}</p>
-                <p className="card-text">
-                    {card.squad.bio ? card.squad.bio : "No bio"}
-                </p>
-            </div>
+        <div className="card squad-card my-4 my-md-0">
+            <Link to={`/squad/${card.squad_id}`}>
+                {renderSquadImg()}
+                <div className="card-body">
+                    <h5 className="card-title">{card.squad.squad_name}</h5>
+                    <p className="text-muted">{card.squad.game}</p>
+                    <p className="card-text">
+                        {card.squad.bio ? card.squad.bio : "No bio"}
+                    </p>
+                </div>
+            </Link>
         </div>
     );
-};
+});
 
 export default SquadCard;
