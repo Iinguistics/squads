@@ -11,6 +11,7 @@ import PublicProfile from "./PublicProfile";
 import Register from "./Register";
 import MySquads from "./MySquads";
 import SquadPreview from "./SquadPreview";
+import Squad from "./Squad";
 
 import Test from "./Test";
 import TestTwo from "./TestTwo";
@@ -30,7 +31,6 @@ const Main = (props) => {
                     )}
                 />
                 <Route path="/login-help" component={LoginHelp} />
-                <Route path="/squads" exact component={MySquads} />
                 <Route
                     path="/password-reset"
                     component={() => (
@@ -51,7 +51,9 @@ const Main = (props) => {
                 <Route path="/profile" exact component={PrivateProfile} />
                 <Route path="/profile/:id" component={PublicProfile} />
                 <Route path="/register" component={Register} />
+                <Route path="/squads" exact component={MySquads} />
                 <Route path="/squad/preview/:id" component={SquadPreview} />
+                <Route path="/squad/:id" component={Squad} />
                 <Route path="/test" component={Test} />
             </Switch>
         </main>
