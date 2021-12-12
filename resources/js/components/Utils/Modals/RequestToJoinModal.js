@@ -110,6 +110,9 @@ const RequestToJoinModal = withRouter((props) => {
                         </button>
                     </Modal.Footer>
                 </Modal>
+                {loading && (
+                    <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
+                )}
             </Container>
         </div>
     );

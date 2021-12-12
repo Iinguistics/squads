@@ -14187,6 +14187,8 @@ var RequestToJoinModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRo
             children: "Send"
           })]
         })]
+      }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "lds-hourglass d-flex justify-content-center m-auto"
       })]
     })
   });
