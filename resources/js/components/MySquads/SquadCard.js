@@ -1,7 +1,7 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const SquadCard = withRouter(({ card }) => {
+const SquadCard = ({ card }) => {
     const appUrl = process.env.MIX_APP_URL;
 
     const renderSquadImg = () => {
@@ -40,6 +40,6 @@ const SquadCard = withRouter(({ card }) => {
             </Link>
         </div>
     );
-});
+};
 
 export default SquadCard;
