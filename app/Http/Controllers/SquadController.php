@@ -234,14 +234,11 @@ class SquadController extends Controller
             }
         }
 
-
-
         $response = array(
             //'success' => $squads ? true : false,
             'data' => $match,
             //'error' => $squads ? false : "failed to retrieve squads"
         );
-
         return response()->json($response, 200);
     }
 
@@ -294,6 +291,23 @@ class SquadController extends Controller
         $response = array(
             'success' => $member ? true : false,
             'error' => $member ? false : "failed to accept invite"
+        );
+
+        return response()->json($response, 200);
+    }
+
+    public function fetch_squad_requests($id)
+    {
+        $user = Auth::user();
+
+        $requests = SquadRequest::where('squad_id', $id)
+            ->with(['user'])
+            ->get();
+
+        $response = array(
+            'success' => $requests ? true : false,
+            'data' => $requests,
+            'error' => $requests ? false : "failed to retrieve squad requests"
         );
 
         return response()->json($response, 200);
