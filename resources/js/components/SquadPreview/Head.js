@@ -30,11 +30,6 @@ const Head = withRouter(({ squad }) => {
         setRequestClicked((requestClicked) => requestClicked + 1);
     };
 
-    const sendRequestHandler = async () => {
-        const { data } = await Api.get(`/fetch_squad/${props.match.params.id}`);
-        setSquad(data.data);
-    };
-
     const renderHead = () => {
         if (squad) {
             return (
