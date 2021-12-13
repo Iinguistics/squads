@@ -312,4 +312,25 @@ class SquadController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function check_is_admin($id)
+    {
+        $user = Auth::user();
+
+        $check_user = SquadMember::where('squad_id', $id)
+            ->where('id', $user->id)->get()->first();
+
+        $is_admin = false;
+
+        if ($check_user->squad_admin == 1) {
+            $is_admin = true;
+        }
+
+        $response = array(
+            //'success' => $squads ? true : false,
+            'data' => $is_admin,
+            //'error' => $squads ? false : "failed to retrieve squads"
+        );
+        return response()->json($response, 200);
+    }
 }

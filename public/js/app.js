@@ -6108,6 +6108,254 @@ var PrivateProfileProvider = function PrivateProfileProvider(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Context/SquadContext.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Context/SquadContext.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SquadContext": () => (/* binding */ SquadContext),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var SquadContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)();
+
+var SquadProvider = function SquadProvider(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      error = _useState2[0],
+      setError = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      success = _useState4[0],
+      setSuccess = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      loading = _useState6[0],
+      setLoading = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      inboxEmpty = _useState8[0],
+      setInboxEmpty = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      userMessages = _useState10[0],
+      setUserMessages = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState12 = _slicedToArray(_useState11, 2),
+      conversationMessages = _useState12[0],
+      setConversationMessages = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+      _useState14 = _slicedToArray(_useState13, 2),
+      sentFromProfile = _useState14[0],
+      setSentFromProfile = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState16 = _slicedToArray(_useState15, 2),
+      sentFromUsername = _useState16[0],
+      setSentFromUsername = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState18 = _slicedToArray(_useState17, 2),
+      searchTerm = _useState18[0],
+      setSearchTerm = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState20 = _slicedToArray(_useState19, 2),
+      filteredUserMessages = _useState20[0],
+      setFilteredUserMessages = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState22 = _slicedToArray(_useState21, 2),
+      messageSentClicked = _useState22[0],
+      setMessageSentClicked = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState24 = _slicedToArray(_useState23, 2),
+      messageReadClicked = _useState24[0],
+      setMessageReadClicked = _useState24[1];
+
+  var messageSentClickedHandler = function messageSentClickedHandler() {
+    setMessageSentClicked(function (messageSentClicked) {
+      return messageSentClicked + 1;
+    });
+  };
+
+  var messageReadClickedHandler = function messageReadClickedHandler() {
+    setMessageReadClicked(function (messageReadClicked) {
+      return messageReadClicked + 1;
+    }); //setMessageReadClicked(messageReadClicked + 1);
+  };
+
+  var setSearchTermHandler = function setSearchTermHandler(e) {
+    setSearchTerm(e.target.value);
+    filterUserMessagesHandler();
+  };
+
+  var setSentFromProfileHandler = function setSentFromProfileHandler(profile) {
+    setSentFromProfile(profile);
+  };
+
+  var setSentFromUsernameHandler = function setSentFromUsernameHandler(username) {
+    setSentFromUsername(username);
+  };
+
+  var fetchUserMessages = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _yield$Api$get, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_user_messages");
+
+            case 3:
+              _yield$Api$get = _context.sent;
+              data = _yield$Api$get.data;
+
+              if (data.success && !data.data[0]) {
+                setInboxEmpty(true);
+                setError("");
+              } else {
+                setUserMessages(data.data);
+                setError("");
+              }
+
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              setError(_context.t0.message);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 8]]);
+    }));
+
+    return function fetchUserMessages() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var filterUserMessagesHandler = function filterUserMessagesHandler() {
+    var filteredMessages = userMessages;
+    filteredMessages = filteredMessages.filter(function (item) {
+      return item.sent_from_username.toLowerCase().search(searchTerm.toLowerCase()) !== -1;
+    });
+    setFilteredUserMessages(filteredMessages);
+  };
+
+  var fetchConversationMessages = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
+      var _yield$Api$get2, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/get_converstaion_messages/".concat(id));
+
+            case 3:
+              _yield$Api$get2 = _context2.sent;
+              data = _yield$Api$get2.data;
+
+              if (data.success) {
+                setError("");
+                setConversationMessages(data.data);
+              }
+
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](0);
+              setError(_context2.t0.message);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 8]]);
+    }));
+
+    return function fetchConversationMessages(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(SquadContext.Provider, {
+    value: {
+      searchTerm: searchTerm,
+      inboxEmpty: inboxEmpty,
+      userMessages: userMessages,
+      conversationMessages: conversationMessages,
+      filteredUserMessages: filteredUserMessages,
+      messageSentClicked: messageSentClicked,
+      messageReadClicked: messageReadClicked,
+      sentFromProfile: sentFromProfile,
+      sentFromUsername: sentFromUsername,
+      setSearchTermHandler: setSearchTermHandler,
+      fetchUserMessages: fetchUserMessages,
+      fetchConversationMessages: fetchConversationMessages,
+      messageSentClickedHandler: messageSentClickedHandler,
+      messageReadClickedHandler: messageReadClickedHandler,
+      setSentFromProfileHandler: setSentFromProfileHandler,
+      setSentFromUsernameHandler: setSentFromUsernameHandler
+    },
+    children: props.children
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SquadProvider);
+
+/***/ }),
+
 /***/ "./resources/js/components/Context/UserContext.js":
 /*!********************************************************!*\
   !*** ./resources/js/components/Context/UserContext.js ***!
@@ -10275,9 +10523,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Api */ "./resources/js/components/Api.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Context_SquadContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context/SquadContext */ "./resources/js/components/Context/SquadContext.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -10300,11 +10549,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (props) {
+
+var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       squad = _useState2[0],
       setSquad = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isAdmin = _useState4[0],
+      setIsAdmin = _useState4[1];
 
   var fetchSquadHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -10335,14 +10590,51 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
     };
   }();
 
+  var fetchIsAdmin = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var _yield$Api$get2, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/check_is_admin/".concat(props.match.params.id));
+
+            case 2:
+              _yield$Api$get2 = _context2.sent;
+              data = _yield$Api$get2.data;
+              setIsAdmin(data.data);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function fetchIsAdmin() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchSquadHandler();
+    fetchIsAdmin();
   }, []);
   console.log(squad, "squad");
-  console.log(requestsToJoin, "requests");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "container main-header",
-    children: "squad main page"
+  console.log(isAdmin, "test");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Context_SquadContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Context_SquadContext__WEBPACK_IMPORTED_MODULE_3__.SquadContext.Consumer, {
+      children: function children(_ref3) {
+        var loggedInToggleHandler = _ref3.loggedInToggleHandler;
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "container main-header",
+          children: "squad main page"
+        });
+      }
+    })
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
