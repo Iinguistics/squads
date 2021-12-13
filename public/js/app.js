@@ -10306,11 +10306,6 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
       squad = _useState2[0],
       setSquad = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      requestsToJoin = _useState4[0],
-      setRequestsToJoin = _useState4[1];
-
   var fetchSquadHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _yield$Api$get, data;
@@ -10340,38 +10335,8 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(functio
     };
   }();
 
-  var fetchSquadRequestsHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var _yield$Api$get2, data;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/fetch_squad_requests/".concat(props.match.params.id));
-
-            case 2:
-              _yield$Api$get2 = _context2.sent;
-              data = _yield$Api$get2.data;
-              setRequestsToJoin(data.data);
-
-            case 5:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function fetchSquadRequestsHandler() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchSquadHandler();
-    fetchSquadRequestsHandler();
   }, []);
   console.log(squad, "squad");
   console.log(requestsToJoin, "requests");
