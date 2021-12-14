@@ -29,7 +29,7 @@ const index = withRouter((props) => {
     return (
         <SquadProvider>
             <SquadContext.Consumer>
-                {({ loggedInToggleHandler }) => {
+                {({}) => {
                     return (
                         <div className="container main-header">
                             squad main page
