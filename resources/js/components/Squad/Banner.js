@@ -36,7 +36,13 @@ const Banner = ({ squad }) => {
                 />
             </div>
             <div>
-                <h1>{squad ? squad.squad_name : ""}</h1>
+                <h1
+                    style={{
+                        fontFamily: squad ? squad.banner_font : "",
+                    }}
+                >
+                    {squad ? squad.squad_name : ""}
+                </h1>
             </div>
             <div>
                 <img
