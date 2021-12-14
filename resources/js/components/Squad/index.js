@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Api from "../Api";
 import SquadProvider, { SquadContext } from "../Context/SquadContext";
+import Banner from "./Banner";
 
 const index = withRouter((props) => {
     const [squad, setSquad] = useState(null);
@@ -32,7 +33,7 @@ const index = withRouter((props) => {
                 {({}) => {
                     return (
                         <div className="container main-header">
-                            squad main page
+                            <Banner squad={squad} />
                         </div>
                     );
                 }}
