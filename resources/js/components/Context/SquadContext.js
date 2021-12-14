@@ -4,12 +4,20 @@ import Api from "../Api";
 export const SquadContext = createContext();
 
 const SquadProvider = (props) => {
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(null);
+
+    const fetchIsAdmin = async (id) => {
+        const { data } = await Api.get(`/check_is_admin/${id}`);
+        setIsAdmin(data.data);
+    };
 
     return (
-        <SquadContext.Provider value={{}}>
+        <SquadContext.Provider
+            value={{
+                isAdmin: isAdmin,
+                fetchIsAdmin: fetchIsAdmin,
+            }}
+        >
             {props.children}
         </SquadContext.Provider>
     );

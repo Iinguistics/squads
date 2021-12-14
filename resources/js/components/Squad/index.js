@@ -13,29 +13,25 @@ const index = withRouter((props) => {
         const { data } = await Api.get(`/fetch_squad/${props.match.params.id}`);
         setSquad(data.data);
     };
-    const fetchIsAdmin = async () => {
-        const { data } = await Api.get(
-            `/check_is_admin/${props.match.params.id}`
-        );
-        setIsAdmin(data.data);
-    };
 
     useEffect(() => {
         fetchSquadHandler();
-        fetchIsAdmin();
     }, []);
 
     console.log(squad, "squad");
-    console.log(isAdmin, "test");
 
     return (
         <SquadProvider>
             <SquadContext.Consumer>
-                {({}) => {
+                {({ isAdmin, fetchIsAdmin }) => {
                     return (
                         <div className="container main-header">
                             <Banner squad={squad} />
-                            <Head squad={squad} />
+                            <Head
+                                squad={squad}
+                                isAdmin={isAdmin}
+                                fetchIsAdmin={fetchIsAdmin}
+                            />
                         </div>
                     );
                 }}
