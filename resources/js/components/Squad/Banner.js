@@ -40,6 +40,7 @@ const Banner = ({ squad }) => {
                     style={{
                         fontFamily: squad ? squad.banner_font : "",
                     }}
+                    className="banner-squad-name"
                 >
                     {squad ? squad.squad_name : ""}
                 </h1>

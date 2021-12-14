@@ -10378,6 +10378,7 @@ var Banner = function Banner(_ref) {
         style: {
           fontFamily: squad ? squad.banner_font : ""
         },
+        className: "banner-squad-name",
         children: squad ? squad.squad_name : ""
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {

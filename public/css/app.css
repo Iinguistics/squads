@@ -10938,3 +10938,7 @@ form .player-search-select {
   -o-object-position: center;
      object-position: center;
 }
+
+.banner-squad-name {
+  font-size: 54px;
+}
