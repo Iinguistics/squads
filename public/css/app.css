@@ -10928,3 +10928,13 @@ form .player-search-select {
   color: #050505;
   text-decoration: none;
 }
+
+.banner-photo {
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}

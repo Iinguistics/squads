@@ -10343,31 +10343,46 @@ var Banner = function Banner(_ref) {
   var renderBannerPhotoOne = function renderBannerPhotoOne() {
     var defaultPhoto = "".concat(appUrl, "/images/default-photo-black-outline.png");
 
-    if (squad.squad.banner_photo_one) {
-      return squad.squad.banner_photo_one;
-    } else {
-      return defaultPhoto;
+    if (squad) {
+      if (squad.banner_photo_one) {
+        return squad.banner_photo_one;
+      } else {
+        return defaultPhoto;
+      }
     }
   };
 
   var renderBannerPhotoTwo = function renderBannerPhotoTwo() {
     var defaultPhoto = "".concat(appUrl, "/images/default-photo-black-outline.png");
 
-    if (squad.squad.banner_photo_two) {
-      return squad.squad.banner_photo_two;
-    } else {
-      return defaultPhoto;
+    if (squad) {
+      if (squad.banner_photo_two) {
+        return squad.banner_photo_two;
+      } else {
+        return defaultPhoto;
+      }
     }
   };
 
+  console.log(squad, "squad");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "d-flex flex-column flex-md-row justify-content-between align-items-center mb-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      children: "item 1"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        src: renderBannerPhotoOne(),
+        alt: "photo",
+        className: "banner-photo"
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      children: "item 2"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+        children: squad ? squad.squad_name : ""
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      children: "item 3"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        src: renderBannerPhotoTwo(),
+        alt: "photo",
+        className: "banner-photo"
+      })
     })]
   });
 };
