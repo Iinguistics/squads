@@ -10364,6 +10364,26 @@ var Banner = function Banner(_ref) {
     }
   };
 
+  var renderBannerFontFamily = function renderBannerFontFamily() {
+    if (squad) {
+      if (squad.banner_font_family === "corinthia") {
+        return "banner-font-corinthia";
+      }
+
+      if (squad.banner_font_family === "major") {
+        return "banner-font-major";
+      }
+
+      if (squad.banner_font_family === "smooch") {
+        return "banner-font-smooch";
+      }
+
+      if (squad.banner_font_family === "vt323") {
+        return "banner-font-vt323";
+      }
+    }
+  };
+
   console.log(squad, "squad");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "d-flex flex-column flex-md-row justify-content-between align-items-center mb-5",
@@ -10375,10 +10395,7 @@ var Banner = function Banner(_ref) {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-        style: {
-          fontFamily: squad ? squad.banner_font : ""
-        },
-        className: "banner-squad-name",
+        className: "banner-squad-name ".concat(renderBannerFontFamily()),
         children: squad ? squad.squad_name : ""
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {

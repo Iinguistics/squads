@@ -24,6 +24,23 @@ const Banner = ({ squad }) => {
             }
         }
     };
+
+    const renderBannerFontFamily = () => {
+        if (squad) {
+            if (squad.banner_font_family === "corinthia") {
+                return "banner-font-corinthia";
+            }
+            if (squad.banner_font_family === "major") {
+                return "banner-font-major";
+            }
+            if (squad.banner_font_family === "smooch") {
+                return "banner-font-smooch";
+            }
+            if (squad.banner_font_family === "vt323") {
+                return "banner-font-vt323";
+            }
+        }
+    };
     console.log(squad, "squad");
 
     return (
@@ -36,12 +53,7 @@ const Banner = ({ squad }) => {
                 />
             </div>
             <div>
-                <h1
-                    style={{
-                        fontFamily: squad ? squad.banner_font : "",
-                    }}
-                    className="banner-squad-name"
-                >
+                <h1 className={`banner-squad-name ${renderBannerFontFamily()}`}>
                     {squad ? squad.squad_name : ""}
                 </h1>
             </div>

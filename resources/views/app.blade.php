@@ -13,8 +13,7 @@
         {{-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Manrope&family=Roboto+Mono&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Corinthia&family=Major+Mono+Display&family=Smooch&family=VT323&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Corinthia&family=Major+Mono+Display&family=Manrope&family=Roboto&family=Smooch&family=VT323&display=swap" rel="stylesheet">
         @if (config('app.env') == 'local')
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         @else
