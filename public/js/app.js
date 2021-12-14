@@ -10335,10 +10335,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Banner = function Banner(_ref) {
   var squad = _ref.squad;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "banner"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "d-flex flex-column flex-md-row justify-content-between align-items-center shadow-sm p-3 mb-5 bg-white rounded",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: "item 1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: "item 2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: "item 3"
+    })]
   });
 };
 
