@@ -11,7 +11,7 @@ const Head = withRouter(({ match, squad, isAdmin, fetchIsAdmin }) => {
         if (isAdmin) {
             return (
                 <div>
-                    <Link to="/">
+                    <Link to={`/squad/${match.params.id}/admin`}>
                         <button className="bttn-slant bttn-sm bttn-primary">
                             Admin Portal
                         </button>

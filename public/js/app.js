@@ -10476,7 +10476,7 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function
     if (isAdmin) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-          to: "/",
+          to: "/squad/".concat(match.params.id, "/admin"),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             className: "bttn-slant bttn-sm bttn-primary",
             children: "Admin Portal"
