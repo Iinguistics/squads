@@ -10494,6 +10494,7 @@ var Head = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function
         children: "View Roster"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "my-5 my-md-0",
       children: "item 2"
     }), renderAdminButton()]
   });

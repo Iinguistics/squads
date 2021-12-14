@@ -27,7 +27,7 @@ const Head = withRouter(({ match, squad, isAdmin, fetchIsAdmin }) => {
                     View Roster
                 </button>
             </div>
-            <div>item 2</div>
+            <div className="my-5 my-md-0">item 2</div>
             {renderAdminButton()}
         </div>
     );
