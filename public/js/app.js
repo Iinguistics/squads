@@ -10338,8 +10338,30 @@ __webpack_require__.r(__webpack_exports__);
 
 var Banner = function Banner(_ref) {
   var squad = _ref.squad;
+  var appUrl = "http://127.0.0.1:8000";
+
+  var renderBannerPhotoOne = function renderBannerPhotoOne() {
+    var defaultPhoto = "".concat(appUrl, "/images/default-photo-black-outline.png");
+
+    if (squad.squad.banner_photo_one) {
+      return squad.squad.banner_photo_one;
+    } else {
+      return defaultPhoto;
+    }
+  };
+
+  var renderBannerPhotoTwo = function renderBannerPhotoTwo() {
+    var defaultPhoto = "".concat(appUrl, "/images/default-photo-black-outline.png");
+
+    if (squad.squad.banner_photo_two) {
+      return squad.squad.banner_photo_two;
+    } else {
+      return defaultPhoto;
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "d-flex flex-column flex-md-row justify-content-between align-items-center shadow-sm p-3 mb-5 bg-white rounded",
+    className: "d-flex flex-column flex-md-row justify-content-between align-items-center mb-5",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       children: "item 1"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
