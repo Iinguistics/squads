@@ -44,7 +44,7 @@ const Banner = ({ squad }) => {
     console.log(squad, "squad");
 
     return (
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5">
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center banner-container">
             <div>
                 <img
                     src={renderBannerPhotoOne()}

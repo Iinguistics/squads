@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import Api from "../Api";
 import SquadProvider, { SquadContext } from "../Context/SquadContext";
 import Banner from "./Banner";
+import Head from "./Head";
 
 const index = withRouter((props) => {
     const [squad, setSquad] = useState(null);
@@ -34,6 +35,7 @@ const index = withRouter((props) => {
                     return (
                         <div className="container main-header">
                             <Banner squad={squad} />
+                            <Head squad={squad} />
                         </div>
                     );
                 }}
