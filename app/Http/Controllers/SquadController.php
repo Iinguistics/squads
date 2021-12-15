@@ -43,19 +43,19 @@ class SquadController extends Controller
     public function fetch_squad($id)
     {
         $squad = Squad::where('squad_id', $id)
-            ->with(['members', 'requests'])
+            ->with(['members.user', 'requests'])
             ->get()->first();
 
-        $members = array();
+        // $members = array();
 
-        if ($squad) {
-            foreach ($squad['members'] as $member) {
-                $user = User::find($member->id);
-                array_push($members, $user);
-            }
-        }
+        // if ($squad) {
+        //     foreach ($squad['members'] as $member) {
+        //         $user = User::find($member->id);
+        //         array_push($members, $user);
+        //     }
+        // }
 
-        $squad['squad_members'] = $members;
+        // $squad['squad_members'] = $members;
 
         $response = array(
             'success' => $squad ? true : false,

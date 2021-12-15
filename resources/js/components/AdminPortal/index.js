@@ -21,10 +21,6 @@ const index = withRouter((props) => {
         <div className="container main-header">
             <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center">
                 <Request squad={squad} />
-                <Request squad={squad} />
-
-                <Request squad={squad} />
-                <Request squad={squad} />
             </div>
         </div>
     );

@@ -5422,7 +5422,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Requests = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function () {
+var Requests = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(function (_ref) {
+  var squad = _ref.squad;
   var appUrl = "http://127.0.0.1:8000";
   var requestIcon = "".concat(appUrl, "/images/adminPortal/request.png");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -5433,12 +5434,12 @@ var Requests = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(func
       alt: "request"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "card-body",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h5", {
         className: "card-title",
-        children: "testing"
+        children: ["Requests to Join ", squad ? squad.squad_name : ""]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
         className: "card-text",
-        children: "testing"
+        children: "Reveiw requests, accept & add new teammates, or deny"
       })]
     })]
   });
@@ -5488,7 +5489,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5530,17 +5530,11 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(functio
   console.log(squad, "admin portal");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "container main-header",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
         squad: squad
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        squad: squad
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        squad: squad
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        squad: squad
-      })]
+      })
     })
   });
 });
