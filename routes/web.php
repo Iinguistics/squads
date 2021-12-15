@@ -21,3 +21,4 @@ Route::view('/{path?}', 'app')->name('web');
 Route::view('/profile/{id?}', 'app')->name('web');
 Route::view('/squad/preview/{id?}', 'app')->name('web');
 Route::view('/squad/{id?}', 'app')->name('web');
+Route::view('/squad/{id?}/admin', 'app')->name('web');

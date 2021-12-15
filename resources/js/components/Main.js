@@ -12,6 +12,7 @@ import Register from "./Register";
 import MySquads from "./MySquads";
 import SquadPreview from "./SquadPreview";
 import Squad from "./Squad";
+import AdminPortal from "./AdminPortal";
 
 import Test from "./Test";
 import TestTwo from "./TestTwo";
@@ -53,7 +54,8 @@ const Main = (props) => {
                 <Route path="/register" component={Register} />
                 <Route path="/squads" exact component={MySquads} />
                 <Route path="/squad/preview/:id" component={SquadPreview} />
-                <Route path="/squad/:id" component={Squad} />
+                <Route path="/squad/:id" exact component={Squad} />
+                <Route path="/squad/:id/admin" component={AdminPortal} />
                 <Route path="/test" component={Test} />
             </Switch>
         </main>
