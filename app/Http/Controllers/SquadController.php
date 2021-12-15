@@ -235,9 +235,7 @@ class SquadController extends Controller
         }
 
         $response = array(
-            //'success' => $squads ? true : false,
             'data' => $match,
-            //'error' => $squads ? false : "failed to retrieve squads"
         );
         return response()->json($response, 200);
     }
@@ -327,9 +325,7 @@ class SquadController extends Controller
         }
 
         $response = array(
-            //'success' => $squads ? true : false,
             'data' => $is_admin,
-            //'error' => $squads ? false : "failed to retrieve squads"
         );
         return response()->json($response, 200);
     }
