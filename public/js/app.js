@@ -5426,7 +5426,7 @@ var Requests = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(func
   var appUrl = "http://127.0.0.1:8000";
   var requestIcon = "".concat(appUrl, "/images/adminPortal/request.png");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "card squad-card my-4 my-md-0 cursor-pointer",
+    className: "card squad-card my-4 cursor-pointer",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
       src: requestIcon,
       className: "card-img-top p-5",
@@ -5488,6 +5488,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5529,11 +5530,17 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRouter)(functio
   console.log(squad, "admin portal");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "container main-header",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
         squad: squad
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        squad: squad
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        squad: squad
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Requests__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        squad: squad
+      })]
     })
   });
 });
@@ -7811,7 +7818,7 @@ var SquadCard = function SquadCard(_ref) {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "card squad-card my-4 my-md-0",
+    className: "card squad-card my-4",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       to: "/squad/".concat(card.squad_id),
       children: [renderSquadImg(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
