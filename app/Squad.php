@@ -24,4 +24,9 @@ class Squad extends Model
     {
         return $this->hasMany('App\SquadMember', 'squad_id', 'squad_id');
     }
+
+    public function requests()
+    {
+        return $this->hasMany('App\SquadRequest', 'squad_id', 'squad_id');
+    }
 }
