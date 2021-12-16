@@ -20,10 +20,6 @@ use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 class ProfileController extends Controller
 {
 
-    public function index()
-    {
-    }
-
     public function show_current_user_profile()
     {
         $user = Auth::user();
