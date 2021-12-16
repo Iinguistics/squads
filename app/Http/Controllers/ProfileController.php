@@ -28,13 +28,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        //$images = Image::where('id', $user->id)->get();
-
         $profile = Profile::where('id', $user->id)
             ->with(['user', 'user.messages', 'user.images'])
             ->get();
-
-        //$profile[0]['images'] = $images;
 
         $response = array(
             'success' => $profile ? true : false,
@@ -81,17 +77,6 @@ class ProfileController extends Controller
     public function update_current_user_profile_photo(Request $request)
     {
         $user = Auth::user();
-
-        // if ($request->hasFile('photo')) {
-        //     $file = $request->file('photo');
-        //     $filename = $file->getClientOriginalName();
-        //     $file->storeAs('photo/' . $user->id, $filename, 's3');
-
-        //     $results = Profile::where('id', $user->id)
-        //         ->update([
-        //             'photo' => $filename
-        //         ]);
-        // }
 
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
