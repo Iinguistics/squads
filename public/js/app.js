@@ -13035,112 +13035,34 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
     setShow(false);
   };
 
-  var fetchProfileHandler = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _yield$Api$get, data;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              setLoading(true);
-              _context.prev = 1;
-              _context.next = 4;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].get("/current_user");
-
-            case 4:
-              _yield$Api$get = _context.sent;
-              data = _yield$Api$get.data;
-
-              if (data) {
-                setGamertag(data.gamertag);
-                setLoading(false);
-              }
-
-              _context.next = 13;
-              break;
-
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](1);
-              setLoading(false);
-              setError(_context.t0.message);
-
-            case 13:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[1, 9]]);
-    }));
-
-    return function fetchProfileHandler() {
-      return _ref.apply(this, arguments);
-    };
-  }(); // useEffect(() => {
-  //     fetchProfileHandler();
-  // }, []);
-
-
   var successReset = function successReset() {
     setSuccess(false);
   };
 
-  var updateAccountHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var value, _yield$Api$put, data;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+  var updateFontHandler = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              if (!(gamertag === "")) {
-                _context2.next = 3;
+              if (!(fontFamily === "" && fontColor === "")) {
+                _context.next = 3;
                 break;
               }
 
-              setError("Required");
-              return _context2.abrupt("return");
+              setError("To update select a family or a color");
+              return _context.abrupt("return");
 
             case 3:
-              _context2.prev = 3;
-              value = {
-                gamertag: gamertag
-              };
-              _context2.next = 7;
-              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_current_user_account", value);
-
-            case 7:
-              _yield$Api$put = _context2.sent;
-              data = _yield$Api$put.data;
-
-              if (data.success) {
-                setSuccess(true);
-                setError(false);
-                setShow(false);
-              } else {
-                setSuccess(false);
-                setError(data.error);
-              }
-
-              _context2.next = 15;
-              break;
-
-            case 12:
-              _context2.prev = 12;
-              _context2.t0 = _context2["catch"](3);
-              setError(_context2.t0.message);
-
-            case 15:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, null, [[3, 12]]);
+      }, _callee);
     }));
 
-    return function updateAccountHandler() {
-      return _ref2.apply(this, arguments);
+    return function updateFontHandler() {
+      return _ref.apply(this, arguments);
     };
   }();
 
@@ -13164,19 +13086,69 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Title, {
             children: "Update Banner Font"
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
+          className: "text-muted ml-3",
+          children: "update the font family & or color"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Body, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-            htmlFor: "gamertag",
+            htmlFor: "family",
             children: "Choose font family"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "text",
-            className: "form-control block shadow-none",
-            value: gamertag,
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+            name: "family",
+            value: fontFamily,
             onChange: function onChange(e) {
-              return setGamertag(e.target.value);
+              return setFontFamily(e.target.value);
             },
-            name: "gamertag"
-          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            className: "mr-4 p-1 player-search-select mb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "",
+              children: "Select a Family"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "corinthia",
+              children: "Corinthia"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "major",
+              children: "Major Mono"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "smooch",
+              children: "Smooch"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "vt323",
+              children: "VT323"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            htmlFor: "color",
+            children: "Choose Font Color"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+            name: "color",
+            value: fontColor,
+            onChange: function onChange(e) {
+              return setFontColor(e.target.value);
+            },
+            className: "mr-4 p-1 player-search-select mb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "",
+              children: "Select a color"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "red",
+              children: "Red"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "blue",
+              children: "Blue"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "green",
+              children: "Green"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "orange",
+              children: "Orange"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "pink",
+              children: "Pink"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+              value: "purple",
+              children: "Purple"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "text-danger",
             children: error
           })]
@@ -13186,7 +13158,7 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
             className: "bttn-material-flat bttn-sm mr-2",
             children: "Cancel"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            onClick: updateAccountHandler,
+            onClick: updateFontHandler,
             className: "bttn-material-flat bttn-sm update-account-modal-btn",
             children: "Update"
           })]

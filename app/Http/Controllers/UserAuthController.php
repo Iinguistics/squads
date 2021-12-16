@@ -39,14 +39,6 @@ class UserAuthController extends Controller
         $existing_email = User::where('email', $input['email'])->get()->first();
         $existing_username = User::where('username', $input['username'])->get()->first();
 
-
-        // $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
-        // if (in_array($input['email'], $emails)) {
-        //     $response = array(
-        //         'success' => false,
-        //         'error' => "email already in use.",
-        //     );
-        //     return response()->json($response, 200);
         if ($existing_email || $existing_username) {
             $response = array(
                 'success' => false,
@@ -74,7 +66,6 @@ class UserAuthController extends Controller
 
         $response = array(
             'success' => $user ? true : false,
-            //'data' => $user ? $user : null,
             'error' => $user ? null : 'failed to register user',
         );
         return response()->json($response, 200);
