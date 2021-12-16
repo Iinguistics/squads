@@ -35,7 +35,7 @@ const index = withRouter(() => {
             }
         }
     };
-    console.log(mySquads);
+    console.log(mySquads, "my squads");
 
     const renderPendingInvitesNotification = () => {
         if (pendingInvites) {

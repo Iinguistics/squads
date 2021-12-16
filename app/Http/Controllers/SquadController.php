@@ -46,17 +46,6 @@ class SquadController extends Controller
             ->with(['members.user', 'requests'])
             ->get()->first();
 
-        // $members = array();
-
-        // if ($squad) {
-        //     foreach ($squad['members'] as $member) {
-        //         $user = User::find($member->id);
-        //         array_push($members, $user);
-        //     }
-        // }
-
-        // $squad['squad_members'] = $members;
-
         $response = array(
             'success' => $squad ? true : false,
             'data' => $squad,

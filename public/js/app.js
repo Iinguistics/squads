@@ -8076,7 +8076,7 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
     }
   };
 
-  console.log(mySquads);
+  console.log(mySquads, "my squads");
 
   var renderPendingInvitesNotification = function renderPendingInvitesNotification() {
     if (pendingInvites) {
