@@ -17,7 +17,7 @@ const ConversationSideBar = ({
         fetchUserMessages();
     }, []);
 
-    console.log(userMessages, "sidebar");
+    console.log(userMessages, "convo-sidebar");
 
     const checkInboxEmpty = () => {
         if (inboxEmpty) {

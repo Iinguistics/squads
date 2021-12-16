@@ -7313,7 +7313,7 @@ var ConversationSideBar = function ConversationSideBar(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchUserMessages();
   }, []);
-  console.log(userMessages, "sidebar");
+  console.log(userMessages, "convo-sidebar");
 
   var checkInboxEmpty = function checkInboxEmpty() {
     if (inboxEmpty) {
@@ -8116,9 +8116,9 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
         }, idx);
       });
     }
-  };
+  }; //console.log(squadInvites);
 
-  console.log(squadInvites);
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "container main-header",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {

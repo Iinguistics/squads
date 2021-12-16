@@ -76,7 +76,7 @@ const index = withRouter(() => {
         }
     };
 
-    console.log(squadInvites);
+    //console.log(squadInvites);
 
     return (
         <div className="container main-header">
