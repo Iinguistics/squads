@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Api from "../Api";
 import Request from "./Requests";
+import BannerFontFamily from "./BannerFontFamily";
 
 const index = withRouter((props) => {
     const [squad, setSquad] = useState(null);
@@ -21,6 +22,7 @@ const index = withRouter((props) => {
         <div className="container main-header">
             <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center">
                 <Request squad={squad} />
+                <BannerFontFamily squad={squad} />
             </div>
         </div>
     );
