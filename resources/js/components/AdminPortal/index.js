@@ -21,7 +21,7 @@ const index = withRouter((props) => {
 
     return (
         <div className="container main-header">
-            <div className="fs-22 mb-5">
+            <div className="fs-22 mb-5 text-center text-md-left">
                 <GrUserAdmin /> <span>Admin Portal</span>
             </div>
             <div className="d-flex flex-column flex-wrap flex-md-row justify-content-between align-items-center">
