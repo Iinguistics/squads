@@ -10778,6 +10778,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(function (props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -10786,8 +10787,15 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState4 = _slicedToArray(_useState3, 2),
-      isAdmin = _useState4[0],
-      setIsAdmin = _useState4[1];
+      isMember = _useState4[0],
+      setIsMember = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState6 = _slicedToArray(_useState5, 2),
+      verifyingMembership = _useState6[0],
+      setVerifyingMembership = _useState6[1];
+
+  var userInfoData = JSON.parse(localStorage.getItem("userInfo"));
 
   var fetchSquadHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -10818,27 +10826,62 @@ var index = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(functio
     };
   }();
 
+  var checkIfMember = function checkIfMember() {
+    if (squad) {
+      for (var i = 0; i < squad.members.length; i++) {
+        if (squad.members[i].id === userInfoData.id) {
+          setIsMember(true);
+          setVerifyingMembership(false);
+          return;
+        }
+      }
+
+      setIsMember(false);
+      props.history.push("/squad/preview/".concat(squad.squad_id));
+    }
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (!userInfoData) {
+      props.history.push("/login");
+    }
+
     fetchSquadHandler();
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    checkIfMember();
+  }, [squad]);
   console.log(squad, "squad");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_SquadContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_SquadContext__WEBPACK_IMPORTED_MODULE_3__.SquadContext.Consumer, {
-      children: function children(_ref2) {
-        var isAdmin = _ref2.isAdmin,
-            fetchIsAdmin = _ref2.fetchIsAdmin;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-          className: "container main-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Banner__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            squad: squad
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            squad: squad,
-            isAdmin: isAdmin,
-            fetchIsAdmin: fetchIsAdmin
-          })]
-        });
-      }
-    })
+
+  var renderSquadPage = function renderSquadPage() {
+    if (verifyingMembership) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "lds-hourglass d-flex justify-content-center m-auto"
+      });
+    } else {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_SquadContext__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Context_SquadContext__WEBPACK_IMPORTED_MODULE_3__.SquadContext.Consumer, {
+          children: function children(_ref2) {
+            var isAdmin = _ref2.isAdmin,
+                fetchIsAdmin = _ref2.fetchIsAdmin;
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              className: "container main-header",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Banner__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                squad: squad
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Head__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                squad: squad,
+                isAdmin: isAdmin,
+                fetchIsAdmin: fetchIsAdmin
+              })]
+            });
+          }
+        })
+      });
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: renderSquadPage()
   });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
