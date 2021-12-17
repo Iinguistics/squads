@@ -41,6 +41,33 @@ const Banner = ({ squad }) => {
             }
         }
     };
+
+    const renderBannerFontColor = () => {
+        if (squad) {
+            if (squad.banner_font_color === "black") {
+                return "appearance-font-color-black";
+            }
+            if (squad.banner_font_color === "red") {
+                return "appearance-font-color-red";
+            }
+            if (squad.banner_font_color === "blue") {
+                return "appearance-font-color-blue";
+            }
+            if (squad.banner_font_color === "green") {
+                return "appearance-font-color-green";
+            }
+            if (squad.banner_font_color === "orange") {
+                return "appearance-font-color-orange";
+            }
+            if (squad.banner_font_color === "pink") {
+                return "appearance-font-color-pink";
+            }
+            if (squad.banner_font_color === "purple") {
+                return "appearance-font-color-purple";
+            }
+        }
+    };
+
     console.log(squad, "squad");
 
     return (
@@ -53,7 +80,9 @@ const Banner = ({ squad }) => {
                 />
             </div>
             <div>
-                <h1 className={`banner-squad-name ${renderBannerFontFamily()}`}>
+                <h1
+                    className={`banner-squad-name ${renderBannerFontFamily()} ${renderBannerFontColor()}`}
+                >
                     {squad ? squad.squad_name : ""}
                 </h1>
             </div>

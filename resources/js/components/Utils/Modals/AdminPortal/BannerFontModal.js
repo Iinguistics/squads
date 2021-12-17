@@ -89,8 +89,6 @@ const BannerFontModal = withRouter((props) => {
                     titleText="Success"
                     bodyText="Font has been updated."
                     buttonText="Got it"
-                    //tabHandler={props.tabHandler}
-                    tab="myProfile"
                     successReset={successReset}
                 />
                 <Modal
@@ -148,6 +146,7 @@ const BannerFontModal = withRouter((props) => {
                             className="mr-4 p-1 player-search-select mb-3"
                         >
                             <option value="">Select a color</option>
+                            <option value="black">Black</option>
                             <option value="red">Red</option>
                             <option value="blue">Blue</option>
                             <option value="green">Green</option>
