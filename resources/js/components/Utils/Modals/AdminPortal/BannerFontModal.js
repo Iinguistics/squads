@@ -37,26 +37,48 @@ const BannerFontModal = withRouter((props) => {
             return;
         }
 
-        // try {
-        //     let value = {
-        //         gamertag: gamertag,
-        //     };
-        //     const { data } = await Api.put(
-        //         "/update_current_user_account",
-        //         value
-        //     );
+        try {
+            let value = {};
+            let values = {};
+            const renderValues = () => {
+                if (fontFamily !== "" && fontColor !== "") {
+                    values = {
+                        banner_font_family: fontFamily,
+                        banner_font_color: fontColor,
+                    };
+                    return values;
+                }
+                if (fontFamily !== "") {
+                    console.log("ran", fontFamily);
+                    value = {
+                        banner_font_family: fontFamily,
+                    };
+                    return value;
+                }
+                if (fontColor !== "") {
+                    value = {
+                        banner_font_color: fontColor,
+                    };
+                    return value;
+                }
+            };
 
-        //     if (data.success) {
-        //         setSuccess(true);
-        //         setError(false);
-        //         setShow(false);
-        //     } else {
-        //         setSuccess(false);
-        //         setError(data.error);
-        //     }
-        // } catch (error) {
-        //     setError(error.message);
-        // }
+            const { data } = await Api.put(
+                `/update_banner_font/${props.squad.squad_id}`,
+                renderValues()
+            );
+
+            if (data.success) {
+                setSuccess(true);
+                setError("");
+                setShow(false);
+            } else {
+                setSuccess(false);
+                setError(data.error);
+            }
+        } catch (error) {
+            setError(error.message);
+        }
     };
 
     return (
@@ -65,9 +87,9 @@ const BannerFontModal = withRouter((props) => {
                 <SuccessModal
                     success={success}
                     titleText="Success"
-                    bodyText="Your gamertag has been updated."
+                    bodyText="Font has been updated."
                     buttonText="Got it"
-                    tabHandler={props.tabHandler}
+                    //tabHandler={props.tabHandler}
                     tab="myProfile"
                     successReset={successReset}
                 />

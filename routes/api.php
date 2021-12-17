@@ -83,5 +83,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('fetch_squad_requests/{id}', [SquadController::class, 'fetch_squad_requests']);
 
     Route::get('check_is_admin/{id}', [SquadController::class, 'check_is_admin']);
-    Route::put('update_banner_font/{id}', [ImageController::class, 'update_banner_font']);
+    Route::put('update_banner_font/{id}', [SquadController::class, 'update_banner_font']);
 });

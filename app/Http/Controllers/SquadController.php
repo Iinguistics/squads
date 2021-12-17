@@ -323,7 +323,7 @@ class SquadController extends Controller
     {
         $input = $request->all();
 
-        $results = Squad::find($id)
+        $results = Squad::where('squad_id', $id)
             ->update($input);
 
         $response = array(

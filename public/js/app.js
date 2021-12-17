@@ -13084,6 +13084,8 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
 
   var updateFontHandler = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var value, values, renderValues, _yield$Api$put, data;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -13106,11 +13108,65 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
               return _context.abrupt("return");
 
             case 6:
+              _context.prev = 6;
+              value = {};
+              values = {};
+
+              renderValues = function renderValues() {
+                if (fontFamily !== "" && fontColor !== "") {
+                  values = {
+                    banner_font_family: fontFamily,
+                    banner_font_color: fontColor
+                  };
+                  return values;
+                }
+
+                if (fontFamily !== "") {
+                  console.log("ran", fontFamily);
+                  value = {
+                    banner_font_family: fontFamily
+                  };
+                  return value;
+                }
+
+                if (fontColor !== "") {
+                  value = {
+                    banner_font_color: fontColor
+                  };
+                  return value;
+                }
+              };
+
+              _context.next = 12;
+              return _Api__WEBPACK_IMPORTED_MODULE_2__["default"].put("/update_banner_font/".concat(props.squad.squad_id), renderValues());
+
+            case 12:
+              _yield$Api$put = _context.sent;
+              data = _yield$Api$put.data;
+
+              if (data.success) {
+                setSuccess(true);
+                setError("");
+                setShow(false);
+              } else {
+                setSuccess(false);
+                setError(data.error);
+              }
+
+              _context.next = 20;
+              break;
+
+            case 17:
+              _context.prev = 17;
+              _context.t0 = _context["catch"](6);
+              setError(_context.t0.message);
+
+            case 20:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[6, 17]]);
     }));
 
     return function updateFontHandler() {
@@ -13124,9 +13180,9 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SuccessModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
         success: success,
         titleText: "Success",
-        bodyText: "Your gamertag has been updated.",
-        buttonText: "Got it",
-        tabHandler: props.tabHandler,
+        bodyText: "Font has been updated.",
+        buttonText: "Got it" //tabHandler={props.tabHandler}
+        ,
         tab: "myProfile",
         successReset: successReset
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
