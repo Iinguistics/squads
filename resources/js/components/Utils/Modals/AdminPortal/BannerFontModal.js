@@ -32,6 +32,11 @@ const BannerFontModal = withRouter((props) => {
             setError("To update select a family or a color");
             return;
         }
+        if (fontFamily === props.squad.banner_font_family) {
+            setError(`Your banner font family is already set to ${fontFamily}`);
+            return;
+        }
+
         // try {
         //     let value = {
         //         gamertag: gamertag,
@@ -79,7 +84,16 @@ const BannerFontModal = withRouter((props) => {
                     </small>
 
                     <Modal.Body>
-                        <label htmlFor="family">Choose font family</label>
+                        <label htmlFor="family">Choose font family</label>{" "}
+                        <span className="text-muted">
+                            {props.squad
+                                ? props.squad.banner_font_family
+                                    ? "(currently set to:" +
+                                      props.squad.banner_font_family +
+                                      ")"
+                                    : ""
+                                : ""}
+                        </span>
                         <br />
                         <select
                             name="family"

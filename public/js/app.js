@@ -13097,6 +13097,15 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
               return _context.abrupt("return");
 
             case 3:
+              if (!(fontFamily === props.squad.banner_font_family)) {
+                _context.next = 6;
+                break;
+              }
+
+              setError("Your banner font family is already set to ".concat(fontFamily));
+              return _context.abrupt("return");
+
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -13136,6 +13145,9 @@ var BannerFontModal = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.withRoute
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
             htmlFor: "family",
             children: "Choose font family"
+          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            className: "text-muted",
+            children: props.squad ? props.squad.banner_font_family ? "(currently set to:" + props.squad.banner_font_family + ")" : "" : ""
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
             name: "family",
             value: fontFamily,

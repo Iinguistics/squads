@@ -318,4 +318,19 @@ class SquadController extends Controller
         );
         return response()->json($response, 200);
     }
+
+    public function update_banner_font(Request $request, $id)
+    {
+        $input = $request->all();
+
+        $results = Squad::find($id)
+            ->update($input);
+
+        $response = array(
+            'success' => $results ? true : false,
+            'data' => $results,
+        );
+
+        return response()->json($response, 200);
+    }
 }
