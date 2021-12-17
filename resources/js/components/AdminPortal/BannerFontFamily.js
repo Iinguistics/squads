@@ -16,9 +16,9 @@ const BannerFontFamily = withRouter(({ squad }) => {
     };
 
     return (
-        <div>
+        <>
             <div
-                className="card squad-card my-4 cursor-pointer"
+                className="card admin-portal-card cursor-pointer"
                 onClick={bannerFontFamilyClickedHandler}
             >
                 <img src={fontIcon} className="card-img-top p-5" alt="font" />
@@ -36,7 +36,7 @@ const BannerFontFamily = withRouter(({ squad }) => {
                 bannerFontFamilyClicked={bannerFontFamilyClicked}
                 squad={squad}
             />
-        </div>
+        </>
     );
 });
 

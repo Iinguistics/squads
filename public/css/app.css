@@ -10428,6 +10428,18 @@ form .player-search-select {
   font-size: 1rem;
 }
 
+.admin-portal-card {
+  width: 18rem;
+  height: 26rem;
+  box-shadow: 0 5px 10px rgba(79, 82, 177, 0.35);
+}
+
+.admin-portal-card:hover {
+  border: 1px solid #4d89ff;
+  transition: 0.5s;
+  box-shadow: none;
+}
+
 .section-1 {
   background: #5409c8;
   height: 650px;

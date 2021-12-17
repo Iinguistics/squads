@@ -5436,6 +5436,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var BannerFontFamily = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(function (_ref) {
   var squad = _ref.squad;
   var appUrl = "http://127.0.0.1:8000";
@@ -5452,9 +5453,9 @@ var BannerFontFamily = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRout
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "card squad-card my-4 cursor-pointer",
+      className: "card admin-portal-card cursor-pointer",
       onClick: bannerFontFamilyClickedHandler,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
         src: fontIcon,
@@ -5505,7 +5506,7 @@ var Requests = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(func
   var appUrl = "http://127.0.0.1:8000";
   var requestIcon = "".concat(appUrl, "/images/adminPortal/request.png");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "card squad-card my-4 cursor-pointer",
+    className: "card admin-portal-card cursor-pointer",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
       src: requestIcon,
       className: "card-img-top p-5",

@@ -1,0 +1,10 @@
+.admin-portal-card {
+    width: 18rem;
+    height: 26rem;
+    box-shadow: 0 5px 10px rgba(79, 82, 177, 0.35);
+}
+.admin-portal-card:hover {
+    border: 1px solid $main-blue;
+    transition: 0.5s;
+    box-shadow: none;
+}

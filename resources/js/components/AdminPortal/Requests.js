@@ -7,7 +7,7 @@ const Requests = withRouter(({ squad }) => {
     const requestIcon = `${appUrl}/images/adminPortal/request.png`;
 
     return (
-        <div className="card squad-card my-4 cursor-pointer">
+        <div className="card admin-portal-card cursor-pointer">
             <img src={requestIcon} className="card-img-top p-5" alt="request" />
             <div className="card-body">
                 <h5 className="card-title">
