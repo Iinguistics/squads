@@ -130,7 +130,16 @@ const BannerFontModal = withRouter((props) => {
                             <option value="vt323">VT323</option>
                         </select>
                         <br />
-                        <label htmlFor="color">Choose Font Color</label>
+                        <label htmlFor="color">Choose Font Color</label>{" "}
+                        <span className="text-muted">
+                            {props.squad
+                                ? props.squad.banner_font_color
+                                    ? "(currently set to:" +
+                                      props.squad.banner_font_color +
+                                      ")"
+                                    : ""
+                                : ""}
+                        </span>
                         <br />
                         <select
                             name="color"
