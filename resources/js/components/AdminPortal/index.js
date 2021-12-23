@@ -13,8 +13,23 @@ const index = withRouter((props) => {
         setSquad(data.data);
     };
 
+    const authCheck = async () => {
+        let user = JSON.parse(localStorage.getItem("userInfo"));
+        if (!user) {
+            props.history.push("/login");
+        }
+
+        const { data } = await Api.get(
+            `/check_is_admin/${props.match.params.id}`
+        );
+        if (!data.data) {
+            props.history.push("/squads");
+        }
+    };
+
     useEffect(() => {
         fetchSquadHandler();
+        authCheck();
     }, []);
 
     console.log(squad, "admin portal");
