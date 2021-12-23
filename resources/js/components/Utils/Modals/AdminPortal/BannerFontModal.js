@@ -33,10 +33,10 @@ const BannerFontModal = withRouter((props) => {
             setError("To update select a family or a color");
             return;
         }
-        if (fontFamily === props.squad.banner_font_family) {
-            setError(`Your banner font family is already set to ${fontFamily}`);
-            return;
-        }
+        // if (fontFamily === props.squad.banner_font_family) {
+        //     setError(`Your banner font family is already set to ${fontFamily}`);
+        //     return;
+        // }
 
         try {
             let value = {};
@@ -161,6 +161,7 @@ const BannerFontModal = withRouter((props) => {
                             fontFamily={fontFamily}
                             squad={props.squad}
                         />
+                        <br />
                         {error && <span className="text-danger">{error}</span>}
                     </Modal.Body>
                     <Modal.Footer>
