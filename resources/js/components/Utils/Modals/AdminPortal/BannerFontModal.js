@@ -50,7 +50,6 @@ const BannerFontModal = withRouter((props) => {
                     return values;
                 }
                 if (fontFamily !== "") {
-                    console.log("ran", fontFamily);
                     value = {
                         banner_font_family: fontFamily,
                     };
