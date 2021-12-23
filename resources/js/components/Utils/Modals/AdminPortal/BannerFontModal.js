@@ -3,6 +3,7 @@ import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import Api from "../../../Api";
 import SuccessModal from "../SuccessModal";
+import BannerFontPreview from "./BannerFontPreview";
 
 const BannerFontModal = withRouter((props) => {
     const [show, setShow] = useState(false);
@@ -155,6 +156,11 @@ const BannerFontModal = withRouter((props) => {
                             <option value="purple">Purple</option>
                         </select>
                         <br />
+                        <BannerFontPreview
+                            fontColor={fontColor}
+                            fontFamily={fontFamily}
+                            squad={props.squad}
+                        />
                         {error && <span className="text-danger">{error}</span>}
                     </Modal.Body>
                     <Modal.Footer>
