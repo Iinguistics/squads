@@ -300,6 +300,22 @@ class SquadController extends Controller
         return response()->json($response, 200);
     }
 
+    public function reject_squad_request(Request $request)
+    {
+        $input = $request->all();
+
+        $destroyed_request = SquadRequest::find($input['squad_request_id']);
+        $destroyed_request->delete();
+
+        $response = array(
+            'success' => $destroyed_request ? true : false,
+            'error' => $destroyed_request ? false : "failed to delete request"
+        );
+
+        return response()->json($response, 200);
+    }
+
+
     public function check_is_admin($id)
     {
         $user = Auth::user();

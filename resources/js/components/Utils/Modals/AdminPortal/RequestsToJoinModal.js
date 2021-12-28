@@ -23,22 +23,22 @@ const RequestsToJoinModal = withRouter((props) => {
         }
     }, [props.requestsToJoinClicked]);
 
-    const rejectInvite = async (id) => {
+    const rejectRequest = async (id) => {
         try {
             setLoading(true);
             let value = {
-                squad_invite_id: id,
+                squad_request_id: id,
             };
-            const { data } = await Api.post("/reject_squad_invite", value);
+            const { data } = await Api.post("/reject_squad_request", value);
 
             if (data.success) {
                 setTitleText("Rejected");
-                setBodyText("Invite has been rejected");
+                setBodyText("Request has been rejected");
                 setSuccess(true);
                 setError(false);
                 setShow(false);
                 setLoading(false);
-                props.fetchSquadInvitesHandler();
+                //props.fetchSquadInvitesHandler();
             } else {
                 setSuccess(false);
                 setError(data.error);
