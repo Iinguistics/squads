@@ -315,6 +315,29 @@ class SquadController extends Controller
         return response()->json($response, 200);
     }
 
+    public function accept_squad_request(Request $request)
+    {
+        $input = $request->all();
+        $user = Auth::user();
+
+        $member = SquadMember::create([
+            "squad_id" => $input['squad_id'],
+            "id" => $input['id'],
+            "squad_admin" => 0,
+        ]);
+
+        $destroyed_request = SquadRequest::find($input['squad_request_id']);
+        $destroyed_request->delete();
+
+        $response = array(
+            'success' => $member ? true : false,
+            'error' => $member ? false : "failed to accept invite"
+        );
+
+        return response()->json($response, 200);
+    }
+
+
 
     public function check_is_admin($id)
     {

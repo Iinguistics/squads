@@ -55,19 +55,20 @@ const RequestsToJoinModal = withRouter((props) => {
         try {
             setLoading(true);
             let values = {
-                squad_invite_id: inviteId,
-                squad_id: squadId,
+                squad_request_id: requestId,
+                id: userId,
+                squad_id: props.squad.squad_id,
             };
-            const { data } = await Api.post("/accept_squad_invite", values);
+            const { data } = await Api.post("/accept_squad_request", values);
 
             if (data.success) {
                 setTitleText("Accepted");
-                setBodyText("Invite has been accepted");
+                setBodyText("Request has been accepted");
                 setSuccess(true);
                 setError(false);
                 setShow(false);
                 setLoading(false);
-                props.fetchSquadInvitesHandler();
+                //props.fetchSquadInvitesHandler();
             } else {
                 setSuccess(false);
                 setError(data.error);
@@ -96,7 +97,7 @@ const RequestsToJoinModal = withRouter((props) => {
 
     const renderSquadRequests = () => {
         if (props.squad) {
-            if (props.squad.requests) {
+            if (props.squad.requests[0]) {
                 return props.squad.requests.map((request) => {
                     return (
                         <div
@@ -177,6 +178,10 @@ const RequestsToJoinModal = withRouter((props) => {
                     buttonText="Got it"
                     successReset={successReset}
                 />
+                {loading && (
+                    <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
+                )}
+
                 <Modal show={show} onHide={handleClose} size="md">
                     <Modal.Header closeButton>
                         <Modal.Title>
