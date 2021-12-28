@@ -6,6 +6,12 @@ const Requests = withRouter(({ squad }) => {
     const appUrl = process.env.MIX_APP_URL;
     const requestIcon = `${appUrl}/images/adminPortal/request.png`;
 
+    const [requestsClicked, setRequestsClicked] = useState(0);
+
+    const requestsClickedHandler = () => {
+        setRequestsClicked((requestsClicked) => requestsClicked + 1);
+    };
+
     return (
         <div className="card admin-portal-card cursor-pointer mb-3 mb-md-0">
             <img src={requestIcon} className="card-img-top p-5" alt="request" />
