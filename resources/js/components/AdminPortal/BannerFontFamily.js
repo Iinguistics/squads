@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import Api from "../Api";
 import BannerFontModal from "../Utils/Modals/AdminPortal/BannerFontModal";
 
 const BannerFontFamily = withRouter(({ squad }) => {
