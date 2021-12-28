@@ -16,7 +16,10 @@ const Requests = withRouter(({ squad }) => {
 
     return (
         <>
-            <div className="card admin-portal-card cursor-pointer mb-3 mb-md-0">
+            <div
+                className="card admin-portal-card cursor-pointer mb-3 mb-md-0"
+                onClick={requestsToJoinClickedHandler}
+            >
                 <img
                     src={requestIcon}
                     className="card-img-top p-5"

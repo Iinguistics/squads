@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Moment from "react-moment";
 import { Modal, Container } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
-import Api from "../../Api";
-import SuccessModal from "./SuccessModal";
+import Api from "../../../Api";
+import SuccessModal from "../SuccessModal";
 
 const RequestsToJoinModal = withRouter((props) => {
     const appUrl = process.env.MIX_APP_URL;
@@ -18,10 +18,10 @@ const RequestsToJoinModal = withRouter((props) => {
     const handleClose = () => setShow(false);
 
     useEffect(() => {
-        if (props.showSquadInvitesClicked !== 0) {
+        if (props.requestsToJoinClicked !== 0) {
             setShow(true);
         }
-    }, [props.showSquadInvitesClicked]);
+    }, [props.requestsToJoinClicked]);
 
     const rejectInvite = async (id) => {
         try {
@@ -51,7 +51,7 @@ const RequestsToJoinModal = withRouter((props) => {
         }
     };
 
-    const acceptInvite = async (inviteId, squadId) => {
+    const acceptRequest = async (requestId, userId) => {
         try {
             setLoading(true);
             let values = {
@@ -80,65 +80,61 @@ const RequestsToJoinModal = withRouter((props) => {
         }
     };
 
-    const renderSquadPhoto = (squad) => {
+    const renderUserPhoto = (request) => {
         const defaultPhoto = `${appUrl}/images/default-photo-black-outline.png`;
-        if (squad.squad.photo) {
-            return squad.squad.photo;
+        if (request.user.profile.photo) {
+            return request.user.profile.photo;
         } else {
             return defaultPhoto;
         }
     };
 
-    const pushToSquadPreview = (id) => {
+    const pushToUserProfile = (id) => {
         setShow(false);
-        props.history.push(`/squad/preview/${id}`);
+        props.history.push(`/profile/${id}`);
     };
 
-    const renderSquadInvites = () => {
-        if (props.squadInvites) {
-            if (props.squadInvites[0]) {
-                return props.squadInvites.map((invite) => {
+    const renderSquadRequests = () => {
+        if (props.squad) {
+            if (props.squad.requests) {
+                return props.squad.requests.map((request) => {
                     return (
                         <div
                             className="d-flex flex-row conversation-sidebar-username"
-                            key={invite.squad_invite_id}
+                            key={request.squad_request_id}
                         >
                             <div className="item-1">
                                 <img
-                                    src={renderSquadPhoto(invite)}
+                                    src={renderUserPhoto(request)}
                                     alt="photo"
                                     className="conversation-sidebar-photo mr-2 image-comment-photo"
                                     onClick={() =>
-                                        pushToSquadPreview(
-                                            invite.squad.squad_id
-                                        )
+                                        pushToUserProfile(request.user.id)
                                     }
                                 />
                             </div>
                             <div className="item-2">
                                 <span
                                     onClick={() =>
-                                        pushToSquadPreview(
-                                            invite.squad.squad_id
-                                        )
+                                        pushToUserProfile(request.user.id)
                                     }
                                 >
-                                    {invite.squad.squad_name}
+                                    {request.user.username}
                                 </span>{" "}
                                 <span className="text-muted conversation-message-time">
                                     <Moment
-                                        date={invite.created_at}
+                                        date={request.created_at}
                                         format="MM/DD/YYYY hh:mm:a"
                                     />
                                 </span>
-                                <p>{invite.note ? invite.note : ""}</p>
+                                <p>{request.note ? request.note : ""}</p>
                             </div>
                             <div className="item-3 ml-5">
                                 <button
                                     onClick={() =>
-                                        acceptInvite(
-                                            invite.squad_invite_id,
-                                            invite.squad_id
+                                        acceptRequest(
+                                            request.squad_request_id,
+                                            request.user.id
                                         )
                                     }
                                     className="bttn-material-flat bttn-sm bttn-primary mr-3 mb-3 mb-md-0"
@@ -147,7 +143,7 @@ const RequestsToJoinModal = withRouter((props) => {
                                 </button>
                                 <button
                                     onClick={() =>
-                                        rejectInvite(invite.squad_invite_id)
+                                        rejectRequest(request.squad_request_id)
                                     }
                                     className="bttn-material-flat bttn-sm bttn-danger"
                                 >
@@ -160,7 +156,7 @@ const RequestsToJoinModal = withRouter((props) => {
             } else {
                 return (
                     <div>
-                        <span className="text-muted">No Invites</span>
+                        <span className="text-muted">No Requests</span>
                     </div>
                 );
             }
@@ -183,10 +179,13 @@ const RequestsToJoinModal = withRouter((props) => {
                 />
                 <Modal show={show} onHide={handleClose} size="md">
                     <Modal.Header closeButton>
-                        <Modal.Title>My Invites</Modal.Title>
+                        <Modal.Title>
+                            Requests To Join{" "}
+                            {props.squad ? props.squad.squad_name : ""}
+                        </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {renderSquadInvites()}
+                        {renderSquadRequests()}
                         {error && <span className="text-danger">{error}</span>}
                     </Modal.Body>
                     <Modal.Footer>
