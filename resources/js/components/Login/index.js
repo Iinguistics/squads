@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import LoginForm from "../Utils/Forms/LoginForm";
+import LoginForm from "../Utils/Forms/Login/LoginForm";
 
 const index = withRouter((props) => {
     useEffect(() => {
