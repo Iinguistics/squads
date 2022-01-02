@@ -101,6 +101,7 @@ const LoginForm = withRouter((props) => {
                                         }
                                         placeholder="Password"
                                         className="shadow-none"
+                                        data-test-id="password-input"
                                     />
                                     <img
                                         src={`${appUrl}/images/eye-text.png`}

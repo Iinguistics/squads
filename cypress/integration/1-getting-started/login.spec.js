@@ -5,22 +5,15 @@ describe("Home page user not logged in", () => {
     it("User not logged in", () => {
         expect(localStorage.getItem("userInfo")).to.be.null;
     });
-    it("Try logging in with invalid email", () => {
+    it("Try logging in with invalid password, < 6 chars", () => {
         cy.get('[data-test-id="email-input"]')
-            .type("a@.io")
-            .should("have.value", "a@.io");
+            .type("a@e.io")
+            .should("have.value", "a@e.io");
+        cy.get('[data-test-id="password-input"]')
+            .type("pass")
+            .should("have.value", "pass");
         cy.get('[data-test-id="login-button"]').click();
         cy.wait(500);
         cy.get('[data-test-id="error"]').should("be.visible");
     });
-
-    // it('Create and Log in user', () => {
-    // 	cy.get('.create-user__inputText')
-    // 		.type('James')
-    // 		.should('have.value', 'James');
-    // 	cy.get('.create-user__save').click();
-    // 	cy.wait(500);
-    // 	cy.get('.login-user__user-name').should('have.text', 'James');
-    // 	cy.wait(500);
-    // });
 });
