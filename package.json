@@ -11,8 +11,13 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
+        "@testing-library/jest-dom": "^5.16.1",
+        "@testing-library/react": "^12.1.2",
+        "@testing-library/user-event": "^13.5.0",
         "axios": "^0.21",
         "bootstrap": "^4.6.0",
+        "cypress": "^9.2.0",
+        "jest-watch-typeahead": "^1.0.0",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",

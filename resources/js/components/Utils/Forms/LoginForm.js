@@ -5,7 +5,7 @@ import { Container, Form, Row, Col } from "react-bootstrap";
 import "../../../../css/bttn/bttn.min.css";
 
 const LoginForm = withRouter((props) => {
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
     const [eyeTextToggle, setEyeTextToggle] = useState(false);
@@ -20,6 +20,11 @@ const LoginForm = withRouter((props) => {
     // to do: display Invalid credentials in this error state
     const loginSubmitHandler = async (e) => {
         e.preventDefault();
+
+        if (email.length < 6 || password.length < 6) {
+            setError("Invalid credentials");
+            return;
+        }
 
         try {
             setLoading(true);
