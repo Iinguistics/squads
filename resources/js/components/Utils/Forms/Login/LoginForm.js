@@ -59,8 +59,15 @@ const LoginForm = withRouter((props) => {
                         <div className="lds-hourglass d-flex justify-content-center m-auto"></div>
                     )}
                     <div className="shadow-sm p-3 mb-5 bg-white rounded">
-                        {error && <span className="text-danger">{error}</span>}
-                        <Form onSubmit={loginSubmitHandler}>
+                        {error && (
+                            <span className="text-danger" data-test-id="error">
+                                {error}
+                            </span>
+                        )}
+                        <Form
+                            onSubmit={loginSubmitHandler}
+                            data-testid="login-form"
+                        >
                             <Form.Group
                                 className="mb-3"
                                 controlId="formBasicEmail"
@@ -75,6 +82,7 @@ const LoginForm = withRouter((props) => {
                                         minLength="6"
                                         maxLength="60"
                                         className="shadow-none"
+                                        data-test-id="email-input"
                                     />
                                 </div>
                             </Form.Group>
@@ -93,7 +101,6 @@ const LoginForm = withRouter((props) => {
                                         }
                                         placeholder="Password"
                                         className="shadow-none"
-                                        data-testid="password"
                                     />
                                     <img
                                         src={`${appUrl}/images/eye-text.png`}
@@ -119,6 +126,7 @@ const LoginForm = withRouter((props) => {
                                 <button
                                     className="bttn-unite bttn-sm bttn-primary"
                                     type="submit"
+                                    data-test-id="login-button"
                                     disabled={email === "" || password === ""}
                                 >
                                     Sign in
