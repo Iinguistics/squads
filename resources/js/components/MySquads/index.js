@@ -4,6 +4,7 @@ import Api from "../Api";
 import CreateSquadModal from "../Utils/Modals/CreateSquadModal";
 import ShowSquadInvitesModal from "../Utils/Modals/ShowSquadInvitesModal";
 import SquadCard from "./SquadCard";
+import { Fade } from "react-awesome-reveal";
 
 const index = withRouter(() => {
     const [createSquadClicked, setCreateSquadClicked] = useState(0);
@@ -81,23 +82,25 @@ const index = withRouter(() => {
     return (
         <div className="container main-header">
             <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center shadow-sm p-3 mb-5 bg-white rounded">
-                <div className="item-1 mr-md-5 mb-5 mb-md-0">
-                    search squad input
-                </div>
-                <div className="item-2 mb-5 mb-md-0">
+                <Fade cascade>
+                    <div className="item-1 mr-md-5 mb-5 mb-md-0">
+                        search squad input
+                    </div>
+                    <div className="item-2 mb-5 mb-md-0">
+                        <button
+                            className="bttn-material-flat bttn-sm update-account-modal-btn"
+                            onClick={createSquadClickedHandler}
+                        >
+                            Create Squad
+                        </button>
+                    </div>
                     <button
-                        className="bttn-material-flat bttn-sm update-account-modal-btn"
-                        onClick={createSquadClickedHandler}
+                        className="item-3 mb-5 mb-md-0 squad-invites-container bttn-material-flat bttn-sm"
+                        onClick={showSquadInvitesClickedHandler}
                     >
-                        Create Squad
+                        Squad Invites {renderPendingInvitesNotification()}
                     </button>
-                </div>
-                <button
-                    className="item-3 mb-5 mb-md-0 squad-invites-container bttn-material-flat bttn-sm"
-                    onClick={showSquadInvitesClickedHandler}
-                >
-                    Squad Invites {renderPendingInvitesNotification()}
-                </button>
+                </Fade>
             </div>
             <CreateSquadModal
                 createSquadClicked={createSquadClicked}
