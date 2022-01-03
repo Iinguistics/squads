@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ImageCommentModal from "../Utils/Modals/ImageCommentModal";
 import EditImageModal from "../Utils/Modals/EditImageModal";
+import { Fade } from "react-awesome-reveal";
 
 const Images = ({
     profileData,
@@ -38,21 +39,23 @@ const Images = ({
                                     : () => previewImageClickedHandler(image)
                             }
                         >
-                            <img
-                                src={image.image}
-                                alt={
-                                    image.description
-                                        ? image.description
-                                        : "image"
-                                }
-                                className="img-fluid profile-img"
-                            />
-                            <img
-                                src={`${appUrl}/images/comment-gradient.png`}
-                                alt="comment"
-                                className="profile-img-comment-icon"
-                            />
-                            <div className="profile-img-overlay"></div>
+                            <Fade cascade>
+                                <img
+                                    src={image.image}
+                                    alt={
+                                        image.description
+                                            ? image.description
+                                            : "image"
+                                    }
+                                    className="img-fluid profile-img"
+                                />
+                                <img
+                                    src={`${appUrl}/images/comment-gradient.png`}
+                                    alt="comment"
+                                    className="profile-img-comment-icon"
+                                />
+                                <div className="profile-img-overlay"></div>
+                            </Fade>
                         </div>
                     );
                 });
@@ -72,7 +75,7 @@ const Images = ({
     };
 
     const appUrl = process.env.MIX_APP_URL;
-    console.log(profileData);
+
     return (
         <div className="d-flex flex-col flex-md-row flex-wrap justify-content-center justify-content-md-between align-items-center shadow-sm p-3 mb-5 bg-white rounded text-center">
             {renderImages()}
