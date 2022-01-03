@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Api from "../Api";
 import Moment from "react-moment";
+import { FiSend } from "react-icons/fi";
 
 const Conversation = ({
     conversationMessages,
@@ -128,23 +129,24 @@ const Conversation = ({
     };
 
     return (
-        <div className="">
+        <div className="conversation-input">
             <div className="conversation-messages-container">
                 {renderMessages()}
             </div>
-            <div className="conversation-input">
-                {error && <span className="text-danger">{error}</span>}
-                <form onSubmit={sendMessageHandler}>
-                    <input
-                        className="mt-5"
-                        type="text"
-                        value={body}
-                        onChange={(e) => setBody(e.target.value)}
-                        placeholder={`Message @${sentFromUsername}`}
-                        disabled={!conversationMessages}
-                    />
-                </form>
-            </div>
+            {error && <span className="text-danger">{error}</span>}
+            <form
+                onSubmit={sendMessageHandler}
+                className="conversation-input-form"
+            >
+                <input
+                    className="mt-5"
+                    type="text"
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                    placeholder={`Message @${sentFromUsername}`}
+                    disabled={!conversationMessages}
+                />
+            </form>
         </div>
     );
 };
