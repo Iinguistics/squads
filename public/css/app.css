@@ -10096,7 +10096,7 @@ nav .inbox-notification-bubble {
 
 .private-profile-sidebar-divider {
   background: #dddee4;
-  width: 50%;
+  width: 100%;
   height: 1px;
 }
 
@@ -10592,7 +10592,7 @@ form .player-search-select {
 }
 
 .private-profile-sidebar-container {
-  width: 25%;
+  max-width: 30%;
   background: #f4f5f7;
 }
 
