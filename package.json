@@ -39,6 +39,7 @@
         "formik": "^2.2.9",
         "hamburger-react": "^2.4.1",
         "moment": "^2.29.1",
+        "react-awesome-reveal": "^3.8.1",
         "react-bootstrap": "^1.6.3",
         "react-icons": "^4.2.0",
         "react-moment": "^1.1.1",
