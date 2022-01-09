@@ -11,10 +11,10 @@ const ViewRosterModal = withRouter((props) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        if (props.requestClicked !== 0) {
+        if (props.viewRosterClicked !== 0) {
             setShow(true);
         }
-    }, [props.requestClicked]);
+    }, [props.viewRosterClicked]);
 
     const handleClose = () => setShow(false);
 
@@ -52,10 +52,7 @@ const ViewRosterModal = withRouter((props) => {
                         >
                             Cancel
                         </button>
-                        <button
-                            onClick={createSquadRequestHandler}
-                            className="bttn-material-flat bttn-sm update-account-modal-btn"
-                        >
+                        <button className="bttn-material-flat bttn-sm update-account-modal-btn">
                             Send
                         </button>
                     </Modal.Footer>
