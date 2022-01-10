@@ -43,7 +43,7 @@ class SquadController extends Controller
     public function fetch_squad($id)
     {
         $squad = Squad::where('squad_id', $id)
-            ->with(['members.user', 'requests.user.profile'])
+            ->with(['members.user.profile', 'requests.user.profile'])
             ->get()->first();
 
         $response = array(
