@@ -30,3 +30,13 @@
 .number-of-squads {
     font-size: 1rem;
 }
+
+.roster-member:hover {
+    img {
+        border: 2px solid $main-blue;
+        border-radius: 50%;
+    }
+    span {
+        color: $main-blue;
+    }
+}

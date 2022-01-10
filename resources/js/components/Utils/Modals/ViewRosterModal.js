@@ -53,7 +53,7 @@ const ViewRosterModal = withRouter((props) => {
             return props.squad.members.map((member) => {
                 return (
                     <div
-                        className="d-flex flex-row align-items-center ml-1 mb-3"
+                        className="d-flex flex-row align-items-center ml-1 mb-3 roster-member"
                         key={member.id}
                     >
                         <div className="item-1">
