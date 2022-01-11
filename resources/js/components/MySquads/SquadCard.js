@@ -26,6 +26,23 @@ const SquadCard = ({ card }) => {
             }
         }
     };
+
+    const renderSquadBio = () => {
+        let trimmed;
+        let trimmedBio;
+        if (card.squad.bio) {
+            trimmed = card.squad.bio.split("");
+            if (trimmed.length > 33) {
+                trimmedBio = trimmed.slice(0, 33);
+                trimmedBio.join("");
+                return <p className="card-text">{trimmedBio}...</p>;
+            } else {
+                return <p className="card-text">{card.squad.bio}</p>;
+            }
+        } else {
+            return <p className="card-text">No Bio</p>;
+        }
+    };
     return (
         <div className="card squad-card my-4">
             <Link to={`/squad/${card.squad_id}`}>
@@ -33,9 +50,7 @@ const SquadCard = ({ card }) => {
                 <div className="card-body">
                     <h5 className="card-title">{card.squad.squad_name}</h5>
                     <p className="text-muted">{card.squad.game}</p>
-                    <p className="card-text">
-                        {card.squad.bio ? card.squad.bio : "No bio"}
-                    </p>
+                    {renderSquadBio()}
                 </div>
             </Link>
         </div>

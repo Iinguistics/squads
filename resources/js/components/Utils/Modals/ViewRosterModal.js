@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-import Api from "../../Api";
 import SuccessModal from "./SuccessModal";
 
 const ViewRosterModal = withRouter((props) => {
@@ -9,7 +8,6 @@ const ViewRosterModal = withRouter((props) => {
 
     const [show, setShow] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -82,7 +80,7 @@ const ViewRosterModal = withRouter((props) => {
         }
     };
 
-    console.log(props.squad, "new");
+    console.log(props.squad, "view roster modal");
     return (
         <div className="mt-5 text-center">
             <Container>
@@ -108,14 +106,10 @@ const ViewRosterModal = withRouter((props) => {
                     <Modal.Footer>
                         <button
                             onClick={handleClose}
-                            className="bttn-material-flat bttn-sm mr-2"
+                            className="bttn-material-flat bttn-sm update-account-modal-btn"
                         >
                             Cancel
                         </button>
-                        <button className="bttn-material-flat bttn-sm update-account-modal-btn">
-                            Send
-                        </button>
-                        {error && <span className="text-danger">{error}</span>}
                     </Modal.Footer>
                 </Modal>
                 {loading && (
