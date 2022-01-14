@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import "../../../css/bttn/bttn.min.css";
+import { Fade } from "react-awesome-reveal";
 
 const SectionTwo = withRouter((props) => {
     return (
@@ -12,39 +13,41 @@ const SectionTwo = withRouter((props) => {
                     <p>How can we help you get started?</p>
                 </div>
                 <div className="d-flex flex-nowrap justify-content-around align-items-center align-content-center mt-5 section-2-swipe">
-                    <Link to="/">
-                        <Card className="item-1 shadow-lg">
-                            <Card.Body>
-                                <Card.Text>
-                                    Some quick example text to build on the card
-                                    title and make up the bulk of the card's
-                                    content.
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Link>
-                    <Link to="/">
-                        <Card className="item-2 shadow-lg">
-                            <Card.Body>
-                                <Card.Text>
-                                    Some quick example text to build on the card
-                                    title and make up the bulk of the card's
-                                    content.
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Link>
-                    <Link to="/">
-                        <Card className="item-3 shadow-lg">
-                            <Card.Body>
-                                <Card.Text>
-                                    Some quick example text to build on the card
-                                    title and make up the bulk of the card's
-                                    content.
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Link>
+                    <Fade cascade>
+                        <Link to="/">
+                            <Card className="item-1 shadow-lg">
+                                <Card.Body>
+                                    <Card.Text>
+                                        Some quick example text to build on the
+                                        card title and make up the bulk of the
+                                        card's content.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Link>
+                        <Link to="/">
+                            <Card className="item-2 shadow-lg">
+                                <Card.Body>
+                                    <Card.Text>
+                                        Some quick example text to build on the
+                                        card title and make up the bulk of the
+                                        card's content.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Link>
+                        <Link to="/">
+                            <Card className="item-3 shadow-lg">
+                                <Card.Body>
+                                    <Card.Text>
+                                        Some quick example text to build on the
+                                        card title and make up the bulk of the
+                                        card's content.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Link>
+                    </Fade>
                 </div>
             </Container>
         </div>
