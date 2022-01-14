@@ -111,7 +111,7 @@ const index = withRouter(() => {
                 squadInvites={squadInvites}
                 fetchSquadInvitesHandler={fetchSquadInvitesHandler}
             />
-            <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center">
+            <div className="d-flex flex-column flex-wrap flex-md-row justify-content-around align-items-center my-5">
                 {renderSquadCards()}
             </div>
         </div>
