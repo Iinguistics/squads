@@ -44,7 +44,7 @@ const SquadCard = ({ card }) => {
         }
     };
     return (
-        <div className="card squad-card ">
+        <div className="card squad-card">
             <Link to={`/squad/${card.squad_id}`}>
                 {renderSquadImg()}
                 <div className="card-body">

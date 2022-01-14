@@ -10941,6 +10941,7 @@ form .player-search-select {
 
 .squad-card {
   width: 18rem;
+  height: 27rem;
   box-shadow: 0 5px 10px rgba(79, 82, 177, 0.35);
 }
 
