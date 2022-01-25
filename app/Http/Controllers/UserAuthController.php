@@ -108,14 +108,15 @@ class UserAuthController extends Controller
 
         $input = $request->all();
 
-        $emails = app('App\Http\Controllers\UserController')->fetchAllUsersEmail();
-        if (!in_array($input['email'], $emails)) {
+        $non_valid_email = User::where('email', $input['email'])->get()->first();
+        if (!$non_valid_email) {
             $response = array(
                 'success' => false,
                 'error' => "Invalid email.",
             );
             return response()->json($response, 200);
         }
+
 
         $pool = '0123456789';
         $random_pin = substr(str_shuffle(str_repeat($pool, 3)), 0, 6);
