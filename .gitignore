@@ -17,3 +17,5 @@ yarn-error.log
 /.idea
 /.vscode
 backlog.md
+/resources/views/mail/*
+/resources/sass/Playground/*

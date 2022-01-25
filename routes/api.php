@@ -22,13 +22,6 @@ use App\Http\Controllers\SquadController;
 |
 */
 
-// Route::middleware('auth:api')->group(function () {
-
-//     // Users
-//     Route::get('logout', [UserAuthController::class, 'logout']);
-// });
-
-
 
 // Users
 Route::post('register', [UserAuthController::class, 'register']);

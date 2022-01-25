@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('app');
-// });
-
 Route::view('/{path?}', 'app')->name('web');
 Route::view('/profile/{id?}', 'app')->name('web');
 Route::view('/squad/preview/{id?}', 'app')->name('web');
