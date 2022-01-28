@@ -14,16 +14,3 @@ const mix = require("laravel-mix");
 mix.js("resources/js/app.js", "public/js")
     .react()
     .sass("resources/sass/app.scss", "public/css");
-
-// mix.react("resources/js/app.js", "public/js");
-
-// mix.sass("resources/sass/app.scss", "public/css").options({
-//     processCssUrls: false,
-// });
-// mix.copyDirectory("resources/images", "public/images");
-
-// if (!mix.inProduction()) {
-//     mix.browserSync("127.0.0.1:8000");
-// }
-
-// mix.version();
